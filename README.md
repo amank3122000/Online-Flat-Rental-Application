@@ -1,2 +1,4 @@
 # Online-Flat-Rental-Application
-Sprint 1 Group 3
+Group 3
+Sprint 1
+Backend Development
