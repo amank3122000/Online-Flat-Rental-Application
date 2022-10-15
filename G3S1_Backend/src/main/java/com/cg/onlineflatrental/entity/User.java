@@ -14,6 +14,15 @@ public class User {
 	private String userName;
 	private String password;
 	private String userType;
+	
+	public User(Integer userId, String userName, String password, String userType) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.password = password;
+		this.userType = userType;
+	}
+	
 	public Integer getUserId() {
 		return userId;
 	}
