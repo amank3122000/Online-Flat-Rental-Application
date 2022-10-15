@@ -1,5 +1,15 @@
 package com.cg.onlineflatrental.service;
 
-public interface IUserService {
+import java.util.List;
+import com.capg.entity.User;
+import com.capg.exception.UserNotFoundException;
 
+public interface IUserService {
+	public User viewUser(int userId) throws UserNotFoundException;
+	public List<User> viewAllUsers() throws UserNotFoundException;
+	public User validateUser(String userName,String password) throws UserNotFoundException;
+	public User addUser(User user) throws UserNotFoundException;
+	public User updateUser(User user) throws UserNotFoundException;
+	public User updatePassword(String userName,String newPassword) throws UserNotFoundException;
+	public User removeUser(User user) throws UserNotFoundException;
 }
