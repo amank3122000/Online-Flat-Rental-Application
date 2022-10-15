@@ -61,11 +61,13 @@ public class FlatBooking {
 	public void setBookingToDate(Date bookingToDate) {
 		this.bookingToDate = bookingToDate;
 	}
-    public void setBookingFromDate(Date bookingFromDate) {
-		this.bookingFromDate = bookingFromDate;
+
+	public Date getBookingFromDate() {
+		return bookingFromDate;
 	}
-	public void setBookingToDate(Date bookingToDate) {
-		this.bookingToDate = bookingToDate;
+
+	public void setBookingFromDate(Date bookingFromDate) {
+		this.bookingFromDate = bookingFromDate;
 	}
 }
 
