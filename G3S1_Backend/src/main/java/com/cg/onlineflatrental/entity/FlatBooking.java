@@ -36,7 +36,13 @@ public class FlatBooking {
 		this.bookingFromDate = bookingFromDate;
 		this.bookingToDate = bookingToDate;
 	}
-	
+
+	public Integer getBookingNo() {
+		return bookingNo;
+	}
+	public void setBookingNo(Integer bookingNo) {
+		this.bookingNo = bookingNo;
+	}
 	public Flat getFlat() {
 		return flat;
 	}
@@ -51,6 +57,12 @@ public class FlatBooking {
 	}
 	public Date getBookingToDate() {
 		return bookingToDate;
+	}
+	public void setBookingToDate(Date bookingToDate) {
+		this.bookingToDate = bookingToDate;
+	}
+    public void setBookingFromDate(Date bookingFromDate) {
+		this.bookingFromDate = bookingFromDate;
 	}
 	public void setBookingToDate(Date bookingToDate) {
 		this.bookingToDate = bookingToDate;
