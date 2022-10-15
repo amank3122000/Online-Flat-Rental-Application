@@ -12,7 +12,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Flats")
 public class Flat {
 	
 	@Id
@@ -29,9 +28,9 @@ public class Flat {
 	//@Column(name="FlatAvailability")
 	private String availability;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="landlordId")
-	private Landlord landlord;
+	//@ManyToOne(cascade=CascadeType.ALL)
+	//@JoinColumn(name="landlordId")
+	//private Landlord landlord;
 	
 	public Flat() {
 		super();

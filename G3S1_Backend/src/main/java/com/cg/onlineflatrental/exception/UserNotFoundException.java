@@ -11,5 +11,9 @@ public class UserNotFoundException extends Exception{
 		super(message);
 		// TODO Auto-generated constructor stub
 	}
+	public UserNotFoundException() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 }

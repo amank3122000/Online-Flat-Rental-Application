@@ -10,15 +10,17 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 //import javax.persistence.Table;
 
-@Entity
 
+@Entity
 public class Landlord {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int landlordId;
 	private String landlordName;
 	private int landlordAge;
-	@OneToMany(mappedBy = "landlord", cascade=CascadeType.ALL)
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="flatId")
 	private List<Flat> flatList;
   
 	public Landlord() {}

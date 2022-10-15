@@ -1,8 +1,17 @@
 package com.cg.onlineflatrental.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Admin {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	int adminId;
 	String adminPassword;
+	
 	public Admin(int adminId, String adminPassword) {
 		super();
 		this.adminId = adminId;
