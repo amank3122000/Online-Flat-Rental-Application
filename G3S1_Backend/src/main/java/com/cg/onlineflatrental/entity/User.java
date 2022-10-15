@@ -29,6 +29,15 @@ public class User {
 	public String getPassword() {
 		return password;
 	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getUserType() {
+		return userType;
+	}
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
 	
 	@Override
 	public int hashCode() {
@@ -50,14 +59,5 @@ public class User {
 	public String toString() {
 		return "User [userId=" + userId + ", userName=" + userName + ", password=" + password + ", userType=" + userType
 				+ "]";
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getUserType() {
-		return userType;
-	}
-	public void setUserType(String userType) {
-		this.userType = userType;
 	}
 }

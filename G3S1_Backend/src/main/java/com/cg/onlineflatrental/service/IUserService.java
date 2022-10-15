@@ -1,8 +1,9 @@
 package com.cg.onlineflatrental.service;
 
 import java.util.List;
-import com.capg.entity.User;
-import com.capg.exception.UserNotFoundException;
+
+import com.cg.onlineflatrental.entity.User;
+import com.cg.onlineflatrental.exception.UserNotFoundException;
 
 public interface IUserService {
 	public User viewUser(int userId) throws UserNotFoundException;
