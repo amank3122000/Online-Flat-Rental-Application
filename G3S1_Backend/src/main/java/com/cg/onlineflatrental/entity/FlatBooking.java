@@ -18,10 +18,24 @@ public class FlatBooking {
 	@JoinColumn(name = "flatId", unique = true)
 	private Flat flat;
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "flatId", unique = true)
+	@JoinColumn(name = "tenantId", unique = true)
 	private Tenant tenantId;
 	private Date bookingFromDate;
 	private Date bookingToDate;
+	
+	public FlatBooking() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public FlatBooking(Integer bookingNo, Flat flat, Tenant tenantId, Date bookingFromDate, Date bookingToDate) {
+		super();
+		this.bookingNo = bookingNo;
+		this.flat = flat;
+		this.tenantId = tenantId;
+		this.bookingFromDate = bookingFromDate;
+		this.bookingToDate = bookingToDate;
+	}
 	
 	public Flat getFlat() {
 		return flat;
