@@ -48,4 +48,12 @@ public class Tenant {
 		return "Tenant [tenantId=" + tenantId + ", age=" + age + ", taddress=" + taddress
 				+ "]";
 	}
+	public Object getTenantName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public void setTenantName(Object tenantName) {
+		// TODO Auto-generated method stub
+		
+	}
 }
