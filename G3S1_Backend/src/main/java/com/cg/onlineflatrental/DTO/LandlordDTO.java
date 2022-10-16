@@ -1,13 +1,12 @@
 package com.cg.onlineflatrental.DTO;
 
 import java.util.List;
-import com.cg.onlineflatrental.entity.Flat;
 
 public class LandlordDTO {
 	private int landlordId;
 	private String landlordName;
 	private int landlordAge;
-	private List<Flat> flatList;
+	private List<FlatDTO> flatList;
 	/**
 	 * 
 	 */
@@ -15,13 +14,8 @@ public class LandlordDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	/**
-	 * @param landlordId
-	 * @param landlordName
-	 * @param landlordAge
-	 * @param flatList
-	 */
-	public LandlordDTO(int landlordId, String landlordName, int landlordAge, List<Flat> flatList) {
+
+	public LandlordDTO(int landlordId, String landlordName, int landlordAge, List<FlatDTO> flatList) {
 		super();
 		this.landlordId = landlordId;
 		this.landlordName = landlordName;
@@ -47,10 +41,10 @@ public class LandlordDTO {
 	public void setLandlordAge(int landlordAge) {
 		this.landlordAge = landlordAge;
 	}
-	public List<Flat> getFlatList() {
+	public List<FlatDTO> getFlatList() {
 		return flatList;
 	}
-	public void setFlatList(List<Flat> flatList) {
+	public void setFlatList(List<FlatDTO> flatList) {
 		this.flatList = flatList;
 	}
 	@Override

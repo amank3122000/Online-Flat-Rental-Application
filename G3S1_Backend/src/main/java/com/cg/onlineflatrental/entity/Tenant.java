@@ -1,18 +1,17 @@
 package com.cg.onlineflatrental.entity;
+
 import javax.persistence.Entity;   
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="Tenant")
 public class Tenant {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int tenantId;
-//	private String tenantName;
+	
 	private int age;
 	@OneToOne
 	private FlatAddress taddress;
@@ -23,7 +22,6 @@ public class Tenant {
 	public Tenant(int tenantId, String tenantName, int age, FlatAddress taddress) {
 		super();
 		this.tenantId = tenantId;
-//		this.tenantName = tenantName;
 		this.age = age;
 		this.taddress = taddress;
 	}
@@ -39,12 +37,6 @@ public class Tenant {
 	public void setTenantId(int tenantId) {
 		this.tenantId = tenantId;
 	}
-//	public String getTenantName() {
-//		return tenantName;
-//	}
-//	public void setTenantName(String tenantName) {
-//		this.tenantName = tenantName;
-//	}
 	public int getAge() {
 		return age;
 	}

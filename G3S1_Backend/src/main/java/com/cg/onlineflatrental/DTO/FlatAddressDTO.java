@@ -9,6 +9,7 @@ public class FlatAddressDTO {
     private String country;
 
     public FlatAddressDTO() {
+    	super();
     }
 
     public FlatAddressDTO(int houseNo, String street, String city, String state, int pin, String country) {

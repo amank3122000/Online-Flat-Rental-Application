@@ -1,10 +1,24 @@
 package com.cg.onlineflatrental.DTO;
 
 public class UserDTO {
+	
 	int userId;
 	String userName;
 	String password;
 	String userType;
+	
+	public UserDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public UserDTO(int userId, String userName, String password, String userType) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.password = password;
+		this.userType = userType;
+	}
 	public int getUserId() {
 		return userId;
 	}

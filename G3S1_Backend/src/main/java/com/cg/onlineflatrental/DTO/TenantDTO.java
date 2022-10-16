@@ -1,12 +1,11 @@
 package com.cg.onlineflatrental.DTO;
 
-import com.cg.onlineflatrental.entity.FlatAddress;
 
 public class TenantDTO {
 	private int tenantId;
 	private String tenantName;
 	private int age;
-	private FlatAddress taddress;
+	private FlatAddressDTO taddress;
 	/**
 	 * 
 	 */
@@ -14,13 +13,8 @@ public class TenantDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	/**
-	 * @param tenantId
-	 * @param tenantName
-	 * @param age
-	 * @param taddress
-	 */
-	public TenantDTO(int tenantId, String tenantName, int age, FlatAddress taddress) {
+
+	public TenantDTO(int tenantId, String tenantName, int age, FlatAddressDTO taddress) {
 		super();
 		this.tenantId = tenantId;
 		this.tenantName = tenantName;
@@ -45,10 +39,10 @@ public class TenantDTO {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public FlatAddress getTaddress() {
+	public FlatAddressDTO getTaddress() {
 		return taddress;
 	}
-	public void setTaddress(FlatAddress taddress) {
+	public void setTaddress(FlatAddressDTO taddress) {
 		this.taddress = taddress;
 	}
 	@Override
