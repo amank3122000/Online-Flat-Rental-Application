@@ -22,7 +22,9 @@ public class Landlord {
 	@JoinColumn(name="flatId")
 	private List<Flat> flatList;
   
-	public Landlord() {}
+	public Landlord() {
+		super();
+	}
 	public Landlord( String landlordName, int landlordAge, List<Flat> flatList) {
 		super();
 		this.landlordName = landlordName;
