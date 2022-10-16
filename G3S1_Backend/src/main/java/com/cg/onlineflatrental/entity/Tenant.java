@@ -19,7 +19,7 @@ public class Tenant {
 	public Tenant() {
 		super();
 	}
-	public Tenant(int tenantId, String tenantName, int age, FlatAddress taddress) {
+	public Tenant(int tenantId, int age, FlatAddress taddress) {
 		super();
 		this.tenantId = tenantId;
 		this.age = age;
@@ -48,12 +48,12 @@ public class Tenant {
 		return "Tenant [tenantId=" + tenantId + ", age=" + age + ", taddress=" + taddress
 				+ "]";
 	}
-	public Object getTenantName() {
+	/*public Object getTenantName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	public void setTenantName(Object tenantName) {
 		// TODO Auto-generated method stub
-		
-	}
+
+	}*/
 }
