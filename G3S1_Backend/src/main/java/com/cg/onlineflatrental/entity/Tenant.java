@@ -44,7 +44,7 @@ public class Tenant {
 //	}
 //	public void setTenantName(String tenantName) {
 //		this.tenantName = tenantName;
-	}
+//	}
 	public int getAge() {
 		return age;
 	}
