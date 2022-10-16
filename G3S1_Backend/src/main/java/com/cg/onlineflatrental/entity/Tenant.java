@@ -12,7 +12,7 @@ public class Tenant {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int tenantId;
-	private String tenantName;
+//	private String tenantName;
 	private int age;
 	@OneToOne
 	private FlatAddress taddress;
@@ -23,7 +23,7 @@ public class Tenant {
 	public Tenant(int tenantId, String tenantName, int age, FlatAddress taddress) {
 		super();
 		this.tenantId = tenantId;
-		this.tenantName = tenantName;
+//		this.tenantName = tenantName;
 		this.age = age;
 		this.taddress = taddress;
 	}
@@ -39,11 +39,11 @@ public class Tenant {
 	public void setTenantId(int tenantId) {
 		this.tenantId = tenantId;
 	}
-	public String getTenantName() {
-		return tenantName;
-	}
-	public void setTenantName(String tenantName) {
-		this.tenantName = tenantName;
+//	public String getTenantName() {
+//		return tenantName;
+//	}
+//	public void setTenantName(String tenantName) {
+//		this.tenantName = tenantName;
 	}
 	public int getAge() {
 		return age;
@@ -53,7 +53,7 @@ public class Tenant {
 	}
 	@Override
 	public String toString() {
-		return "Tenant [tenantId=" + tenantId + ", tenantName=" + tenantName + ", age=" + age + ", taddress=" + taddress
+		return "Tenant [tenantId=" + tenantId + ", age=" + age + ", taddress=" + taddress
 				+ "]";
 	}
 }
