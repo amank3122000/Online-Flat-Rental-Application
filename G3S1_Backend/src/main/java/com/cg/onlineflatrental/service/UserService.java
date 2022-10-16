@@ -4,13 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import com.cg.onlineflatrental.DTO.UserDTO;
 import com.cg.onlineflatrental.entity.User;
 import com.cg.onlineflatrental.exception.UserNotFoundException;
+import com.cg.onlineflatrental.exception.ValidationException;
 import com.cg.onlineflatrental.repository.IUserRepository;
 
 
+@Service
+@Transactional
 public class UserService implements IUserService{
 	@Autowired
 	private IUserRepository userRepository;
@@ -43,9 +49,15 @@ public class UserService implements IUserService{
 		return usersList;
 	}
 	@Override
-	public UserDTO validateUser(String userName,String password) {
-		UserDTO user = new UserDTO();
-		return user;
+	public User validateUser(String userName,String password) throws UserNotFoundException,ValidationException {
+		Optional<User> optional = userRepository.findByUserName(userName);
+		optional.orElseThrow(() -> new UserNotFoundException("Service.USER_NOT_FOUND"));
+		if(optional.get().getPassword().equals(password)) {
+			return optional.get();
+		}
+		else
+			throw new ValidationException("Service.INCORRECT_PASSWORD");
+		
 	}
 	@Override
 	public User addUser(UserDTO user) throws UserNotFoundException {
@@ -64,31 +76,31 @@ public class UserService implements IUserService{
 		
 	}
 	@Override
-	public User updateUser(UserDTO user) throws UserNotFoundException {
-		Optional<User> user1 = userRepository.findById(user.getUserId());
-		user1.orElseThrow(() -> new UserNotFoundException("Service.USER_NOT_FOUND"));
-		User user2=user1.get();
-		user2.setUserName(user.getUserName());
-		user2.setPassword(user.getPassword());
-		user2.setUserType(user.getUserType());
-		userRepository.save(user2);
-		return user2;
+	public User updateUser(UserDTO user,Integer userId) throws UserNotFoundException {
+		Optional<User> optional = userRepository.findById(userId);
+		optional.orElseThrow(() -> new UserNotFoundException("Service.USER_NOT_FOUND"));
+		User user1=optional.get();
+		user1.setUserId(user.getUserId());
+		user1.setUserName(user.getUserName());
+		user1.setPassword(user.getPassword());
+		user1.setUserType(user.getUserType());
+		userRepository.save(user1);
+		return user1;
 	}
 	@Override
 	public User updatePassword(String userName,String newPassword) throws UserNotFoundException {
-		Optional<User> user1 = userRepository.findByUserName(userName);
-		user1.orElseThrow(() -> new UserNotFoundException("Service.USER_NOT_FOUND"));
-		User user=user1.get();
+		Optional<User> optional = userRepository.findByUserName(userName);
+		optional.orElseThrow(() -> new UserNotFoundException("Service.USER_NOT_FOUND"));
+		User user=optional.get();
 		user.setPassword(newPassword);
 		userRepository.save(user);
 		return user;
 	}
 	@Override
-	public User removeUser(UserDTO user) throws UserNotFoundException {
-		Optional<User> user1 = userRepository.findById(user.getUserId());
-		user1.orElseThrow(() -> new UserNotFoundException("Service.USER_NOT_FOUND"));
-		User user2=user1.get();
-		userRepository.deleteById(user.getUserId());
-		return user2;
+	public User removeUser(Integer userId) throws UserNotFoundException {
+		Optional<User> optional = userRepository.findById(userId);
+		optional.orElseThrow(() -> new UserNotFoundException("Service.USER_NOT_FOUND"));
+		userRepository.deleteById(userId);
+		return optional.get();
 	}
 }
