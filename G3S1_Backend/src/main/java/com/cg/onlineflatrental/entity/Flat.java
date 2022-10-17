@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Min;
 
 @Entity
 public class Flat {
@@ -16,14 +18,15 @@ public class Flat {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int flatId;
 	
-	//@Column(name="FlatCost")
+	@NotNull(message = "Please provide a valid cost")
+	@Min(value = 1, message = "Cost should be more than 0")
 	private float cost;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="houseNo")
 	private FlatAddress flatAddress;
 	
-	//@Column(name="FlatAvailability")
+	@NotNull(message = "Flat availability is mandatory")
 	private String availability;
 	
 	public Flat() {
