@@ -12,7 +12,7 @@ public interface IUserService {
 	public List<UserDTO> viewAllUsers() throws UserNotFoundException;
 	public User validateUser(String userName,String password) throws UserNotFoundException,ValidationException;
 	public User addUser(User user) throws UserNotFoundException;
-	public User updateUser(User user,Integer userId) throws UserNotFoundException;
-	public User updatePassword(String userName,String newPassword) throws UserNotFoundException;
+	public User updateUser(User user) throws UserNotFoundException;
+	public User updatePassword(User user,String newPassword) throws UserNotFoundException;
 	public User removeUser(Integer userId) throws UserNotFoundException;
 }

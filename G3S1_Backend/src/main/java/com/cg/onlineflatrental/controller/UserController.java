@@ -52,16 +52,16 @@ public class UserController {
 		return new ResponseEntity<>(successMessage, HttpStatus.CREATED);
 	}
 	
-	@PutMapping("/users/{userId}")
+	@PutMapping("/users")
 	public ResponseEntity<String> updateUser(@RequestBody User user,@PathVariable Integer userId) throws UserNotFoundException{
-		User user1 = userService.updateUser(user,userId);
+		User user1 = userService.updateUser(user);
 		String successMessage = "User id: "+ user1.getUserId()+" ,"+environment.getProperty("API.UPDATE_SUCCESS");
 		return new ResponseEntity<>(successMessage, HttpStatus.OK);
 	}
 	
 	@PatchMapping("/users/{newpass}")
-	public ResponseEntity<String> updatePassword(@RequestBody String userName,@PathVariable String newpass) throws UserNotFoundException{
-		User user1 = userService.updatePassword(userName, newpass);
+	public ResponseEntity<String> updatePassword(@RequestBody User user,@PathVariable String newpass) throws UserNotFoundException{
+		User user1 = userService.updatePassword(user, newpass);
 		String successMessage = "User id: "+ user1.getUserId()+" ,"+environment.getProperty("API.UPDATE_SUCCESS");
 		return new ResponseEntity<>(successMessage, HttpStatus.OK);
 	}
