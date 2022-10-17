@@ -7,7 +7,6 @@ import com.cg.onlineflatrental.entity.Tenant;
 import com.cg.onlineflatrental.repository.ITenantRepository;
 import com.cg.onlineflatrental.exception.TenantNotFoundException;
 
-import java.util.List;
 import java.util.Optional;
 
 public class TenantService implements ITenantService {
@@ -76,7 +75,7 @@ public class TenantService implements ITenantService {
 	 */
 
 	@Override
-	public List<Tenant> viewAllTenant() {
+	public Iterable<Tenant> viewAllTenant() {
 		logger.info("Called viewAllTenant() method of TenantService");
 		return tenantRepository.findAll();
 	}
