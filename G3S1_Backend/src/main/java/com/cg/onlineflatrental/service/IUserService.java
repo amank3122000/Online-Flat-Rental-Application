@@ -11,8 +11,8 @@ public interface IUserService {
 	public UserDTO viewUser(int userId) throws UserNotFoundException;
 	public List<UserDTO> viewAllUsers() throws UserNotFoundException;
 	public User validateUser(String userName,String password) throws UserNotFoundException,ValidationException;
-	public User addUser(UserDTO user) throws UserNotFoundException;
-	public User updateUser(UserDTO user,Integer userId) throws UserNotFoundException;
+	public User addUser(User user) throws UserNotFoundException;
+	public User updateUser(User user,Integer userId) throws UserNotFoundException;
 	public User updatePassword(String userName,String newPassword) throws UserNotFoundException;
 	public User removeUser(Integer userId) throws UserNotFoundException;
 }

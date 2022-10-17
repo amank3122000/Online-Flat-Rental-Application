@@ -60,7 +60,7 @@ public class UserService implements IUserService{
 		
 	}
 	@Override
-	public User addUser(UserDTO user) throws UserNotFoundException {
+	public User addUser(User user) throws UserNotFoundException {
 		if(userRepository.existsById(user.getUserId())) {
 			throw new UserNotFoundException("Service.USER_ALREADY_EXIST");
 		}
@@ -76,7 +76,7 @@ public class UserService implements IUserService{
 		
 	}
 	@Override
-	public User updateUser(UserDTO user,Integer userId) throws UserNotFoundException {
+	public User updateUser(User user,Integer userId) throws UserNotFoundException {
 		Optional<User> optional = userRepository.findById(userId);
 		optional.orElseThrow(() -> new UserNotFoundException("Service.USER_NOT_FOUND"));
 		User user1=optional.get();

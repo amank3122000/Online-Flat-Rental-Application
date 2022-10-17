@@ -46,14 +46,14 @@ public class UserController {
 	}
 	
 	@PostMapping("/users")
-	public ResponseEntity<String> addUser(@RequestBody UserDTO user) throws UserNotFoundException {
+	public ResponseEntity<String> addUser(@RequestBody User user) throws UserNotFoundException {
 		User user1=userService.addUser(user);
 		String successMessage = "User id: "+ user1.getUserId()+" ,"+environment.getProperty("API.INSERT_SUCCESS");
 		return new ResponseEntity<>(successMessage, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/users/{userId}")
-	public ResponseEntity<String> updateUser(@RequestBody UserDTO user,@PathVariable Integer userId) throws UserNotFoundException{
+	public ResponseEntity<String> updateUser(@RequestBody User user,@PathVariable Integer userId) throws UserNotFoundException{
 		User user1 = userService.updateUser(user,userId);
 		String successMessage = "User id: "+ user1.getUserId()+" ,"+environment.getProperty("API.UPDATE_SUCCESS");
 		return new ResponseEntity<>(successMessage, HttpStatus.OK);
