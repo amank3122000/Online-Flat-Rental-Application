@@ -23,7 +23,7 @@ public class LandlordService implements ILandlordService {
 	@Override
 	public void deleteLandlord(Integer landlordId) throws LandlordNotFoundException {
 		if (!landlordRepository.existsById(landlordId)) {
-			throw new LandlordNotFoundException();
+			throw new LandlordNotFoundException("Service.LANDLORD_NOT_FOUND");
 		}
 		landlordRepository.deleteById(landlordId);
 	}
@@ -32,7 +32,7 @@ public class LandlordService implements ILandlordService {
 	public Landlord viewLandlord(Integer landlordId) throws LandlordNotFoundException {
 
 		if (!landlordRepository.existsById(landlordId)) {
-			throw new LandlordNotFoundException();
+			throw new LandlordNotFoundException("Service.LANDLORD_NOT_FOUND");
 		}
 		return landlordRepository.findById(landlordId).get();
 	}
@@ -45,7 +45,7 @@ public class LandlordService implements ILandlordService {
 	@Override
 	public Landlord updateLandlord(Integer landlordId, Landlord landlord) throws LandlordNotFoundException {
 		if (!landlordRepository.existsById(landlordId)) {
-			throw new LandlordNotFoundException();
+			throw new LandlordNotFoundException("Service.LANDLORD_NOT_FOUND");
 		}
 		Landlord l = landlordRepository.findById(landlordId).get();
 		l.setLandlordName(landlord.getLandlordName());
