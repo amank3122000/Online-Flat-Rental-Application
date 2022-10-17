@@ -69,5 +69,14 @@ public class GlobalExceptionHandler {
 		error.setErrorCode(HttpStatus.NOT_FOUND.value());
 		return new ResponseEntity<ErrorInfo>(error, HttpStatus.NOT_FOUND);
 	}
+
+	@ExceptionHandler(value = ValidationException.class)
+	public ResponseEntity<ErrorInfo> handleValidationException(ValidationException ve) {
+		ErrorInfo error = new ErrorInfo();
+		error.setErrorMessage(environment.getProperty(ve.getMessage()));
+		error.setTimestamp(LocalDateTime.now());
+		error.setErrorCode(HttpStatus.NOT_FOUND.value());
+		return new ResponseEntity<ErrorInfo>(error, HttpStatus.NOT_FOUND);
+	}
 	
 }

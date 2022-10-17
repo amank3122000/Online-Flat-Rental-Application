@@ -2,15 +2,21 @@ package com.cg.onlineflatrental.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class FlatAddress {
 	@Id
 	private int houseNo;
+	@NotNull(message = "Street is mandatory")
 	private String street;
+	@NotNull(message = "City is mandatory")
 	private String city;
+	@NotNull(message = "State is mandatory")
 	private String state;
+	@NotNull(message = "PIN is mandatory")
 	private int pin;
+	@NotNull(message = "Country is mandatory")
 	private String country;
 	
 	public FlatAddress() {

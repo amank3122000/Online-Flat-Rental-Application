@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 //import javax.persistence.Table;
 
 
@@ -15,7 +17,10 @@ public class Landlord {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int landlordId;
+	@NotNull(message = "Landlord name is mandatory")
 	private String landlordName;
+	@NotNull(message = "Landlord age is mandatory")
+	@Min(value = 1, message = "Age should be more than 0")
 	private int landlordAge;
 	
 	@OneToMany(cascade=CascadeType.ALL)

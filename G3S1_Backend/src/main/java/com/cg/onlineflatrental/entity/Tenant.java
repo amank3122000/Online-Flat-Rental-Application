@@ -5,13 +5,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Tenant {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int tenantId;
-	
+	@NotNull(message = "Tenant age is mandatory")
+	@Min(value = 1, message = "Age should be more than 0")
 	private int age;
 	@OneToOne
 	private FlatAddress taddress;
