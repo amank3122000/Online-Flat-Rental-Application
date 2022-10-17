@@ -1,5 +1,51 @@
 package com.cg.onlineflatrental.service;
 
-public class FlatService {
+import java.util.List;  
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.cg.onlineflatrental.entity.Flat;
+import com.cg.onlineflatrental.exception.FlatNotFoundException;
+import com.cg.onlineflatrental.repository.IFlatRepository;
+
+@Service
+public class FlatService implements IFlatService{
+		 
+		@Autowired
+		private IFlatRepository flatRepository;
+
+		@Override
+		public Flat addFlat(Flat flat) {
+			return flatRepository.save(flat);
+		}
+	
+		@Override	
+		public Flat updateFlat(Flat flat,int flatId) throws FlatNotFoundException {
+			Flat f = flatRepository.findById(flatId).orElseThrow(()->new FlatNotFoundException());
+			f.setCost(flat.getCost());
+			f.setAvailability(flat.getAvailability());
+			f.setFlatAddress(flat.getFlatAddress());
+			return flatRepository.save(f);
+		}
+		
+		@Override	
+		public void deleteFlat(int flatId)throws FlatNotFoundException{
+			Flat f=flatRepository.findById(flatId).orElseThrow(()->new FlatNotFoundException());
+			flatRepository.delete(f);
+		}
+		
+		@Override
+		public Flat viewFlat(int flatId) {
+			return flatRepository.findById(flatId).orElseThrow(()->new FlatNotFoundException());
+		}
+		
+		@Override
+		public List<Flat> viewAllFlat() {
+			return flatRepository.findAll();
+		}
+		
+		@Override
+		public List<Flat> findByCostAndAvailability(float cost,String availability){
+	    return flatRepository.findByCostAndAvailability(cost,availability);
+	     }	
 }
