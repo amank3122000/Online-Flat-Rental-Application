@@ -1,7 +1,7 @@
 package com.cg.onlineflatrental.DTO;
 
 public class FlatDTO {
-    private int flatId;
+	private int flatId;
     private float cost;
     private FlatAddressDTO flatAddress;
     private String availability;

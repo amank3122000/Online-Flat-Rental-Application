@@ -1,8 +1,7 @@
 package com.cg.onlineflatrental.DTO;
 
 public class AdminDTO {
-  
-    private int adminId;
+	private int adminId;
     private String adminPassword;
 
     public AdminDTO() {

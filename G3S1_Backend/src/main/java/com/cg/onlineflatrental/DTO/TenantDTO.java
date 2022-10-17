@@ -1,19 +1,15 @@
 package com.cg.onlineflatrental.DTO;
 
-
 public class TenantDTO {
 	private int tenantId;
 	private String tenantName;
 	private int age;
 	private FlatAddressDTO taddress;
-	/**
-	 * 
-	 */
+
 	public TenantDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	public TenantDTO(int tenantId, String tenantName, int age, FlatAddressDTO taddress) {
 		super();
 		this.tenantId = tenantId;
@@ -51,3 +47,4 @@ public class TenantDTO {
 				+ taddress + "]";
 	}
 }
+

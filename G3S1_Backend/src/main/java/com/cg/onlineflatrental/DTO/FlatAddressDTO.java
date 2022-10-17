@@ -1,7 +1,7 @@
 package com.cg.onlineflatrental.DTO;
 
 public class FlatAddressDTO {
-    private int houseNo;
+	private int houseNo;
     private String street;
     private String city;
     private String state;
@@ -81,4 +81,3 @@ public class FlatAddressDTO {
                 '}';
     }
 }
-
