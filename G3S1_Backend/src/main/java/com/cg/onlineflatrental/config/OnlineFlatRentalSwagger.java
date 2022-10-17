@@ -25,4 +25,6 @@ public class OnlineFlatRentalSwagger {
 				.license("PVT_ltd")
 				.licenseUrl("https://www.google.co.in").version("1.0").build();
 	}
+	
+	// Swagger url: http://localhost:8765/swagger-ui.html#/
 }
