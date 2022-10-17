@@ -49,11 +49,12 @@ public class Tenant {
 				+ "]";
 	}
 	/*public Object getTenantName() {
-		// TODO Auto-generated method stub
+		 TODO Auto-generated method stub
 		return null;
 	}
 	public void setTenantName(Object tenantName) {
 		// TODO Auto-generated method stub
 
-	}*/
+	}
+	*/
 }
