@@ -6,15 +6,10 @@ import com.cg.onlineflatrental.exception.TenantNotFoundException;
 public interface ITenantService {
 
 	Tenant addTenant(Tenant tenant);
-
 	Tenant updateTenant(int tenantId, Tenant tenant) throws TenantNotFoundException;
-
 	void deleteTenant(int tenantId) throws TenantNotFoundException;
-
 	Tenant viewTenant(int tenantId) throws TenantNotFoundException;
-	
 	boolean validateTenant(int tenantId) throws TenantNotFoundException;
-
 	Iterable<Tenant> viewAllTenant();
 
 }

@@ -18,12 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cg.onlineflatrental.entity.Tenant;
 import com.cg.onlineflatrental.exception.TenantNotFoundException;
 import com.cg.onlineflatrental.service.ITenantService;
+import com.cg.onlineflatrental.service.TenantService;
 
 @RestController
   public class TenantController {
 	
   @Autowired
-  private ITenantService tenantServ;
+  private TenantService tenantServ;
  
 	@PostMapping("/tenant")
 	public ResponseEntity<Tenant> addTenant(@RequestBody Tenant tenant) {
@@ -47,7 +48,7 @@ import com.cg.onlineflatrental.service.ITenantService;
 
 	@GetMapping("/tenants")
 	public ResponseEntity<List<Tenant>> viewAllTenant() {
-		List<Tenant> list = tenantServ.viewAllTenant();
+		List<Tenant> list = (List<Tenant>) tenantServ.viewAllTenant();
 		return new ResponseEntity<List<Tenant>>(list, HttpStatus.OK);
 	}
 
