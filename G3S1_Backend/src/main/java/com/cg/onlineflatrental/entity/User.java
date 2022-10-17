@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name="users")
@@ -13,8 +15,13 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer userId;
 	
+	@NotNull(message = "{Please provide valid user name}")
+	@Pattern(regexp = "[A-Za-z]+( [A-Za-z]+)*", 
+	message = "{User name should contain only alphabets and space }")
 	private String userName;
+	@NotNull(message = "{Please provide valid password}")
 	private String password;
+	@NotNull(message = "{Please provide valid userType}")
 	private String userType;
 	
 	public User() {
