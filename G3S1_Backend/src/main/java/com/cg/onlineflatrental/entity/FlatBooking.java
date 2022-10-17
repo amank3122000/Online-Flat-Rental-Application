@@ -1,5 +1,6 @@
 package com.cg.onlineflatrental.entity;
-import java.sql.Date;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -8,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import java.time.LocalDate;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class FlatBooking {
@@ -20,15 +23,19 @@ public class FlatBooking {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "tenantId", unique = true)
 	private Tenant tenantId;
-	private Date bookingFromDate;
-	private Date bookingToDate;
+	@NotNull(message = "dateOfBirth is required")
+	@JsonDeserialize(using = LocalDateDeserializer.class)
+	private LocalDate bookingFromDate;
+	@NotNull(message = "dateOfBirth is required")
+	@JsonDeserialize(using = LocalDateDeserializer.class)
+	private LocalDate bookingToDate;
 	
 	public FlatBooking() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public FlatBooking(Integer bookingNo, Flat flat, Tenant tenantId, Date bookingFromDate, Date bookingToDate) {
+	public FlatBooking(Integer bookingNo, Flat flat, Tenant tenantId, LocalDate bookingFromDate, LocalDate bookingToDate) {
 		super();
 		this.bookingNo = bookingNo;
 		this.flat = flat;
@@ -55,19 +62,30 @@ public class FlatBooking {
 	public void setTenantId(Tenant tenantId) {
 		this.tenantId = tenantId;
 	}
-	public Date getBookingToDate() {
+	public LocalDate getBookingToDate() {
 		return bookingToDate;
 	}
-	public void setBookingToDate(Date bookingToDate) {
+	public void setBookingToDate(LocalDate bookingToDate) {
 		this.bookingToDate = bookingToDate;
 	}
 
-	public Date getBookingFromDate() {
+	public LocalDate getBookingFromDate() {
 		return bookingFromDate;
 	}
 
-	public void setBookingFromDate(Date bookingFromDate) {
+	public void setBookingFromDate(LocalDate bookingFromDate) {
 		this.bookingFromDate = bookingFromDate;
+	}
+
+	@Override
+	public String toString() {
+		return "FlatBooking{" +
+				"bookingNo=" + bookingNo +
+				", flat=" + flat +
+				", tenantId=" + tenantId +
+				", bookingFromDate=" + bookingFromDate +
+				", bookingToDate=" + bookingToDate +
+				'}';
 	}
 }
 
