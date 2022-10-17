@@ -46,6 +46,6 @@ public class FlatService implements IFlatService{
 		
 		@Override
 		public List<Flat> findByCostAndAvailability(float cost,String availability){
-	    return flatRepository.findByCostAndAvailability(cost,availability);
+	    		return flatRepository.findByCostAndAvailability(cost,availability);
 	     }	
 }
