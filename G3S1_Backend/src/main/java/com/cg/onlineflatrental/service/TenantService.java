@@ -40,7 +40,7 @@ public class TenantService implements ITenantService {
 	public Tenant updateTenant(int tenantId, Tenant tenant) throws TenantNotFoundException{
 		logger.info("Called updateTenant() method of TenantService");
 		Tenant value = tenantRepository.findById(tenantId).orElseThrow(() -> new TenantNotFoundException("Tenant with ID: " + tenantId +"does not exist."));
-		value.setTaddress(tenant.getTaddress());
+		//value.setTenantName(tenant.getTenantName());
 		value.setAge(tenant.getAge());
 		return tenantRepository.save(value);
 	}
