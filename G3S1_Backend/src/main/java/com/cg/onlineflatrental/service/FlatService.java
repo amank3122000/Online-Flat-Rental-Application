@@ -35,13 +35,13 @@ public class FlatService implements IFlatService{
 		}
 		
 		@Override
-		public Flat viewFlat(int flatId) {
+		public Flat viewFlat(int flatId) throws FlatNotFoundException {
 			return flatRepository.findById(flatId).orElseThrow(()->new FlatNotFoundException());
 		}
 		
 		@Override
 		public List<Flat> viewAllFlat() {
-			return flatRepository.findAll();
+			return (List<Flat>) flatRepository.findAll();
 		}
 		
 		@Override
