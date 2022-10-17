@@ -19,23 +19,13 @@ public class TenantService implements ITenantService {
 	private static final Logger logger = LogManager.getLogger(TenantService.class);
 	@Autowired
 	private ITenantRepository tenantRepository;
-	/*
-	 * This Method will add new Tenant
-	 * Input parameter : Tenant Object
-	 * Return Value: Tenant Object
-	 * Exception : TenantNotFoundException
-	 */
+	
 	@Override
 	public Tenant addTenant(Tenant tenant) {
 		logger.info("Called addTenant() method of TenantService");
 		return tenantRepository.save(tenant);
 	}
-	/*
-	 * This Method will Update Existing Tenants
-	 * Input Parameter: Tenant Object,Integer tenantId
-	 * Return Value: Tenant Object
-	 * Exception: TenantNotFoundException
-	 */
+	
 	@Override
 	public Tenant updateTenant(int tenantId, Tenant tenant) throws TenantNotFoundException{
 		logger.info("Called updateTenant() method of TenantService");
@@ -45,13 +35,6 @@ public class TenantService implements ITenantService {
 		return tenantRepository.save(value);
 	}
 
-	/*
-	 * This method will Deletes existing Tenant
-	 * Input Parameter : integer tenantId
-	 * Return Value : Tenant Object 
-	 * Exception : TenantNotFoundException
-	 */
-
 	@Override
 	public void deleteTenant(int tenantId) throws TenantNotFoundException {
 		logger.info("Called deleteTenant() method of TenantService");
@@ -59,13 +42,6 @@ public class TenantService implements ITenantService {
 				.orElseThrow(() -> new TenantNotFoundException("Tenant with id " + tenantId + " does not exist."));
 		tenantRepository.delete(value);
 	}
-	
-	/*
-	 * This method will Shows existing Tenant
-	 * Input Parameter : integer tenantId
-	 * Return Value : Tenant Object 
-	 * Exception : TenantNotFoundException
-	 */
 
 	@Override
 	public Tenant viewTenant(int tenantId) throws TenantNotFoundException {
@@ -75,21 +51,11 @@ public class TenantService implements ITenantService {
 
 	}
 	
-	/*
-	 * This method will Shows all existing Tenants 
-	 * Return Value : List<Tenant>
-	 */
-
 	@Override
 	public Iterable<Tenant> viewAllTenant() {
 		logger.info("Called viewAllTenant() method of TenantService");
 		return tenantRepository.findAll();
 	}
-	
-	/*
-	 * This method will validate the Tenant
-	 * Return Value(boolean) : Shows True if the object is present, shows false if the object is not present.
-	 */
 
 	@Override
 	public boolean validateTenant(int tenantId) throws TenantNotFoundException {
