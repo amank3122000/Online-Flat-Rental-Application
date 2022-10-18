@@ -30,12 +30,17 @@ public class Landlord {
 	public Landlord() {
 		super();
 	}
-	public Landlord( String landlordName, int landlordAge, List<Flat> flatList) {
+	
+	public Landlord(int landlordId, @NotNull(message = "Landlord name is mandatory") String landlordName,
+			@NotNull(message = "Landlord age is mandatory") @Min(value = 1, message = "Age should be more than 0") int landlordAge,
+			List<Flat> flatList) {
 		super();
+		this.landlordId = landlordId;
 		this.landlordName = landlordName;
 		this.landlordAge = landlordAge;
 		this.flatList = flatList;
 	}
+
 	public Integer getLandlordId() {
 		return landlordId;
 	}
