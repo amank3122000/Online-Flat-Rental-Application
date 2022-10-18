@@ -17,10 +17,10 @@ public class FlatBooking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer bookingNo;
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "flatId", unique = true)
 	private Flat flat;
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "tenantId", unique = true)
 	private Tenant tenantId;
 	@NotNull(message = "dateOfBirth is required")

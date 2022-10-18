@@ -53,7 +53,7 @@ public class UserController {
 	}
 	
 	@PutMapping("/users")
-	public ResponseEntity<String> updateUser(@RequestBody User user,@PathVariable Integer userId) throws UserNotFoundException{
+	public ResponseEntity<String> updateUser(@RequestBody User user) throws UserNotFoundException{
 		User user1 = userService.updateUser(user);
 		String successMessage = "User id: "+ user1.getUserId()+" ,"+environment.getProperty("API.UPDATE_SUCCESS");
 		return new ResponseEntity<>(successMessage, HttpStatus.OK);

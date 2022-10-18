@@ -1,5 +1,6 @@
 package com.cg.onlineflatrental.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;   
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +18,7 @@ public class Tenant {
 	@NotNull(message = "Tenant age is mandatory")
 	@Min(value = 1, message = "Age should be more than 0")
 	private int age;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "houseNo", unique = true)
 	private FlatAddress taddress;
 	

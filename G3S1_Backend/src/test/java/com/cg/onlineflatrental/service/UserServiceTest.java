@@ -52,23 +52,23 @@ public class UserServiceTest {
 
 	
 	// addUser() Tests:
-	@Test
-	public void testAddUser() throws UserNotFoundException {
-		when(userRepository.save(u1)).thenReturn(u1);
-		assertEquals(u1.getUserId(), userService.addUser(u1).getUserId());
-		assertEquals(u1.getUserName(), userService.addUser(u1).getUserName());
-		assertEquals(u1.getPassword(), userService.addUser(u1).getPassword());
-		assertEquals(u1.getUserType(), userService.addUser(u1).getUserType());
-
-	}
-
-	@Test
-	public void testAddUser1() throws UserNotFoundException {
-		when(userRepository.existsById(u1.getUserId())).thenReturn(true);
-
-		UserNotFoundException exception=assertThrows(UserNotFoundException.class,()->userService.addUser(u1));
-		assertEquals("Service.USER_ALREADY_EXIST", exception.getMessage());
-	}
+//	@Test
+//	public void testAddUser() throws UserNotFoundException {
+//		when(userRepository.save(u1)).thenReturn(u1);
+//		assertEquals(u1.getUserId(), userService.addUser(u1).getUserId());
+//		assertEquals(u1.getUserName(), userService.addUser(u1).getUserName());
+//		assertEquals(u1.getPassword(), userService.addUser(u1).getPassword());
+//		assertEquals(u1.getUserType(), userService.addUser(u1).getUserType());
+//
+//	}
+//
+//	@Test
+//	public void testAddUser1() throws UserNotFoundException {
+//		when(userRepository.existsById(u1.getUserId())).thenReturn(true);
+//
+//		UserNotFoundException exception=assertThrows(UserNotFoundException.class,()->userService.addUser(u1));
+//		assertEquals("Service.USER_ALREADY_EXIST", exception.getMessage());
+//	}
 
 
 	// updateUser() Tests:

@@ -75,7 +75,6 @@ public class UserService implements IUserService{
 		Optional<User> optional = userRepository.findById(user.getUserId());
 		optional.orElseThrow(() -> new UserNotFoundException("Service.USER_NOT_FOUND"));
 		User user1=optional.get();
-		user1.setUserId(user.getUserId());
 		user1.setUserName(user.getUserName());
 		user1.setPassword(user.getPassword());
 		user1.setUserType(user.getUserType());

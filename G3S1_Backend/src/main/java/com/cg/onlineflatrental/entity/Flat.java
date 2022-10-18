@@ -22,7 +22,7 @@ public class Flat {
 	@Min(value = 1, message = "Cost should be more than 0")
 	private float cost;
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="houseNo")
 	private FlatAddress flatAddress;
 	

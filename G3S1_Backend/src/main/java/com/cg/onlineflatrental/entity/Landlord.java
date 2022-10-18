@@ -23,8 +23,8 @@ public class Landlord {
 	@Min(value = 1, message = "Age should be more than 0")
 	private int landlordAge;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="flatId")
+	@OneToMany(cascade=CascadeType.MERGE)
+	@JoinColumn(name="landlordId")
 	private List<Flat> flatList;
   
 	public Landlord() {
