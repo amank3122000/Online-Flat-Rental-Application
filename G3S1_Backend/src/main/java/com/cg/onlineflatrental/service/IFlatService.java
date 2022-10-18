@@ -2,7 +2,6 @@ package com.cg.onlineflatrental.service;
 
 import java.util.List;
 
-import com.cg.onlineflatrental.DTO.FlatDTO;
 import com.cg.onlineflatrental.entity.Flat;
 import com.cg.onlineflatrental.exception.FlatNotFoundException; 
 

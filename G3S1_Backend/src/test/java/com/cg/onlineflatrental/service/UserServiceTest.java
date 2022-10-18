@@ -33,10 +33,7 @@ public class UserServiceTest {
 
 	private static final Logger logger = LogManager.getLogger(UserService.class);
 
-	User u1;
-	User u2;
-	User u3;
-	User u4;
+	User u1,u2,u3,u4;
 	
 	Optional<User> u01;
 	Optional<User> u02;

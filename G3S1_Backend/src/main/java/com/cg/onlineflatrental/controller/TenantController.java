@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.onlineflatrental.entity.Tenant;
 import com.cg.onlineflatrental.exception.TenantNotFoundException;
-import com.cg.onlineflatrental.service.ITenantService;
 import com.cg.onlineflatrental.service.TenantService;
 
 @RestController
