@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -17,6 +18,7 @@ public class Tenant {
 	@Min(value = 1, message = "Age should be more than 0")
 	private int age;
 	@OneToOne
+	@JoinColumn(name = "houseNo", unique = true)
 	private FlatAddress taddress;
 	
 	public Tenant(int tenantId, int age, FlatAddress taddress) {
@@ -25,9 +27,12 @@ public class Tenant {
 		this.age = age;
 		this.taddress = taddress;
 	}
-	public Tenant(String string, int i) {
+	
+	public Tenant() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	public FlatAddress getTaddress() {
 		return taddress;
 	}

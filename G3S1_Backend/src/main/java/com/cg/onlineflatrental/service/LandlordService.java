@@ -1,6 +1,9 @@
 package com.cg.onlineflatrental.service;
 
 import java.util.List;
+
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +12,7 @@ import com.cg.onlineflatrental.exception.LandlordNotFoundException;
 import com.cg.onlineflatrental.repository.ILandlordRepository;
 
 @Service
+@Transactional
 public class LandlordService implements ILandlordService {
 
 	@Autowired

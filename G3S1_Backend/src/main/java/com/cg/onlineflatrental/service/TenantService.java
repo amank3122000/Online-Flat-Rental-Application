@@ -9,6 +9,7 @@ import com.cg.onlineflatrental.entity.Tenant;
 import com.cg.onlineflatrental.repository.ITenantRepository;
 import com.cg.onlineflatrental.exception.TenantNotFoundException;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -29,7 +30,8 @@ public class TenantService implements ITenantService {
 	@Override
 	public Tenant updateTenant(int tenantId, Tenant tenant) throws TenantNotFoundException{
 		logger.info("Called updateTenant() method of TenantService");
-		Tenant value = tenantRepository.findById(tenantId).orElseThrow(() -> new TenantNotFoundException("Tenant with ID: " + tenantId +"does not exist."));
+		Optional<Tenant> optional = tenantRepository.findById(tenantId);
+		Tenant value = optional.orElseThrow(() -> new TenantNotFoundException("Tenant with ID: " + tenantId +"does not exist."));
 		value.setAge(tenant.getAge());
 		value.setTaddress(tenant.getTaddress());
 		return tenantRepository.save(value);
@@ -52,9 +54,9 @@ public class TenantService implements ITenantService {
 	}
 	
 	@Override
-	public Iterable<Tenant> viewAllTenant() {
+	public List<Tenant> viewAllTenant() {
 		logger.info("Called viewAllTenant() method of TenantService");
-		return tenantRepository.findAll();
+		return (List<Tenant>) tenantRepository.findAll();
 	}
 
 	@Override
