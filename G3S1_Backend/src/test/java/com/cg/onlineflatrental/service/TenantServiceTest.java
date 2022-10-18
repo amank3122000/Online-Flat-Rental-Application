@@ -1,6 +1,5 @@
 package com.cg.onlineflatrental.service;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -43,12 +42,15 @@ public class TenantServiceTest {
 		c3 = new Tenant(3, 19,add3);
 		c02 = Optional.of(c2);
 	}
+	//Test Case to UpdateTenant
 	@Test
 	public void test_UpdateTenant() throws TenantNotFoundException {
 		when(tenantRepository.findById(c2.getTenantId())).thenReturn(c02);
 		when(tenantRepository.save(c2)).thenReturn(c2);
 		assertEquals(c2.getTenantId(), tenantService.updateTenant(c2.getTenantId(), c2).getTenantId());
 	}
+	
+	//Test Case to AddTenant
 
 	@Test
 	public void test_AddTenant() {
@@ -57,6 +59,8 @@ public class TenantServiceTest {
 		assertEquals(c2.getTenantId(), tenantService.addTenant(c2).getTenantId());
 
 	}
+	
+	//Test Case to viewAllTenant
 
 	@Test
 	public void test_viewAllTenant() throws Exception {
@@ -69,6 +73,8 @@ public class TenantServiceTest {
 		assertEquals(2, result.size());
 
 	}
+	
+	//Test Case for TenantNotFoundException
 
 	@Test
 	public void test_viewTenant_ThrowTenantNotFoundException() {
