@@ -48,9 +48,9 @@ public class UserServiceTest {
 	@BeforeEach
 	public void init() {
 		u1 = new User(1, "Rohit", "Rohit@1234", "tenant");
-		u2 = new User(2, "Aadi", "5696", "tenant");
-		u3 = new User(3, "Shyam", "7589", "landlord");
-		u4 = new User(4, "Seema", "5632", "admin");
+		u2 = new User(2, "Aadi", "5A6916", "tenant");
+		u3 = new User(3, "Shyam", "7B5819", "landlord");
+		u4 = new User(4, "Seema", "56S312", "admin");
 
 		u01 = Optional.of(u1);
 		u02 = Optional.of(u2);

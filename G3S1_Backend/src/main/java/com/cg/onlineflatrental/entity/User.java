@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="users")
@@ -19,8 +20,11 @@ public class User {
 	@Pattern(regexp = "[A-Za-z]+( [A-Za-z]+)*", 
 	message = "{User name should contain only alphabets and space }")
 	private String userName;
+	
 	@NotNull(message = "{Please provide valid password}")
+	@Size(min=5, max=15, message="{Password should have a size between 5 to 15.}")
 	private String password;
+	
 	@NotNull(message = "{Please provide valid userType}")
 	private String userType;
 	
