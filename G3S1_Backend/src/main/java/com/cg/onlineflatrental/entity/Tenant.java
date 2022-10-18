@@ -19,14 +19,14 @@ public class Tenant {
 	@OneToOne
 	private FlatAddress taddress;
 	
-	public Tenant() {
-		super();
-	}
 	public Tenant(int tenantId, int age, FlatAddress taddress) {
 		super();
 		this.tenantId = tenantId;
 		this.age = age;
 		this.taddress = taddress;
+	}
+	public Tenant(String string, int i) {
+		// TODO Auto-generated constructor stub
 	}
 	public FlatAddress getTaddress() {
 		return taddress;
