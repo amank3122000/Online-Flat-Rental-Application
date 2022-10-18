@@ -1,24 +1,18 @@
 package com.cg.onlineflatrental.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="users")
 public class User {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer userId;
 	
 	@NotNull(message = "{Please provide valid user name}")
-	@Pattern(regexp = "[A-Za-z]+( [A-Za-z]+)*", 
-	message = "{User name should contain only alphabets and space }")
 	private String userName;
 	
 	@NotNull(message = "{Please provide valid password}")
