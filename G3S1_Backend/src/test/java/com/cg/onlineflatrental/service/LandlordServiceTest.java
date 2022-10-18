@@ -59,9 +59,9 @@ public class LandlordServiceTest {
 		List<Flat> flat_list2 = new ArrayList<Flat>();
 		flat_list2.add(flat3);
 		
-		landlord1 = new Landlord("John",33,flat_list1);
-		landlord2 = new Landlord("Ahmed",42,flat_list2);
-		l3 = new Landlord("Dev",38,flat_list1);
+		landlord1 = new Landlord(1,"John",33,flat_list1);
+		landlord2 = new Landlord(2,"Ahmed",42,flat_list2);
+		l3 = new Landlord(3,"Dev",38,flat_list1);
 		landlord3 = Optional.of(l3);
 		
 	}
