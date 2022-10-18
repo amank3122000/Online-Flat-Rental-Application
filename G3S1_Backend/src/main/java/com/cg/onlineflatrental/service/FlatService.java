@@ -21,7 +21,7 @@ public class FlatService implements IFlatService{
 	
 		@Override	
 		public Flat updateFlat(Flat flat,int flatId) throws FlatNotFoundException {
-			Flat f = flatRepository.findById(flatId).orElseThrow(()->new FlatNotFoundException());
+			Flat f = flatRepository.findById(flatId).orElseThrow(()->new FlatNotFoundException("Service.FLAT_NOT_FOUND"));
 			f.setCost(flat.getCost());
 			f.setAvailability(flat.getAvailability());
 			f.setFlatAddress(flat.getFlatAddress());
@@ -30,13 +30,13 @@ public class FlatService implements IFlatService{
 		
 		@Override	
 		public void deleteFlat(int flatId)throws FlatNotFoundException{
-			Flat f=flatRepository.findById(flatId).orElseThrow(()->new FlatNotFoundException());
+			Flat f=flatRepository.findById(flatId).orElseThrow(()->new FlatNotFoundException("Service.FLAT_NOT_FOUND"));
 			flatRepository.delete(f);
 		}
 		
 		@Override
 		public Flat viewFlat(int flatId) throws FlatNotFoundException {
-			return flatRepository.findById(flatId).orElseThrow(()->new FlatNotFoundException());
+			return flatRepository.findById(flatId).orElseThrow(()->new FlatNotFoundException("Service.FLAT_NOT_FOUND"));
 		}
 		
 		@Override

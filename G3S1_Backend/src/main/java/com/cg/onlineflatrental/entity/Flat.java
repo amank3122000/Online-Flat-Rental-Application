@@ -34,7 +34,7 @@ public class Flat {
 		// TODO Auto-generated constructor stub
 	}
   
-	public Flat(int flatId, float cost, FlatAddress flatAddress, String availability, Landlord landlord) {
+	public Flat(int flatId, float cost, FlatAddress flatAddress, String availability) {
 		super();
 		this.flatId = flatId;
 		this.cost = cost;
