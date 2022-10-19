@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class FlatBooking {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer bookingNo;
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "flatId", unique = true)

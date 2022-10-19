@@ -9,13 +9,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-//import javax.persistence.Table;
+
 
 
 @Entity
 public class Landlord {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	//@GeneratedValue(strategy = GenerationType.AUTO)
 	private int landlordId;
 	@NotNull(message = "Landlord name is mandatory")
 	private String landlordName;

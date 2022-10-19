@@ -15,7 +15,7 @@ import javax.validation.constraints.Min;
 public class Flat {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	//@GeneratedValue(strategy=GenerationType.AUTO)
 	private int flatId;
 	
 	@NotNull(message = "Please provide a valid cost")

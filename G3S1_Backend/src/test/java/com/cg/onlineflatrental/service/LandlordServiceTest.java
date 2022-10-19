@@ -113,16 +113,6 @@ public class LandlordServiceTest {
 		assertEquals("Service.LANDLORD_NOT_FOUND", exception.getMessage());
 	}
 	
-	@Test
-	public void testDeleteLandlord3() {
-		assertThrows(LandlordNotFoundException.class, new Executable() {
-            
-            @Override
-            public void execute() throws Throwable {
-            	service.deleteLandlord(10);
-            }
-        });
-	}
 	
 	@Test
 	public void testViewLandlord1() throws LandlordNotFoundException{
