@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Landlord {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	//@GeneratedValue(strategy = GenerationType.AUTO)
 	private int landlordId;
 	@NotNull(message = "Landlord name is mandatory")
 	private String landlordName;
