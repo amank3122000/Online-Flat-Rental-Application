@@ -13,10 +13,9 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Tenant {
 	@Id
-	//@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int tenantId;
-	@NotNull(message = "Tenant age is mandatory")
-	@Min(value = 1, message = "Age should be more than 0")
+	
 	private int age;
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "houseNo", unique = true)

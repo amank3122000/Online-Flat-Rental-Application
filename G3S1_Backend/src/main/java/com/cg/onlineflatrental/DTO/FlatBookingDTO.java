@@ -1,20 +1,38 @@
 package com.cg.onlineflatrental.DTO;
 
 import java.sql.Date;
+import java.time.LocalDate;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class FlatBookingDTO {
 	private Integer bookingNo;
+	@NotNull
+	@Valid
 	private FlatDTO flat;
+	@NotNull
+	@Valid
 	private TenantDTO tenantId;
-	private Date bookingFromDate;
-	private Date bookingToDate;
+	@NotNull(message = "Booking From Date is required")
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	@JsonFormat(pattern = "MM/dd/yyyy")
+	private LocalDate bookingFromDate;
+	@NotNull(message = "Booking To Date is required")
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	@JsonFormat(pattern = "MM/dd/yyyy")
+	private LocalDate bookingToDate;
 	
 	public FlatBookingDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public FlatBookingDTO(Integer bookingNo, FlatDTO flat, TenantDTO tenantId, Date bookingFromDate,
-			Date bookingToDate) {
+	public FlatBookingDTO(Integer bookingNo, FlatDTO flat, TenantDTO tenantId, LocalDate bookingFromDate,
+			LocalDate bookingToDate) {
 		super();
 		this.bookingNo = bookingNo;
 		this.flat = flat;
@@ -41,16 +59,16 @@ public class FlatBookingDTO {
 	public void setTenantId(TenantDTO tenantId) {
 		this.tenantId = tenantId;
 	}
-	public Date getBookingFromDate() {
+	public LocalDate getBookingFromDate() {
 		return bookingFromDate;
 	}
-	public void setBookingFromDate(Date bookingFromDate) {
+	public void setBookingFromDate(LocalDate bookingFromDate) {
 		this.bookingFromDate = bookingFromDate;
 	}
-	public Date getBookingToDate() {
+	public LocalDate getBookingToDate() {
 		return bookingToDate;
 	}
-	public void setBookingToDate(Date bookingToDate) {
+	public void setBookingToDate(LocalDate bookingToDate) {
 		this.bookingToDate = bookingToDate;
 	}
 	

@@ -15,18 +15,15 @@ import javax.validation.constraints.Min;
 public class Flat {
 	
 	@Id
-	//@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int flatId;
 	
-	@NotNull(message = "Please provide a valid cost")
-	@Min(value = 1, message = "Cost should be more than 0")
 	private float cost;
 	
 	@OneToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="houseNo")
 	private FlatAddress flatAddress;
 	
-	@NotNull(message = "Flat availability is mandatory")
 	private String availability;
 	
 	public Flat() {

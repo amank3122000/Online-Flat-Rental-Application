@@ -1,5 +1,6 @@
 package com.cg.onlineflatrental.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -7,6 +8,11 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cg.onlineflatrental.DTO.FlatAddressDTO;
+import com.cg.onlineflatrental.DTO.FlatDTO;
+import com.cg.onlineflatrental.DTO.LandlordDTO;
+import com.cg.onlineflatrental.entity.Flat;
+import com.cg.onlineflatrental.entity.FlatAddress;
 import com.cg.onlineflatrental.entity.Landlord;
 import com.cg.onlineflatrental.exception.LandlordNotFoundException;
 import com.cg.onlineflatrental.repository.ILandlordRepository;
@@ -19,8 +25,28 @@ public class LandlordService implements ILandlordService {
 	private ILandlordRepository landlordRepository;
 
 	@Override
-	public Landlord addLandlord(Landlord landlord) {
-		landlordRepository.save(landlord);
+	public LandlordDTO addLandlord(LandlordDTO landlord) {
+		Landlord l=new Landlord();
+		l.setLandlordName(landlord.getLandlordName());
+		l.setLandlordAge(landlord.getLandlordAge());
+		List<Flat> fList = new ArrayList<>();
+		landlord.getFlatList().forEach(flat->{
+			Flat f= new Flat();
+            f.setFlatId(flat.getFlatId());
+            f.setCost(flat.getCost());
+            f.setAvailability(flat.getAvailability());
+            FlatAddress fa=new FlatAddress();
+            fa.setHouseNo(flat.getFlatAddress().getHouseNo());
+            fa.setStreet(flat.getFlatAddress().getStreet());
+            fa.setCity(flat.getFlatAddress().getCity());
+            fa.setState(flat.getFlatAddress().getState());
+            fa.setPin(flat.getFlatAddress().getPin());
+            fa.setCountry(flat.getFlatAddress().getCountry());
+            f.setFlatAddress(fa);
+            fList.add(f);
+		});
+		l.setFlatList(fList);
+		landlordRepository.save(l);
 		return landlord;
 	}
 
@@ -33,29 +59,91 @@ public class LandlordService implements ILandlordService {
 	}
 
 	@Override
-	public Landlord viewLandlord(Integer landlordId) throws LandlordNotFoundException {
+	public LandlordDTO viewLandlord(Integer landlordId) throws LandlordNotFoundException {
 
 		if (!landlordRepository.existsById(landlordId)) {
 			throw new LandlordNotFoundException("Service.LANDLORD_NOT_FOUND");
 		}
-		return landlordRepository.findById(landlordId).get();
+		Landlord landlord=landlordRepository.findById(landlordId).get();
+		LandlordDTO l=new LandlordDTO();
+		l.setLandlordName(landlord.getLandlordName());
+		l.setLandlordAge(landlord.getLandlordAge());
+		List<FlatDTO> fList = new ArrayList<>();
+		landlord.getFlatList().forEach(flat->{
+			FlatDTO f= new FlatDTO();
+            f.setFlatId(flat.getFlatId());
+            f.setCost(flat.getCost());
+            f.setAvailability(flat.getAvailability());
+            FlatAddressDTO fa=new FlatAddressDTO();
+            fa.setHouseNo(flat.getFlatAddress().getHouseNo());
+            fa.setStreet(flat.getFlatAddress().getStreet());
+            fa.setCity(flat.getFlatAddress().getCity());
+            fa.setState(flat.getFlatAddress().getState());
+            fa.setPin(flat.getFlatAddress().getPin());
+            fa.setCountry(flat.getFlatAddress().getCountry());
+            f.setFlatAddress(fa);
+            fList.add(f);
+		});
+		l.setFlatList(fList);
+		return l;
 	}
 
 	@Override
-	public List<Landlord> viewAllLandlord() {
-		return (List<Landlord>) landlordRepository.findAll();
+	public List<LandlordDTO> viewAllLandlord() {
+		List<Landlord> list =(List<Landlord>) landlordRepository.findAll();
+		List<LandlordDTO> lList = new ArrayList<>();
+		list.forEach(landlord->{
+			LandlordDTO l=new LandlordDTO();
+			l.setLandlordName(landlord.getLandlordName());
+			l.setLandlordAge(landlord.getLandlordAge());
+			List<FlatDTO> fList = new ArrayList<>();
+			landlord.getFlatList().forEach(flat->{
+				FlatDTO f= new FlatDTO();
+	            f.setFlatId(flat.getFlatId());
+	            f.setCost(flat.getCost());
+	            f.setAvailability(flat.getAvailability());
+	            FlatAddressDTO fa=new FlatAddressDTO();
+	            fa.setHouseNo(flat.getFlatAddress().getHouseNo());
+	            fa.setStreet(flat.getFlatAddress().getStreet());
+	            fa.setCity(flat.getFlatAddress().getCity());
+	            fa.setState(flat.getFlatAddress().getState());
+	            fa.setPin(flat.getFlatAddress().getPin());
+	            fa.setCountry(flat.getFlatAddress().getCountry());
+	            f.setFlatAddress(fa);
+	            fList.add(f);
+			});
+			l.setFlatList(fList);
+			lList.add(l);
+		});
+		return lList;
 	}
 
 	@Override
-	public Landlord updateLandlord(Integer landlordId, Landlord landlord) throws LandlordNotFoundException {
+	public LandlordDTO updateLandlord(Integer landlordId, LandlordDTO landlord) throws LandlordNotFoundException {
 		if (!landlordRepository.existsById(landlordId)) {
 			throw new LandlordNotFoundException("Service.LANDLORD_NOT_FOUND");
 		}
 		Landlord l = landlordRepository.findById(landlordId).get();
 		l.setLandlordName(landlord.getLandlordName());
 		l.setLandlordAge(landlord.getLandlordAge());
-		l.setFlatList(landlord.getFlatList());
-
-		return landlordRepository.save(l);
+		List<Flat> fList = new ArrayList<>();
+		landlord.getFlatList().forEach(flat->{
+			Flat f= new Flat();
+            f.setFlatId(flat.getFlatId());
+            f.setCost(flat.getCost());
+            f.setAvailability(flat.getAvailability());
+            FlatAddress fa=new FlatAddress();
+            fa.setHouseNo(flat.getFlatAddress().getHouseNo());
+            fa.setStreet(flat.getFlatAddress().getStreet());
+            fa.setCity(flat.getFlatAddress().getCity());
+            fa.setState(flat.getFlatAddress().getState());
+            fa.setPin(flat.getFlatAddress().getPin());
+            fa.setCountry(flat.getFlatAddress().getCountry());
+            f.setFlatAddress(fa);
+            fList.add(f);
+		});
+		l.setFlatList(fList);
+		landlordRepository.save(l);
+		return landlord;
 	}
 }

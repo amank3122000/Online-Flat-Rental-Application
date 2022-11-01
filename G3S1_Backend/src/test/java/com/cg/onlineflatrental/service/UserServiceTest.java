@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import com.cg.onlineflatrental.DTO.UserDTO;
 import com.cg.onlineflatrental.entity.User;
 import com.cg.onlineflatrental.exception.UserNotFoundException;
 import com.cg.onlineflatrental.exception.ValidationException;
@@ -33,28 +34,33 @@ public class UserServiceTest {
 
 	private static final Logger logger = LogManager.getLogger(UserService.class);
 
-	User u1,u2,u3,u4;
+	UserDTO u1,u2,u3,u4;
+	User ue1,ue2,ue3,ue4;
 	
-	Optional<User> u01;
-	Optional<User> u02;
+	Optional<User> u01,u02;
 
 	
 	@BeforeEach
 	public void init() {
-		u1 = new User(1, "Rohit", "Rohit@1234", "tenant");
-		u2 = new User(2, "Aadi", "5A6916", "tenant");
-		u3 = new User(3, "Shyam", "7B5819", "landlord");
-		u4 = new User(4, "Seema", "56S312", "admin");
+		u1 = new UserDTO(1, "Rohit", "Rohit@1234", "tenant");
+		u2 = new UserDTO(2, "Aadi", "5A6916", "tenant");
+		u3 = new UserDTO(3, "Shyam", "7B5819", "landlord");
+		u4 = new UserDTO(4, "Seema", "56S312", "admin");
 
-		u01 = Optional.of(u1);
-		u02 = Optional.of(u2);
+		ue1 = new User(1, "Rohit", "Rohit@1234", "tenant");
+		ue2 = new User(2, "Aadi", "5A6916", "tenant");
+		ue3 = new User(3, "Shyam", "7B5819", "landlord");
+		ue4 = new User(4, "Seema", "56S312", "admin");
+		
+		u01 = Optional.of(ue1);
+		u02 = Optional.of(ue2);
 	}
 
 	
 	// addUser() Tests:
 	@Test
 	public void testAddUser() throws UserNotFoundException {
-		when(userRepository.save(u1)).thenReturn(u1);
+		when(userRepository.save(ue1)).thenReturn(ue1);
 		assertEquals(u1.getUserId(), userService.addUser(u1).getUserId());
 		assertEquals(u1.getUserName(), userService.addUser(u1).getUserName());
 		assertEquals(u1.getPassword(), userService.addUser(u1).getPassword());
@@ -75,7 +81,7 @@ public class UserServiceTest {
 	@Test
 	public void testUpdateUser() throws UserNotFoundException {
 		when(userRepository.findById(u2.getUserId())).thenReturn(u02);
-		when(userRepository.save(u2)).thenReturn(u2);
+		when(userRepository.save(ue2)).thenReturn(ue2);
 		assertEquals(u2.getUserId(), userService.updateUser(u2).getUserId());
 		assertEquals(u2.getUserName(), userService.updateUser(u2).getUserName());
 		assertEquals(u2.getPassword(), userService.updateUser(u2).getPassword());
@@ -95,7 +101,7 @@ public class UserServiceTest {
 	@Test
 	public void testUpdatePassword() throws UserNotFoundException {
 		when(userRepository.findById(u2.getUserId())).thenReturn(u02);
-		when(userRepository.save(u2)).thenReturn(u2);
+		when(userRepository.save(ue2)).thenReturn(ue2);
 
 		assertEquals(u2.getUserName(), userService.updatePassword(u2,u2.getPassword()).getUserName());
 		assertEquals(u2.getPassword(), userService.updatePassword(u2,u2.getPassword()).getPassword());
@@ -154,10 +160,10 @@ public class UserServiceTest {
 	public void testViewAllUser() throws UserNotFoundException {
 
 		List<User> allUsers = new ArrayList<>();
-		allUsers.add(u1);
-		allUsers.add(u2);
-		allUsers.add(u3);
-		allUsers.add(u4);
+		allUsers.add(ue1);
+		allUsers.add(ue2);
+		allUsers.add(ue3);
+		allUsers.add(ue4);
 
 		when(userRepository.findAll()).thenReturn(allUsers);
 		assertEquals(4, userService.viewAllUsers().size());

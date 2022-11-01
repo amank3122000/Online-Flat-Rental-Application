@@ -1,6 +1,7 @@
 package com.cg.onlineflatrental.entity;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+//import com.fasterxml.jackson.annotation.JsonFormat;
+//import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+//import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -10,24 +11,26 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import java.time.LocalDate;
-import javax.validation.constraints.NotNull;
+//import javax.validation.constraints.NotNull;
+//import javax.validation.constraints.PastOrPresent;
+//import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class FlatBooking {
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer bookingNo;
+	
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "flatId", unique = true)
 	private Flat flat;
+	
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "tenantId", unique = true)
 	private Tenant tenantId;
-	@NotNull(message = "dateOfBirth is required")
-	@JsonDeserialize(using = LocalDateDeserializer.class)
+	
 	private LocalDate bookingFromDate;
-	@NotNull(message = "dateOfBirth is required")
-	@JsonDeserialize(using = LocalDateDeserializer.class)
+	
 	private LocalDate bookingToDate;
 	
 	public FlatBooking() {

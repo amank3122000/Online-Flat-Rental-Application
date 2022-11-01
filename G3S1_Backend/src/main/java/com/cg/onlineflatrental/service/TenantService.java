@@ -5,10 +5,16 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.Service;
 
+import com.cg.onlineflatrental.DTO.FlatAddressDTO;
+import com.cg.onlineflatrental.DTO.FlatBookingDTO;
+import com.cg.onlineflatrental.DTO.TenantDTO;
+import com.cg.onlineflatrental.entity.FlatAddress;
+import com.cg.onlineflatrental.entity.FlatBooking;
 import com.cg.onlineflatrental.entity.Tenant;
 import com.cg.onlineflatrental.repository.ITenantRepository;
 import com.cg.onlineflatrental.exception.TenantNotFoundException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,19 +28,39 @@ public class TenantService implements ITenantService {
 	private ITenantRepository tenantRepository;
 	
 	@Override
-	public Tenant addTenant(Tenant tenant) {
+	public TenantDTO addTenant(TenantDTO tenant) {
 		logger.info("Called addTenant() method of TenantService");
-		return tenantRepository.save(tenant);
+		Tenant t=new Tenant();
+        t.setTenantId(tenant.getTenantId());
+        t.setAge(tenant.getAge());
+        FlatAddress fa=new FlatAddress();
+        fa.setHouseNo(tenant.getTaddress().getHouseNo());
+        fa.setStreet(tenant.getTaddress().getStreet());
+        fa.setCity(tenant.getTaddress().getCity());
+        fa.setState(tenant.getTaddress().getState());
+        fa.setPin(tenant.getTaddress().getPin());
+        fa.setCountry(tenant.getTaddress().getCountry());
+        t.setTaddress(fa);
+        tenantRepository.save(t);
+		return tenant;
 	}
 	
 	@Override
-	public Tenant updateTenant(int tenantId, Tenant tenant) throws TenantNotFoundException{
+	public TenantDTO updateTenant(int tenantId, TenantDTO tenant) throws TenantNotFoundException{
 		logger.info("Called updateTenant() method of TenantService");
 		Optional<Tenant> optional = tenantRepository.findById(tenantId);
 		Tenant value = optional.orElseThrow(() -> new TenantNotFoundException("Tenant with ID: " + tenantId +"does not exist."));
 		value.setAge(tenant.getAge());
-		value.setTaddress(tenant.getTaddress());
-		return tenantRepository.save(value);
+		FlatAddress fa=new FlatAddress();
+        fa.setHouseNo(tenant.getTaddress().getHouseNo());
+        fa.setStreet(tenant.getTaddress().getStreet());
+        fa.setCity(tenant.getTaddress().getCity());
+        fa.setState(tenant.getTaddress().getState());
+        fa.setPin(tenant.getTaddress().getPin());
+        fa.setCountry(tenant.getTaddress().getCountry());
+        value.setTaddress(fa);
+		tenantRepository.save(value);
+		return tenant;
 	}
 
 	@Override
@@ -46,17 +72,45 @@ public class TenantService implements ITenantService {
 	}
 
 	@Override
-	public Tenant viewTenant(int tenantId) throws TenantNotFoundException {
+	public TenantDTO viewTenant(int tenantId) throws TenantNotFoundException {
 		logger.info("Called viewTenant() method of TenantService");
-		return tenantRepository.findById(tenantId).orElseThrow(
+		Tenant value =tenantRepository.findById(tenantId).orElseThrow(
 				() -> new TenantNotFoundException("Tenant With Given Id :" + tenantId + " Not Available!"));
 
+		TenantDTO tenant=new TenantDTO();
+		tenant.setTenantId(value.getTenantId());
+		tenant.setAge(value.getAge());
+        FlatAddressDTO fa=new FlatAddressDTO();
+        fa.setHouseNo(value.getTaddress().getHouseNo());
+        fa.setStreet(value.getTaddress().getStreet());
+        fa.setCity(value.getTaddress().getCity());
+        fa.setState(value.getTaddress().getState());
+        fa.setPin(value.getTaddress().getPin());
+        fa.setCountry(value.getTaddress().getCountry());
+        tenant.setTaddress(fa);
+        return tenant;
 	}
 	
 	@Override
-	public List<Tenant> viewAllTenant() {
+	public List<TenantDTO> viewAllTenant() {
 		logger.info("Called viewAllTenant() method of TenantService");
-		return (List<Tenant>) tenantRepository.findAll();
+		List<Tenant> list=(List<Tenant>) tenantRepository.findAll();
+		List<TenantDTO> tList = new ArrayList<>();
+		list.forEach(value->{
+			TenantDTO tenant=new TenantDTO();
+			tenant.setTenantId(value.getTenantId());
+			tenant.setAge(value.getAge());
+	        FlatAddressDTO fa=new FlatAddressDTO();
+	        fa.setHouseNo(value.getTaddress().getHouseNo());
+	        fa.setStreet(value.getTaddress().getStreet());
+	        fa.setCity(value.getTaddress().getCity());
+	        fa.setState(value.getTaddress().getState());
+	        fa.setPin(value.getTaddress().getPin());
+	        fa.setCountry(value.getTaddress().getCountry());
+	        tenant.setTaddress(fa);
+	        tList.add(tenant);
+		});
+		return tList;
 	}
 
 	@Override

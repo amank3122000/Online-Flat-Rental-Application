@@ -1,11 +1,21 @@
 package com.cg.onlineflatrental.DTO;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class UserDTO {
 	
-	int userId;
-	String userName;
-	String password;
-	String userType;
+private Integer userId;
+	
+	@NotNull(message = "{Please provide valid user name}")
+	private String userName;
+	
+	@NotNull(message = "{Please provide valid password}")
+	@Size(min=5, max=15, message="{Password should have a size between 5 to 15.}")
+	private String password;
+	
+	@NotNull(message = "{Please provide valid userType}")
+	private String userType;
 	
 	public UserDTO() {
 		super();

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cg.onlineflatrental.DTO.TenantDTO;
 import com.cg.onlineflatrental.entity.Tenant;
 import com.cg.onlineflatrental.exception.TenantNotFoundException;
 import com.cg.onlineflatrental.service.TenantService;
@@ -26,15 +27,15 @@ import com.cg.onlineflatrental.service.TenantService;
   private TenantService tenantServ;
  
 	@PostMapping("/tenant")
-	public ResponseEntity<Tenant> addTenant(@RequestBody Tenant tenant) {
+	public ResponseEntity<TenantDTO> addTenant(@RequestBody TenantDTO tenant) {
 		return new ResponseEntity<>(tenantServ.addTenant(tenant), HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/tenant/{tenantId}")
-	public ResponseEntity<Tenant> updateTenant(@PathVariable int tenantId, @RequestBody Tenant tenant)
+	public ResponseEntity<TenantDTO> updateTenant(@PathVariable int tenantId, @RequestBody TenantDTO tenant)
 			throws TenantNotFoundException {
-		Tenant t = tenantServ.updateTenant(tenantId, tenant);
-		return new ResponseEntity<Tenant>(t, HttpStatus.ACCEPTED);
+		TenantDTO t = tenantServ.updateTenant(tenantId, tenant);
+		return new ResponseEntity<TenantDTO>(t, HttpStatus.ACCEPTED);
 
 	}
 
@@ -46,15 +47,15 @@ import com.cg.onlineflatrental.service.TenantService;
 	}
 
 	@GetMapping("/tenants")
-	public ResponseEntity<List<Tenant>> viewAllTenant() {
-		List<Tenant> list = (List<Tenant>) tenantServ.viewAllTenant();
-		return new ResponseEntity<List<Tenant>>(list, HttpStatus.OK);
+	public ResponseEntity<List<TenantDTO>> viewAllTenant() {
+		List<TenantDTO> list = (List<TenantDTO>) tenantServ.viewAllTenant();
+		return new ResponseEntity<List<TenantDTO>>(list, HttpStatus.OK);
 	}
 
 	@GetMapping("/tenant/{tenantId}")
-	public ResponseEntity<Tenant> viewTenant(@PathVariable int tenantId) throws TenantNotFoundException {
-		Tenant t = tenantServ.viewTenant(tenantId);
-		return new ResponseEntity<Tenant>(t, HttpStatus.OK);
+	public ResponseEntity<TenantDTO> viewTenant(@PathVariable int tenantId) throws TenantNotFoundException {
+		TenantDTO t = tenantServ.viewTenant(tenantId);
+		return new ResponseEntity<TenantDTO>(t, HttpStatus.OK);
 
 	}
 	

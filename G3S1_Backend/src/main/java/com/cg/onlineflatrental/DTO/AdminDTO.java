@@ -1,7 +1,13 @@
 package com.cg.onlineflatrental.DTO;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class AdminDTO {
+	@NotNull(message = "{Please provide valid admin id}")
 	private int adminId;
+	@NotNull(message = "{Please provide valid password}")
+	@Size(min=5, max=15, message="{Password should have a size between 5 to 15.}")
     private String adminPassword;
 
     public AdminDTO() {

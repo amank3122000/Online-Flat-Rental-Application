@@ -2,9 +2,15 @@ package com.cg.onlineflatrental.DTO;
 
 import java.util.List;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 public class LandlordDTO {
 	private int landlordId;
+	@NotNull(message = "Landlord name is mandatory")
 	private String landlordName;
+	@NotNull(message = "Landlord age is mandatory")
+	@Min(value = 1, message = "Age should be more than 0")
 	private int landlordAge;
 	private List<FlatDTO> flatList;
 	/**

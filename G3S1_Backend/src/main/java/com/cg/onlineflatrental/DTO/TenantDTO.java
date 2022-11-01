@@ -1,7 +1,12 @@
 package com.cg.onlineflatrental.DTO;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 public class TenantDTO {
 	private int tenantId;
+	@NotNull(message = "Tenant age is mandatory")
+	@Min(value = 1, message = "Age should be more than 0")
 	private int age;
 	private FlatAddressDTO taddress;
 

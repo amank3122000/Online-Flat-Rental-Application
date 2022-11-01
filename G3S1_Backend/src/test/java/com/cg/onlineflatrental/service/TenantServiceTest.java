@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import com.cg.onlineflatrental.DTO.FlatAddressDTO;
+import com.cg.onlineflatrental.DTO.TenantDTO;
 import com.cg.onlineflatrental.entity.FlatAddress;
 import com.cg.onlineflatrental.entity.Tenant;
 import com.cg.onlineflatrental.exception.TenantNotFoundException;
@@ -30,6 +32,7 @@ public class TenantServiceTest {
 
 	FlatAddress add1, add2, add3;
 	Tenant c1,c2,c3;
+	TenantDTO cd2;
 	Optional<Tenant> c02;
 	
 	@BeforeEach		//Define flat list also for below test cases
@@ -41,13 +44,15 @@ public class TenantServiceTest {
 		c2 = new Tenant(2, 18,add2);
 		c3 = new Tenant(3, 19,add3);
 		c02 = Optional.of(c2);
+		
+		cd2=new TenantDTO(2, 18,new FlatAddressDTO(11,"ajmerrroad", "ajmer", "rajasthan", 303015, "India"));
 	}
 	//Test Case to UpdateTenant
 	@Test
 	public void test_UpdateTenant() throws TenantNotFoundException {
 		when(tenantRepository.findById(c2.getTenantId())).thenReturn(c02);
 		when(tenantRepository.save(c2)).thenReturn(c2);
-		assertEquals(c2.getTenantId(), tenantService.updateTenant(c2.getTenantId(), c2).getTenantId());
+		assertEquals(cd2.getTenantId(), tenantService.updateTenant(cd2.getTenantId(), cd2).getTenantId());
 	}
 	
 	//Test Case to AddTenant
@@ -56,7 +61,7 @@ public class TenantServiceTest {
 	public void test_AddTenant() {
 
 		when(tenantRepository.save(c2)).thenReturn(c2);
-		assertEquals(c2.getTenantId(), tenantService.addTenant(c2).getTenantId());
+		assertEquals(cd2.getTenantId(), tenantService.addTenant(cd2).getTenantId());
 
 	}
 	
@@ -69,7 +74,7 @@ public class TenantServiceTest {
 		tenantlist.add(c1);
 		tenantlist.add(c2);
 		Mockito.when(tenantRepository.findAll()).thenReturn(tenantlist);
-		List<Tenant> result = (List<Tenant>) tenantService.viewAllTenant();
+		List<TenantDTO> result = (List<TenantDTO>) tenantService.viewAllTenant();
 		assertEquals(2, result.size());
 
 	}

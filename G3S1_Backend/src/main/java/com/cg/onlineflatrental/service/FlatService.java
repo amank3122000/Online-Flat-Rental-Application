@@ -1,10 +1,15 @@
 package com.cg.onlineflatrental.service;
 
+import java.util.ArrayList;
 import java.util.List;  
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cg.onlineflatrental.DTO.FlatAddressDTO;
+import com.cg.onlineflatrental.DTO.FlatBookingDTO;
+import com.cg.onlineflatrental.DTO.FlatDTO;
 import com.cg.onlineflatrental.entity.Flat;
+import com.cg.onlineflatrental.entity.FlatAddress;
 import com.cg.onlineflatrental.exception.FlatNotFoundException;
 import com.cg.onlineflatrental.repository.IFlatRepository;
 
@@ -15,17 +20,38 @@ public class FlatService implements IFlatService{
 		private IFlatRepository flatRepository;
 
 		@Override
-		public Flat addFlat(Flat flat) {
-			return flatRepository.save(flat);
+		public FlatDTO addFlat(FlatDTO flat) {
+			Flat f= new Flat();
+	        f.setFlatId(flat.getFlatId());
+	        f.setCost(flat.getCost());
+	        f.setAvailability(flat.getAvailability());
+	        FlatAddress fa=new FlatAddress();
+	        fa.setHouseNo(flat.getFlatAddress().getHouseNo());
+	        fa.setStreet(flat.getFlatAddress().getStreet());
+	        fa.setCity(flat.getFlatAddress().getCity());
+	        fa.setState(flat.getFlatAddress().getState());
+	        fa.setPin(flat.getFlatAddress().getPin());
+	        fa.setCountry(flat.getFlatAddress().getCountry());
+	        f.setFlatAddress(fa);
+			flatRepository.save(f);
+			return flat;
 		}
 	
 		@Override	
-		public Flat updateFlat(Flat flat,int flatId) throws FlatNotFoundException {
+		public FlatDTO updateFlat(FlatDTO flat,int flatId) throws FlatNotFoundException {
 			Flat f = flatRepository.findById(flatId).orElseThrow(()->new FlatNotFoundException("Service.FLAT_NOT_FOUND"));
 			f.setCost(flat.getCost());
 			f.setAvailability(flat.getAvailability());
-			f.setFlatAddress(flat.getFlatAddress());
-			return flatRepository.save(f);
+			FlatAddress fa=new FlatAddress();
+	        fa.setHouseNo(flat.getFlatAddress().getHouseNo());
+	        fa.setStreet(flat.getFlatAddress().getStreet());
+	        fa.setCity(flat.getFlatAddress().getCity());
+	        fa.setState(flat.getFlatAddress().getState());
+	        fa.setPin(flat.getFlatAddress().getPin());
+	        fa.setCountry(flat.getFlatAddress().getCountry());
+	        f.setFlatAddress(fa);
+			flatRepository.save(f);
+			return flat;
 		}
 		
 		@Override	
@@ -35,17 +61,64 @@ public class FlatService implements IFlatService{
 		}
 		
 		@Override
-		public Flat viewFlat(int flatId) throws FlatNotFoundException {
-			return flatRepository.findById(flatId).orElseThrow(()->new FlatNotFoundException("Service.FLAT_NOT_FOUND"));
+		public FlatDTO viewFlat(int flatId) throws FlatNotFoundException {
+			Flat flat=flatRepository.findById(flatId).orElseThrow(()->new FlatNotFoundException("Service.FLAT_NOT_FOUND"));
+			FlatDTO f= new FlatDTO();
+            f.setFlatId(flat.getFlatId());
+            f.setCost(flat.getCost());
+            f.setAvailability(flat.getAvailability());
+            FlatAddressDTO fa=new FlatAddressDTO();
+            fa.setHouseNo(flat.getFlatAddress().getHouseNo());
+            fa.setStreet(flat.getFlatAddress().getStreet());
+            fa.setCity(flat.getFlatAddress().getCity());
+            fa.setState(flat.getFlatAddress().getState());
+            fa.setPin(flat.getFlatAddress().getPin());
+            fa.setCountry(flat.getFlatAddress().getCountry());
+            f.setFlatAddress(fa);
+            return f;
 		}
 		
 		@Override
-		public List<Flat> viewAllFlat() {
-			return (List<Flat>) flatRepository.findAll();
+		public List<FlatDTO> viewAllFlat() {
+			List<Flat> list=(List<Flat>) flatRepository.findAll();
+			List<FlatDTO> fList = new ArrayList<>();
+			list.forEach(flat->{
+				FlatDTO f= new FlatDTO();
+	            f.setFlatId(flat.getFlatId());
+	            f.setCost(flat.getCost());
+	            f.setAvailability(flat.getAvailability());
+	            FlatAddressDTO fa=new FlatAddressDTO();
+	            fa.setHouseNo(flat.getFlatAddress().getHouseNo());
+	            fa.setStreet(flat.getFlatAddress().getStreet());
+	            fa.setCity(flat.getFlatAddress().getCity());
+	            fa.setState(flat.getFlatAddress().getState());
+	            fa.setPin(flat.getFlatAddress().getPin());
+	            fa.setCountry(flat.getFlatAddress().getCountry());
+	            f.setFlatAddress(fa);
+	            fList.add(f);
+			});
+			return fList;
 		}
 		
 		@Override
-		public List<Flat> findByCostAndAvailability(float cost,String availability){
-	    		return flatRepository.findByCostAndAvailability(cost,availability);
+		public List<FlatDTO> findByCostAndAvailability(float cost,String availability){
+			List<Flat> list=flatRepository.findByCostAndAvailability(cost,availability);
+			List<FlatDTO> fList = new ArrayList<>();
+			list.forEach(flat->{
+				FlatDTO f= new FlatDTO();
+	            f.setFlatId(flat.getFlatId());
+	            f.setCost(flat.getCost());
+	            f.setAvailability(flat.getAvailability());
+	            FlatAddressDTO fa=new FlatAddressDTO();
+	            fa.setHouseNo(flat.getFlatAddress().getHouseNo());
+	            fa.setStreet(flat.getFlatAddress().getStreet());
+	            fa.setCity(flat.getFlatAddress().getCity());
+	            fa.setState(flat.getFlatAddress().getState());
+	            fa.setPin(flat.getFlatAddress().getPin());
+	            fa.setCountry(flat.getFlatAddress().getCountry());
+	            f.setFlatAddress(fa);
+	            fList.add(f);
+			});
+			return fList;
 	     }	
 }

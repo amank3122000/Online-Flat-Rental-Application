@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//import com.cg.onlineflatrental.DTO.LandlordDTO;
-import com.cg.onlineflatrental.entity.Landlord;
+import com.cg.onlineflatrental.DTO.LandlordDTO;
 import com.cg.onlineflatrental.exception.LandlordNotFoundException;
 import com.cg.onlineflatrental.service.LandlordService;
 
@@ -31,26 +30,26 @@ public class LandlordController {
 	private Environment environment;
 
 	@GetMapping(value = "/landlord")
-	public ResponseEntity<List<Landlord>> viewAllLandlord() {
-		List<Landlord> landlordList = landlordService.viewAllLandlord();
+	public ResponseEntity<List<LandlordDTO>> viewAllLandlord() {
+		List<LandlordDTO> landlordList = landlordService.viewAllLandlord();
 		return new ResponseEntity<>(landlordList, HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/landlord/{landlordId}")
-	public ResponseEntity<Landlord> viewLandlord(@PathVariable Integer landlordId) throws LandlordNotFoundException {
-		Landlord landlord = landlordService.viewLandlord(landlordId);
+	public ResponseEntity<LandlordDTO> viewLandlord(@PathVariable Integer landlordId) throws LandlordNotFoundException {
+		LandlordDTO landlord = landlordService.viewLandlord(landlordId);
 		return new ResponseEntity<>(landlord, HttpStatus.OK);
 	}
 
 	@PostMapping(value = "/landlord")
-	public ResponseEntity<String> addLandlord(@RequestBody Landlord landlord) {
-		Landlord landlordId = landlordService.addLandlord(landlord);
+	public ResponseEntity<String> addLandlord(@RequestBody LandlordDTO landlord) {
+		LandlordDTO landlordId = landlordService.addLandlord(landlord);
 		String successMessage = environment.getProperty("API.INSERT_SUCCESS") + landlordId;
 		return new ResponseEntity<>(successMessage, HttpStatus.CREATED);
 	}
 
 	@PutMapping(value = "/landlord/{landlordId}")
-	public ResponseEntity<String> updateLandlord(@PathVariable Integer landlordId, @RequestBody Landlord landlord)
+	public ResponseEntity<String> updateLandlord(@PathVariable Integer landlordId, @RequestBody LandlordDTO landlord)
 			throws LandlordNotFoundException {
 		landlordService.updateLandlord(landlordId, landlord);
 		String successMessage = environment.getProperty("API.UPDATE_SUCCESS");

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cg.onlineflatrental.entity.Flat;
+import com.cg.onlineflatrental.DTO.FlatDTO;
 import com.cg.onlineflatrental.exception.FlatNotFoundException;
 import com.cg.onlineflatrental.service.FlatService;
 
@@ -30,12 +30,12 @@ public class FlatController {
     private Environment environment;
 
     @PostMapping(value = "/flat")
-    public ResponseEntity<Flat> addFlat(@RequestBody Flat flat) {
+    public ResponseEntity<FlatDTO> addFlat(@RequestBody FlatDTO flat) {
         return new ResponseEntity<>(flatService.addFlat(flat), HttpStatus.CREATED);
     }
 
     @PutMapping("/flat/{flatId}")
-    public ResponseEntity<String> updateFlat(@RequestBody Flat flat, @PathVariable Integer flatId)
+    public ResponseEntity<String> updateFlat(@RequestBody FlatDTO flat, @PathVariable Integer flatId)
             throws FlatNotFoundException {
         flatService.updateFlat(flat, flatId);
         String successMessage = environment.getProperty("API.UPDATE_SUCCESS");
@@ -50,19 +50,19 @@ public class FlatController {
     }
 
     @GetMapping(value = "/flat/{flatId}")
-    public ResponseEntity<Flat> viewFlat(@PathVariable Integer flatId) throws FlatNotFoundException {
-        Flat flat = flatService.viewFlat(flatId);
+    public ResponseEntity<FlatDTO> viewFlat(@PathVariable Integer flatId) throws FlatNotFoundException {
+        FlatDTO flat = flatService.viewFlat(flatId);
         return new ResponseEntity<>(flat, HttpStatus.OK);
     }
 
     @GetMapping(value = "/flat")
-    public ResponseEntity<List<Flat>> viewAllFlat() {
-        List<Flat> flatList = flatService.viewAllFlat();
+    public ResponseEntity<List<FlatDTO>> viewAllFlat() {
+        List<FlatDTO> flatList = flatService.viewAllFlat();
         return new ResponseEntity<>(flatList, HttpStatus.OK);
     }
 
     @GetMapping("flat/{cost}/{availability}")
-    public List<Flat> findByCostAndAvailability(@PathVariable("cost") float cost, @PathVariable("availability") String availability) {
+    public List<FlatDTO> findByCostAndAvailability(@PathVariable("cost") float cost, @PathVariable("availability") String availability) {
         return flatService.findByCostAndAvailability(cost, availability);
     }
 

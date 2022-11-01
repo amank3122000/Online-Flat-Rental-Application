@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cg.onlineflatrental.DTO.FlatBookingDTO;
+import com.cg.onlineflatrental.DTO.FlatDTO;
+import com.cg.onlineflatrental.DTO.TenantDTO;
 import com.cg.onlineflatrental.entity.Flat;
 import com.cg.onlineflatrental.entity.FlatBooking;
 import com.cg.onlineflatrental.entity.Tenant;
@@ -37,23 +40,23 @@ public class FlatBookingController {
     FlatService flatService;
 
     @PostMapping("/flatbooking")
-    public ResponseEntity<String> addFlatBooking(@RequestBody FlatBooking flat) throws TenantNotFoundException, FlatNotFoundException {
+    public ResponseEntity<String> addFlatBooking(@RequestBody FlatBookingDTO flat) throws TenantNotFoundException, FlatNotFoundException {
         flatService.viewFlat(flat.getFlat().getFlatId());
         tenantServ.viewTenant(flat.getTenantId().getTenantId());
-        Flat fb = fbs.addFlatBooking(flat);
+        FlatDTO fb = fbs.addFlatBooking(flat);
         return new ResponseEntity<String>("FlatBooking created sucessfully.",HttpStatus.CREATED);
     }
 
     @GetMapping("/flatbookings")
-    public ResponseEntity<List<FlatBooking>> viewAllFlatBooking() {
-        List<FlatBooking> list=fbs.viewAllFlatBooking();
-        return new ResponseEntity<List<FlatBooking>>(list,HttpStatus.OK);
+    public ResponseEntity<List<FlatBookingDTO>> viewAllFlatBooking() {
+        List<FlatBookingDTO> list=fbs.viewAllFlatBooking();
+        return new ResponseEntity<List<FlatBookingDTO>>(list,HttpStatus.OK);
     }
 
     @GetMapping("/flatbooking/{id}")
-    public ResponseEntity<Flat> viewFlatBooking(@PathVariable int id) throws FlatBookingNotFoundException {
-        FlatBooking fb=fbs.viewFlatBooking(id);
-        return new ResponseEntity<Flat>(fb.getFlat(),HttpStatus.OK);
+    public ResponseEntity<FlatDTO> viewFlatBooking(@PathVariable int id) throws FlatBookingNotFoundException {
+        FlatBookingDTO fb=fbs.viewFlatBooking(id);
+        return new ResponseEntity<FlatDTO>(fb.getFlat(),HttpStatus.OK);
     }
 
     @DeleteMapping("/flatbooking/{id}")
@@ -63,11 +66,11 @@ public class FlatBookingController {
     }
 
     @PutMapping("/flatbooking/{id}")
-    public ResponseEntity<FlatBooking> updateFlatBooking(@RequestBody FlatBooking flatbooking,@PathVariable int id) throws FlatBookingNotFoundException, TenantNotFoundException, FlatNotFoundException {
-        FlatBooking fb = fbs.updateFlatBooking(flatbooking,id);
-        Tenant t = tenantServ.updateTenant(fb.getTenantId().getTenantId(), fb.getTenantId());
-        Flat f = flatService.updateFlat(fb.getFlat(),fb.getFlat().getFlatId());
-        return new ResponseEntity<FlatBooking>(fb,HttpStatus.ACCEPTED);
+    public ResponseEntity<FlatBookingDTO> updateFlatBooking(@RequestBody FlatBookingDTO flatbooking,@PathVariable int id) throws FlatBookingNotFoundException, TenantNotFoundException, FlatNotFoundException {
+        FlatBookingDTO fb = fbs.updateFlatBooking(flatbooking,id);
+        TenantDTO t = tenantServ.updateTenant(fb.getTenantId().getTenantId(), fb.getTenantId());
+        FlatDTO f = flatService.updateFlat(fb.getFlat(),fb.getFlat().getFlatId());
+        return new ResponseEntity<FlatBookingDTO>(fb,HttpStatus.ACCEPTED);
 
     }
 

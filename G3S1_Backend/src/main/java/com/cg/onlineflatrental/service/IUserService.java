@@ -10,9 +10,9 @@ import com.cg.onlineflatrental.exception.ValidationException;
 public interface IUserService {
 	public UserDTO viewUser(int userId) throws UserNotFoundException;
 	public List<UserDTO> viewAllUsers() throws UserNotFoundException;
-	public User validateUser(String userName,String password) throws UserNotFoundException,ValidationException;
-	public User addUser(User user) throws UserNotFoundException;
-	public User updateUser(User user) throws UserNotFoundException;
-	public User updatePassword(User user,String newPassword) throws UserNotFoundException;
-	public User removeUser(Integer userId) throws UserNotFoundException;
+	public UserDTO validateUser(String userName,String password) throws UserNotFoundException,ValidationException;
+	public UserDTO addUser(UserDTO user) throws UserNotFoundException;
+	public UserDTO updateUser(UserDTO user) throws UserNotFoundException;
+	public UserDTO updatePassword(UserDTO user,String newPassword) throws UserNotFoundException;
+	public UserDTO removeUser(Integer userId) throws UserNotFoundException;
 }

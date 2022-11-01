@@ -1,9 +1,16 @@
 package com.cg.onlineflatrental.DTO;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 public class FlatDTO {
 	private int flatId;
+	@NotNull(message = "Please provide a valid cost")
+	@Min(value = 1, message = "Cost should be more than 0")
     private float cost;
+	
     private FlatAddressDTO flatAddress;
+	@NotNull(message = "Flat availability is mandatory")
     private String availability;
     private LandlordDTO landlord;
 
