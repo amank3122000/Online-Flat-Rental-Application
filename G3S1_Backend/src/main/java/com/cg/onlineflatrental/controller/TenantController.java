@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.onlineflatrental.DTO.TenantDTO;
-import com.cg.onlineflatrental.entity.Tenant;
 import com.cg.onlineflatrental.exception.TenantNotFoundException;
 import com.cg.onlineflatrental.service.TenantService;
 

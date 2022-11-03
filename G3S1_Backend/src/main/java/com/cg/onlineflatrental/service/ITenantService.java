@@ -3,7 +3,6 @@ package com.cg.onlineflatrental.service;
 import java.util.List;
 
 import com.cg.onlineflatrental.DTO.TenantDTO;
-import com.cg.onlineflatrental.entity.Tenant;
 import com.cg.onlineflatrental.exception.TenantNotFoundException;
 
 public interface ITenantService {

@@ -11,7 +11,6 @@ import com.cg.onlineflatrental.DTO.FlatAddressDTO;
 import com.cg.onlineflatrental.DTO.FlatBookingDTO;
 import com.cg.onlineflatrental.DTO.FlatDTO;
 import com.cg.onlineflatrental.DTO.TenantDTO;
-import com.cg.onlineflatrental.DTO.UserDTO;
 import com.cg.onlineflatrental.entity.Flat;
 import com.cg.onlineflatrental.entity.FlatAddress;
 import com.cg.onlineflatrental.entity.FlatBooking;

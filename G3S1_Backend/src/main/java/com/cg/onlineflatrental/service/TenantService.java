@@ -6,10 +6,8 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.Service;
 
 import com.cg.onlineflatrental.DTO.FlatAddressDTO;
-import com.cg.onlineflatrental.DTO.FlatBookingDTO;
 import com.cg.onlineflatrental.DTO.TenantDTO;
 import com.cg.onlineflatrental.entity.FlatAddress;
-import com.cg.onlineflatrental.entity.FlatBooking;
 import com.cg.onlineflatrental.entity.Tenant;
 import com.cg.onlineflatrental.repository.ITenantRepository;
 import com.cg.onlineflatrental.exception.TenantNotFoundException;

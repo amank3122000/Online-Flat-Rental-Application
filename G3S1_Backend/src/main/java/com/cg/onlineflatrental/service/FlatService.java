@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.onlineflatrental.DTO.FlatAddressDTO;
-import com.cg.onlineflatrental.DTO.FlatBookingDTO;
 import com.cg.onlineflatrental.DTO.FlatDTO;
 import com.cg.onlineflatrental.entity.Flat;
 import com.cg.onlineflatrental.entity.FlatAddress;
