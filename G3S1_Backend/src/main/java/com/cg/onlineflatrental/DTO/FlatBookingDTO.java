@@ -1,30 +1,26 @@
 package com.cg.onlineflatrental.DTO;
 
-import java.sql.Date;
 import java.time.LocalDate;
-
-import javax.validation.Valid;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
+//import org.springframework.format.annotation.DateTimeFormat;
+//import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class FlatBookingDTO {
+	
 	private Integer bookingNo;
-	@NotNull
-	@Valid
+
 	private FlatDTO flat;
-	@NotNull
-	@Valid
+	
 	private TenantDTO tenantId;
+	
 	@NotNull(message = "Booking From Date is required")
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	@JsonFormat(pattern = "MM/dd/yyyy")
+	@FutureOrPresent(message = "{Booking From Date is invalid}")
 	private LocalDate bookingFromDate;
+	
 	@NotNull(message = "Booking To Date is required")
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	@JsonFormat(pattern = "MM/dd/yyyy")
+	@Future(message = "{Booking To Date is invalid}")
 	private LocalDate bookingToDate;
 	
 	public FlatBookingDTO() {

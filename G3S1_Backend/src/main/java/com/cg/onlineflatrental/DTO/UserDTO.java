@@ -5,7 +5,7 @@ import javax.validation.constraints.Size;
 
 public class UserDTO {
 	
-private Integer userId;
+	private Integer userId;
 	
 	@NotNull(message = "{Please provide valid user name}")
 	private String userName;
