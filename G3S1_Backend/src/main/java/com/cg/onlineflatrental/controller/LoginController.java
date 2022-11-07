@@ -1,5 +1,6 @@
 package com.cg.onlineflatrental.controller;
 
+<<<<<<< HEAD
 import javax.security.auth.login.LoginException;
 
 import org.apache.logging.log4j.LogManager;
@@ -46,5 +47,8 @@ public class LoginController {
 		}
 		return rentity;
 	}
+=======
+public class LoginController {
+>>>>>>> parent of bddb30e (Controller)
 
 }
