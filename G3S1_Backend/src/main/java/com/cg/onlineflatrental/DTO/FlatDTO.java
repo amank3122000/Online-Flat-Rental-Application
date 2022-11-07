@@ -26,47 +26,91 @@ public class FlatDTO {
         this.availability = availability;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getFlatId() {
         return flatId;
     }
 
+    
+    /** 
+     * @param flatId
+     */
     public void setFlatId(int flatId) {
         this.flatId = flatId;
     }
 
+    
+    /** 
+     * @return float
+     */
     public float getCost() {
         return cost;
     }
 
+    
+    /** 
+     * @param cost
+     */
     public void setCost(float cost) {
         this.cost = cost;
     }
 
+    
+    /** 
+     * @return FlatAddressDTO
+     */
     public FlatAddressDTO getFlatAddress() {
         return flatAddress;
     }
 
+    
+    /** 
+     * @param flatAddress
+     */
     public void setFlatAddress(FlatAddressDTO flatAddress) {
         this.flatAddress = flatAddress;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getAvailability() {
         return availability;
     }
 
+    
+    /** 
+     * @param availability
+     */
     public void setAvailability(String availability) {
         this.availability = availability;
     }
     
+    
+    /** 
+     * @return LandlordDTO
+     */
     public LandlordDTO getLandlord() {
 		return landlord;
 	}
 
-	public void setLandlord(LandlordDTO landlord) {
+	
+    /** 
+     * @param landlord
+     */
+    public void setLandlord(LandlordDTO landlord) {
 		this.landlord = landlord;
 	}
 
-	@Override
+	
+    /** 
+     * @return String
+     */
+    @Override
     public String toString() {
         return "FlatDTO{" +
                 "flatId=" + flatId +

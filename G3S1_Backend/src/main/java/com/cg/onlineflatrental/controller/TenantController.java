@@ -31,11 +31,23 @@ import com.cg.onlineflatrental.service.TenantService;
   @Autowired
   private TenantService tenantServ;
  
+	
+	/** 
+	 * @param tenant
+	 * @return ResponseEntity<TenantDTO>
+	 */
 	@PostMapping("/tenant")
 	public ResponseEntity<TenantDTO> addTenant(@Valid @RequestBody TenantDTO tenant) {
 		return new ResponseEntity<>(tenantServ.addTenant(tenant), HttpStatus.CREATED);
 	}
 	
+	
+	/** 
+	 * @param tenantId
+	 * @param tenant
+	 * @return ResponseEntity<TenantDTO>
+	 * @throws TenantNotFoundException
+	 */
 	@PutMapping("/tenant/{tenantId}")
 	public ResponseEntity<TenantDTO> updateTenant(@PathVariable int tenantId, @Valid @RequestBody TenantDTO tenant)
 			throws TenantNotFoundException {
@@ -44,6 +56,12 @@ import com.cg.onlineflatrental.service.TenantService;
 
 	}
 
+	
+	/** 
+	 * @param tenantId
+	 * @return ResponseEntity<String>
+	 * @throws TenantNotFoundException
+	 */
 	@DeleteMapping("/tenant/{tenantId}")
 	public ResponseEntity<String> deleteTenant(@PathVariable int tenantId) throws TenantNotFoundException {
 		tenantServ.deleteTenant(tenantId);
@@ -51,12 +69,22 @@ import com.cg.onlineflatrental.service.TenantService;
 
 	}
 
+	
+	/** 
+	 * @return ResponseEntity<List<TenantDTO>>
+	 */
 	@GetMapping("/tenants")
 	public ResponseEntity<List<TenantDTO>> viewAllTenant() {
 		List<TenantDTO> list = (List<TenantDTO>) tenantServ.viewAllTenant();
 		return new ResponseEntity<List<TenantDTO>>(list, HttpStatus.OK);
 	}
 
+	
+	/** 
+	 * @param tenantId
+	 * @return ResponseEntity<TenantDTO>
+	 * @throws TenantNotFoundException
+	 */
 	@GetMapping("/tenant/{tenantId}")
 	public ResponseEntity<TenantDTO> viewTenant(@PathVariable int tenantId) throws TenantNotFoundException {
 		TenantDTO t = tenantServ.viewTenant(tenantId);
@@ -64,6 +92,12 @@ import com.cg.onlineflatrental.service.TenantService;
 
 	}
 	
+	
+	/** 
+	 * @param tenantId
+	 * @return ResponseEntity<String>
+	 * @throws TenantNotFoundException
+	 */
 	@PatchMapping("/tenant/{tenantId}")
 	public ResponseEntity<String>validateTenant(@PathVariable int tenantId) throws TenantNotFoundException {
 		if(!tenantServ.validateTenant(tenantId)) {

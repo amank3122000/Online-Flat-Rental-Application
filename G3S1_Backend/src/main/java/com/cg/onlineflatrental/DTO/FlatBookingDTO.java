@@ -36,38 +36,82 @@ public class FlatBookingDTO {
 		this.bookingFromDate = bookingFromDate;
 		this.bookingToDate = bookingToDate;
 	}
+	
+	/** 
+	 * @return Integer
+	 */
 	public Integer getBookingNo() {
 		return bookingNo;
 	}
+	
+	/** 
+	 * @param bookingNo
+	 */
 	public void setBookingNo(Integer bookingNo) {
 		this.bookingNo = bookingNo;
 	}
 	
+	
+	/** 
+	 * @return FlatDTO
+	 */
 	public FlatDTO getFlat() {
 		return flat;
 	}
+	
+	/** 
+	 * @param flat
+	 */
 	public void setFlat(FlatDTO flat) {
 		this.flat = flat;
 	}
+	
+	/** 
+	 * @return TenantDTO
+	 */
 	public TenantDTO getTenantId() {
 		return tenantId;
 	}
+	
+	/** 
+	 * @param tenantId
+	 */
 	public void setTenantId(TenantDTO tenantId) {
 		this.tenantId = tenantId;
 	}
+	
+	/** 
+	 * @return LocalDate
+	 */
 	public LocalDate getBookingFromDate() {
 		return bookingFromDate;
 	}
+	
+	/** 
+	 * @param bookingFromDate
+	 */
 	public void setBookingFromDate(LocalDate bookingFromDate) {
 		this.bookingFromDate = bookingFromDate;
 	}
+	
+	/** 
+	 * @return LocalDate
+	 */
 	public LocalDate getBookingToDate() {
 		return bookingToDate;
 	}
+	
+	/** 
+	 * @param bookingToDate
+	 */
 	public void setBookingToDate(LocalDate bookingToDate) {
 		this.bookingToDate = bookingToDate;
 	}
 	
+	
+	/** 
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return "FlatBookingDTO [bookingNo=" + bookingNo + ", flat=" + flat + ", tenantId=" + tenantId

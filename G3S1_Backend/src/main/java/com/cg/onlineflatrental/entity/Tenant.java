@@ -31,24 +31,52 @@ public class Tenant {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	/** 
+	 * @return FlatAddress
+	 */
 	public FlatAddress getTaddress() {
 		return taddress;
 	}
+	
+	/** 
+	 * @param taddress
+	 */
 	public void setTaddress(FlatAddress taddress) {
 		this.taddress = taddress;
 	}
+	
+	/** 
+	 * @return int
+	 */
 	public int getTenantId() {
 		return tenantId;
 	}
+	
+	/** 
+	 * @param tenantId
+	 */
 	public void setTenantId(int tenantId) {
 		this.tenantId = tenantId;
 	}
+	
+	/** 
+	 * @return int
+	 */
 	public int getAge() {
 		return age;
 	}
+	
+	/** 
+	 * @param age
+	 */
 	public void setAge(int age) {
 		this.age = age;
 	}
+	
+	/** 
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return "Tenant [tenantId=" + tenantId + ", age=" + age + ", taddress=" + taddress

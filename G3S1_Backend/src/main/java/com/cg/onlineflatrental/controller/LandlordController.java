@@ -33,18 +33,33 @@ public class LandlordController {
 	@Autowired
 	private Environment environment;
 
+	
+	/** 
+	 * @return ResponseEntity<List<LandlordDTO>>
+	 */
 	@GetMapping(value = "/landlord")
 	public ResponseEntity<List<LandlordDTO>> viewAllLandlord() {
 		List<LandlordDTO> landlordList = landlordService.viewAllLandlord();
 		return new ResponseEntity<>(landlordList, HttpStatus.OK);
 	}
 
+	
+	/** 
+	 * @param landlordId
+	 * @return ResponseEntity<LandlordDTO>
+	 * @throws LandlordNotFoundException
+	 */
 	@GetMapping(value = "/landlord/{landlordId}")
 	public ResponseEntity<LandlordDTO> viewLandlord(@PathVariable Integer landlordId) throws LandlordNotFoundException {
 		LandlordDTO landlord = landlordService.viewLandlord(landlordId);
 		return new ResponseEntity<>(landlord, HttpStatus.OK);
 	}
 
+	
+	/** 
+	 * @param landlord
+	 * @return ResponseEntity<String>
+	 */
 	@PostMapping(value = "/landlord")
 	public ResponseEntity<String> addLandlord(@Valid @RequestBody LandlordDTO landlord) {
 		LandlordDTO landlordId = landlordService.addLandlord(landlord);
@@ -52,6 +67,13 @@ public class LandlordController {
 		return new ResponseEntity<>(successMessage, HttpStatus.CREATED);
 	}
 
+	
+	/** 
+	 * @param landlordId
+	 * @param landlord
+	 * @return ResponseEntity<String>
+	 * @throws LandlordNotFoundException
+	 */
 	@PutMapping(value = "/landlord/{landlordId}")
 	public ResponseEntity<String> updateLandlord(@PathVariable Integer landlordId, @Valid @RequestBody LandlordDTO landlord)
 			throws LandlordNotFoundException {
@@ -60,6 +82,12 @@ public class LandlordController {
 		return new ResponseEntity<>(successMessage, HttpStatus.OK);
 	}
 
+	
+	/** 
+	 * @param landlordId
+	 * @return ResponseEntity<String>
+	 * @throws LandlordNotFoundException
+	 */
 	@DeleteMapping(value = "/landlord/{landlordId}")
 	public ResponseEntity<String> deleteLandlord(@PathVariable Integer landlordId) throws LandlordNotFoundException {
 		landlordService.deleteLandlord(landlordId);

@@ -47,39 +47,83 @@ public class FlatBooking {
 		this.bookingToDate = bookingToDate;
 	}
 
+	
+	/** 
+	 * @return Integer
+	 */
 	public Integer getBookingNo() {
 		return bookingNo;
 	}
+	
+	/** 
+	 * @param bookingNo
+	 */
 	public void setBookingNo(Integer bookingNo) {
 		this.bookingNo = bookingNo;
 	}
+	
+	/** 
+	 * @return Flat
+	 */
 	public Flat getFlat() {
 		return flat;
 	}
+	
+	/** 
+	 * @param flat
+	 */
 	public void setFlat(Flat flat) {
 		this.flat = flat;
 	}
+	
+	/** 
+	 * @return Tenant
+	 */
 	public Tenant getTenantId() {
 		return tenantId;
 	}
+	
+	/** 
+	 * @param tenantId
+	 */
 	public void setTenantId(Tenant tenantId) {
 		this.tenantId = tenantId;
 	}
+	
+	/** 
+	 * @return LocalDate
+	 */
 	public LocalDate getBookingToDate() {
 		return bookingToDate;
 	}
+	
+	/** 
+	 * @param bookingToDate
+	 */
 	public void setBookingToDate(LocalDate bookingToDate) {
 		this.bookingToDate = bookingToDate;
 	}
 
+	
+	/** 
+	 * @return LocalDate
+	 */
 	public LocalDate getBookingFromDate() {
 		return bookingFromDate;
 	}
 
+	
+	/** 
+	 * @param bookingFromDate
+	 */
 	public void setBookingFromDate(LocalDate bookingFromDate) {
 		this.bookingFromDate = bookingFromDate;
 	}
 
+	
+	/** 
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return "FlatBooking{" +

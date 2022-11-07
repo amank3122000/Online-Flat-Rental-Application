@@ -24,6 +24,11 @@ public class LandlordService implements ILandlordService {
 	@Autowired
 	private ILandlordRepository landlordRepository;
 
+	
+	/** 
+	 * @param landlord
+	 * @return LandlordDTO
+	 */
 	@Override
 	public LandlordDTO addLandlord(LandlordDTO landlord) {
 		Landlord l=new Landlord();
@@ -50,6 +55,11 @@ public class LandlordService implements ILandlordService {
 		return landlord;
 	}
 
+	
+	/** 
+	 * @param landlordId
+	 * @throws LandlordNotFoundException
+	 */
 	@Override
 	public void deleteLandlord(Integer landlordId) throws LandlordNotFoundException {
 		if (!landlordRepository.existsById(landlordId)) {
@@ -58,6 +68,12 @@ public class LandlordService implements ILandlordService {
 		landlordRepository.deleteById(landlordId);
 	}
 
+	
+	/** 
+	 * @param landlordId
+	 * @return LandlordDTO
+	 * @throws LandlordNotFoundException
+	 */
 	@Override
 	public LandlordDTO viewLandlord(Integer landlordId) throws LandlordNotFoundException {
 
@@ -88,6 +104,10 @@ public class LandlordService implements ILandlordService {
 		return l;
 	}
 
+	
+	/** 
+	 * @return List<LandlordDTO>
+	 */
 	@Override
 	public List<LandlordDTO> viewAllLandlord() {
 		List<Landlord> list =(List<Landlord>) landlordRepository.findAll();
@@ -118,6 +138,13 @@ public class LandlordService implements ILandlordService {
 		return lList;
 	}
 
+	
+	/** 
+	 * @param landlordId
+	 * @param landlord
+	 * @return LandlordDTO
+	 * @throws LandlordNotFoundException
+	 */
 	@Override
 	public LandlordDTO updateLandlord(Integer landlordId, LandlordDTO landlord) throws LandlordNotFoundException {
 		if (!landlordRepository.existsById(landlordId)) {
