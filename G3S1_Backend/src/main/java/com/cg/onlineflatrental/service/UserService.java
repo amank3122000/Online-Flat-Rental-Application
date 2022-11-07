@@ -22,12 +22,6 @@ public class UserService implements IUserService{
 	@Autowired
 	private IUserRepository userRepository;
 	
-	
-	/** 
-	 * @param userId
-	 * @return UserDTO
-	 * @throws UserNotFoundException
-	 */
 	@Override
 	public UserDTO viewUser(int userId) throws UserNotFoundException {
 		Optional<User> optional = userRepository.findById(userId);
@@ -39,11 +33,6 @@ public class UserService implements IUserService{
 		user1.setUserType(user.getUserType());
 		return user1;
 	}
-	
-	/** 
-	 * @return List<UserDTO>
-	 * @throws UserNotFoundException
-	 */
 	@Override
 	public List<UserDTO> viewAllUsers() throws UserNotFoundException{
 		Iterable<User> users = userRepository.findAll();
@@ -60,14 +49,6 @@ public class UserService implements IUserService{
 			throw new UserNotFoundException("Service.USERS_NOT_FOUND");
 		return usersList;
 	}
-	
-	/** 
-	 * @param userName
-	 * @param password
-	 * @return UserDTO
-	 * @throws UserNotFoundException
-	 * @throws ValidationException
-	 */
 	@Override
 	public UserDTO validateUser(String userName,String password) throws UserNotFoundException,ValidationException {
 		Optional<User> optional = userRepository.findByUserName(userName);
@@ -85,12 +66,6 @@ public class UserService implements IUserService{
 			throw new ValidationException("Service.INCORRECT_PASSWORD");
 		}
 	}
-	
-	/** 
-	 * @param user
-	 * @return UserDTO
-	 * @throws UserNotFoundException
-	 */
 	@Override
 	public UserDTO addUser(UserDTO user) throws UserNotFoundException {
 		if(userRepository.existsById(user.getUserId())) {
@@ -107,12 +82,6 @@ public class UserService implements IUserService{
 		}
 		
 	}
-	
-	/** 
-	 * @param user
-	 * @return UserDTO
-	 * @throws UserNotFoundException
-	 */
 	@Override
 	public UserDTO updateUser(UserDTO user) throws UserNotFoundException {
 		Optional<User> optional = userRepository.findById(user.getUserId());
@@ -125,13 +94,6 @@ public class UserService implements IUserService{
 		return user;
 	}
 	
-	
-	/** 
-	 * @param user
-	 * @param newPassword
-	 * @return UserDTO
-	 * @throws UserNotFoundException
-	 */
 	@Override
 	public UserDTO updatePassword(UserDTO user,String newPassword) throws UserNotFoundException {
 		Optional<User> optional = userRepository.findById(user.getUserId());
@@ -142,12 +104,6 @@ public class UserService implements IUserService{
 		return user;
 	}
 	
-	
-	/** 
-	 * @param userId
-	 * @return UserDTO
-	 * @throws UserNotFoundException
-	 */
 	@Override
 	public UserDTO removeUser(Integer userId) throws UserNotFoundException {
 		Optional<User> optional = userRepository.findById(userId);
@@ -160,7 +116,4 @@ public class UserService implements IUserService{
 		user1.setUserType(optional.get().getUserType());
 		return user1;
 	}
-    public boolean checkValidUser(String username, String password, String userType) {
-        return false;
-    }
 }

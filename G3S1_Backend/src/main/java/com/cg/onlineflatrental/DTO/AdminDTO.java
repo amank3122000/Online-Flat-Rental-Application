@@ -19,42 +19,22 @@ public class AdminDTO {
         this.adminPassword = adminPassword;
     }
 
-    
-    /** 
-     * @return int
-     */
     public int getAdminId() {
         return adminId;
     }
 
-    
-    /** 
-     * @param adminId
-     */
     public void setAdminId(int adminId) {
         this.adminId = adminId;
     }
 
-    
-    /** 
-     * @return String
-     */
     public String getAdminPassword() {
         return adminPassword;
     }
 
-    
-    /** 
-     * @param adminPassword
-     */
     public void setAdminPassword(String adminPassword) {
         this.adminPassword = adminPassword;
     }
 
-    
-    /** 
-     * @return String
-     */
     @Override
     public String toString() {
         return "AdminDTO{" +

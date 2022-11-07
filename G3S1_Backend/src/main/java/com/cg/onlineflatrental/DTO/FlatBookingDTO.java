@@ -1,26 +1,30 @@
 package com.cg.onlineflatrental.DTO;
 
+import java.sql.Date;
 import java.time.LocalDate;
-import javax.validation.constraints.Future;
-import javax.validation.constraints.FutureOrPresent;
+
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-//import org.springframework.format.annotation.DateTimeFormat;
-//import com.fasterxml.jackson.annotation.JsonFormat;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class FlatBookingDTO {
-	
 	private Integer bookingNo;
-
+	@NotNull
+	@Valid
 	private FlatDTO flat;
-	
+	@NotNull
+	@Valid
 	private TenantDTO tenantId;
-	
 	@NotNull(message = "Booking From Date is required")
-	@FutureOrPresent(message = "{Booking From Date is invalid}")
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	@JsonFormat(pattern = "MM/dd/yyyy")
 	private LocalDate bookingFromDate;
-	
 	@NotNull(message = "Booking To Date is required")
-	@Future(message = "{Booking To Date is invalid}")
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	@JsonFormat(pattern = "MM/dd/yyyy")
 	private LocalDate bookingToDate;
 	
 	public FlatBookingDTO() {
@@ -36,82 +40,38 @@ public class FlatBookingDTO {
 		this.bookingFromDate = bookingFromDate;
 		this.bookingToDate = bookingToDate;
 	}
-	
-	/** 
-	 * @return Integer
-	 */
 	public Integer getBookingNo() {
 		return bookingNo;
 	}
-	
-	/** 
-	 * @param bookingNo
-	 */
 	public void setBookingNo(Integer bookingNo) {
 		this.bookingNo = bookingNo;
 	}
 	
-	
-	/** 
-	 * @return FlatDTO
-	 */
 	public FlatDTO getFlat() {
 		return flat;
 	}
-	
-	/** 
-	 * @param flat
-	 */
 	public void setFlat(FlatDTO flat) {
 		this.flat = flat;
 	}
-	
-	/** 
-	 * @return TenantDTO
-	 */
 	public TenantDTO getTenantId() {
 		return tenantId;
 	}
-	
-	/** 
-	 * @param tenantId
-	 */
 	public void setTenantId(TenantDTO tenantId) {
 		this.tenantId = tenantId;
 	}
-	
-	/** 
-	 * @return LocalDate
-	 */
 	public LocalDate getBookingFromDate() {
 		return bookingFromDate;
 	}
-	
-	/** 
-	 * @param bookingFromDate
-	 */
 	public void setBookingFromDate(LocalDate bookingFromDate) {
 		this.bookingFromDate = bookingFromDate;
 	}
-	
-	/** 
-	 * @return LocalDate
-	 */
 	public LocalDate getBookingToDate() {
 		return bookingToDate;
 	}
-	
-	/** 
-	 * @param bookingToDate
-	 */
 	public void setBookingToDate(LocalDate bookingToDate) {
 		this.bookingToDate = bookingToDate;
 	}
 	
-	
-	/** 
-	 * @return String
-	 */
 	@Override
 	public String toString() {
 		return "FlatBookingDTO [bookingNo=" + bookingNo + ", flat=" + flat + ", tenantId=" + tenantId

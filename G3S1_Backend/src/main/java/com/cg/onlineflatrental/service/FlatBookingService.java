@@ -24,11 +24,6 @@ public class FlatBookingService implements IFlatBookingService {
     @Autowired
     private IFlatBookingRepository fbRepo;
 
-    
-    /** 
-     * @param flat
-     * @return FlatDTO
-     */
     @Override
     public FlatDTO addFlatBooking(FlatBookingDTO flat) {
         
@@ -68,10 +63,6 @@ public class FlatBookingService implements IFlatBookingService {
         return flat.getFlat();
     }
 
-    
-    /** 
-     * @return List<FlatBookingDTO>
-     */
     @Override
     public List<FlatBookingDTO> viewAllFlatBooking() {
         List<FlatBooking> list=(List<FlatBooking>) fbRepo.findAll(); 
@@ -119,12 +110,6 @@ public class FlatBookingService implements IFlatBookingService {
         return fbList;
     }
 
-    
-    /** 
-     * @param id
-     * @return FlatBookingDTO
-     * @throws FlatBookingNotFoundException
-     */
     @Override
     public FlatBookingDTO viewFlatBooking(int id) throws FlatBookingNotFoundException{
         Optional<FlatBooking> FlatBooking=fbRepo.findById(id);
@@ -167,11 +152,6 @@ public class FlatBookingService implements IFlatBookingService {
         }
     }
 
-    
-    /** 
-     * @param id
-     * @throws FlatBookingNotFoundException
-     */
     @Override
     public void deleteFlatBooking(int id) throws FlatBookingNotFoundException {
         Optional<FlatBooking> fb= fbRepo.findById(id);
@@ -181,13 +161,6 @@ public class FlatBookingService implements IFlatBookingService {
             fbRepo.delete(fb.get());
     }
 
-    
-    /** 
-     * @param flat
-     * @param id
-     * @return FlatBookingDTO
-     * @throws FlatBookingNotFoundException
-     */
     @Override
     public FlatBookingDTO updateFlatBooking(FlatBookingDTO flat, int id) throws FlatBookingNotFoundException {
         Optional<FlatBooking> fb= fbRepo.findById(id);

@@ -11,11 +11,6 @@ import org.apache.commons.logging.LogFactory;
 public class LoggingAspect {
 	public static final Log LOGGER = LogFactory.getLog(LoggingAspect.class);
 
-	
-	/** 
-	 * @param exception
-	 * @throws Exception
-	 */
 	@AfterThrowing(pointcut = "execution(* com.cg.onlineflatrental.service.*.*(..))", throwing = "exception")
 	public void logServiceException(Exception exception) throws Exception {
 		LOGGER.error(exception.getMessage(), exception);

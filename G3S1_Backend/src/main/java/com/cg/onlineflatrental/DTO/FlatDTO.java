@@ -4,7 +4,6 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 public class FlatDTO {
-	
 	private int flatId;
 	@NotNull(message = "Please provide a valid cost")
 	@Min(value = 1, message = "Cost should be more than 0")
@@ -26,91 +25,47 @@ public class FlatDTO {
         this.availability = availability;
     }
 
-    
-    /** 
-     * @return int
-     */
     public int getFlatId() {
         return flatId;
     }
 
-    
-    /** 
-     * @param flatId
-     */
     public void setFlatId(int flatId) {
         this.flatId = flatId;
     }
 
-    
-    /** 
-     * @return float
-     */
     public float getCost() {
         return cost;
     }
 
-    
-    /** 
-     * @param cost
-     */
     public void setCost(float cost) {
         this.cost = cost;
     }
 
-    
-    /** 
-     * @return FlatAddressDTO
-     */
     public FlatAddressDTO getFlatAddress() {
         return flatAddress;
     }
 
-    
-    /** 
-     * @param flatAddress
-     */
     public void setFlatAddress(FlatAddressDTO flatAddress) {
         this.flatAddress = flatAddress;
     }
 
-    
-    /** 
-     * @return String
-     */
     public String getAvailability() {
         return availability;
     }
 
-    
-    /** 
-     * @param availability
-     */
     public void setAvailability(String availability) {
         this.availability = availability;
     }
     
-    
-    /** 
-     * @return LandlordDTO
-     */
     public LandlordDTO getLandlord() {
 		return landlord;
 	}
 
-	
-    /** 
-     * @param landlord
-     */
-    public void setLandlord(LandlordDTO landlord) {
+	public void setLandlord(LandlordDTO landlord) {
 		this.landlord = landlord;
 	}
 
-	
-    /** 
-     * @return String
-     */
-    @Override
+	@Override
     public String toString() {
         return "FlatDTO{" +
                 "flatId=" + flatId +
