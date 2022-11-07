@@ -28,8 +28,8 @@ import io.swagger.annotations.Api;
 public class LoginController {
     @Autowired
 	private ILoginService service;
+    
     @GetMapping(value = "/authenticateUser/{username}/{password}/{usertype}")
-
 	public ResponseEntity<User> login(@PathVariable String username, @PathVariable String password, @PathVariable String usertype) throws LoginException, UserNotFoundException, ValidationException {
 		ResponseEntity<User> rentity;
 		if (service.login(username,password,usertype)) {

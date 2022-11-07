@@ -22,7 +22,7 @@ public class LoginService implements ILoginService {
 		if (userName == null) {
 			flag = false;
 		}
-		if (service.validateUser(userName, password) != null) {
+		if (service.validateUser(userName, password,userType) != null) {
 			flag = false;
 		} else {
 			flag = true;
