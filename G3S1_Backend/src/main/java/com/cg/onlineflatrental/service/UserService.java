@@ -160,4 +160,7 @@ public class UserService implements IUserService{
 		user1.setUserType(optional.get().getUserType());
 		return user1;
 	}
+    public boolean checkValidUser(String username, String password, String userType) {
+        return false;
+    }
 }

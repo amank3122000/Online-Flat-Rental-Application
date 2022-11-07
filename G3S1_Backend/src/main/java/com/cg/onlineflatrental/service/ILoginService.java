@@ -1,5 +1,11 @@
 package com.cg.onlineflatrental.service;
 
-public interface ILoginService {
+import javax.security.auth.login.LoginException;
+
+import com.cg.onlineflatrental.exception.UserNotFoundException;
+
+public interface ILoginService  {
+
+	public boolean login(String username, String password, String userType)throws LoginException, UserNotFoundException;
 
 }
