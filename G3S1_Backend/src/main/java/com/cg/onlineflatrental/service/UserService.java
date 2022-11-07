@@ -116,4 +116,5 @@ public class UserService implements IUserService{
 		user1.setUserType(optional.get().getUserType());
 		return user1;
 	}
+	
 }
