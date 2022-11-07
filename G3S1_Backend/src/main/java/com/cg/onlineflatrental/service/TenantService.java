@@ -25,11 +25,6 @@ public class TenantService implements ITenantService {
 	@Autowired
 	private ITenantRepository tenantRepository;
 	
-	
-	/** 
-	 * @param tenant
-	 * @return TenantDTO
-	 */
 	@Override
 	public TenantDTO addTenant(TenantDTO tenant) {
 		logger.info("Called addTenant() method of TenantService");
@@ -48,13 +43,6 @@ public class TenantService implements ITenantService {
 		return tenant;
 	}
 	
-	
-	/** 
-	 * @param tenantId
-	 * @param tenant
-	 * @return TenantDTO
-	 * @throws TenantNotFoundException
-	 */
 	@Override
 	public TenantDTO updateTenant(int tenantId, TenantDTO tenant) throws TenantNotFoundException{
 		logger.info("Called updateTenant() method of TenantService");
@@ -73,11 +61,6 @@ public class TenantService implements ITenantService {
 		return tenant;
 	}
 
-	
-	/** 
-	 * @param tenantId
-	 * @throws TenantNotFoundException
-	 */
 	@Override
 	public void deleteTenant(int tenantId) throws TenantNotFoundException {
 		logger.info("Called deleteTenant() method of TenantService");
@@ -86,12 +69,6 @@ public class TenantService implements ITenantService {
 		tenantRepository.delete(value);
 	}
 
-	
-	/** 
-	 * @param tenantId
-	 * @return TenantDTO
-	 * @throws TenantNotFoundException
-	 */
 	@Override
 	public TenantDTO viewTenant(int tenantId) throws TenantNotFoundException {
 		logger.info("Called viewTenant() method of TenantService");
@@ -112,10 +89,6 @@ public class TenantService implements ITenantService {
         return tenant;
 	}
 	
-	
-	/** 
-	 * @return List<TenantDTO>
-	 */
 	@Override
 	public List<TenantDTO> viewAllTenant() {
 		logger.info("Called viewAllTenant() method of TenantService");
@@ -138,12 +111,6 @@ public class TenantService implements ITenantService {
 		return tList;
 	}
 
-	
-	/** 
-	 * @param tenantId
-	 * @return boolean
-	 * @throws TenantNotFoundException
-	 */
 	@Override
 	public boolean validateTenant(int tenantId) throws TenantNotFoundException {
 		logger.info("Called validateTenant() method of TenantService");

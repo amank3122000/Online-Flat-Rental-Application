@@ -18,11 +18,6 @@ public class FlatService implements IFlatService{
 		@Autowired
 		private IFlatRepository flatRepository;
 
-		
-		/** 
-		 * @param flat
-		 * @return FlatDTO
-		 */
 		@Override
 		public FlatDTO addFlat(FlatDTO flat) {
 			Flat f= new Flat();
@@ -41,13 +36,6 @@ public class FlatService implements IFlatService{
 			return flat;
 		}
 	
-		
-		/** 
-		 * @param flat
-		 * @param flatId
-		 * @return FlatDTO
-		 * @throws FlatNotFoundException
-		 */
 		@Override	
 		public FlatDTO updateFlat(FlatDTO flat,int flatId) throws FlatNotFoundException {
 			Flat f = flatRepository.findById(flatId).orElseThrow(()->new FlatNotFoundException("Service.FLAT_NOT_FOUND"));
@@ -65,23 +53,12 @@ public class FlatService implements IFlatService{
 			return flat;
 		}
 		
-		
-		/** 
-		 * @param flatId
-		 * @throws FlatNotFoundException
-		 */
 		@Override	
 		public void deleteFlat(int flatId)throws FlatNotFoundException{
 			Flat f=flatRepository.findById(flatId).orElseThrow(()->new FlatNotFoundException("Service.FLAT_NOT_FOUND"));
 			flatRepository.delete(f);
 		}
 		
-		
-		/** 
-		 * @param flatId
-		 * @return FlatDTO
-		 * @throws FlatNotFoundException
-		 */
 		@Override
 		public FlatDTO viewFlat(int flatId) throws FlatNotFoundException {
 			Flat flat=flatRepository.findById(flatId).orElseThrow(()->new FlatNotFoundException("Service.FLAT_NOT_FOUND"));
@@ -100,10 +77,6 @@ public class FlatService implements IFlatService{
             return f;
 		}
 		
-		
-		/** 
-		 * @return List<FlatDTO>
-		 */
 		@Override
 		public List<FlatDTO> viewAllFlat() {
 			List<Flat> list=(List<Flat>) flatRepository.findAll();
@@ -126,12 +99,6 @@ public class FlatService implements IFlatService{
 			return fList;
 		}
 		
-		
-		/** 
-		 * @param cost
-		 * @param availability
-		 * @return List<FlatDTO>
-		 */
 		@Override
 		public List<FlatDTO> findByCostAndAvailability(float cost,String availability){
 			List<Flat> list=flatRepository.findByCostAndAvailability(cost,availability);

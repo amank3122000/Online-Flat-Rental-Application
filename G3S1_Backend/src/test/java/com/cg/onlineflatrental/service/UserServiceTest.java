@@ -57,10 +57,6 @@ public class UserServiceTest {
 	}
 
 	
-	
-	/** 
-	 * @throws UserNotFoundException
-	 */
 	// addUser() Tests:
 	@Test
 	public void testAddUser() throws UserNotFoundException {
@@ -72,10 +68,6 @@ public class UserServiceTest {
 
 	}
 
-	
-	/** 
-	 * @throws UserNotFoundException
-	 */
 	@Test
 	public void testAddUser1() throws UserNotFoundException {
 		when(userRepository.existsById(u1.getUserId())).thenReturn(true);
@@ -85,10 +77,6 @@ public class UserServiceTest {
 	}
 
 
-	
-	/** 
-	 * @throws UserNotFoundException
-	 */
 	// updateUser() Tests:
 	@Test
 	public void testUpdateUser() throws UserNotFoundException {
@@ -100,10 +88,6 @@ public class UserServiceTest {
 		assertEquals(u2.getUserType(), userService.updateUser(u2).getUserType());
 	}
 	
-	
-	/** 
-	 * @throws UserNotFoundException
-	 */
 	@Test
 	public void testUpdateUser1() throws UserNotFoundException {
 		when(userRepository.findById(u1.getUserId())).thenReturn(Optional.empty());
@@ -113,10 +97,6 @@ public class UserServiceTest {
 	}
 
 	
-	
-	/** 
-	 * @throws UserNotFoundException
-	 */
 	// updatePassword() Tests:
 	@Test
 	public void testUpdatePassword() throws UserNotFoundException {
@@ -127,10 +107,6 @@ public class UserServiceTest {
 		assertEquals(u2.getPassword(), userService.updatePassword(u2,u2.getPassword()).getPassword());
 	}
 	
-	
-	/** 
-	 * @throws UserNotFoundException
-	 */
 	@Test
 	public void testUpdatePassword1() throws UserNotFoundException {
 		when(userRepository.findById(u2.getUserId())).thenReturn(Optional.empty());
@@ -140,10 +116,6 @@ public class UserServiceTest {
 	}
 	
 	
-	
-	/** 
-	 * @throws UserNotFoundException
-	 */
 	// removeUser() Tests:
 	@Test
 	public void testRemoveUser() throws UserNotFoundException {
@@ -153,10 +125,6 @@ public class UserServiceTest {
 		verify(userRepository).deleteById(u1.getUserId());
 	}
 	
-	
-	/** 
-	 * @throws UserNotFoundException
-	 */
 	@Test
 	public void testRemoveUser1() throws UserNotFoundException {
 		when(userRepository.findById(u1.getUserId())).thenReturn(Optional.empty());
@@ -166,10 +134,6 @@ public class UserServiceTest {
 	}
 
 	
-	
-	/** 
-	 * @throws UserNotFoundException
-	 */
 	// viewUser() Tests:
 	@Test
 	public void testViewUser() throws UserNotFoundException {
@@ -182,10 +146,6 @@ public class UserServiceTest {
 
 	}
 
-	
-	/** 
-	 * @throws UserNotFoundException
-	 */
 	@Test
 	public void testViewUser1() throws UserNotFoundException {
 		when(userRepository.findById(u2.getUserId())).thenReturn(Optional.empty());
@@ -195,10 +155,6 @@ public class UserServiceTest {
 	}
 	
 	
-	
-	/** 
-	 * @throws UserNotFoundException
-	 */
 	// viewAllUsers() Tests:
 	@Test
 	public void testViewAllUser() throws UserNotFoundException {
@@ -213,10 +169,6 @@ public class UserServiceTest {
 		assertEquals(4, userService.viewAllUsers().size());
 	}
 	
-	
-	/** 
-	 * @throws UserNotFoundException
-	 */
 	@Test
 	public void testViewAllUser1() throws UserNotFoundException {
 
@@ -228,11 +180,6 @@ public class UserServiceTest {
 	}
 	
 	
-	
-	/** 
-	 * @throws UserNotFoundException
-	 * @throws ValidationException
-	 */
 	// validateUsers() Tests:
 	@Test
 	public void testvalidateUser() throws UserNotFoundException, ValidationException{
@@ -244,10 +191,6 @@ public class UserServiceTest {
 		assertEquals(u2.getUserType(), userService.validateUser(u2.getUserName(),u2.getPassword()).getUserType());
 	}
 	
-	
-	/** 
-	 * @throws UserNotFoundException
-	 */
 	@Test
 	public void testvalidateUser1() throws UserNotFoundException{
 		when(userRepository.findByUserName(u2.getUserName())).thenReturn(Optional.empty());
@@ -256,10 +199,6 @@ public class UserServiceTest {
 		assertEquals("Service.USER_NOT_FOUND", exception.getMessage());
 	}
 	
-	
-	/** 
-	 * @throws ValidationException
-	 */
 	@Test
 	public void testvalidateUser2() throws ValidationException{
 		when(userRepository.findByUserName(u2.getUserName())).thenReturn(u01);

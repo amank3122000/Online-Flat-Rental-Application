@@ -12,20 +12,12 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @Configuration
 @EnableSwagger2
 public class OnlineFlatRentalSwagger {
-	
-	/** 
-	 * @return Docket
-	 */
 	@Bean
 	public Docket postsApi() {
 		return new Docket(DocumentationType.SWAGGER_2).groupName("com.cg.onlineflatrental.controller").apiInfo(apiInfo()).select()
 				.paths(regex("/.*")).build();
 	}
 
-	
-	/** 
-	 * @return ApiInfo
-	 */
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder().title("Online Flat Rental")
 				.description("Online Flat Rental application using Swagger.")

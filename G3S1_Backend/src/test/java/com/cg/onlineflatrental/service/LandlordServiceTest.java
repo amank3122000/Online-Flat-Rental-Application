@@ -1,5 +1,6 @@
 package com.cg.onlineflatrental.service;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -16,6 +17,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -102,10 +104,6 @@ public class LandlordServiceTest {
 		assertNotNull(service.addLandlord(landlordd1));
 	}
 	
-	
-	/** 
-	 * @throws LandlordNotFoundException
-	 */
 	@Test
 	public void testUpdateLandlord1() throws LandlordNotFoundException{
 		when(repository.existsById(landlord3.getLandlordId())).thenReturn(true);
@@ -116,10 +114,6 @@ public class LandlordServiceTest {
 		assertEquals(landlordd3.getFlatList(),service.updateLandlord(landlord3.getLandlordId(),landlordd3).getFlatList());
 	}
 	
-	
-	/** 
-	 * @throws LandlordNotFoundException
-	 */
 	@Test
 	public void testUpdateLandlord2() throws LandlordNotFoundException {
 		when(repository.existsById(landlord1.getLandlordId())).thenReturn(false);
@@ -127,10 +121,6 @@ public class LandlordServiceTest {
 		assertEquals("Service.LANDLORD_NOT_FOUND", exception.getMessage());
 	}
 	
-	
-	/** 
-	 * @throws LandlordNotFoundException
-	 */
 	@Test
 	public void testDeleteLandlord1() throws LandlordNotFoundException{
 		when(repository.existsById(landlord3.getLandlordId())).thenReturn(true);
@@ -139,10 +129,6 @@ public class LandlordServiceTest {
 		verify(repository).deleteById(landlord3.getLandlordId());
 	}
 	
-	
-	/** 
-	 * @throws LandlordNotFoundException
-	 */
 	@Test
 	public void testDeleteLandlord2() throws LandlordNotFoundException {
 		when(repository.existsById(landlord1.getLandlordId())).thenReturn(false);
@@ -151,10 +137,6 @@ public class LandlordServiceTest {
 	}
 	
 	
-	
-	/** 
-	 * @throws LandlordNotFoundException
-	 */
 	@Test
 	public void testViewLandlord1() throws LandlordNotFoundException{
 		when(repository.existsById(landlord3.getLandlordId())).thenReturn(true);
@@ -165,10 +147,6 @@ public class LandlordServiceTest {
 		assertEquals(landlordd3.getFlatList(),service.viewLandlord(landlordd3.getLandlordId()).getFlatList());
 	}
 	
-	
-	/** 
-	 * @throws LandlordNotFoundException
-	 */
 	@Test
 	public void testViewLandlord2() throws LandlordNotFoundException {
 		when(repository.existsById(landlord1.getLandlordId())).thenReturn(false);
