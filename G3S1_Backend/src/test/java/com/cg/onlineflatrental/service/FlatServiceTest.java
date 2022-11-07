@@ -79,6 +79,10 @@ public class FlatServiceTest {
         assertNotNull(flatService.addFlat(fd1));
     }
 
+    
+    /** 
+     * @throws FlatNotFoundException
+     */
     @Test
     public void testUpdateFlat1() throws FlatNotFoundException {
         when(flatRepository.existsById(f2.getFlatId())).thenReturn(true);
@@ -89,6 +93,10 @@ public class FlatServiceTest {
         assertEquals(fd2.getAvailability(),flatService.updateFlat(fd2,fd2.getFlatId()).getAvailability());
     }
 
+    
+    /** 
+     * @throws FlatNotFoundException
+     */
     @Test
     public void testUpdateFlat2() throws FlatNotFoundException {
         when(flatRepository.existsById(f1.getFlatId())).thenReturn(false);
@@ -96,6 +104,10 @@ public class FlatServiceTest {
         assertEquals("Service.FLAT_NOT_FOUND", exception.getMessage());
     }
 
+    
+    /** 
+     * @throws FlatNotFoundException
+     */
     @Test
     public void testDeleteFlat1() throws FlatNotFoundException{
         when(flatRepository.existsById(f3.getFlatId())).thenReturn(true);
@@ -104,6 +116,10 @@ public class FlatServiceTest {
         verify(flatRepository).delete(f3);
     }
 
+    
+    /** 
+     * @throws FlatNotFoundException
+     */
     @Test
     public void testDeleteFlat2() throws FlatNotFoundException {
         when(flatRepository.existsById(f1.getFlatId())).thenReturn(false);
@@ -111,6 +127,10 @@ public class FlatServiceTest {
         assertEquals("Service.FLAT_NOT_FOUND", exception.getMessage());
     }
 
+    
+    /** 
+     * @throws FlatNotFoundException
+     */
     @Test
     public void testViewFlat1() throws FlatNotFoundException {
         when(flatRepository.existsById(f1.getFlatId())).thenReturn(true);
@@ -121,6 +141,10 @@ public class FlatServiceTest {
         assertEquals(fd1.getAvailability(),flatService.viewFlat(fd1.getFlatId()).getAvailability());
     }
 
+    
+    /** 
+     * @throws FlatNotFoundException
+     */
     @Test
     public void testViewFlat2() throws FlatNotFoundException {
         when(flatRepository.existsById(f1.getFlatId())).thenReturn(false);

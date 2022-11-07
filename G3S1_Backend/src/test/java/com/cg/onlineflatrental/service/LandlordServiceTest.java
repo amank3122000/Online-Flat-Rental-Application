@@ -104,6 +104,10 @@ public class LandlordServiceTest {
 		assertNotNull(service.addLandlord(landlordd1));
 	}
 	
+	
+	/** 
+	 * @throws LandlordNotFoundException
+	 */
 	@Test
 	public void testUpdateLandlord1() throws LandlordNotFoundException{
 		when(repository.existsById(landlord3.getLandlordId())).thenReturn(true);
@@ -114,6 +118,10 @@ public class LandlordServiceTest {
 		assertEquals(landlordd3.getFlatList(),service.updateLandlord(landlord3.getLandlordId(),landlordd3).getFlatList());
 	}
 	
+	
+	/** 
+	 * @throws LandlordNotFoundException
+	 */
 	@Test
 	public void testUpdateLandlord2() throws LandlordNotFoundException {
 		when(repository.existsById(landlord1.getLandlordId())).thenReturn(false);
@@ -121,6 +129,10 @@ public class LandlordServiceTest {
 		assertEquals("Service.LANDLORD_NOT_FOUND", exception.getMessage());
 	}
 	
+	
+	/** 
+	 * @throws LandlordNotFoundException
+	 */
 	@Test
 	public void testDeleteLandlord1() throws LandlordNotFoundException{
 		when(repository.existsById(landlord3.getLandlordId())).thenReturn(true);
@@ -129,6 +141,10 @@ public class LandlordServiceTest {
 		verify(repository).deleteById(landlord3.getLandlordId());
 	}
 	
+	
+	/** 
+	 * @throws LandlordNotFoundException
+	 */
 	@Test
 	public void testDeleteLandlord2() throws LandlordNotFoundException {
 		when(repository.existsById(landlord1.getLandlordId())).thenReturn(false);
@@ -137,6 +153,10 @@ public class LandlordServiceTest {
 	}
 	
 	
+	
+	/** 
+	 * @throws LandlordNotFoundException
+	 */
 	@Test
 	public void testViewLandlord1() throws LandlordNotFoundException{
 		when(repository.existsById(landlord3.getLandlordId())).thenReturn(true);
@@ -147,6 +167,10 @@ public class LandlordServiceTest {
 		assertEquals(landlordd3.getFlatList(),service.viewLandlord(landlordd3.getLandlordId()).getFlatList());
 	}
 	
+	
+	/** 
+	 * @throws LandlordNotFoundException
+	 */
 	@Test
 	public void testViewLandlord2() throws LandlordNotFoundException {
 		when(repository.existsById(landlord1.getLandlordId())).thenReturn(false);

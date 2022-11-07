@@ -2,10 +2,13 @@ package com.cg.onlineflatrental.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +24,7 @@ import com.cg.onlineflatrental.service.LandlordService;
 
 @RestController
 @RequestMapping(value = "/onlineflatrental")
+@Validated
 public class LandlordController {
 
 	@Autowired
@@ -29,33 +33,61 @@ public class LandlordController {
 	@Autowired
 	private Environment environment;
 
+	
+	/** 
+	 * @return ResponseEntity<List<LandlordDTO>>
+	 */
 	@GetMapping(value = "/landlord")
 	public ResponseEntity<List<LandlordDTO>> viewAllLandlord() {
 		List<LandlordDTO> landlordList = landlordService.viewAllLandlord();
 		return new ResponseEntity<>(landlordList, HttpStatus.OK);
 	}
 
+	
+	/** 
+	 * @param landlordId
+	 * @return ResponseEntity<LandlordDTO>
+	 * @throws LandlordNotFoundException
+	 */
 	@GetMapping(value = "/landlord/{landlordId}")
 	public ResponseEntity<LandlordDTO> viewLandlord(@PathVariable Integer landlordId) throws LandlordNotFoundException {
 		LandlordDTO landlord = landlordService.viewLandlord(landlordId);
 		return new ResponseEntity<>(landlord, HttpStatus.OK);
 	}
 
+	
+	/** 
+	 * @param landlord
+	 * @return ResponseEntity<String>
+	 */
 	@PostMapping(value = "/landlord")
-	public ResponseEntity<String> addLandlord(@RequestBody LandlordDTO landlord) {
+	public ResponseEntity<String> addLandlord(@Valid @RequestBody LandlordDTO landlord) {
 		LandlordDTO landlordId = landlordService.addLandlord(landlord);
 		String successMessage = environment.getProperty("API.INSERT_SUCCESS") + landlordId;
 		return new ResponseEntity<>(successMessage, HttpStatus.CREATED);
 	}
 
+	
+	/** 
+	 * @param landlordId
+	 * @param landlord
+	 * @return ResponseEntity<String>
+	 * @throws LandlordNotFoundException
+	 */
 	@PutMapping(value = "/landlord/{landlordId}")
-	public ResponseEntity<String> updateLandlord(@PathVariable Integer landlordId, @RequestBody LandlordDTO landlord)
+	public ResponseEntity<String> updateLandlord(@PathVariable Integer landlordId,@Valid @RequestBody LandlordDTO landlord)
 			throws LandlordNotFoundException {
 		landlordService.updateLandlord(landlordId, landlord);
 		String successMessage = environment.getProperty("API.UPDATE_SUCCESS");
 		return new ResponseEntity<>(successMessage, HttpStatus.OK);
 	}
 
+	
+	/** 
+	 * @param landlordId
+	 * @return ResponseEntity<String>
+	 * @throws LandlordNotFoundException
+	 */
 	@DeleteMapping(value = "/landlord/{landlordId}")
 	public ResponseEntity<String> deleteLandlord(@PathVariable Integer landlordId) throws LandlordNotFoundException {
 		landlordService.deleteLandlord(landlordId);

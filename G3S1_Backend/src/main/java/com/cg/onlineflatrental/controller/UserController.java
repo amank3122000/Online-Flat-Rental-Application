@@ -35,6 +35,12 @@ public class UserController {
 	@Autowired
 	private Environment environment;
 
+	
+	/** 
+	 * @param id
+	 * @return ResponseEntity<UserDTO>
+	 * @throws UserNotFoundException
+	 */
 	@GetMapping("/users/{id}")
 	public ResponseEntity<UserDTO> viewUser(@PathVariable Integer id) throws UserNotFoundException {
 		UserDTO user = userService.viewUser(id);
@@ -42,12 +48,23 @@ public class UserController {
 		return retvalue;
 	}
 	
+	
+	/** 
+	 * @return ResponseEntity<List<UserDTO>>
+	 * @throws UserNotFoundException
+	 */
 	@GetMapping("/users")
 	public ResponseEntity<List<UserDTO>> viewAllUsers() throws UserNotFoundException {
 		List<UserDTO> list=userService.viewAllUsers();
 		return new ResponseEntity<List<UserDTO>>(list,HttpStatus.OK);
 	}
 	
+	
+	/** 
+	 * @param user
+	 * @return ResponseEntity<String>
+	 * @throws UserNotFoundException
+	 */
 	@PostMapping("/users")
 	public ResponseEntity<String> addUser(@Valid @RequestBody UserDTO user) throws UserNotFoundException {
 		UserDTO user1=userService.addUser(user);
@@ -55,32 +72,65 @@ public class UserController {
 		return new ResponseEntity<>(successMessage, HttpStatus.CREATED);
 	}
 	
+	
+	/** 
+	 * @param user
+	 * @return ResponseEntity<String>
+	 * @throws UserNotFoundException
+	 */
 	@PutMapping("/users")
-	public ResponseEntity<String> updateUser(@Valid @RequestBody UserDTO user) throws UserNotFoundException{
+	public ResponseEntity<String> updateUser(@Valid @RequestBody UserDTO user) throws UserNotFoundException {
 		UserDTO user1 = userService.updateUser(user);
 		String successMessage = "User id: "+ user1.getUserId()+" ,"+environment.getProperty("API.UPDATE_SUCCESS");
 		return new ResponseEntity<>(successMessage, HttpStatus.OK);
 	}
 	
+	
+	/** 
+	 * @param user
+	 * @param newpass
+	 * @return ResponseEntity<String>
+	 * @throws UserNotFoundException
+	 */
 	@PatchMapping("/users/{newpass}")
-	public ResponseEntity<String> updatePassword(@Valid @RequestBody UserDTO user,@PathVariable String newpass) throws UserNotFoundException{
+	public ResponseEntity<String> updatePassword(@Valid @RequestBody UserDTO user,@PathVariable String newpass) throws UserNotFoundException {
 		UserDTO user1 = userService.updatePassword(user, newpass);
 		String successMessage = "User id: "+ user1.getUserId()+" ,"+environment.getProperty("API.UPDATE_SUCCESS");
 		return new ResponseEntity<>(successMessage, HttpStatus.OK);
 	}
 	
+	
+	/** 
+	 * @param userId
+	 * @return ResponseEntity<String>
+	 * @throws UserNotFoundException
+	 */
 	@DeleteMapping("/users/{userId}")
-	public ResponseEntity<String> removeUser(@PathVariable Integer userId) throws UserNotFoundException{
+	public ResponseEntity<String> removeUser(@PathVariable Integer userId) throws UserNotFoundException {
 		UserDTO user1=userService.removeUser(userId);
 		String successMessage = "User id: "+ user1.getUserId()+" ,"+environment.getProperty("API.DELETE_SUCCESS");
 		return new ResponseEntity<>(successMessage, HttpStatus.OK);
 	}
 	
-	@PatchMapping("/users/{username}/{password}")
-	public ResponseEntity<String> validateUser(@PathVariable String username, @PathVariable String password) throws UserNotFoundException, ValidationException {
-		UserDTO user1=userService.validateUser(username,password);
-		String successMessage = "User id: "+ user1.getUserId()+" ,"+environment.getProperty("API.VALIDATE_SUCCESS");
-		return new ResponseEntity<>(successMessage, HttpStatus.OK);
+	
+	/** 
+	 * @param username
+	 * @param password
+	 * @param userType
+	 * @return ResponseEntity<String>
+	 * @throws UserNotFoundException
+	 * @throws ValidationException
+	 */
+	@PatchMapping("/users/{username}/{password}/{userType}")
+	public ResponseEntity<String> validateUser(@PathVariable String username, @PathVariable String password,@PathVariable String userType) throws UserNotFoundException, ValidationException {
+		if(!userService.validateUser(username,password,userType)) {
+			ResponseEntity<String> retvalue = new ResponseEntity<String>("User and Password Not Matched.",HttpStatus.UNAUTHORIZED);
+			return retvalue;
+		}
+		else {
+			ResponseEntity<String> retvalue = new ResponseEntity<String>("User and Password Matched.",HttpStatus.ACCEPTED);
+			return retvalue;
+		}
 	}
 
 }

@@ -37,31 +37,67 @@ public class Flat {
 		this.availability = availability;
 	}
   
+	
+	/** 
+	 * @return int
+	 */
 	public int getFlatId() {
 		return flatId;
 	}
+	
+	/** 
+	 * @param flatId
+	 */
 	public void setFlatId(int flatId) {
 		this.flatId = flatId;
 	}
+	
+	/** 
+	 * @return float
+	 */
 	public float getCost() {
 		return cost;
 	}
+	
+	/** 
+	 * @param flatCost
+	 */
 	public void setCost(float flatCost) {
 		this.cost = flatCost;
 	}
+	
+	/** 
+	 * @return FlatAddress
+	 */
 	public FlatAddress getFlatAddress() {
 		return flatAddress;
 	}
+	
+	/** 
+	 * @param flatAddress
+	 */
 	public void setFlatAddress(FlatAddress flatAddress) {
 		this.flatAddress = flatAddress;
 	}
+	
+	/** 
+	 * @return String
+	 */
 	public String getAvailability() {
 		return availability;
 	}
+	
+	/** 
+	 * @param availability
+	 */
 	public void setAvailability(String availability) {
 		this.availability = availability;
 	}
   
+	
+	/** 
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return "Flat [flatId=" + flatId + ", cost=" + cost + ", flatAddress=" + flatAddress

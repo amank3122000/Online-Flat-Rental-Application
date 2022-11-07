@@ -88,6 +88,10 @@ public class FlatBookingServiceTest {
         assertEquals(flatbookingd1.getFlat().getAvailability(),service.addFlatBooking(flatbookingd1).getAvailability());
     }
 
+    
+    /** 
+     * @throws FlatBookingNotFoundException
+     */
     @Test
     public void testUpdateFlatBooking() throws FlatBookingNotFoundException {
         when(repository.findById(flatbooking2.getBookingNo())).thenReturn(flatbookingo2);
@@ -99,6 +103,10 @@ public class FlatBookingServiceTest {
         assertEquals(flatbookingd2.getBookingToDate(),service.updateFlatBooking(flatbookingd2,flatbookingd2.getBookingNo()).getBookingToDate());
     }
 
+    
+    /** 
+     * @throws FlatBookingNotFoundException
+     */
     @Test
     public void testDeleteFlatBooking() throws FlatBookingNotFoundException {
         when(repository.findById(flatbooking2.getBookingNo())).thenReturn(flatbookingo2);
@@ -106,6 +114,10 @@ public class FlatBookingServiceTest {
         verify(repository, times(1)).delete(flatbooking2);
     }
 
+    
+    /** 
+     * @throws FlatBookingNotFoundException
+     */
     @Test
     public void testViewFlatBooking() throws FlatBookingNotFoundException {
         when(repository.findById(flatbooking1.getBookingNo())).thenReturn(flatbookingo1);

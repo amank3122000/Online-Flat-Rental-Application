@@ -47,6 +47,10 @@ public class TenantServiceTest {
 		
 		cd2=new TenantDTO(2, 18,new FlatAddressDTO(11,"ajmerrroad", "ajmer", "rajasthan", 303015, "India"));
 	}
+	
+	/** 
+	 * @throws TenantNotFoundException
+	 */
 	//Test Case to UpdateTenant
 	@Test
 	public void test_UpdateTenant() throws TenantNotFoundException {
@@ -65,6 +69,10 @@ public class TenantServiceTest {
 
 	}
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	//Test Case to viewAllTenant
 
 	@Test

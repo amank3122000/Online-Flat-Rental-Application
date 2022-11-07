@@ -42,30 +42,66 @@ public class Landlord {
 		this.flatList = flatList;
 	}
 
+	
+	/** 
+	 * @return Integer
+	 */
 	public Integer getLandlordId() {
 		return landlordId;
 	}
+	
+	/** 
+	 * @param landlordId
+	 */
 	public void setLandlordId(Integer landlordId) {
 		this.landlordId = landlordId;
 	}
+	
+	/** 
+	 * @return String
+	 */
 	public String getLandlordName() {
 		return landlordName;
 	}
+	
+	/** 
+	 * @param landlordName
+	 */
 	public void setLandlordName(String landlordName) {
 		this.landlordName = landlordName;
 	}
+	
+	/** 
+	 * @return int
+	 */
 	public int getLandlordAge() {
 		return landlordAge;
 	}
+	
+	/** 
+	 * @param landlordAge
+	 */
 	public void setLandlordAge(int landlordAge) {
 		this.landlordAge = landlordAge;
 	}
+	
+	/** 
+	 * @return List<Flat>
+	 */
 	public List<Flat> getFlatList() { 
 		  return flatList; 
 	} 
+	
+	/** 
+	 * @param flatList
+	 */
 	public void setFlatList(List<Flat> flatList) { 
 		  this.flatList = flatList;
 	}
+	
+	/** 
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return "Landlord [landlordId=" + landlordId + ", landlordName=" + landlordName + ", landlordAge=" + landlordAge
