@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 import Home from '../Tenant-page/Home';
 import Header from '../Tenant-page/Header';
@@ -18,6 +18,7 @@ function Tenant() {
    return (
       <React.Fragment>
             <Router>
+              <Routes>
     <div className="container mt-2">
       {/* <AddFlatBooking /> */}
       <Header />
@@ -28,9 +29,8 @@ function Tenant() {
       <Route path="/updatebooking" exact component={UpdateBooking} />
       <Route path="/addbooking" exact component={AddFlatBooking} />
       <Footer />
-      
-
     </div>
+    </Routes>
     </ Router>
       </React.Fragment>
     );

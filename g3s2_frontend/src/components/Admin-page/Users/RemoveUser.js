@@ -19,7 +19,7 @@ function RemoveUser() {
 
   const handleBtnClick = (e)=>{
       console.log(e.target.response)
-      setFormErrors(validate(user));
+      setFormErrors(validate(userid));
       setIsSubmit(true);
       window.alert("User Removed");
   }

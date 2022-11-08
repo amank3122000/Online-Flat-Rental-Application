@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios'
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 function UpdateBooking() {
     let initialBooking={bookingFromDate:null,bookingToDate:null};
     let [booking, setBooking] = useState(initialBooking);
     let [id, setId] = useState(0);
     let [uid,setUid]= useState(0);
-    const history = useHistory();
+    const history = useNavigate();
 
 
     useEffect(()=>

@@ -18,21 +18,21 @@ import LoginAction from './components/Login-Page/LoginAction';
 
 function App() {
   return (
-    
+
     <Router>
 
       <Routes>
-        <Route exact path="/" component = {Home}/>
-        <Route path="/login" component = {Login}/>
-        <Route path="/loginactions" component = {LoginAction}/>
-        <Route exact path="/admin" component = {AdminPage}/>
-        <Route exact path="/tenant" component = {Tenant}/>
-        <Route exact path="/landlord" component = {LandLord}/>
-        <Route component={NotFoundPage}/>
+        <Route exact path="/" element={<Home />}/>
+        <Route path="/login" element={<Login />}/>
+        <Route path="/loginactions" element={<LoginAction />}/>
+        <Route exact path="/admin" element={<AdminPage />}/>
+        <Route exact path="/tenant" element={<Tenant />}/>
+        <Route exact path="/landlord" element={<LandLord />}/>
+        <Route element={<NotFoundPage />}/>
       </Routes>
 
     </Router>
-     
+
   );
 }
 

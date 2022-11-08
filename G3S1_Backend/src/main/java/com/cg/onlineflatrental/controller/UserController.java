@@ -31,7 +31,7 @@ import io.swagger.annotations.Api;
 @RequestMapping(value = "/onlineflatrental/users")
 @CrossOrigin(origins="http://localhost:3000")
 @Validated
-@Api(value="users")
+//@Api(value="users")
 public class UserController {
 	
 	@Autowired

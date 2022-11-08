@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios'
-import { useHistory } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 function ViewFlatByBid() {
 //   let initialBooking = [] ;
   let initialBooking={bookingNo:null,bookingFromDate:null,bookingToDate:null,flat:{flatId: null},tenantId:{tenantId : null}}
   let [booking, setBooking] = useState(initialBooking);
   let [id, setId] = useState(0);
   let [btnId,setBtnId]=useState(0)
-  const history = useHistory();
+  const history = useNavigate();
   const formStyle = {
     backgroundColor: "#FFFAFA",
     padding: "15px"

@@ -31,7 +31,7 @@ function AddUser() {
   useEffect(() => {
     console.log(formErrors);
     if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log(formValues);
+      console.log(user);
     }
   }, [formErrors]);
 
@@ -58,7 +58,7 @@ function AddUser() {
         {Object.keys(formErrors).length === 0 && isSubmit ? (
         <div className="ui message success">User Added.</div>
       ) : (
-        <pre>{JSON.stringify(formValues, undefined, 2)}</pre>
+        <pre>{JSON.stringify(user, undefined, 2)}</pre>
       )}
         <form className="c2" method="POST">
     <h1 className="form-text ">Add User</h1>

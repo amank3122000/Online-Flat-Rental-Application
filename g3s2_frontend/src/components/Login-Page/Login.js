@@ -54,9 +54,6 @@ function Login() {
        <React.Fragment>
         <Router>     
         <Routes>
- 
- 
- 
        <div className={styles.loginbox}>   
           <div className={styles.c1}>
              

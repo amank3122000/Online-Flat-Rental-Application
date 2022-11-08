@@ -1,6 +1,6 @@
 import {useEffect,useState} from 'react'
 import {connect} from 'react-redux'
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import React from 'react'
 
@@ -25,7 +25,7 @@ function LoginAction(props)
      useEffect(()=>
     {     
         axios
-        .get(`http://localhost:8080/login/authenticateUser/${props.username}/${props.password}/${props.usertype}`)
+        .get(`http://localhost:8765/login/authenticateUser/${props.username}/${props.password}/${props.usertype}`)
         .then((response) => {
 
 console.log(response)
@@ -50,7 +50,7 @@ console.log(response)
                       
              console.log('hello tenant')
             history.push('/tenant')
-  
+            
             setTimeout(function(){
                 myFunction()
               },500)
