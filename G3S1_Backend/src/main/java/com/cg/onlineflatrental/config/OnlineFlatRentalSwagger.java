@@ -34,5 +34,5 @@ public class OnlineFlatRentalSwagger {
 				.licenseUrl("https://www.google.co.in").version("1.0").build();
 	}
 	
-	// Swagger url: http://localhost:8765/swagger-ui.html
+	// Swagger url: http://localhost:8080/swagger-ui.html
 }
