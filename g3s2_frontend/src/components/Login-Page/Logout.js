@@ -8,17 +8,13 @@ function Logout()
     }
     setTimeout(preback(),0);
   
-    window.onunlod=()=>(null);
+    window.onunload=()=>(null);
 
     sessionStorage.clear()
     
     const history=useNavigate()
-
-  
-        history.push('/login')
-
-   
-
+    history.push('/login')
+    
     return (
         <></>
     )
