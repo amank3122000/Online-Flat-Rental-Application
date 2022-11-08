@@ -1,9 +1,7 @@
 import './App.css';
 
-
-import './components/Admin-page/AdminPage/dropdown-script';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom"
 
 import Home from './components/Home-Page/Home';
 import Login from './components/Login-Page/Login';
@@ -22,8 +20,8 @@ function App() {
   return (
     
     <Router>
-      
-      <Switch>
+
+      <Routes>
         <Route exact path="/" component = {Home}/>
         <Route path="/login" component = {Login}/>
         <Route path="/loginactions" component = {LoginAction}/>
@@ -31,7 +29,7 @@ function App() {
         <Route exact path="/tenant" component = {Tenant}/>
         <Route exact path="/landlord" component = {LandLord}/>
         <Route component={NotFoundPage}/>
-      </Switch>
+      </Routes>
 
     </Router>
      

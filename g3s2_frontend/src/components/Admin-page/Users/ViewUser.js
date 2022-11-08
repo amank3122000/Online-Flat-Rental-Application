@@ -5,10 +5,12 @@ function ViewUser() {
 
     
    // const [status, setStatus] = useState(null);
-    const [userid,setUser] = useState(0);
-    const [user,setUserDetail] = useState([]);
+    const [userid,setUserid] = useState(0);
+    const [userDetails,setUserDetail] = useState([]);
     const [btn,setButton] = useState(0);
     const [deletebtn,setdeleteButton] = useState(0);
+    const [formErrors, setFormErrors] = useState({});
+    const [isSubmit, setIsSubmit] = useState(false);
 
  
     useEffect(() => {
@@ -23,7 +25,7 @@ function ViewUser() {
             axios.delete(URL).then(response=>
                 {
                     setUserDetail([]);
-                    setUser(0);
+                    setUserid(0);
                     btn(0);
                 }).catch(error=>console.log(error.response));
         },[deletebtn]);
@@ -33,10 +35,26 @@ function ViewUser() {
  
    const handleBtnClick = (e)=>{
     e.preventDefault();
+    setFormErrors(validate(userDetails));
+    setIsSubmit(true);
     setButton(userid)
       
   }
 
+  useEffect(() => {
+    console.log(formErrors);
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
+      console.log(userid);
+    }
+  }, [formErrors]);
+
+  const validate = (values) => {
+    const errors = {};
+    if (!values.username) {
+        errors.userid = "User id is required!";
+    }
+    return errors;
+  };
 
   const handleDeleteBtnClick =(e)=>{
       e.preventDefault();
@@ -51,9 +69,10 @@ function ViewUser() {
                 <br/>
                 <input name="userId" type="number" placeholder="User ID*" className="username"
                   value = {userid}
-                  onChange={e=>setUser(e.target.value)}
+                  onChange={e=>setUserid(e.target.value)}
                 
                 />
+                <p>{formErrors.userid}</p>
                 <br/>
                 <button className="btn" onClick={handleBtnClick}>View User</button>
             </form>
@@ -71,9 +90,9 @@ function ViewUser() {
             <tbody className="table-success ">
             
                     <tr>
-                        <td className="col-md-2">{user.userId}</td>
-                        <td className="col-md-3">{user.userName}</td>
-                        <td className="col-md-3">{user.userType}</td>
+                        <td className="col-md-2">{userDetails.userId}</td>
+                        <td className="col-md-3">{userDetails.userName}</td>
+                        <td className="col-md-3">{userDetails.userType}</td>
                         <td className="col-md-3">
                     <button className="btn btn-warning logout-btn" type="submit">Update</button>
                     <button className="btn btn-danger logout-btn" type="submit" 

@@ -1,10 +1,9 @@
 import React,{useState} from 'react';
 import './admin.css';
 import { Link } from 'react-router-dom';
-import './dropdown-script';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom"
 
 import AddUser from '../Users/AddUser';
 import ViewAllUser from '../Users/ViewAllUser';
@@ -143,7 +142,7 @@ function togglebtn(){
     
       </div>
       <div className="content-area col-md-10">     
-      <Switch>
+      <Routes>
         <Route path="/admin/user/adduser" component = {AddUser}/>
         <Route path="/admin/user/viewalluser" component = {ViewAllUser}/>
         <Route path="/admin/user/removeuser" component = {RemoveUser}/>
@@ -174,7 +173,7 @@ function togglebtn(){
         <Route path="/admin/flat/viewflat" component = {ViewFlat}/>          
         <Route path="/admin/flat/viewAllflat" component = {ViewAllFlat}/>          
 
-        </Switch>
+        </Routes>
        </div>
 <script src="dropdown-script.js" type="text/javascript"></script>
 </Router>

@@ -1,4 +1,4 @@
-import{useHistory} from 'react-router-dom';
+import{useNavigate} from 'react-router-dom';
 
 function Logout()
 {
@@ -12,7 +12,7 @@ function Logout()
 
     sessionStorage.clear()
     
-    const history=useHistory()
+    const history=useNavigate()
 
   
         history.push('/login')
