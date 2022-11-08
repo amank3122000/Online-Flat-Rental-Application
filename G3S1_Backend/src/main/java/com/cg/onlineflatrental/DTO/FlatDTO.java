@@ -12,7 +12,6 @@ public class FlatDTO {
     private FlatAddressDTO flatAddress;
 	@NotNull(message = "Flat availability is mandatory")
     private String availability;
-    private LandlordDTO landlord;
 
     public FlatDTO() {
     	super();
@@ -88,22 +87,7 @@ public class FlatDTO {
     public void setAvailability(String availability) {
         this.availability = availability;
     }
-    
-    
-    /** 
-     * @return LandlordDTO
-     */
-    public LandlordDTO getLandlord() {
-		return landlord;
-	}
-
-	
-    /** 
-     * @param landlord
-     */
-    public void setLandlord(LandlordDTO landlord) {
-		this.landlord = landlord;
-	}
+   
 
 	
     /** 

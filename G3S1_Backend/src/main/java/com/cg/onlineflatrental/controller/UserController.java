@@ -9,6 +9,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -24,9 +25,13 @@ import com.cg.onlineflatrental.exception.UserNotFoundException;
 import com.cg.onlineflatrental.exception.ValidationException;
 import com.cg.onlineflatrental.service.UserService;
 
+import io.swagger.annotations.Api;
+
 @RestController
-@RequestMapping(value = "/onlineflatrental")
+@RequestMapping(value = "/onlineflatrental/users")
+@CrossOrigin(origins="http://localhost:3000")
 @Validated
+@Api(value="users")
 public class UserController {
 	
 	@Autowired
@@ -41,7 +46,7 @@ public class UserController {
 	 * @return ResponseEntity<UserDTO>
 	 * @throws UserNotFoundException
 	 */
-	@GetMapping("/users/{id}")
+	@GetMapping("/viewUser/{id}")
 	public ResponseEntity<UserDTO> viewUser(@PathVariable Integer id) throws UserNotFoundException {
 		UserDTO user = userService.viewUser(id);
 		ResponseEntity<UserDTO> retvalue = new ResponseEntity<UserDTO>(user, HttpStatus.OK);
@@ -53,7 +58,7 @@ public class UserController {
 	 * @return ResponseEntity<List<UserDTO>>
 	 * @throws UserNotFoundException
 	 */
-	@GetMapping("/users")
+	@GetMapping("/viewAllUsers")
 	public ResponseEntity<List<UserDTO>> viewAllUsers() throws UserNotFoundException {
 		List<UserDTO> list=userService.viewAllUsers();
 		return new ResponseEntity<List<UserDTO>>(list,HttpStatus.OK);
@@ -65,7 +70,7 @@ public class UserController {
 	 * @return ResponseEntity<String>
 	 * @throws UserNotFoundException
 	 */
-	@PostMapping("/users")
+	@PostMapping("/addUser")
 	public ResponseEntity<String> addUser(@Valid @RequestBody UserDTO user) throws UserNotFoundException {
 		UserDTO user1=userService.addUser(user);
 		String successMessage = "User id: "+ user1.getUserId()+" ,"+environment.getProperty("API.INSERT_SUCCESS");
@@ -78,7 +83,7 @@ public class UserController {
 	 * @return ResponseEntity<String>
 	 * @throws UserNotFoundException
 	 */
-	@PutMapping("/users")
+	@PutMapping("/updateUser")
 	public ResponseEntity<String> updateUser(@Valid @RequestBody UserDTO user) throws UserNotFoundException {
 		UserDTO user1 = userService.updateUser(user);
 		String successMessage = "User id: "+ user1.getUserId()+" ,"+environment.getProperty("API.UPDATE_SUCCESS");
@@ -92,7 +97,7 @@ public class UserController {
 	 * @return ResponseEntity<String>
 	 * @throws UserNotFoundException
 	 */
-	@PatchMapping("/users/{newpass}")
+	@PatchMapping("/updatePassword/{newpass}")
 	public ResponseEntity<String> updatePassword(@Valid @RequestBody UserDTO user,@PathVariable String newpass) throws UserNotFoundException {
 		UserDTO user1 = userService.updatePassword(user, newpass);
 		String successMessage = "User id: "+ user1.getUserId()+" ,"+environment.getProperty("API.UPDATE_SUCCESS");
@@ -105,7 +110,7 @@ public class UserController {
 	 * @return ResponseEntity<String>
 	 * @throws UserNotFoundException
 	 */
-	@DeleteMapping("/users/{userId}")
+	@DeleteMapping("/removeUser/{userId}")
 	public ResponseEntity<String> removeUser(@PathVariable Integer userId) throws UserNotFoundException {
 		UserDTO user1=userService.removeUser(userId);
 		String successMessage = "User id: "+ user1.getUserId()+" ,"+environment.getProperty("API.DELETE_SUCCESS");
@@ -121,7 +126,7 @@ public class UserController {
 	 * @throws UserNotFoundException
 	 * @throws ValidationException
 	 */
-	@PatchMapping("/users/{username}/{password}/{userType}")
+	@PatchMapping("/validateUser/{username}/{password}/{userType}")
 	public ResponseEntity<String> validateUser(@PathVariable String username, @PathVariable String password,@PathVariable String userType) throws UserNotFoundException, ValidationException {
 		if(!userService.validateUser(username,password,userType)) {
 			ResponseEntity<String> retvalue = new ResponseEntity<String>("User and Password Not Matched.",HttpStatus.UNAUTHORIZED);

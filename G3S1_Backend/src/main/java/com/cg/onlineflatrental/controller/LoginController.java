@@ -23,7 +23,6 @@ import io.swagger.annotations.Api;
 @RestController
 @RequestMapping(value = "/login")
 @CrossOrigin(origins="http://localhost:3000")
-
 @Api(value = "login")
 public class LoginController {
     @Autowired
