@@ -1,6 +1,6 @@
 import React ,{useState,useEffect} from 'react'
 import axios from 'axios'
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // const validateForm = errors => {
 //     let valid = true;
 //     Object.values(errors).forEach((val) => val.length > 0 && (valid = false));
@@ -39,7 +39,7 @@ var dates = new Date();
         }
     let [Flat,setFlat]=useState(initialFlat)
     // let [id,setId]=useState(0)
-    const history = useHistory();
+    const navigate = useNavigate();
     // useEffect(()=>
     // {
     //     const URL=`http://localhost:8080/FlatBookingCtrl/addFlatBooking`
@@ -61,7 +61,7 @@ var dates = new Date();
                 alert(`Flat Booking successfully `)
                 setFlat(initialFlat)
                 // setId(0);
-                history.push('/addbooking')
+                navigate.push('/addbooking')
             }).catch(error=>console.log(error.response))
         //history.push('/addbooking')
         
