@@ -10,7 +10,7 @@ function UpdateUser() {
 
 
    useEffect(() => {
-      const URL='http://localhost:8080/user/updateUser';
+      const URL='http://localhost:8080/onlineflatrental/users/updateUser';
       axios.put(URL,user).then((response) => 
       setUser(response.data)
       )

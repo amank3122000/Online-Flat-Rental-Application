@@ -10,7 +10,7 @@ function ViewAllUser() {
 
 
     useEffect(() => {
-        const URL = 'http://localhost:8080/user/viewAllUser';
+        const URL = 'http://localhost:8080/onlineflatrental/users/viewAllUsers';
         axios.get(URL).then((response) => {
             setUsers(response.data);
         })
@@ -19,7 +19,7 @@ function ViewAllUser() {
 
     useEffect(() => {
         // DELETE request using axios inside useEffect React hook
-        axios.delete(`http://localhost:8080/user/removeUser/${userid}`)
+        axios.delete(`http://localhost:8080/onlineflatrental/users/removeUser/${userid}`)
         .then(response=>{
             console.log(response);
         });

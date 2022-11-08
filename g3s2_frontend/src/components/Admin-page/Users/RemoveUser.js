@@ -11,7 +11,7 @@ function RemoveUser() {
 
    useEffect(() => {
       // DELETE request using axios inside useEffect React hook
-      axios.delete(`http://localhost:8080/user/removeUser/${userid}`)
+      axios.delete(`http://localhost:8080/onlineflatrental/users/removeUser/${userid}`)
       .then(() => setStatus('Delete successful'));
   // empty dependency array means this effect will only run once (like componentDidMount in classes)
   }, [userid]);

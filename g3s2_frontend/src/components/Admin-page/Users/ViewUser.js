@@ -15,13 +15,13 @@ function ViewUser() {
  
     useEffect(() => {
        // DELETE request using axios inside useEffect React hook
-       axios.get(`http://localhost:8080/user/viewUserByID/${userid}`)
+       axios.get(`http://localhost:8080/onlineflatrental/users/viewUser/${userid}`)
        .then((response) => setUserDetail(response.data));
 
    }, [btn]);
 
         useEffect(()=>{
-            const URL=`http://localhost:8080/user/removeUser/${userid}`
+            const URL=`http://localhost:8080/onlineflatrental/users/removeUser/${userid}`
             axios.delete(URL).then(response=>
                 {
                     setUserDetail([]);

@@ -11,7 +11,7 @@ function AddUser() {
   const [isSubmit, setIsSubmit] = useState(false);
 
   useEffect(() => {
-      const URL='http://localhost:8080/user/addUser';
+      const URL='http://localhost:8080/onlineflatrental/users/addUser';
       axios.post(URL,user).then((response) => 
       {
           setMsg(response.data)
