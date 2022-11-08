@@ -14,7 +14,7 @@ function LoginAction(props)
         }
         setTimeout(preback(),0);
       
-        window.onunlod=()=>(null);
+        window.onunload=()=>(null);
       
     const history=useNavigate()
 
