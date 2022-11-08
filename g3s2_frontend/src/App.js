@@ -12,6 +12,36 @@ import LandLord from './components/Landlord-page/LandlordPage';
 import Tenant from './components/Tenant-page/TenantPage';
 import LoginAction from './components/Login-Page/LoginAction';
 
+import AddUser from './components/Admin-page/Users/AddUser';
+import ViewAllUser from './components/Admin-page/Users/ViewAllUser';
+import RemoveUser from './components/Admin-page/Users/RemoveUser';
+import ViewUser from './components/Admin-page/Users/ViewUser';
+import UpdateUser from './components/Admin-page/Users/UpdateUser';
+
+import UpdateLandlord from './components/Admin-page/Landlord/UpdateLandlord';
+import ViewLandlord from './components/Admin-page/Landlord/ViewLandlord';
+import ViewAllLandlord from './components/Admin-page/Landlord/ViewAllLandlord';
+import RemoveLandlord from './components/Admin-page/Landlord/RemoveLandlord';
+import AddLandlord from './components/Admin-page/Landlord/AddLandlord';
+
+
+import ViewAllBooking from './components/Admin-page/Booking/ViewAllBooking';
+import ViewBooking from './components/Admin-page/Booking/ViewBooking';
+import RemoveBooking from './components/Admin-page/Booking/RemoveBooking';
+import AddBooking from './components/Admin-page/Booking/AddBooking';
+import UpdateBooking from './components/Admin-page/Booking/UpdateBooking';
+
+import ViewAllTenant from './components/Admin-page/Tenant/ViewAllTenant';
+import AddTenant from './components/Admin-page/Tenant/AddTenant';
+import RemoveTenant from './components/Admin-page/Tenant/RemoveTenant';
+import UpdateTenant from './components/Admin-page/Tenant/UpdateTenant';
+import ViewTenant from './components/Admin-page/Tenant/ViewTenant';
+
+import ViewAllFlat from './components/Admin-page/Flat/ViewAllFlat';
+import AddFlat from './components/Admin-page/Flat/AddFlat';
+import ViewFlat from './components/Admin-page/Flat/ViewFlat';
+import RemoveFlat from './components/Admin-page/Flat/RemoveFlat';
+import UpdateFlat from './components/Admin-page/Flat/UpdateFlat';
 
 
 
@@ -28,6 +58,36 @@ function App() {
         <Route exact path="/admin" element={<AdminPage />}/>
         <Route exact path="/tenant" element={<Tenant />}/>
         <Route exact path="/landlord" element={<LandLord />}/>
+
+        <Route path="/admin/user/adduser" element={<AddUser/>}/>
+        <Route path="/admin/user/viewalluser" element={<ViewAllUser />}/>
+        <Route path="/admin/user/removeuser" element={<RemoveUser />}/>
+        <Route path="/admin/user/updateuser" element={<UpdateUser />}/>
+        <Route path="/admin/user/viewuser" element={<ViewUser />} />   
+
+        <Route path="/admin/landlord/addlandlord" element={<AddLandlord />}/>       
+        <Route path="/admin/landlord/removelandlord" element={<RemoveLandlord />}/>       
+        <Route path="/admin/landlord/updatelandlord" element={<UpdateLandlord />}/>        
+        <Route path="/admin/landlord/viewlandlord" element={<ViewLandlord />}/>        
+        <Route path="/admin/landlord/viewAllLandlord" element={<ViewAllLandlord />}/>        
+
+        <Route path="/admin/tenant/addtenant" element={<AddTenant />}/>        
+        <Route path="/admin/tenant/removetenant" element={<RemoveTenant />}/>        
+        <Route path="/admin/tenant/updatetenant" element={<UpdateTenant />}/>        
+        <Route path="/admin/tenant/viewtenant" element={<ViewTenant />}/>       
+        <Route path="/admin/tenant/viewAlltenant" element={<ViewAllTenant />}/>         
+
+        <Route path="/admin/booking/addbooking" element={<AddBooking />}/>        
+        <Route path="/admin/booking/removebooking" element={<RemoveBooking />}/>        
+        <Route path="/admin/booking/updatebooking" element={<UpdateBooking />}/>       
+        <Route path="/admin/booking/viewbooking" element={<ViewBooking />}/>      
+        <Route path="/admin/booking/viewAllbooking" element={<ViewAllBooking />}/>         
+
+        <Route path="/admin/flat/addflat" element={<AddFlat />}/>        
+        <Route path="/admin/flat/removeflat" element={<RemoveFlat />}/>        
+        <Route path="/admin/flat/updateflat" element={<UpdateFlat />}/>        
+        <Route path="/admin/flat/viewflat" element={<ViewFlat />}/>          
+        <Route path="/admin/flat/viewAllflat" element={<ViewAllFlat />}/> 
         <Route element={<NotFoundPage />}/>
       </Routes>
 

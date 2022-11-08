@@ -17,21 +17,23 @@ function Tenant() {
 
    return (
       <React.Fragment>
-            <Router>
-              <Routes>
+            {/* <Router> */}
+              
     <div className="container mt-2">
       {/* <AddFlatBooking /> */}
       <Header />
       <Menu />  
-      <Route path="/tenant" exact component={Home} />
-      <Route path="/getallflats" exact component={GetAllFlats} />
-      <Route path="/viewflatbybid" exact component={ViewFlatByBid} />
-      <Route path="/updatebooking" exact component={UpdateBooking} />
-      <Route path="/addbooking" exact component={AddFlatBooking} />
+      <Routes>
+      <Route path="/tenant" exact element={<Home />} />
+      <Route path="/getallflats" exact element={<GetAllFlats />} />
+      <Route path="/viewflatbybid" exact element={<ViewFlatByBid />} />
+      <Route path="/updatebooking" exact element={<UpdateBooking />} />
+      <Route path="/addbooking" exact element={<AddFlatBooking />} />
+      </Routes>
       <Footer />
     </div>
-    </Routes>
-    </ Router>
+
+    {/* </ Router> */}
       </React.Fragment>
     );
 }

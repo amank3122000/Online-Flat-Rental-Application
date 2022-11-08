@@ -22,7 +22,7 @@ function LandLord() {
 
    return (
       <React.Fragment>
-           <Router>
+           {/* <Router> */}
         <Header/>
         <Menu/>
         <div className='container-fluid'>
@@ -36,7 +36,7 @@ function LandLord() {
         </Routes>
         </div>
         <Footer/>
-      </Router>
+      {/* </Router> */}
       </React.Fragment>
     );
 }

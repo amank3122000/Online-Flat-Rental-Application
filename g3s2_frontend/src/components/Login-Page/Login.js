@@ -52,17 +52,17 @@ function Login() {
  
     return (
        <React.Fragment>
-        <Router>     
-        <Routes>
+        {/* <Router>     
+        <Routes> */}
        <div className={styles.loginbox}>   
           <div className={styles.c1}>
              
              <div className={styles.c11}>
                 
                
-                       <Route path="/loginactions">
+                       {/* <Route path="/loginactions">
                        <LoginAction username={username} password={password} usertype = {usertype}/>
-                      </Route>
+                      </Route> */}
                       <h1 className={styles.mainhead}>Welcome</h1>
                  
              </div>
@@ -71,9 +71,9 @@ function Login() {
           
              <form className={styles.signin} method="post">
                 <h1 className={styles.signup1}>SIGN IN</h1>
-                <Route path="/loginactions">
+                {/* <Route path="/loginactions">
                        <LoginAction username={username} password={password} usertype = {usertype}/>
-                      </Route>
+                      </Route> */}
              
                 
                 <input name="username" type="text" required={true} placeholder="Username*" className={styles.username}
@@ -112,8 +112,8 @@ function Login() {
           <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
           <script src="script.js" type="text/jsx"></script>
        </div>
-       </Routes>
-       </Router>
+       {/* </Routes>
+      </Router> */}
        </React.Fragment>
      );
     }

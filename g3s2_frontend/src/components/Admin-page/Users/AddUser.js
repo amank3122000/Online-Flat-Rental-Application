@@ -23,8 +23,8 @@ function AddUser() {
       e.preventDefault();
       setFormErrors(validate(user));
       setIsSubmit(true);
-      setId(1)
-      setUser(initialuser)
+      setId(1);
+      setUser(initialuser);
       window.alert("User Added...");
   }
 
