@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+.flathomepage
+{
+  height: 460px;
+  
+  background-image: url(https://images6.alphacoders.com/686/thumb-1920-686872.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.flatheading{
+  background-color:#fff;
+}
+
+a{
+  text-decoration: none;
+  color:#282c34;
+}

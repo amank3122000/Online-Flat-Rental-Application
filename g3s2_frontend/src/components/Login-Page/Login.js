@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../Login-Page/login.module.css';
 import LoginAction from './LoginAction';
-import { BrowserRouter as Router, Switch, Route, Link, useHistory} from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate} from "react-router-dom"
 
 function Login() {
 
@@ -39,7 +39,7 @@ function Login() {
  
  
  
-    const history = useHistory();
+    const history = useNavigate();
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState(''); 
     const [usertype,setUserType] = useState(''); 
@@ -53,7 +53,7 @@ function Login() {
     return (
        <React.Fragment>
         <Router>     
-        <Switch>
+        <Routes>
  
  
  
@@ -115,7 +115,7 @@ function Login() {
           <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
           <script src="script.js" type="text/jsx"></script>
        </div>
-       </Switch>
+       </Routes>
        </Router>
        </React.Fragment>
      );

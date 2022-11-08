@@ -1,6 +1,6 @@
 import {useEffect,useState} from 'react'
 import {connect} from 'react-redux'
-import { useHistory } from 'react-router'
+import { useNavigate } from 'react-router'
 import axios from 'axios'
 import React from 'react'
 
@@ -16,7 +16,7 @@ function LoginAction(props)
       
         window.onunlod=()=>(null);
       
-    const history=useHistory()
+    const history=useNavigate()
 
         const [msg,setMsg]=useState("")
 
