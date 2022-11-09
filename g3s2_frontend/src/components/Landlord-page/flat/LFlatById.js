@@ -46,7 +46,7 @@ function LFlatById(props) {
      
   }
   useEffect(()=>{
-    const URL=`http://localhost:8080/flat/removeflat/${flatId}`
+    const URL=`http://localhost:8080/flat/deleteflat/${flatId}`
     axios.delete(URL).then(response=>
         {
             setMsg(response.data);
@@ -57,7 +57,7 @@ function LFlatById(props) {
   },[btnDelete]);
 
     useEffect(() => {
-        const URL = `http://localhost:8080/flat/viewflatbyid/${flatId}`;
+        const URL = `http://localhost:8080/flat/viewflat/${flatId}`;
         axios
           .get(URL)
           .then((response) => {

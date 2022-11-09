@@ -30,7 +30,7 @@ function LUpdateFlat() {
             }).catch(error=>console.log(error.response))
     },[id])
     useEffect(() => {
-        const URL = `http://localhost:8080/flat/viewflatbyid/${flatId}`;
+        const URL = `http://localhost:8080/flat/viewflat/${flatId}`;
         axios
           .get(URL)
           .then((response) => {

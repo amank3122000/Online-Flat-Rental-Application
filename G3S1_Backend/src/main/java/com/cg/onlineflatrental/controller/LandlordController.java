@@ -9,6 +9,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +24,11 @@ import com.cg.onlineflatrental.exception.LandlordNotFoundException;
 import com.cg.onlineflatrental.service.LandlordService;
 
 @RestController
-@RequestMapping(value = "/onlineflatrental")
+@RequestMapping(value = "/landlord")
+<<<<<<< Updated upstream
+=======
+@CrossOrigin(origins="http://localhost:3000")
+>>>>>>> Stashed changes
 @Validated
 public class LandlordController {
 
@@ -37,7 +42,7 @@ public class LandlordController {
 	/** 
 	 * @return ResponseEntity<List<LandlordDTO>>
 	 */
-	@GetMapping(value = "/landlord")
+	@GetMapping(value = "/viewalllandlord")
 	public ResponseEntity<List<LandlordDTO>> viewAllLandlord() {
 		List<LandlordDTO> landlordList = landlordService.viewAllLandlord();
 		return new ResponseEntity<>(landlordList, HttpStatus.OK);
@@ -49,7 +54,7 @@ public class LandlordController {
 	 * @return ResponseEntity<LandlordDTO>
 	 * @throws LandlordNotFoundException
 	 */
-	@GetMapping(value = "/landlord/{landlordId}")
+	@GetMapping(value = "/viewlandlord/{landlordId}")
 	public ResponseEntity<LandlordDTO> viewLandlord(@PathVariable Integer landlordId) throws LandlordNotFoundException {
 		LandlordDTO landlord = landlordService.viewLandlord(landlordId);
 		return new ResponseEntity<>(landlord, HttpStatus.OK);
@@ -60,7 +65,7 @@ public class LandlordController {
 	 * @param landlord
 	 * @return ResponseEntity<String>
 	 */
-	@PostMapping(value = "/landlord")
+	@PostMapping(value = "/addlandlord")
 	public ResponseEntity<String> addLandlord(@Valid @RequestBody LandlordDTO landlord) {
 		LandlordDTO landlordId = landlordService.addLandlord(landlord);
 		String successMessage = environment.getProperty("API.INSERT_SUCCESS") + landlordId;
@@ -74,7 +79,7 @@ public class LandlordController {
 	 * @return ResponseEntity<String>
 	 * @throws LandlordNotFoundException
 	 */
-	@PutMapping(value = "/landlord/{landlordId}")
+	@PutMapping(value = "/updatelandlord/{landlordId}")
 	public ResponseEntity<String> updateLandlord(@PathVariable Integer landlordId,@Valid @RequestBody LandlordDTO landlord)
 			throws LandlordNotFoundException {
 		landlordService.updateLandlord(landlordId, landlord);
@@ -88,7 +93,7 @@ public class LandlordController {
 	 * @return ResponseEntity<String>
 	 * @throws LandlordNotFoundException
 	 */
-	@DeleteMapping(value = "/landlord/{landlordId}")
+	@DeleteMapping(value = "/deletelandlord/{landlordId}")
 	public ResponseEntity<String> deleteLandlord(@PathVariable Integer landlordId) throws LandlordNotFoundException {
 		landlordService.deleteLandlord(landlordId);
 		String successMessage = environment.getProperty("API.DELETE_SUCCESS");

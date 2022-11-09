@@ -9,6 +9,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +24,8 @@ import com.cg.onlineflatrental.exception.FlatNotFoundException;
 import com.cg.onlineflatrental.service.FlatService;
 
 @RestController
-@RequestMapping(value = "/onlineflatrental")
+@RequestMapping(value = "/flat")
+@CrossOrigin(origins="http://localhost:3000")
 @Validated
 public class FlatController {
 
@@ -38,7 +40,7 @@ public class FlatController {
      * @param flat
      * @return ResponseEntity<FlatDTO>
      */
-    @PostMapping(value = "/flat")
+    @PostMapping(value = "/addflat")
     public ResponseEntity<FlatDTO> addFlat(@Valid @RequestBody FlatDTO flat) {
         return new ResponseEntity<>(flatService.addFlat(flat), HttpStatus.CREATED);
     }
@@ -50,7 +52,7 @@ public class FlatController {
      * @return ResponseEntity<String>
      * @throws FlatNotFoundException
      */
-    @PutMapping("/flat/{flatId}")
+    @PutMapping("/updateflat/{flatId}")
     public ResponseEntity<String> updateFlat(@Valid @RequestBody FlatDTO flat, @PathVariable Integer flatId)
             throws FlatNotFoundException {
         flatService.updateFlat(flat, flatId);
@@ -64,7 +66,7 @@ public class FlatController {
      * @return ResponseEntity<String>
      * @throws FlatNotFoundException
      */
-    @DeleteMapping(value = "/flat/{flatId}")
+    @DeleteMapping(value = "/deleteflat/{flatId}")
     public ResponseEntity<String> deleteFlat(@PathVariable Integer flatId) throws FlatNotFoundException {
         flatService.deleteFlat(flatId);
         String successMessage = environment.getProperty("API.DELETE_SUCCESS");
@@ -77,7 +79,7 @@ public class FlatController {
      * @return ResponseEntity<FlatDTO>
      * @throws FlatNotFoundException
      */
-    @GetMapping(value = "/flat/{flatId}")
+    @GetMapping(value = "/viewflat/{flatId}")
     public ResponseEntity<FlatDTO> viewFlat(@PathVariable Integer flatId) throws FlatNotFoundException {
         FlatDTO flat = flatService.viewFlat(flatId);
         return new ResponseEntity<>(flat, HttpStatus.OK);
@@ -87,7 +89,7 @@ public class FlatController {
     /** 
      * @return ResponseEntity<List<FlatDTO>>
      */
-    @GetMapping(value = "/flat")
+    @GetMapping(value = "/viewallflat")
     public ResponseEntity<List<FlatDTO>> viewAllFlat() {
         List<FlatDTO> flatList = flatService.viewAllFlat();
         return new ResponseEntity<>(flatList, HttpStatus.OK);
@@ -99,7 +101,7 @@ public class FlatController {
      * @param availability
      * @return List<FlatDTO>
      */
-    @GetMapping("flat/{cost}/{availability}")
+    @GetMapping("findflat/{cost}/{availability}")
     public List<FlatDTO> findByCostAndAvailability(@PathVariable("cost") float cost, @PathVariable("availability") String availability) {
         return flatService.findByCostAndAvailability(cost, availability);
     }

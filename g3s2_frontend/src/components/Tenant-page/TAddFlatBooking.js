@@ -30,14 +30,14 @@ var dates = new Date();
 
  function TAddFlatBooking(){
     
-    let initialFlat={
+    let initialFlatBooking={
         bookingFromDate: null,
         bookingToDate: null ,
         flat:{flatId:null},
         tenantId:{tenantId:null},
 
         }
-    let [Flat,setFlat]=useState(initialFlat)
+    let [FlatBooking,setFlatBooking]=useState(initialFlatBooking)
     // let [id,setId]=useState(0)
     const history = useNavigate();
     // useEffect(()=>
@@ -55,13 +55,13 @@ var dates = new Date();
    const handleBtnClick=(event)=>
     {
         event.preventDefault()
-        const URL=`http://localhost:8080/FlatBookingCtrl/addFlatBooking`
-        axios.post(URL,Flat).then(response=>
+        const URL=`http://localhost:8080/flatbooking/addflatbooking`
+        axios.post(URL,FlatBooking).then(response=>
             {
                 alert(`Flat Booking successfully `)
-                setFlat(initialFlat)
+                setFlatBooking(initialFlatBooking)
                 // setId(0);
-                history.push('/addbooking')
+                history.push('/flatbooking/addflatbooking')
             }).catch(error=>console.log(error.response))
         //history.push('/addbooking')
         
@@ -79,7 +79,7 @@ var dates = new Date();
     //             bookingToDate: this.state.bookingToDate,
                 
     //         }
-    //         axios.post('http://localhost:8080/FlatBookingCtrl/addFlatBooking',booking)
+    //         axios.post('http://localhost:8080/flatbooking/addFlatBooking',booking)
     //             .then(response => {
     //                 console.log(response);
     //                 alert("Details Updated Successfully")
@@ -108,20 +108,20 @@ var dates = new Date();
                                         type="number"
                                         range min='1'
                                         name="tenant Id"
-                                        value={Flat.tenantId.tenantId}
-                                        onChange={e=>setFlat({...Flat,tenantId:{tenantId : e.target.value}})}
+                                        value={FlatBooking.tenantId.tenantId}
+                                        onChange={e=>setFlatBooking({...FlatBooking,tenantId:{tenantId : e.target.value}})}
                                         placeholder="Enter Tenant Id"
                                         required
                                     ></input>
                                 </div>
                                 <div className="col mt-2">
-                                    <label className="form-label">Flat Id</label>
+                                    <label className="form-label">FlatBooking Id</label>
                                     <input className="form-control"
                                         type="number"
                                         range min='1'
                                         name="flat Id"
-                                        value={Flat.flat.flatId}
-                                        onChange={e=>setFlat({...Flat,flat:{flatId : e.target.value}})}
+                                        value={FlatBooking.flat.flatId}
+                                        onChange={e=>setFlatBooking({...FlatBooking,flat:{flatId : e.target.value}})}
                                         placeholder="Enter Flat Id"
                                         required
                                     ></input>
@@ -134,8 +134,8 @@ var dates = new Date();
                                         type="Date"
                                         min={minDate}
                                         name="bookingfromDate"
-                                        value={Flat.bookingFromDate}
-                                        onChange={e=>setFlat({...Flat,bookingFromDate: e.target.value})}
+                                        value={FlatBooking.bookingFromDate}
+                                        onChange={e=>setFlatBooking({...FlatBooking,bookingFromDate: e.target.value})}
                                         required
                                     ></input>
                                 </div>
@@ -145,8 +145,8 @@ var dates = new Date();
                                         type="Date"
                                         min={minDate}
                                         name="bookingtoDate"
-                                        value={Flat.bookingToDate}
-                                        onChange={e=>setFlat({...Flat,bookingToDate: e.target.value})}
+                                        value={FlatBooking.bookingToDate}
+                                        onChange={e=>setFlatBooking({...FlatBooking,bookingToDate: e.target.value})}
                                         required
                                     ></input>
                                 </div>

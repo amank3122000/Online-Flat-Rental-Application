@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {useEffect,useState} from 'react'
 import {connect} from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -25,7 +26,7 @@ function LoginAction(props)
      useEffect(()=>
     {     
         axios
-        .get(`http://localhost:8765/login/authenticateUser/${props.username}/${props.password}/${props.usertype}`)
+        .get(`http://localhost:8080/login/authenticateUser/${props.username}/${props.password}/${props.usertype}`)
         .then((response) => {
 
 console.log(response)
