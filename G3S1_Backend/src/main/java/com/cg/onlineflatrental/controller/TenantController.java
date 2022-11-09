@@ -24,7 +24,7 @@ import com.cg.onlineflatrental.exception.TenantNotFoundException;
 import com.cg.onlineflatrental.service.TenantService;
 
 @RestController
-@RequestMapping(value = "/onlineflatrental")
+@RequestMapping(value = "/tenant")
 @Validated
   public class TenantController {
 	
@@ -36,7 +36,7 @@ import com.cg.onlineflatrental.service.TenantService;
 	 * @param tenant
 	 * @return ResponseEntity<TenantDTO>
 	 */
-	@PostMapping("/tenant")
+	@PostMapping("/addtenant")
 	public ResponseEntity<TenantDTO> addTenant(@Valid @RequestBody TenantDTO tenant) {
 		return new ResponseEntity<>(tenantServ.addTenant(tenant), HttpStatus.CREATED);
 	}
@@ -48,7 +48,7 @@ import com.cg.onlineflatrental.service.TenantService;
 	 * @return ResponseEntity<TenantDTO>
 	 * @throws TenantNotFoundException
 	 */
-	@PutMapping("/tenant/{tenantId}")
+	@PutMapping("/updatetenant/{tenantId}")
 	public ResponseEntity<TenantDTO> updateTenant(@PathVariable int tenantId,@Valid @RequestBody TenantDTO tenant)
 			throws TenantNotFoundException {
 		TenantDTO t = tenantServ.updateTenant(tenantId, tenant);
@@ -62,7 +62,7 @@ import com.cg.onlineflatrental.service.TenantService;
 	 * @return ResponseEntity<String>
 	 * @throws TenantNotFoundException
 	 */
-	@DeleteMapping("/tenant/{tenantId}")
+	@DeleteMapping("/deletetenant/{tenantId}")
 	public ResponseEntity<String> deleteTenant(@PathVariable int tenantId) throws TenantNotFoundException {
 		tenantServ.deleteTenant(tenantId);
 		return new ResponseEntity<String>("Tenant with Tenant Id " + tenantId + " deleted successfuly", HttpStatus.OK);
@@ -73,7 +73,7 @@ import com.cg.onlineflatrental.service.TenantService;
 	/** 
 	 * @return ResponseEntity<List<TenantDTO>>
 	 */
-	@GetMapping("/tenants")
+	@GetMapping("/gettenants")
 	public ResponseEntity<List<TenantDTO>> viewAllTenant() {
 		List<TenantDTO> list = (List<TenantDTO>) tenantServ.viewAllTenant();
 		return new ResponseEntity<List<TenantDTO>>(list, HttpStatus.OK);
@@ -85,7 +85,7 @@ import com.cg.onlineflatrental.service.TenantService;
 	 * @return ResponseEntity<TenantDTO>
 	 * @throws TenantNotFoundException
 	 */
-	@GetMapping("/tenant/{tenantId}")
+	@GetMapping("/viewtenant/{tenantId}")
 	public ResponseEntity<TenantDTO> viewTenant(@PathVariable int tenantId) throws TenantNotFoundException {
 		TenantDTO t = tenantServ.viewTenant(tenantId);
 		return new ResponseEntity<TenantDTO>(t, HttpStatus.OK);
@@ -98,7 +98,7 @@ import com.cg.onlineflatrental.service.TenantService;
 	 * @return ResponseEntity<String>
 	 * @throws TenantNotFoundException
 	 */
-	@PatchMapping("/tenant/{tenantId}")
+	@PatchMapping("/validatetenant/{tenantId}")
 	public ResponseEntity<String>validateTenant(@PathVariable int tenantId) throws TenantNotFoundException {
 		if(!tenantServ.validateTenant(tenantId)) {
 			return new ResponseEntity<String>("Tenant Id not match", HttpStatus.NOT_FOUND);

@@ -29,7 +29,7 @@ import com.cg.onlineflatrental.service.ITenantService;
 
 
 @RestController
-@RequestMapping(value = "/onlineflatrental")
+@RequestMapping(value = "/flatbooking")
 @Validated
 public class FlatBookingController {
 
@@ -49,7 +49,7 @@ public class FlatBookingController {
      * @throws TenantNotFoundException
      * @throws FlatNotFoundException
      */
-    @PostMapping("/flatbooking")
+    @PostMapping("/addflatbooking")
     public ResponseEntity<String> addFlatBooking(@Valid @RequestBody FlatBookingDTO flat) throws TenantNotFoundException, FlatNotFoundException {
         flatService.viewFlat(flat.getFlat().getFlatId());
         tenantServ.viewTenant(flat.getTenantId().getTenantId());
@@ -61,7 +61,7 @@ public class FlatBookingController {
     /** 
      * @return ResponseEntity<List<FlatBookingDTO>>
      */
-    @GetMapping("/flatbookings")
+    @GetMapping("/viewAllFlatBooking")
     public ResponseEntity<List<FlatBookingDTO>> viewAllFlatBooking() {
         List<FlatBookingDTO> list=fbs.viewAllFlatBooking();
         return new ResponseEntity<List<FlatBookingDTO>>(list,HttpStatus.OK);
@@ -73,7 +73,7 @@ public class FlatBookingController {
      * @return ResponseEntity<FlatDTO>
      * @throws FlatBookingNotFoundException
      */
-    @GetMapping("/flatbooking/{id}")
+    @GetMapping("/viewflatbooking/{id}")
     public ResponseEntity<FlatDTO> viewFlatBooking(@PathVariable int id) throws FlatBookingNotFoundException {
         FlatBookingDTO fb=fbs.viewFlatBooking(id);
         return new ResponseEntity<FlatDTO>(fb.getFlat(),HttpStatus.OK);
@@ -85,7 +85,7 @@ public class FlatBookingController {
      * @return ResponseEntity<String>
      * @throws FlatBookingNotFoundException
      */
-    @DeleteMapping("/flatbooking/{id}")
+    @DeleteMapping("/deleteflatbooking/{id}")
     public ResponseEntity<String> deleteFlatBooking(@PathVariable int id) throws FlatBookingNotFoundException{
         fbs.deleteFlatBooking(id);
         return new ResponseEntity<String>("FlatBooking with Booking No: "+id+" sucessfully deleted.",HttpStatus.OK);
@@ -100,7 +100,7 @@ public class FlatBookingController {
      * @throws TenantNotFoundException
      * @throws FlatNotFoundException
      */
-    @PutMapping("/flatbooking/{id}")
+    @PutMapping("/updateflatbooking/{id}")
     public ResponseEntity<FlatBookingDTO> updateFlatBooking(@Valid @RequestBody FlatBookingDTO flatbooking,@PathVariable int id) throws FlatBookingNotFoundException, TenantNotFoundException, FlatNotFoundException {
         FlatBookingDTO fb = fbs.updateFlatBooking(flatbooking,id);
         TenantDTO t = tenantServ.updateTenant(fb.getTenantId().getTenantId(), fb.getTenantId());

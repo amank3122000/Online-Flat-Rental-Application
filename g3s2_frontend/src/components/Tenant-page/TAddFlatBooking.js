@@ -55,7 +55,7 @@ var dates = new Date();
    const handleBtnClick=(event)=>
     {
         event.preventDefault()
-        const URL=`http://localhost:8080/FlatBookingCtrl/addFlatBooking`
+        const URL=`http://localhost:8080/flatbooking/addflatbooking`
         axios.post(URL,Flat).then(response=>
             {
                 alert(`Flat Booking successfully `)
