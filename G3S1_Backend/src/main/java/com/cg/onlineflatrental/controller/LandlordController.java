@@ -25,10 +25,7 @@ import com.cg.onlineflatrental.service.LandlordService;
 
 @RestController
 @RequestMapping(value = "/landlord")
-<<<<<<< Updated upstream
-=======
 @CrossOrigin(origins="http://localhost:3000")
->>>>>>> Stashed changes
 @Validated
 public class LandlordController {
 
