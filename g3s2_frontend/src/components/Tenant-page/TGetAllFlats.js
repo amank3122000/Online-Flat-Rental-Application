@@ -18,7 +18,7 @@ const mystyle = {
   };
 
   useEffect(() => {
-    const URL = "http://localhost:8080/flat/getallflats";
+    const URL = "http://localhost:8080/flat/viewallflat";
     axios
       .get(URL)
       .then((response) => {
@@ -65,8 +65,8 @@ const mystyle = {
                 <td>{flat.flatAddress.pin}</td>
                 <td>{flat.flatAddress.state}</td>
                 <td>{flat.flatAddress.country}</td>
-                <td>{flat.flatCost}</td>
-                <td>{flat.flatAvailability}</td>
+                <td>{flat.cost}</td>
+                <td>{flat.availability}</td>
                 {/* <td><button className="btn btn-outline-danger" onClick={()=>handleDeleteOrder(flat.bookingId)}>Delete</button></td> */}
               </tr>
             ))}
@@ -77,7 +77,7 @@ const mystyle = {
       {/* <div className="col-15 container">
                                     <button type="submit" onClick ={handleSubmit} className="btn btn-primary mt-3">BOOK NOW</button>
                                 </div> */}
-                                <Link to="addbooking"><button style={{width:"120px"}}  className=" btn btn-outline-light btn-success" type="submit">BOOK NOW</button></Link>
+                                <Link to="/tenant/addbooking"><button style={{width:"120px"}}  className=" btn btn-outline-light btn-success" type="submit">BOOK NOW</button></Link>
     </div>
   );
 }
