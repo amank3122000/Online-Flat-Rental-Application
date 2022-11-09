@@ -95,6 +95,10 @@
     margin: 0 35px ;
     font-size: 14px;
  }
+ .ViewAllUsers{
+  position: relative;
+  top: 75px;
+ }
  .c2{
     box-shadow:0 0 10px grey;
     background-color:#EAE7DC;
@@ -139,6 +143,7 @@ form > .form-text{
   border-radius:15px;
   position:absolute;
   left:200px;
+  top: 75px;
   right: 200px;
   display:inline-block;
   margin-top: 30px;
@@ -148,7 +153,6 @@ form > .form-text{
   clear: both;
   position: relative;
   top: 300px;
-  
 }
 
 .lable-tag{

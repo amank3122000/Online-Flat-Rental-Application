@@ -13,7 +13,8 @@ function UpdateUser() {
    useEffect(() => {
       const URL='http://localhost:8080/users/updateUser';
       axios.put(URL,user).then((response) => 
-      setUser(response.data)
+      { setUser(response.data);
+        window.alert("User Updated...");}
       )
       .catch(error => console.log(error.message))
   },[btn]);
@@ -24,7 +25,6 @@ function UpdateUser() {
       setFormErrors(validate(user));
       setIsSubmit(true);
       setButton(user.userid)
-      window.alert("User Updated...");
 
   }
 
@@ -44,7 +44,7 @@ function UpdateUser() {
       errors.username = "User id is required!";
     }
     if (!values.userType) {
-      errors.email = "User type is required!";
+      errors.userType = "User type is required!";
     } 
     if (!values.password) {
       errors.password = "Password is required";
@@ -92,6 +92,7 @@ function UpdateUser() {
         value={user.userType} onChange={e=>setUser({...user,userType:e.target.value})}
         >
           <option value="">New User Type</option>
+          <option value="admin">Admin</option>
           <option value="landlord">Landlord</option>
           <option value="tenant">Tenant</option>
          </select>
