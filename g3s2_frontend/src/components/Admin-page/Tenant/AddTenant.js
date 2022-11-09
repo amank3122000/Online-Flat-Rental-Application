@@ -5,7 +5,8 @@ import axios from 'axios';
 function AddTenant() {
 
 
-  let initialtenant={tAddress:{
+  let initialtenant={tenantId:0,
+    tAddress:{
     houseNo:0,
     street:'',
     city:'',
@@ -17,20 +18,86 @@ function AddTenant() {
   let [msg,setMsg]=useState('');
   let [id,setId]=useState(0);
 
+  function formValidate() {
+    const form = document.querySelector('form')
+    var tid=form.elements.tenantId.value
+    var fid=form.elements.flatid.value
+    var str=form.elements.street.value
+    var pn=form.elements.pincode.value
+    var ct=form.elements.city.value
+    var st=form.elements.state.value
+    var con=form.elements.country.value
+    var tage=form.elements.tenantage.value
+    // var flt=form.elements.flatA.value
+
+    var error=document.getElementById("error")
+
+    var savebtn=document.getElementById("savebutton")
+
+    if(tenant.tenantId<=0){
+        error.innerHTML="Tenant ID: Provide a positive integer"
+    }
+    else if(tenant.tenantId%1!==0){
+        error.innerHTML="Tenant ID: Provide an integer value"
+    }
+    else if(fid<=0){
+        error.innerHTML="Flat Number: Provide a positive integer"
+    }
+    else if(fid%1!==0){
+        error.innerHTML="Flat Number: Provide an integer value"
+    }
+    else if(str==''){
+        error.innerHTML="Street: Street cannot be empty"
+    }
+    else if(pn.toString().charAt(0)=="0"){
+        error.innerHTML="PIN: Pincode should not start with 0"
+    }
+    else if(pn.toString().length!==6){
+        error.innerHTML="PIN: Pincode should be in six digits"
+    }
+    else if(pn<=0){
+        error.innerHTML="PIN: Pincode should be in six digits"
+    }
+    else if(pn%1!==0){
+        error.innerHTML="PIN: Provide integer value"
+    }
+    else if(ct==''){
+        error.innerHTML="City: City cannot be empty"
+    }
+    else if(st==''){
+        error.innerHTML="State: State cannot be empty"
+    }
+    else if(con==''){
+        error.innerHTML="Country: Country cannot be empty"
+    }
+    else if(tage<=0){
+        error.innerHTML="Cost: Cannot be zero or less than zero"
+    }
+    //else if(flt!=="Yes"&&flt!=="No"){
+       // error.innerHTML="Flat Availability: Select options"
+    //}
+    else{
+        error.innerHTML=""
+        savebtn.style.pointerEvents="auto"
+    }
+}
+
+
+
   useEffect(() => {
     const URL='http://localhost:8080/tenant/addTenant';
     axios.post(URL,tenant).then((response) => 
     {
         setMsg(response.data)
-    }).catch(error => console.log(error.message))
+        //window.alert("tenant Added...");
+        setId(0);
+    }).catch(error => console.log(error.response))
     },[id])
 
     function handleBtnClick(e)
     {
         e.preventDefault();
         setId(1)
-        window.alert("tenant Added...");
-
     }
 
 
@@ -94,6 +161,7 @@ function AddTenant() {
             />
         <br/><br/>
             <button className="btn" onClick={handleBtnClick}>Add Tenant</button>
+            <h6 id="error" className="text text-danger"></h6>
         </form>
     
      </React.Fragment>
