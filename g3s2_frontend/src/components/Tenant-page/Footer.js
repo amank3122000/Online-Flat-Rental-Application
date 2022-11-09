@@ -15,10 +15,10 @@ function Footer()
 
       <ul className="list-unstyled">
         <li>
-         Email-akhilkanagarla1122@gmail.com
+         Email-radhikaagarwal@gmail.com
         </li>
         <li>
-            Mobile-8500704106
+            Mobile-9000985432
         </li>
       </ul>
 
@@ -70,7 +70,7 @@ function Footer()
 
 
 
-<div className=" text-center py-3 container-fluid"><p>© OnlineFlatRental: Group 5</p>
+<div className=" text-center py-3 container-fluid"><p>© OnlineFlatRental: Group 2</p>
 </div>
 
             
