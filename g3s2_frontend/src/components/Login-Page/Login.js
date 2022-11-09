@@ -1,110 +1,140 @@
-import React, { useState } from 'react';
+import React from 'react';
+import axios from 'axios';
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from '../Login-Page/login.module.css';
-import LoginAction from './LoginAction';
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate} from "react-router-dom"
 
 function Login() {
+  const history=useNavigate();
+  const initialValues={username:"",password:"",usertype:""};
+const [formValues, setFormValues] = useState(initialValues);
+  const [formErrors, setFormErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
+  var isLogged= false;
 
-   
-    function formValidate()
-    {
-      
-       const form = document.querySelector('form')
-       var uName=form.elements.username.value
-       var upassword=form.elements.password.value
-       var uType = form.elements.usertype.value
- 
-       var error=document.getElementById("error")
- 
-       var lgn=document.getElementById("formlogin")
- 
- 
-       if(uName.length<3)
-       {
-          error.innerHTML="User Name must be minimum 3 char"
-       }
-       else if(upassword.length<8)
-       {
-          error.innerHTML="Password must be minimum 8 char"
-       }
-       else if(uType=""){
-          error.innerHTML="Select an option"
-       }
-       else{ 
-          error.innerHTML="Ready to Submit"
-          lgn.style.pointerEvents="auto"
-          
-       }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
+
+  const fetchUsers = async() =>{
+    await axios.get('http://localhost:8080/users/viewAllUsers',{headers:{"Content-Type" : "application/json"}}).then((data)=>{
+    for(let i=0;i<data.data.length;i++){
+      if(data.data[i].password==formValues.password && data.data[i].userType==formValues.usertype && data.data[i].userName==formValues.username ){
+        console.log("Logged In");
+        isLogged=true;
+        if(data.data[i].userType==="admin"){
+          history("/admin");
+        }else if(data.data[i].userType==="tenant"){
+          history("/tenant");
+        }
+        else if(data.data[i].userType==="landlord"){
+         history("/landlord");
+       }else{
+          isLogged=false;
+        }
+        break;
+      }else{
+        validate(formValues);
+      }
+    }}).catch((error)=>console.log(error));
+  }
+  //console.log(fetchUsers);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFormErrors(validate(formValues));
+    setIsSubmit(true);
+  };
+
+  useEffect(() => {
+    console.log(formErrors);
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
+      console.log(formValues);
     }
+  }, [formErrors]);
+  
+  const validate = (values) => {
+   const errors = {};
+   if (!values.username) {
+     errors.username = "Username is required!";
+   }
+   if (!values.userType) {
+     errors.userType = "User type is required!";
+   } 
+   if (!values.password) {
+     errors.password = "Password is required";
+   } else if (values.password.length < 4) {
+     errors.password = "Password must be more than 4 characters";
+   } else if (values.password.length > 10) {
+     errors.password = "Password cannot exceed more than 10 characters";
+   }
+   if(!isLogged){
+      errors.login="Invalid Credentials";
+    }
+    return errors;
+  };
 
- 
- 
- 
-    const history = useNavigate();
-    const [username,setUsername] = useState('');
-    const [password,setPassword] = useState(''); 
-    const [usertype,setUserType] = useState(''); 
- 
-    const {errors} = {username,password}
- 
- const selectOption = (e)=>{
-    setUserType(e.target.value)
- }
- 
-    return (
-       <React.Fragment>
-       <div className={styles.loginbox}>   
-          <div className={styles.c1}>
+  return (
+   <React.Fragment>
+      {Object.keys(formErrors).length === 0 && isSubmit ? (
+        <div className="ui message success">Signed in successfully</div>
+      ) : (<></>
+      //   <pre>{JSON.stringify(formValues, undefined, 2)}</pre>
+      )}
+      <div className={styles.loginbox}>   
+           <div className={styles.c1}>
              
-             <div className={styles.c11}>
-                
-                       <LoginAction username={username} password={password} usertype = {usertype}/>
-                      <h1 className={styles.mainhead}>Welcome</h1>
+              <div className={styles.c11}>
+
+                     <h1 className={styles.mainhead}>Welcome</h1>
                  
-             </div>
+              </div>
           </div>
           <div className={styles.c2}>
+      <form className={styles.signin} onSubmit={handleSubmit}>
+        <h1 className={styles.signup1}>Login Form</h1>
+        
+          <label>Username</label>
+            <input
+              name="username" type="text" required={true} placeholder="Username*" className={styles.username}
+              value={formValues.username}
+              onChange={handleChange}
+            />
           
-             <form className={styles.signin} method="post">
-                <h1 className={styles.signup1}>SIGN IN</h1>
-                       <LoginAction username={username} password={password} usertype = {usertype}/>
-                <input name="username" type="text" required={true} placeholder="Username*" className={styles.username}
-                   value = {username}
-                   onChange= {(e)=>setUsername(e.target.value)}
-                   onInput={formValidate}
-                   style={{marginTop:20}}
-                   />
-                 
-                <input name="password" type="password" required={true} placeholder="Password*" className={styles.username}
-                value = {password}
-                onChange= {(e)=>setPassword(e.target.value)}
-                onInput={formValidate}
-                />
- 
-                   <h6 style={{paddingLeft:40}}>Select User Type</h6>
- 
-                   <select name="usertype" required={true} className={styles.username} value={usertype} 
-                   onChange= {selectOption}
-                   >
-                      <option value="">Select type</option>
-                      <option value="landlord"  >landlord</option>
-                      <option value="tenant"  >tenant</option>
-                      <option value="admin"  >admin</option>
-                     
-                   </select>
- 
-                   <p id="error" style={{backgroundColor:"#D6EAF8", textAlign:"center"}}></p>
-                   
-                <button id="formlogin" type="submit" className={styles.btnlogin}><Link to="/loginactions">Get Started</Link></button>
-             
-             </form>
-             
-          </div>
+          <p>{formErrors.loginName}</p>
           
-          <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-          <script src="script.js" type="text/jsx"></script>
-       </div>
-       </React.Fragment>
-     );
-    }
-    export default Login;
+          <label>Password</label>
+            <input
+              name="password" type="password" required={true} placeholder="Password*" className={styles.username}
+              value={formValues.password}
+              onChange={handleChange}
+            />
+          
+          <p>{formErrors.email}</p>
+          
+          <label>UserType</label>
+       <select name="usertype" required={true} className={styles.username}  
+              value={formValues.usertype}
+              onChange={handleChange}
+            >
+            <option value="">Select one option</option>
+         <option value="landlord">Landlord</option>
+         <option value="tenant">Tenant</option>
+         <option value="admin">Admin</option>
+
+       </select>
+          
+          <p>{formErrors.password}</p>
+          <button id="formlogin" type="submit" className={styles.btnlogin} onClick={fetchUsers}>Submit</button>
+          <p>{formErrors.login}</p>  
+        
+      </form>
+      </div>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+               <script src="script.js" type="text/jsx"></script>
+    </div>
+   </React.Fragment>
+  )
+}
+
+export default Login;

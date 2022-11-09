@@ -11,7 +11,7 @@ function TUpdateBooking() {
 
     useEffect(()=>
     {
-        const URL = `http://localhost:8080/FlatBookingCtrl/updateFlatBooking/${id}`;
+        const URL = `http://localhost:8080/flatbooking/updateflatbooking/${id}`;
         axios
           .put(URL , booking)
           .then((response) => {

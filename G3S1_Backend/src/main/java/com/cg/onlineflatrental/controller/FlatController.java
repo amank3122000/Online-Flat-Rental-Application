@@ -9,6 +9,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ import com.cg.onlineflatrental.service.FlatService;
 
 @RestController
 @RequestMapping(value = "/flat")
+@CrossOrigin(origins="http://localhost:3000")
 @Validated
 public class FlatController {
 
@@ -50,7 +52,7 @@ public class FlatController {
      * @return ResponseEntity<String>
      * @throws FlatNotFoundException
      */
-    @PutMapping("/flat/{flatId}")
+    @PutMapping("/updateflat/{flatId}")
     public ResponseEntity<String> updateFlat(@Valid @RequestBody FlatDTO flat, @PathVariable Integer flatId)
             throws FlatNotFoundException {
         flatService.updateFlat(flat, flatId);

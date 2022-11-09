@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios'
 import {useNavigate} from "react-router-dom";
+import TAddFlatBooking from "./TAddFlatBooking";
 function TViewFlatByBid() {
 //   let initialBooking = [] ;
   let initialBooking={bookingNo:null,bookingFromDate:null,bookingToDate:null,flat:{flatId: null},tenantId:{tenantId : null}}
   let [booking, setBooking] = useState(initialBooking);
   let [id, setId] = useState(0);
-  let [btnId,setBtnId]=useState(0)
+  let [btnId,setBtnId]=useState(0);
+  const [btn,setButton] = useState(0);
+    // const [deletebtn,setdeleteButton] = useState(0);
+    const [formErrors, setFormErrors] = useState({});
+    const [isSubmit, setIsSubmit] = useState(false);
+
   const history = useNavigate();
   const formStyle = {
     backgroundColor: "#FFFAFA",
@@ -20,7 +26,7 @@ const mystyle = {
   };
 
    useEffect(() => {
-     const URL = `http://localhost:8080/FlatBookingCtrl/viewFlatBookingByID/${id}`;
+     const URL = `http://localhost:8080/flatbooking/viewflatbooking/${id}`;
      axios
       .get(URL)
       .then((response) => {
@@ -39,7 +45,7 @@ const mystyle = {
 
   function handleDeleteBooking(id){
       
-       const URL = `http://localhost:8080/FlatBookingCtrl/deleteFlatBooking/${id}`;
+       const URL = `http://localhost:8080/flatbooking/deleteflatbooking/${id}`;
        axios
          .delete(URL)
          .then((response) => {
@@ -55,9 +61,12 @@ const mystyle = {
         
      history.push('/updatebooking')
     }
-function handleBtnClick()
+function handleBtnClick(e)
 {
-    setBtnId(id);
+  e.preventDefault();
+    // setFormErrors(validate(userDetails));
+  setIsSubmit(true);
+  setButton(id)
     
 }
   return (
