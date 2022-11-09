@@ -1,7 +1,13 @@
 # Online-Flat-Rental-Application
 Group 3
 Sprint 1
-Backend Development
+Backend Development (using SpringBoot)
+
+&
+
+Group 2
+Sprint 2
+Frontend Development (using React)
 
 Group Members:
 1. Amar Khedkar

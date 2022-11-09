@@ -15,7 +15,8 @@ function AddUser() {
       const URL='http://localhost:8080/users/addUser';
       axios.post(URL,user).then((response) => 
       {
-          setMsg(response.data)
+          setMsg(response.data);
+          window.alert("User Added...");
       }).catch(error => console.log(error.message))
   },[id])
 
@@ -26,7 +27,6 @@ function AddUser() {
       setIsSubmit(true);
       setId(1);
       setUser(initialuser);
-      window.alert("User Added...");
   }
 
   useEffect(() => {
@@ -41,8 +41,8 @@ function AddUser() {
     if (!values.username) {
       errors.username = "Username is required!";
     }
-    if (values.userType=="Select one option") {
-      errors.email = "User type is required!";
+    if (!values.userType) {
+      errors.userType = "User type is required!";
     } 
     if (!values.password) {
       errors.password = "Password is required";

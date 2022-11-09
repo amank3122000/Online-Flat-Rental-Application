@@ -53,7 +53,7 @@ const deletebtnhandler = (e)=>{
           <button className="btn btn-outline-danger my-2 my-sm-0 logout-btn" type="submit"><a href="/login">Logout</a></button>
         </form>
       </nav>
-            <table className="table table-data table-striped table-bordered">
+            <table className="table table-data table-striped table-bordered ViewAllUsers">
                 <thead>
                 <tr className="table-warning">
                     <th>User ID</th>
@@ -76,7 +76,7 @@ const deletebtnhandler = (e)=>{
                     </td>
                 </tr>
                 )}
-
+            
                                     
                 </tbody>
             </table>

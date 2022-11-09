@@ -1,9 +1,4 @@
-// pending
 
-// After redirection page
-// validation
-// user added success message
-//key is not provided in table data
 
 
 import React, { useEffect, useState } from 'react';
@@ -15,7 +10,7 @@ function ViewAllLandlord() {
     let [landlords,setLandlords]=useState(initialCustomers);
 
     useEffect(() => {
-        const URL = 'http://localhost:8080/landlordCtrl/viewAllLandlord';
+        const URL = 'http://localhost:8080/landlord/viewalllandlord';
         axios.get(URL).then((response) => {
             console.log(response);
             setLandlords(response.data);
@@ -33,8 +28,8 @@ function ViewAllLandlord() {
         <table className="table table-data table-striped table-bordered">
     <thead>
         <tr className="table-warning">
-          <th className="col-md-2">ID</th>
-          <th className="col-md-3">Landlord Name</th>
+          <th className="col-md-2">Landlord Id</th>
+          <th className="col-md-3">Name</th>
           <th className="col-md-1">Age</th>
           <th className="col-md-3">Flat List</th>
           <th className="col-md-3">Actions</th>
