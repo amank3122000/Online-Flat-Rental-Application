@@ -23,7 +23,7 @@ import com.cg.onlineflatrental.exception.LandlordNotFoundException;
 import com.cg.onlineflatrental.service.LandlordService;
 
 @RestController
-@RequestMapping(value = "/lanlord")
+@RequestMapping(value = "/landlord")
 @Validated
 public class LandlordController {
 
@@ -74,7 +74,7 @@ public class LandlordController {
 	 * @return ResponseEntity<String>
 	 * @throws LandlordNotFoundException
 	 */
-	@PutMapping(value = "/landlord/{landlordId}")
+	@PutMapping(value = "/updatelandlord/{landlordId}")
 	public ResponseEntity<String> updateLandlord(@PathVariable Integer landlordId,@Valid @RequestBody LandlordDTO landlord)
 			throws LandlordNotFoundException {
 		landlordService.updateLandlord(landlordId, landlord);

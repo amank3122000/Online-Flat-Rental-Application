@@ -50,7 +50,7 @@ public class FlatController {
      * @return ResponseEntity<String>
      * @throws FlatNotFoundException
      */
-    @PutMapping("/flat/{flatId}")
+    @PutMapping("/updateflat/{flatId}")
     public ResponseEntity<String> updateFlat(@Valid @RequestBody FlatDTO flat, @PathVariable Integer flatId)
             throws FlatNotFoundException {
         flatService.updateFlat(flat, flatId);
