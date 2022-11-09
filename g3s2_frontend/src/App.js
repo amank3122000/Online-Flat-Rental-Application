@@ -43,8 +43,18 @@ import ViewFlat from './components/Admin-page/Flat/ViewFlat';
 import RemoveFlat from './components/Admin-page/Flat/RemoveFlat';
 import UpdateFlat from './components/Admin-page/Flat/UpdateFlat';
 
+import LHome from './components/Landlord-page/LHome';
+import LUpdateFlat from './components/Landlord-page/flat/LUpdateFlat';
+import LInfo from './components/Landlord-page/LInfo';
+import LAddFlat from './components/Landlord-page/flat/LAddFlat';
+import LAllFlat from './components/Landlord-page/flat/LAllFlat';
+import LFlatById from './components/Landlord-page/flat/LFlatById';
 
-
+import THome from './components/Tenant-page/THome';
+import TGetAllFlats from './components/Tenant-page/TGetAllFlats';
+import TViewFlatByBid from './components/Tenant-page/TViewFlatByBid';
+import TUpdateBooking from './components/Tenant-page/TUpdateBooking';
+import TAddFlatBooking from './components/Tenant-page/TAddFlatBooking';
 
 function App() {
   return (
@@ -88,6 +98,20 @@ function App() {
         <Route path="/admin/flat/updateflat" element={<UpdateFlat />}/>        
         <Route path="/admin/flat/viewflat" element={<ViewFlat />}/>          
         <Route path="/admin/flat/viewAllflat" element={<ViewAllFlat />}/> 
+
+        <Route path='/landlord/info' element={<LInfo />}/>
+        <Route path='/landlord/home' element={<LHome />}/>
+        <Route path='/landlord/addFlat' element={<LAddFlat />}/>
+        <Route path='/landlord/allFlat' element={<LAllFlat />}/>
+        <Route path='/landlord/flatbyid' element={<LFlatById />}/>
+        <Route path='/landlord/updateFlat' element={<LUpdateFlat/>}/>
+
+        <Route path="/tenant/tenant" element={<THome />} />
+        <Route path="/tenant/getallflats"  element={<TGetAllFlats />} />
+        <Route path="/tenant/viewflatbybid" element={<TViewFlatByBid />} />
+        <Route path="/tenant/updatebooking"  element={<TUpdateBooking />} />
+        <Route path="/tenant/addbooking"  element={<TAddFlatBooking />} />
+
         <Route element={<NotFoundPage />}/>
       </Routes>
 

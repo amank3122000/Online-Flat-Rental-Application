@@ -16,17 +16,17 @@ function Menu() {
           <Link className="nav-link" aria-current="page" to="/landlord">Home</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="info">Profile</Link>
+          <Link className="nav-link" to="/landlord/info">Profile</Link>
         </li>
         <li className="nav-item dropdown">
           <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Flat Services
           </a>
           <ul style={{backgroundColor: "#5ab9ea"}} className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><Link style={{ fontWeight: "bold"}} className="dropdown-item" to="addFlat">Add Flat</Link></li>
-            <li><Link style={{ fontWeight: "bold"}} className="dropdown-item" to="allFlat">Flat List</Link></li>
-            <li><Link style={{ fontWeight: "bold"}} className="dropdown-item" to="flatbyid">Flat By ID</Link></li>
-            <li><Link style={{ fontWeight: "bold"}} className="dropdown-item" to="updateFlat">Update Flat</Link></li>
+            <li><Link style={{ fontWeight: "bold"}} className="dropdown-item" to="/landlord/addFlat">Add Flat</Link></li>
+            <li><Link style={{ fontWeight: "bold"}} className="dropdown-item" to="/landlord/allFlat">Flat List</Link></li>
+            <li><Link style={{ fontWeight: "bold"}} className="dropdown-item" to="/landlord/flatbyid">Flat By ID</Link></li>
+            <li><Link style={{ fontWeight: "bold"}} className="dropdown-item" to="/landlord/updateFlat">Update Flat</Link></li>
           </ul>
         </li>  
       </ul>  

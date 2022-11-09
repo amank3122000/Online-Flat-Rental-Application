@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios'
 import {useNavigate} from "react-router-dom";
-function ViewFlatByBid() {
+function TViewFlatByBid() {
 //   let initialBooking = [] ;
   let initialBooking={bookingNo:null,bookingFromDate:null,bookingToDate:null,flat:{flatId: null},tenantId:{tenantId : null}}
   let [booking, setBooking] = useState(initialBooking);
@@ -108,4 +108,4 @@ function handleBtnClick()
   );
 }
 
-export default ViewFlatByBid;
+export default TViewFlatByBid;

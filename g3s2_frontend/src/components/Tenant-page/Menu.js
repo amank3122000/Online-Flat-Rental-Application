@@ -17,13 +17,13 @@ function Menu() {
           <Link className="nav-link" aria-current="page" to="">Home</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="profile">Profile</Link>
+          <Link className="nav-link" to="/profile">Profile</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="getallflats">Book Flat</Link>
+          <Link className="nav-link" to="/tenant/getallflats">Book Flat</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="viewflatbybid">My Bookings</Link>
+          <Link className="nav-link" to="/tenant/viewflatbybid">My Bookings</Link>
         </li>
         {/* <li className="nav-item dropdown">
           <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">

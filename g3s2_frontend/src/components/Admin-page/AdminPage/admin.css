@@ -90,14 +90,20 @@
     color: #748194;
     font-size: 14px;
  }
+
+ label,p{
+    margin: 0 35px ;
+    font-size: 14px;
+ }
  .c2{
     box-shadow:0 0 10px grey;
     background-color:#EAE7DC;
     width: auto;
-    height:500px;
+    height:auto;
     border-radius:15px;
     position:absolute;
     left:200px;
+    top: 75px;
     right: 200px;
     display:inline-block;
     margin-top: 20px;

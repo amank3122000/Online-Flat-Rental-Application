@@ -28,7 +28,7 @@ import com.cg.onlineflatrental.service.UserService;
 import io.swagger.annotations.Api;
 
 @RestController
-@RequestMapping(value = "/onlineflatrental/users")
+@RequestMapping(value = "/users")
 @CrossOrigin(origins="http://localhost:3000")
 @Validated
 @Api(value="users")

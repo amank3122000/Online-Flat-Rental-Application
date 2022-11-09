@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function ViewUser() {
 
@@ -15,13 +16,13 @@ function ViewUser() {
  
     useEffect(() => {
        // DELETE request using axios inside useEffect React hook
-       axios.get(`http://localhost:8080/onlineflatrental/users/viewUser/${userid}`)
+       axios.get(`http://localhost:8080/users/viewUser/${userid}`)
        .then((response) => setUserDetail(response.data));
 
    }, [btn]);
 
         useEffect(()=>{
-            const URL=`http://localhost:8080/onlineflatrental/users/removeUser/${userid}`
+            const URL=`http://localhost:8080/users/removeUser/${userid}`
             axios.delete(URL).then(response=>
                 {
                     setUserDetail([]);
@@ -64,9 +65,18 @@ function ViewUser() {
 
    return (
       <React.Fragment>
+        <nav className="navbar navbar-dark bg-dark justify-content-between fixed-top">
+        <Link className="navbar-brand navbar-brand-margin">Admin Panel</Link>
+        <span className="header-right">Flat Rental Application</span>
+        <form className="form-inline">
+       
+          <button className="btn btn-outline-danger my-2 my-sm-0 logout-btn" type="submit"><a href="/login">Logout</a></button>
+        </form>
+      </nav>
             <form className="view-form"> 
                 <h1 className="form-text ">View User By ID</h1>
                 <br/>
+                <label>User Id</label>
                 <input name="userId" type="number" placeholder="User ID*" className="username"
                   value = {userid}
                   onChange={e=>setUserid(e.target.value)}

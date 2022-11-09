@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function RemoveUser() {
 
@@ -11,7 +12,7 @@ function RemoveUser() {
 
    useEffect(() => {
       // DELETE request using axios inside useEffect React hook
-      axios.delete(`http://localhost:8080/onlineflatrental/users/removeUser/${userid}`)
+      axios.delete(`http://localhost:8080/users/removeUser/${userid}`)
       .then(() => setStatus('Delete successful'));
   // empty dependency array means this effect will only run once (like componentDidMount in classes)
   }, [userid]);
@@ -41,9 +42,18 @@ function RemoveUser() {
 
    return (
       <React.Fragment>
+        <nav className="navbar navbar-dark bg-dark justify-content-between fixed-top">
+        <Link className="navbar-brand navbar-brand-margin">Admin Panel</Link>
+        <span className="header-right">Flat Rental Application</span>
+        <form className="form-inline">
+       
+          <button className="btn btn-outline-danger my-2 my-sm-0 logout-btn" type="submit"><a href="/login">Logout</a></button>
+        </form>
+      </nav>
         <form className="c2 view-form" method="POST">
             <h1 className="form-text ">Remove User By ID</h1>
            <br/>
+           <label>User Id</label>
             <input name="userid" type="number" placeholder="User ID*" className="username" 
              value = {userid}
              onChange={e=>setUserid(e.target.value)}

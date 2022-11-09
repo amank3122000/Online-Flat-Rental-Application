@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function UpdateUser() {
 
@@ -10,7 +11,7 @@ function UpdateUser() {
 
 
    useEffect(() => {
-      const URL='http://localhost:8080/onlineflatrental/users/updateUser';
+      const URL='http://localhost:8080/users/updateUser';
       axios.put(URL,user).then((response) => 
       setUser(response.data)
       )
@@ -36,8 +37,11 @@ function UpdateUser() {
 
   const validate = (values) => {
     const errors = {};
+    if (!values.userid) {
+      errors.userid = "Username is required!";
+    }
     if (!values.username) {
-      errors.username = "Username is required!";
+      errors.username = "User id is required!";
     }
     if (!values.userType) {
       errors.email = "User type is required!";
@@ -54,21 +58,36 @@ function UpdateUser() {
   
    return (
       <React.Fragment>
+        <nav className="navbar navbar-dark bg-dark justify-content-between fixed-top">
+        <Link className="navbar-brand navbar-brand-margin">Admin Panel</Link>
+        <span className="header-right">Flat Rental Application</span>
+        <form className="form-inline">
+       
+          <button className="btn btn-outline-danger my-2 my-sm-0 logout-btn" type="submit"><a href="/login">Logout</a></button>
+        </form>
+      </nav>
         <form className="c2">
             <h1 className="form-text ">Update User</h1>
             <br/>  <br/>  
+            <label>User I</label>
        <input name="userid" type="nummber" placeholder="User ID" className="username" 
        value={user.userid} onChange={e=>setUser({...user,userid:e.target.value})}
        />
+       <p>{formErrors.userid}</p>
+       <br/>
+       <label>Username</label>
        <input name="username" type="text" placeholder="New Username*" className="username"
        value={user.userName} onChange={e=>setUser({...user,userName:e.target.value})}
        />
        <p>{formErrors.username}</p>
+       <br/>
+       <label>Password</label>
        <input name="password" type="password" placeholder="New Password*" className="username"
        value={user.password} onChange={e=>setUser({...user,password:e.target.value})}
        />
        <p>{formErrors.password}</p>
-
+       <br/>
+       <label>User Type</label>
         <select name="usertype" className="username"
         value={user.userType} onChange={e=>setUser({...user,userType:e.target.value})}
         >

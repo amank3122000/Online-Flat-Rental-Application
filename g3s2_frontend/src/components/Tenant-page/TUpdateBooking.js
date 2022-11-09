@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
-function UpdateBooking() {
+function TUpdateBooking() {
     let initialBooking={bookingFromDate:null,bookingToDate:null};
     let [booking, setBooking] = useState(initialBooking);
     let [id, setId] = useState(0);
@@ -59,4 +59,4 @@ function UpdateBooking() {
     )
 }
 
-export default UpdateBooking
+export default TUpdateBooking

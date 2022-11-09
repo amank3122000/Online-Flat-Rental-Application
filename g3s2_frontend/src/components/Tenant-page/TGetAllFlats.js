@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
-function GetAllFlats() {
+function TGetAllFlats() {
   let initialFlat = [] ;
   let [Flat, setFlat] = useState(initialFlat);
 
@@ -82,4 +82,4 @@ const mystyle = {
   );
 }
 
-export default GetAllFlats;
+export default TGetAllFlats;

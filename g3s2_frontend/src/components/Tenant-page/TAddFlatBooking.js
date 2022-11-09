@@ -28,7 +28,7 @@ var dates = new Date();
     var year = dates.getFullYear();
     var minDate=year+"-"+month+"-"+date;
 
- function AddFlatBooking(){
+ function TAddFlatBooking(){
     
     let initialFlat={
         bookingFromDate: null,
@@ -167,4 +167,4 @@ var dates = new Date();
 
 
 
-export default AddFlatBooking
+export default TAddFlatBooking

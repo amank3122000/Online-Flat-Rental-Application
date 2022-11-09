@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Home() {
+function THome() {
     return (
         <div className='text-center text-primary'>
             <h2 className="flatheading">Home Page</h2>
@@ -11,4 +11,4 @@ function Home() {
     )
 }
 
-export default Home
+export default THome

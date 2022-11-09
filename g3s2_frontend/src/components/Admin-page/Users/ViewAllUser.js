@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function ViewAllUser() {
 
@@ -10,7 +11,7 @@ function ViewAllUser() {
 
 
     useEffect(() => {
-        const URL = 'http://localhost:8080/onlineflatrental/users/viewAllUsers';
+        const URL = 'http://localhost:8080/users/viewAllUsers';
         axios.get(URL).then((response) => {
             setUsers(response.data);
         })
@@ -19,7 +20,7 @@ function ViewAllUser() {
 
     useEffect(() => {
         // DELETE request using axios inside useEffect React hook
-        axios.delete(`http://localhost:8080/onlineflatrental/users/removeUser/${userid}`)
+        axios.delete(`http://localhost:8080/users/removeUser/${userid}`)
         .then(response=>{
             console.log(response);
         });
@@ -43,6 +44,15 @@ const deletebtnhandler = (e)=>{
 
   return (
       <React.Fragment>
+        
+        <nav className="navbar navbar-dark bg-dark justify-content-between fixed-top">
+        <Link className="navbar-brand navbar-brand-margin">Admin Panel</Link>
+        <span className="header-right">Flat Rental Application</span>
+        <form className="form-inline">
+       
+          <button className="btn btn-outline-danger my-2 my-sm-0 logout-btn" type="submit"><a href="/login">Logout</a></button>
+        </form>
+      </nav>
             <table className="table table-data table-striped table-bordered">
                 <thead>
                 <tr className="table-warning">

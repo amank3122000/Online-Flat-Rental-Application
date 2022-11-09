@@ -8,35 +8,20 @@ import React from 'react';
 
 import { BrowserRouter as Router,Route,Routes} from 'react-router-dom'
 
-import Home from '../Landlord-page/Home';
 import Menu from '../Landlord-page/Menu';
-import AddFlat from '../Landlord-page/flat/AddFlat';
-import AllFlat from '../Landlord-page/flat/AllFlat';
-import FlatById from '../Landlord-page/flat/FlatById';
 import Footer from '../Landlord-page/Footer';
 import Header from '../Landlord-page/Header';
-import UpdateFlat from '../Landlord-page/flat/UpdateFlat';
-import Info from '../Landlord-page/Info';
+
 
 function LandLord() {
 
    return (
       <React.Fragment>
-           {/* <Router> */}
         <Header/>
         <Menu/>
         <div className='container-fluid'>
-        <Routes>
-          <Route exact path='/landlord' component={Home}/>
-          <Route path='/info' component={Info}/>
-          <Route path='/addFlat' component={AddFlat}/>
-          <Route path='/allFlat' component={AllFlat}/>
-          <Route path='/flatbyid' component={FlatById}/>
-          <Route path='/updateFlat' component={UpdateFlat}/>
-        </Routes>
         </div>
         <Footer/>
-      {/* </Router> */}
       </React.Fragment>
     );
 }
