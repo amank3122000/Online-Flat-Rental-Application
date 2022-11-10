@@ -82,6 +82,7 @@ public class LandlordService implements ILandlordService {
 		}
 		Landlord landlord=landlordRepository.findById(landlordId).get();
 		LandlordDTO l=new LandlordDTO();
+		l.setLandlordId(landlord.getLandlordId());
 		l.setLandlordName(landlord.getLandlordName());
 		l.setLandlordAge(landlord.getLandlordAge());
 		List<FlatDTO> fList = new ArrayList<>();
@@ -114,6 +115,7 @@ public class LandlordService implements ILandlordService {
 		List<LandlordDTO> lList = new ArrayList<>();
 		list.forEach(landlord->{
 			LandlordDTO l=new LandlordDTO();
+			l.setLandlordId(landlord.getLandlordId());
 			l.setLandlordName(landlord.getLandlordName());
 			l.setLandlordAge(landlord.getLandlordAge());
 			List<FlatDTO> fList = new ArrayList<>();

@@ -14,7 +14,7 @@ function LAddFlat() {
             },
         flatAvailability:'',
         flatCost:0,
-        landlord:{landlordId:0}
+        flat:{flatId:0}
         }
     let [Flat,setFlat]=useState(initialFlat)
     let [msg,setMsg]=useState('')
@@ -22,8 +22,8 @@ function LAddFlat() {
 
     function formValidate() {
         const form = document.querySelector('form')
-        var lid=form.elements.landlordid.value
-        var fid=form.elements.flatid.value
+        var lid=form.elements.flatid.value
+        var fid=form.elements.houseNo.value
         var str=form.elements.street.value
         var pn=form.elements.pincode.value
         var ct=form.elements.city.value
@@ -110,15 +110,15 @@ function LAddFlat() {
             onSubmit={handleBtnClick} 
             className="col-4 container">
                 <div className='form-group'>
-                    <label>Enter ID<span style={{color: "red"}}>*</span></label>
-                    <input name="landlordid" placeholder="Landlord ID" type='number' className='form-control'
-                         value={Flat.landlord.landlordId}
+                    <label>Enter Flat ID<span style={{color: "red"}}>*</span></label>
+                    <input name="flatid" placeholder="Flat ID" type='number' className='form-control'
+                         value={Flat.flatId}
                          onInput={formValidate}
                          onChange={e=>setFlat({...Flat,landlord:{...Flat.landlord,landlordId:e.target.value}})}/>
                 </div>
                 <div className='form-group'>
-                    <label>Flat Number<span style={{color: "red"}}>*</span></label>
-                    <input name="flatid" placeholder="Flat Number" type='number' className='form-control'
+                    <label>House Number<span style={{color: "red"}}>*</span></label>
+                    <input name="houseNo" placeholder="House Number" type='number' className='form-control'
                          value={Flat.flatAddress.houseNo}
                          onInput={formValidate}
                          onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,houseNo:e.target.value}})}/>

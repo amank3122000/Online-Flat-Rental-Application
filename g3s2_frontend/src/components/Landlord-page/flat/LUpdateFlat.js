@@ -45,8 +45,8 @@ function LUpdateFlat() {
         
     }*/}
 
-    return (
-        {/*(flatId!==0)?<>
+    return /*(
+        {(flatId!==0)?<>
         <div style={{backgroundImage: "linear-gradient(15deg, #fdf9f1 0%, #f6e4c0 100%)"}}>
         <h2 className='text-primary container'>Update flat details</h2>
             <hr/>
@@ -125,9 +125,9 @@ function LUpdateFlat() {
             </div>
         </div>
         
-        </>*/}
+        </>}
         
-    )
+    )*/
 }
            
 

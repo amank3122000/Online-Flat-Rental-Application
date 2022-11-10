@@ -115,8 +115,8 @@ function LAllFlat(props) {
                 <td>{flat.flatAddress.pin}</td>
                 <td>{flat.flatAddress.state}</td>
                 <td>{flat.flatAddress.country}</td>
-                <td>{flat.flatCost}</td>
-                <td>{flat.flatAvailability}</td>
+                <td>{flat.cost}</td>
+                <td>{flat.availability}</td>
                 <td><button onClick={()=>{handleDeleteFlat(flat.flatId)}} className='btn btn-danger'><img src={trash}width="20" height="25"/></button></td>
             </tr>
           ))}
@@ -170,8 +170,8 @@ function LAllFlat(props) {
                 <td>{flat.flatAddress.pin}</td>
                 <td>{flat.flatAddress.state}</td>
                 <td>{flat.flatAddress.country}</td>
-                <td>{flat.flatCost}</td>
-                <td>{flat.flatAvailability}</td>
+                <td>{flat.cost}</td>
+                <td>{flat.availability}</td>
                 <td><button onClick={()=>{handleDeleteFlat(flat.flatId)}} className='btn btn-danger'><img src={trash}width="20" height="25"/></button></td>
             </tr>
           ))}

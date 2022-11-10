@@ -1,6 +1,4 @@
 
-
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -8,11 +6,12 @@ function ViewAllLandlord() {
 
     let initialCustomers=[];
     let [landlords,setLandlords]=useState(initialCustomers);
+    const [landlordid,setLandlord] = useState(0);
 
     useEffect(() => {
         const URL = 'http://localhost:8080/landlord/viewalllandlord';
         axios.get(URL).then((response) => {
-            console.log(response);
+            //console.log(response);
             setLandlords(response.data);
         })
         .catch((error) => console.log(error));
