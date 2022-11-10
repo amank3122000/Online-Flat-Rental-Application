@@ -4,9 +4,9 @@ import axios from 'axios';
 
 function ViewAllLandlord() {
 
-    let initialCustomers=[];
-    let [landlords,setLandlords]=useState(initialCustomers);
-    const [landlordid,setLandlord] = useState(0);
+  let initiallandlord=[];
+    let [landlords,setLandlords]=useState(initiallandlord);
+    // const [landlordid,setLandlord] = useState(0);
 
     useEffect(() => {
         const URL = 'http://localhost:8080/landlord/viewalllandlord';
@@ -31,7 +31,7 @@ function ViewAllLandlord() {
           <th className="col-md-3">Name</th>
           <th className="col-md-1">Age</th>
           <th className="col-md-3">Flat List</th>
-          <th className="col-md-3">Actions</th>
+          {/* <th className="col-md-3">Actions</th> */}
         </tr>
       </thead>
       <tbody className="table-success ">
@@ -40,16 +40,14 @@ function ViewAllLandlord() {
         landlords.map (
             landlord=>
         <tr>
-          <td className="col-md-2">{landlord.landlordId}</td>
-          <td className="col-md-3">{landlord.landlordName}</td>
-          <td className="col-md-1">{landlord.landlordAge}</td>
-          <td className="col-md-3">
-            <button className="btn btn-info logout-btn" type="submit">Flat List</button>
-          </td>
-          <td className="col-md-3">
+          <td className="col-md-2">{landlord&&landlord.landlordId}</td>
+          <td className="col-md-3">{landlord&&landlord.landlordName}</td>
+          <td className="col-md-1">{landlord&&landlord.landlordAge}</td>
+          <td className="col-md-3">{landlord&&landlord.flatList.map(flat => <div>{flat.flatId},</div>)}</td>
+          {/* <td className="col-md-3">
             <button className="btn btn-warning logout-btn" type="submit">Update</button>
             <button className="btn btn-danger logout-btn" type="submit">Delete</button>
-          </td>
+          </td> */}
         </tr>
       )}
        
