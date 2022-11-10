@@ -7,7 +7,7 @@ function ViewAllTenant() {
     let [tenants,setTenants]=useState(initialCustomers);
 
     useEffect(() => {
-        const URL = 'http://localhost:8080/tenant/viewAllTenant';
+        const URL = 'http://localhost:8080/tenant/gettenants';
         axios.get(URL).then((response) => {
             setTenants(response.data);
         })
