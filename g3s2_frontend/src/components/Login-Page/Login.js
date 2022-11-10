@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from "react";
@@ -55,17 +56,17 @@ function Login() {
   const validate = (values) => {
    const errors = {};
    if (!values.username) {
-     errors.username = "Username is required!";
+     errors.username = "Username is Required!";
    }
    if (!values.userType) {
-     errors.userType = "User type is required!";
+     errors.userType = "User Type is Required!";
    } 
    if (!values.password) {
-     errors.password = "Password is required";
+     errors.password = "Password is Required";
    } else if (values.password.length < 4) {
-     errors.password = "Password must be more than 4 characters";
+     errors.password = "Password must be more than 4 Characters";
    } else if (values.password.length > 10) {
-     errors.password = "Password cannot exceed more than 10 characters";
+     errors.password = "Password cannot exceed more than 10 Characters";
    }
    if(!isLogged){
       errors.login="Invalid Credentials";
