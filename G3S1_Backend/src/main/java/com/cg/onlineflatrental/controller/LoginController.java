@@ -31,7 +31,7 @@ public class LoginController {
 	private ILoginService service;
     
     @GetMapping(value = "/authenticateUser/{username}/{password}/{usertype}")
-	public ResponseEntity<User> login(@PathVariable String username, @PathVariable String password, @PathVariable String usertype) {
+	public ResponseEntity<User> login(@PathVariable String username, @PathVariable String password, @PathVariable String usertype) throws LoginException, UserNotFoundException, ValidationException {
 		ResponseEntity<User> rentity;
 		if (service.login(username,password,usertype)) {
 			User user = new User(username,password,usertype);
@@ -41,7 +41,8 @@ public class LoginController {
 		}
 		return rentity;
 	}
-/*	@PostMapping(value = "/authenticateUser")
+    /*
+	@PostMapping(value = "/authenticateUser")
 	public ResponseEntity<String> login(@RequestBody User user) throws LoginException, UserNotFoundException, ValidationException {
 		ResponseEntity<String> rentity;
 		if (service.login(user.getUserName(),user.getPassword(),user.getUserType())) {
@@ -51,5 +52,5 @@ public class LoginController {
 	}
 		return rentity;
 	}
-*/
+	*/
 }

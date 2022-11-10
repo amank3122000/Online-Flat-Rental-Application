@@ -47,10 +47,6 @@ public class UserServiceTest {
 		u3 = new UserDTO(3, "Shyam", "7B5819", "landlord");
 		u4 = new UserDTO(4, "Seema", "56S312", "admin");
 
-		ue1 = new User(1, "Rohit", "Rohit@1234", "tenant");
-		ue2 = new User(2, "Aadi", "5A6916", "tenant");
-		ue3 = new User(3, "Shyam", "7B5819", "landlord");
-		ue4 = new User(4, "Seema", "56S312", "admin");
 		
 		u01 = Optional.of(ue1);
 		u02 = Optional.of(ue2);
