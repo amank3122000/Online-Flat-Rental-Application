@@ -24,11 +24,14 @@ function ViewAllTenant() {
             <table className="table table-data table-striped table-bordered">
     <thead>
         <tr className="table-warning">
-          <th className="col-md-2">ID</th>
-          <th className="col-md-3">Tenant Name</th>
-          <th className="col-md-1">Age</th>
-          <th className="col-md-3">Flat List</th>
-          <th className="col-md-3">Actions</th>
+        <th>ID</th>
+        <th>HOUSE NO</th>
+            <th>STREET</th>
+            <th>CITY</th>
+            <th>PIN</th>
+            <th>STATE</th>
+            <th>COUNTRY</th>
+          <th>Age</th>
         </tr>
       </thead>
       <tbody className="table-success ">
@@ -36,16 +39,14 @@ function ViewAllTenant() {
                 tenants.map (
                     tenant =>
         <tr>
-          <td className="col-md-2">{tenant.tenantId}</td>
-           <td className="col-md-3">{tenant.tenantName}</td> 
-          <td className="col-md-1">{tenant.age}</td>
-          <td className="col-md-3">
-            <button className="btn btn-info logout-btn" type="submit">Flat List</button>
-          </td>
-          <td class="col-md-3">
-            <button className="btn btn-warning logout-btn" type="submit">Update</button>
-            <button className="btn btn-danger logout-btn" type="submit">Delete</button>
-          </td>
+         <td>{tenant&&tenant.tenantId}</td>
+          <td>{tenant.taddress&&tenant.taddress.houseNo}</td>
+          <td>{tenant.taddress&&tenant.taddress.street}</td>
+          <td>{tenant.taddress&&tenant.taddress.city}</td>
+          <td>{tenant.taddress&&tenant.taddress.pin}</td>
+          <td>{tenant.taddress&&tenant.taddress.state}</td>
+          <td>{tenant.taddress&&tenant.taddress.country}</td>
+          <td>{tenant&&tenant.age}</td>
         </tr>
       
                 )}

@@ -11,7 +11,7 @@ public class FlatAddressDTO {
     public FlatAddressDTO() {
     	super();
     }
-
+    
     public FlatAddressDTO(int houseNo, String street, String city, String state, int pin, String country) {
         this.houseNo = houseNo;
         this.street = street;

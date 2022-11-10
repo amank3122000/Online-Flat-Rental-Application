@@ -55,7 +55,6 @@ import com.cg.onlineflatrental.service.TenantService;
 			throws TenantNotFoundException {
 		TenantDTO t = tenantServ.updateTenant(tenantId, tenant);
 		return new ResponseEntity<TenantDTO>(t, HttpStatus.ACCEPTED);
-
 	}
 
 	
