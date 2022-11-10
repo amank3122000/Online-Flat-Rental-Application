@@ -12,8 +12,8 @@ function LFlatById(props) {
           state: "",
           street: ""
         },
-        flatAvailability: "",
-        flatCost: null
+        availability: "",
+        cost: null
       };
     let [flat,setFlat]=useState(initialFlat);
     let [flatId,setFlatId]=useState(0);
@@ -89,7 +89,9 @@ function LFlatById(props) {
                 onChange={(e) =>setFlatId(e.target.value)}
                 placeholder="Flat ID"
                 />
+            
                 <button id="getbtn"  style={{margin:"10px 0px"}} className='btn btn-success'>Search</button>
+
                 <h6 id="error" className="text text-danger"></h6>
         </form>
       <table className="table table-bordered table-hover marginTop text-center">
@@ -116,8 +118,8 @@ function LFlatById(props) {
                 <td>{flat.flatAddress.pin}</td>
                 <td>{flat.flatAddress.state}</td>
                 <td>{flat.flatAddress.country}</td>
-                <td>{flat.flatCost}</td>
-                <td>{flat.flatAvailability}</td>
+                <td>{flat.cost}</td>
+                <td>{flat.availability}</td>
                 <td><button onClick={handleDeleteFlat} className='btn btn-danger'><img src={trash}width="20" height="25"/></button></td>
             </tr>
         </tbody>
@@ -142,8 +144,9 @@ function LFlatById(props) {
                 />
                 <button id="getbtn" style={{margin:"10px 0px"}} className='btn btn-success'>Search</button>
                 <h6 id="error" className="text text-danger"></h6>
+                {/* <h6  className="text text-danger">Flat with {flatId} does not exist</h6> */}
         </form>
-        <h6  className="text text-danger">Flat with {flatId} does not exist</h6>
+        
       </div>
     </div>
     :<div style={{height:"460px",backgroundImage: "linear-gradient(15deg, #fdf9f1 0%, #f6e4c0 100%)"}}>

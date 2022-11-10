@@ -1,8 +1,3 @@
-// pending
-
-// After redirection page
-// validation
-// user added success message
 
 import React from 'react';
 

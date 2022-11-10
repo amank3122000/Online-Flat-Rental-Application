@@ -5,40 +5,40 @@ import axios from 'axios';
 function AddTenant() {
 
 
-  let initialtenant={tAddress:{
-    houseNo:0,
-    street:'',
-    city:'',
-    state:'',
-    pin:0,
-    country:''
-    },age:''};
-  let [tenant,setTenant]=useState(initialtenant);
-  let [msg,setMsg]=useState('');
-  let [id,setId]=useState(0);
+//   let initialtenant={tAddress:{
+//     houseNo:0,
+//     street:'',
+//     city:'',
+//     state:'',
+//     pin:0,
+//     country:''
+//     },age:''};
+//   let [tenant,setTenant]=useState(initialtenant);
+//   let [msg,setMsg]=useState('');
+//   let [id,setId]=useState(0);
 
-  useEffect(() => {
-    const URL='http://localhost:8080/tenant/addTenant';
-    axios.post(URL,tenant).then((response) => 
-    {
-        setMsg(response.data)
-    }).catch(error => console.log(error.message))
-    },[id])
+//   useEffect(() => {
+//     const URL='http://localhost:8080/tenant/addTenant';
+//     axios.post(URL,tenant).then((response) => 
+//     {
+//         setMsg(response.data)
+//     }).catch(error => console.log(error.message))
+//     },[id])
 
-    function handleBtnClick(e)
-    {
-        e.preventDefault();
-        setId(1)
-        window.alert("tenant Added...");
+//     function handleBtnClick(e)
+//     {
+//         e.preventDefault();
+//         setId(1)
+//         window.alert("tenant Added...");
 
-    }
+//     }
 
 
 
 
   return (
       <React.Fragment>
-        <form className="c2">
+        {/* <form className="c2">
             <h1 className="form-text">Add Tenant</h1>
          <br/><br/><br/>
             
@@ -94,7 +94,7 @@ function AddTenant() {
             />
         <br/><br/>
             <button className="btn" onClick={handleBtnClick}>Add Tenant</button>
-        </form>
+        </form> */}
     
      </React.Fragment>
     );

@@ -15,7 +15,7 @@ function Footer()
 
       <ul className="list-unstyled">
         <li>
-         EMail-harshvardhan@gmail.com
+         EMail-annajose11@gmail.com
         </li>
         <li>
             Mobile-8547989876

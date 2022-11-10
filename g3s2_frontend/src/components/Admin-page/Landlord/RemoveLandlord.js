@@ -6,21 +6,25 @@ function RemoveLandlord() {
    const [status, setStatus] = useState(null);
    const [landlordid,setLandlordid] = useState(0);
    const [isSubmit, setIsSubmit] = useState(false);
+   let [msg,setMsg]=useState('');
    
 
    useEffect(() => {
       // DELETE request using axios inside useEffect React hook
       axios.delete(`http://localhost:8080/landlord/removeLandlord/${landlordid}`)
-      .then(() => setStatus('Delete successful'));
-  // empty dependency array means this effect will only run once (like componentDidMount in classes)
-  }, [landlordid]);
+      .then((response) =>
+      {
+        setMsg(response.data)
+        window.alert("Landlord Removed");
+    }).catch(error => console.log(error.message))
+    },[landlordid]) 
 
 
   const handleBtnClick = (e)=>{
       console.log(e.target.response)
       //setFormErrors(validate(landlordid));
       setIsSubmit(true);
-      window.alert("Landlord Removed");
+      
   }
 
 
