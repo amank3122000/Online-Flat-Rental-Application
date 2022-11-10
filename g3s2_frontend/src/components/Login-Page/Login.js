@@ -129,7 +129,7 @@ function Login() {
           
           <p>{formErrors.password}</p>
           <button id="formlogin" type="submit" className={styles.btnlogin} onClick={fetchUsers}>Submit</button>
-          <button id="formsignup" className={styles.signup} onclick="SignUp()" >New User?</button>
+      {/* <button id="formsignup" className={styles.signup} onclick="SignUp()" >New User?</button>  */}
           <p>{formErrors.login}</p>  
         
       </form>
