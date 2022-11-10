@@ -4,28 +4,22 @@ import axios from 'axios';
 
 function AddLandlord() {
 
-  let initiallandlord={landlordName:'',landlordAge:''};
+  let initiallandlord={flatList:[], landlordAge: 0, landlordId: 0, landlordName: ''};
   let [landlord,setLandlord]=useState(initiallandlord);
-  let [msg,setMsg]=useState('');
-  let [id,setId]=useState(0);
   const [isSubmit, setIsSubmit] = useState(false);
-
-  useEffect(() => {
-    const URL='http://localhost:8080/landlord/addlandlord';
-    axios.post(URL,landlord).then((response) => 
-    {
-        setMsg(response.data)
-        window.alert("Landlord Added...");
-    }).catch(error => console.log(error.message))
-    },[id])
 
     function handleBtnClick(e)
   {
       e.preventDefault();
       //setFormErrors(validate(user));
       setIsSubmit(true);
-      setId(1);
-      setLandlord(initiallandlord);
+      const URL='http://localhost:8080/landlord/addlandlord';
+    axios.post(URL,landlord).then((response) => 
+    {
+        window.alert("Landlord Added...");
+        setLandlord(initiallandlord);
+    }).catch(error => console.log(error.message))
+      
       
   }
 

@@ -16,9 +16,12 @@ function LAddFlat() {
         cost:0,
         flatId:0
         }
+    let initiallandlord={flatList:[], landlordAge: 0, landlordId: 0, landlordName: ''};
+    const [landlord,setLandlord] = useState(initiallandlord);
     let [Flat,setFlat]=useState(initialFlat)
     let [msg,setMsg]=useState('')
     let [id,setId]=useState(0)
+    const [isSubmit, setIsSubmit] = useState(false);
 
     function formValidate() {
         // const form = document.querySelector('form')
@@ -84,31 +87,29 @@ function LAddFlat() {
         // }
     }
 
-    useEffect(()=>
-    {
-        const URL=`http://localhost:8080/flat/addflat`
-        axios.post(URL,Flat).then(response=>
-            {
-                setMsg(response.data)
-                setId(0);
-            }).catch(error=>console.log(error.response))
-    },[id])
+    function handleBtnClick(e)
+   {
+       e.preventDefault();
+       //setFormErrors(validate(user));
+       setIsSubmit(true);
+       initiallandlord.flatList.add(Flat);
+       const URL=`http://localhost:8080/landlord/updatelandlord/${landlord.landlordId}`;
+       axios.put(URL,landlord).then((response) => 
+       {setLandlord(response.data)
+        window.alert("Landlord Updated");
+        setLandlord(initiallandlord)
+      })
+       .catch(error => console.log(error.message))
+   }
 
-
-   const handleBtnClick=(event)=>
-    {
-        event.preventDefault()
-        setId(1)
-        
-    }
     return (
         <>
         <div style={{backgroundImage: "linear-gradient(15deg, #fdf9f1 0%, #f6e4c0 100%)", height:700}}>
         <h2 className='text-primary container'>Add flat details</h2>
             <hr/>
-            <form 
-            onSubmit={handleBtnClick} 
-            className="col-4 container">
+            <form className="col-4 container">
+                <input name="landlordid" type="text" placeholder="Landlord ID" className="col-md-4 address-tags"
+                    value={landlord.landlordId} onChange={e=>setLandlord({...landlord,landlordId:e.target.value})}/><br/>
                 <div className='form-group'>
                     <label>Enter Flat ID<span style={{color: "red"}}>*</span></label>
                     <input name="flatid" placeholder="Flat ID" type='number' className='form-control'
@@ -194,7 +195,7 @@ function LAddFlat() {
          
        </select>
        {/* <p>{formErrors.userType}</p> */}
-                <button id="savebutton" className='btn btn-success mt-2' >Add Flat</button>
+                <button id="savebutton" className='btn btn-success mt-2' onClick={handleBtnClick}>Add Flat</button>
                 <h6 id="error" className="text text-danger"></h6>
             </form>
             <h6>{msg}</h6>

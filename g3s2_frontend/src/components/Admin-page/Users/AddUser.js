@@ -6,27 +6,20 @@ function AddUser() {
 
   let initialuser={userId:0,userName:'',password:'',userType:''};
   let [user,setUser]=useState(initialuser);
-  let [msg,setMsg]=useState('');
-  let [id,setId]=useState(0);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-
-  useEffect(() => {
-      const URL='http://localhost:8080/users/addUser';
-      axios.post(URL,user).then((response) => 
-      {
-          setMsg(response.data);
-          window.alert("User Added...");
-          setUser(initialuser);
-      }).catch(error => console.log(error.message))
-  },[id])
 
   function handleBtnClick(e)
   {
       e.preventDefault();
       setFormErrors(validate(user));
       setIsSubmit(true);
-      setId(1);
+      const URL='http://localhost:8080/users/addUser';
+      axios.post(URL,user).then((response) => 
+      {
+          window.alert("User Added...");
+          setUser(initialuser);
+      }).catch(error => console.log(error.message))
   }
 
   useEffect(() => {

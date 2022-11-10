@@ -5,12 +5,14 @@ import { Link } from 'react-router-dom';
 function UpdateUser() {
   let initialuser={userId:0,userName:'',password:'',userType:''};
    const [user,setUser] = useState(initialuser);
-   const [btn,setButton] = useState(0);
    const [formErrors, setFormErrors] = useState({});
    const [isSubmit, setIsSubmit] = useState(false);
-
-
-   useEffect(() => {
+  
+  function handleBtnClick(e)
+  {
+      e.preventDefault();
+      setFormErrors(validate(user));
+      setIsSubmit(true);
       const URL='http://localhost:8080/users/updateUser';
       axios.put(URL,user).then((response) => 
       { setUser(response.data);
@@ -18,14 +20,6 @@ function UpdateUser() {
         setUser(initialuser);}
       )
       .catch(error => console.log(error.message))
-  },[btn]);
-  
-  function handleBtnClick(e)
-  {
-      e.preventDefault();
-      setFormErrors(validate(user));
-      setIsSubmit(true);
-      setButton(user.userId)
 
   }
 

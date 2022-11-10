@@ -3,28 +3,22 @@ import axios from 'axios';
 
 function RemoveLandlord() {
 
-   const [status, setStatus] = useState(null);
-   const [landlordid,setLandlordid] = useState(0);
+   
+   const [landlordId,setLandlordId] = useState(0);
    const [isSubmit, setIsSubmit] = useState(false);
-   let [msg,setMsg]=useState('');
    
 
-   useEffect(() => {
-      // DELETE request using axios inside useEffect React hook
-      axios.delete(`http://localhost:8080/landlord/removeLandlord/${landlordid}`)
-      .then((response) =>
-      {
-        setMsg(response.data)
-        window.alert("Landlord Removed");
-    }).catch(error => console.log(error.message))
-    },[landlordid]) 
-
-
   const handleBtnClick = (e)=>{
-      console.log(e.target.response)
+      // console.log(e.target.response)
+      e.preventDefault();
       //setFormErrors(validate(landlordid));
       setIsSubmit(true);
-      
+      axios.delete(`http://localhost:8080/landlord/deletelandlord/${landlordId}`)
+      .then(() =>
+      {
+        window.alert("Landlord Removed");
+        setLandlordId(0)
+    }).catch(error => console.log(error.message))
   }
 
 
@@ -35,11 +29,11 @@ function RemoveLandlord() {
             <h1 className="form-text ">Remove Landlord By ID</h1>
             <br/>
             <label>Landlord Id</label>
-            <input name="landlordid" type="number" placeholder="Landlord ID*" className="landlordname" 
-            value = {landlordid} onChange={e=>setLandlordid(e.target.value)}/>
+            <input name="landlordid" type="number" placeholder="Landlord ID*" className="username" 
+            value = {landlordId} onChange={e=>setLandlordId(e.target.value)}/>
             <br/><br/>
             <br/><br/>
-            <button className="btn" onSubmit={handleBtnClick}>Remove Landlord</button>
+            <button className="btn" onClick={handleBtnClick}>Remove Landlord</button>
          </form>
     </React.Fragment>
     );
