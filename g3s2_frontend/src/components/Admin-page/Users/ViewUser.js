@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 
 function ViewUser() {
 
-    
-   // const [status, setStatus] = useState(null);
     const [userid,setUserid] = useState(0);
     const [userDetails,setUserDetail] = useState([]);
     const [btn,setButton] = useState(0);
@@ -15,10 +13,10 @@ function ViewUser() {
 
  
     useEffect(() => {
-       // DELETE request using axios inside useEffect React hook
        axios.get(`http://localhost:8080/users/viewUser/${userid}`)
-       .then((response) => setUserDetail(response.data));
-
+       .then((response) => {
+        setUserDetail(response.data)
+        setUserid(0);}).catch(error => console.log(error.message));
    }, [btn]);
 
         useEffect(()=>{
@@ -36,7 +34,7 @@ function ViewUser() {
  
    const handleBtnClick = (e)=>{
     e.preventDefault();
-    setFormErrors(validate(userDetails));
+    setFormErrors(validate(userid));
     setIsSubmit(true);
     setButton(userid)
       
@@ -51,7 +49,7 @@ function ViewUser() {
 
   const validate = (values) => {
     const errors = {};
-    if (!values.username) {
+    if (!values) {
         errors.userid = "User id is required!";
     }
     return errors;

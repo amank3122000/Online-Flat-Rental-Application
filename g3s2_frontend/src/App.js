@@ -74,7 +74,7 @@ function App() {
         <Route path="/admin/user/removeuser" element={<RemoveUser />}/>
         <Route path="/admin/user/updateuser" element={<UpdateUser />}/>
         <Route path="/admin/user/viewuser" element={<ViewUser />} />   
-
+        
         <Route path="/admin/landlord/addlandlord" element={<AddLandlord />}/>       
         <Route path="/admin/landlord/removelandlord" element={<RemoveLandlord />}/>       
         <Route path="/admin/landlord/updatelandlord" element={<UpdateLandlord />}/>        

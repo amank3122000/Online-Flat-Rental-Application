@@ -25,7 +25,9 @@ import com.cg.onlineflatrental.service.LandlordService;
 
 @RestController
 @RequestMapping(value = "/landlord")
+
 @CrossOrigin(origins="http://localhost:3000")
+
 @Validated
 public class LandlordController {
 
