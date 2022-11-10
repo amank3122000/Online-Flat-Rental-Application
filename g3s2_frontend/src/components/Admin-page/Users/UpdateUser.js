@@ -3,8 +3,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 function UpdateUser() {
-
-   const [user,setUser] = useState([]);
+  let initialuser={userId:0,userName:'',password:'',userType:''};
+   const [user,setUser] = useState(initialuser);
    const [btn,setButton] = useState(0);
    const [formErrors, setFormErrors] = useState({});
    const [isSubmit, setIsSubmit] = useState(false);
@@ -14,7 +14,8 @@ function UpdateUser() {
       const URL='http://localhost:8080/users/updateUser';
       axios.put(URL,user).then((response) => 
       { setUser(response.data);
-        window.alert("User Updated...");}
+        window.alert("User Updated...");
+        setUser(initialuser);}
       )
       .catch(error => console.log(error.message))
   },[btn]);
@@ -24,7 +25,7 @@ function UpdateUser() {
       e.preventDefault();
       setFormErrors(validate(user));
       setIsSubmit(true);
-      setButton(user.userid)
+      setButton(user.userId)
 
   }
 
@@ -37,11 +38,11 @@ function UpdateUser() {
 
   const validate = (values) => {
     const errors = {};
-    if (!values.userid) {
-      errors.userid = "Username is required!";
+    if (!values.userId) {
+      errors.userId = "User id is required!";
     }
-    if (!values.username) {
-      errors.username = "User id is required!";
+    if (!values.userName) {
+      errors.userName = "Username is required!";
     }
     if (!values.userType) {
       errors.userType = "User type is required!";
@@ -69,9 +70,9 @@ function UpdateUser() {
         <form className="c2">
             <h1 className="form-text ">Update User</h1>
             <br/>  <br/>  
-            <label>User I</label>
+            <label>User Id</label>
        <input name="userid" type="nummber" placeholder="User ID" className="username" 
-       value={user.userid} onChange={e=>setUser({...user,userid:e.target.value})}
+       value={user.userId} onChange={e=>setUser({...user,userId:e.target.value})}
        />
        <p>{formErrors.userid}</p>
        <br/>

@@ -4,25 +4,26 @@ import { Link } from 'react-router-dom';
 
 function RemoveUser() {
 
-   
-   const [status, setStatus] = useState(null);
    const [userid,setUserid] = useState(0);
    const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
+    const [btn,setButton] = useState(0);
 
    useEffect(() => {
-      // DELETE request using axios inside useEffect React hook
       axios.delete(`http://localhost:8080/users/removeUser/${userid}`)
-      .then(() => setStatus('Delete successful'));
-  // empty dependency array means this effect will only run once (like componentDidMount in classes)
-  }, [userid]);
+      .then(() => {
+        window.alert("User Removed");
+        setUserid(0);
+      }).catch(error => console.log(error.message));
+  }, [btn]);
 
 
   const handleBtnClick = (e)=>{
-      console.log(e.target.response)
+      // console.log(e.target.response)
+      e.preventDefault();
       setFormErrors(validate(userid));
       setIsSubmit(true);
-      window.alert("User Removed");
+      setButton(userid)
   }
 
   useEffect(() => {
@@ -34,7 +35,7 @@ function RemoveUser() {
 
   const validate = (values) => {
     const errors = {};
-    if (!values.username) {
+    if (!values) {
         errors.userid = "User id is required!";
     }
     return errors;
@@ -50,7 +51,7 @@ function RemoveUser() {
           <button className="btn btn-outline-danger my-2 my-sm-0 logout-btn" type="submit"><a href="/login">Logout</a></button>
         </form>
       </nav>
-        <form className="c2 view-form" method="POST">
+        <form className="c2 view-form">
             <h1 className="form-text ">Remove User By ID</h1>
            <br/>
            <label>User Id</label>
@@ -60,7 +61,7 @@ function RemoveUser() {
             />
             <br/>
             <p>{formErrors.userid}</p>
-            <button className="btn" onSubmit={handleBtnClick}>Remove User</button>
+            <button className="btn" onClick={handleBtnClick}>Remove User</button>
          </form>
     </React.Fragment>
     );

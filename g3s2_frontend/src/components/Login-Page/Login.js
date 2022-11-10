@@ -30,11 +30,10 @@ const [formValues, setFormValues] = useState(initialValues);
         }
         else if(data.data[i].userType==="landlord"){
          history("/landlord");
-       }else{
-          isLogged=false;
-        }
+       }
         break;
       }else{
+        isLogged=false;
         validate(formValues);
       }
     }}).catch((error)=>console.log(error));

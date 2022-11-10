@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function AddUser() {
 
-  let initialuser={userName:'',password:'',userType:''};
+  let initialuser={userId:0,userName:'',password:'',userType:''};
   let [user,setUser]=useState(initialuser);
   let [msg,setMsg]=useState('');
   let [id,setId]=useState(0);
@@ -17,6 +17,7 @@ function AddUser() {
       {
           setMsg(response.data);
           window.alert("User Added...");
+          setUser(initialuser);
       }).catch(error => console.log(error.message))
   },[id])
 
@@ -26,7 +27,6 @@ function AddUser() {
       setFormErrors(validate(user));
       setIsSubmit(true);
       setId(1);
-      setUser(initialuser);
   }
 
   useEffect(() => {
@@ -38,8 +38,8 @@ function AddUser() {
 
   const validate = (values) => {
     const errors = {};
-    if (!values.username) {
-      errors.username = "Username is required!";
+    if (!values.userName) {
+      errors.userName = "Username is required!";
     }
     if (!values.userType) {
       errors.userType = "User type is required!";
@@ -76,7 +76,7 @@ function AddUser() {
        <input name="username" type="text" placeholder="Username*" className="username"
        value={user.userName} onChange={e=>setUser({...user,userName:e.target.value})}
        />
-       <p>{formErrors.username}</p>
+       <p>{formErrors.userName}</p>
        <br/>
        <label>Password</label>
        <input name="password" type="password" placeholder="Password*" className="username"
