@@ -28,10 +28,10 @@ function ViewAllTenant() {
           <th className="col-md-3">Tenant Name</th>
           <th className="col-md-1">Age</th>
           <th className="col-md-3">Flat List</th>
-          <th classclassName="col-md-3">Actions</th>
+          <th className="col-md-3">Actions</th>
         </tr>
       </thead>
-      <tbody class="table-success ">
+      <tbody className="table-success ">
       {
                 tenants.map (
                     tenant =>
