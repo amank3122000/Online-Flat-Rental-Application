@@ -14,7 +14,9 @@ function LAddFlat() {
             },
         availability:'',
         cost:0,
-        flatId:0
+        flatId:0,
+        landlord:{landlordId:0}
+
         }
     let [Flat,setFlat]=useState(initialFlat)
     let [msg,setMsg]=useState('')
@@ -109,6 +111,17 @@ function LAddFlat() {
             <form 
             onSubmit={handleBtnClick} 
             className="col-4 container">
+
+
+                <div className='form-group'>
+                    <label>Enter Landlord ID<span style={{color: "red"}}>*</span></label>
+                    <input name="landlordId" placeholder="Landlord ID" type='number' className='form-control'
+                         value={Flat.landlord.landlordId}
+                         onInput={formValidate}
+                         onChange={e=>setFlat({...Flat,landlord:{...Flat.landlord,landlordId:e.target.value}})}/>
+                </div>
+
+
                 <div className='form-group'>
                     <label>Enter Flat ID<span style={{color: "red"}}>*</span></label>
                     <input name="flatid" placeholder="Flat ID" type='number' className='form-control'
