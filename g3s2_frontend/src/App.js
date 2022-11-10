@@ -10,7 +10,6 @@ import NotFoundPage from './components/NotFoundPage';
 import AdminPage from './components/Admin-page/AdminPage/AdminPage';
 import LandLord from './components/Landlord-page/LandlordPage';
 import Tenant from './components/Tenant-page/TenantPage';
-import LoginAction from './components/Login-Page/LoginAction';
 
 import AddUser from './components/Admin-page/Users/AddUser';
 import ViewAllUser from './components/Admin-page/Users/ViewAllUser';
@@ -64,7 +63,6 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />}/>
         <Route path="/login" element={<Login />}/>
-        <Route path="/loginactions" element={<LoginAction />}/>
         <Route exact path="/admin" element={<AdminPage />}/>
         <Route exact path="/tenant" element={<Tenant />}/>
         <Route exact path="/landlord" element={<LandLord />}/>

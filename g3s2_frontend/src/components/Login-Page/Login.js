@@ -87,7 +87,7 @@ function Login() {
               <div className={styles.c11}>
 
                      <h1 className={styles.mainhead}>Welcome</h1>
-                 
+                     
               </div>
           </div>
           <div className={styles.c2}>
