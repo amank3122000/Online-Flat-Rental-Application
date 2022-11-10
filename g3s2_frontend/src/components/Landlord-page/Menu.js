@@ -27,6 +27,7 @@ function Menu() {
             <li><Link style={{ fontWeight: "bold"}} className="dropdown-item" to="/landlord/allFlat">Flat List</Link></li>
             <li><Link style={{ fontWeight: "bold"}} className="dropdown-item" to="/landlord/flatbyid">Flat By ID</Link></li>
             <li><Link style={{ fontWeight: "bold"}} className="dropdown-item" to="/landlord/updateFlat">Update Flat</Link></li>
+
           </ul>
         </li>  
       </ul>  
