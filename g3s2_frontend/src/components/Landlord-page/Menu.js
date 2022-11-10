@@ -25,7 +25,6 @@ function Menu() {
           <ul style={{backgroundColor: "#5ab9ea"}} className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li><Link style={{ fontWeight: "bold"}} className="dropdown-item" to="/landlord/addFlat">Add Flat</Link></li>
             <li><Link style={{ fontWeight: "bold"}} className="dropdown-item" to="/landlord/allFlat">Flat List</Link></li>
-            <li><Link style={{ fontWeight: "bold"}} className="dropdown-item" to="/landlord/flatbyid">Flat By ID</Link></li>
             <li><Link style={{ fontWeight: "bold"}} className="dropdown-item" to="/landlord/updateFlat">Update Flat</Link></li>
 
           </ul>

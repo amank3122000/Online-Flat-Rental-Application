@@ -2,51 +2,50 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function ViewTenant() {
+  const [tenantid,setTenantid] = useState(0);
+  const [tenantDetail,setTenantDetail] = useState([]);
+  // const [btn,setButton] = useState(0);
+  // const [deletebtn,setdeleteButton] = useState(0);
 
-  const [tenantid,setTenant] = useState(0);
-  const [tenant,setTenantDetail] = useState([]);
-  const [btn,setButton] = useState(0);
-  const [deletebtn,setdeleteButton] = useState(0);
+//   useEffect(() => {
+//     // DELETE request using axios inside useEffect React hook
+    
+// }, [btn]);
 
-  useEffect(() => {
-    // DELETE request using axios inside useEffect React hook
-    const URL=`http://localhost:8080/tenant/viewtenant/${tenantid}`
-    axios
-      .get(URL)
-      .then((response) => {
-      
-      console.log(response.data);
-      setTenantDetail(response.data)})
-      .catch((error)=>console.log(error.response));
-}, [btn]);
-
-     useEffect(()=>{
-         const URL=`http://localhost:8080/tenant/deletetenant/${tenantid}`
-         axios
-          .delete(URL)
-          .then((response)=>
-             {
-                 setTenantDetail([]);
-                 setTenant(0);
-                 btn(0);
-             })
-             .catch(error=>console.log(error.response));
-     },[deletebtn]);
+    //  useEffect(()=>{
+    //      const URL=`http://localhost:8080/tenant/deletetenant/${tenantid}`
+    //      axios
+    //       .delete(URL)
+    //       .then((response)=>
+    //          {
+    //              setTenantDetail([]);
+    //              setTenant(0);
+    //              btn(0);
+    //          })
+    //          .catch(error=>console.log(error.response));
+    //  },[deletebtn]);
 
 
 
 
 const handleBtnClick = (e)=>{
  e.preventDefault();
- setButton(tenantid)
+//  setButton(tenantid)
+ const URL=`http://localhost:8080/tenant/viewtenant/${tenantid}`
+ axios
+   .get(URL)
+   .then((response) => {
    
+   console.log(response.data);
+   setTenantDetail(response.data)})
+   .catch((error)=>console.log(error.response));
 }
 
 
-const handleDeleteBtnClick =(e)=>{
-   e.preventDefault();
-   setdeleteButton(1)
-}
+// const handleDeleteBtnClick =(e)=>{
+//    e.preventDefault();
+//    setdeleteButton(1)
+// }
 
 
    return (
@@ -54,12 +53,12 @@ const handleDeleteBtnClick =(e)=>{
             <form className="view-form">
     <h1 className="form-text ">View Tenant By ID</h1>
     <br/>
-    <input name="username" type="number" placeholder="Tenant ID*" class="username"
+    <input name="username" type="number" placeholder="Tenant ID*" className="username"
      value = {tenantid}
-     onChange={e=>setTenant(e.target.value)}
+     onChange={e=>setTenantid(e.target.value)}
     />
     <br/>
-    <button class="btn" onClick={handleBtnClick}>View Tenant</button>
+    <button className="btn" onClick={handleBtnClick}>View Tenant</button>
    </form>
    
 
@@ -67,26 +66,34 @@ const handleDeleteBtnClick =(e)=>{
     <thead>
         <tr className="table-warning">
           <th>ID</th>
-          <th>Tenant Name</th>
+          <th>HOUSE NO</th>
+            <th>STREET</th>
+            <th>CITY</th>
+            <th>PIN</th>
+            <th>STATE</th>
+            <th>COUNTRY</th>
           <th>Age</th>
-          <th>Flat List</th>
-          <th>Actions</th>
         </tr>
       </thead>
       <tbody className="table-success ">
         <tr>
-          <td>{tenant&&tenant.tenantId}</td>
-          <td>{tenant&&tenant.tenantName}</td>
-          <td>{tenant&&tenant.age}</td>
-          <td>
+          <td>{tenantDetail&&tenantDetail.tenantId}</td>
+          <td>{tenantDetail.taddress&&tenantDetail.taddress.houseNo}</td>
+          <td>{tenantDetail.taddress&&tenantDetail.taddress.street}</td>
+          <td>{tenantDetail.taddress&&tenantDetail.taddress.city}</td>
+          <td>{tenantDetail.taddress&&tenantDetail.taddress.pin}</td>
+          <td>{tenantDetail.taddress&&tenantDetail.taddress.state}</td>
+          <td>{tenantDetail.taddress&&tenantDetail.taddress.country}</td>
+          <td>{tenantDetail&&tenantDetail.age}</td>
+          {/* <td>
             <button className="btn btn-info logout-btn" type="submit">View Flats</button>
-          </td>
-          <td>
+          </td> */}
+          {/* <td>
             <button className="btn btn-warning logout-btn" type="submit">Update</button>
             <button className="btn btn-danger logout-btn" type="submit"
             onClick={handleDeleteBtnClick}
             >Delete</button>
-          </td>
+          </td> */}
         </tr>
       
        
