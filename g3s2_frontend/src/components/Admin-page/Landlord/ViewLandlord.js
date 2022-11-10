@@ -4,21 +4,22 @@ import axios from 'axios';
 
 
 function ViewLandlord() {
-  
+
+  let initiallandlord={flatList:[], landlordAge: 0, landlordId: 0, landlordName: ''};
     const [landlordid,setLandlordid] = useState(0);
-    const [landlordDetails,setLandlordDetail] = useState([]);
-    const [btn,setButton] = useState(0);
+    const [landlordDetails,setLandlordDetails] = useState(initiallandlord);
+    // const [btn,setButton] = useState(0);
     //const [deletebtn,setdeleteButton] = useState(0);
     //const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
 
  
-    useEffect(() => {
-       // DELETE request using axios inside useEffect React hook
-       axios.get(`http://localhost:8080/users/viewlandlord/${landlordid}`)
-       .then((response) => setLandlordDetail(response.data));
+  //   useEffect(() => {
+  //      // DELETE request using axios inside useEffect React hook
+  //      axios.get(`http://localhost:8080/users/viewlandlord/${landlordid}`)
+  //      .then((response) => setLandlordDetail(response.data));
 
-   }, [btn]);
+  //  }, [btn]);
 
         // useEffect(()=>{
         //     const URL=`http://localhost:8080/users/removeUser/${userid}`
@@ -37,8 +38,9 @@ function ViewLandlord() {
     e.preventDefault();
     //setFormErrors(validate(userDetails));
     setIsSubmit(true);
-    setButton(landlordid)
-      
+    axios.get(`http://localhost:8080/landlord/viewlandlord/${landlordid}`)
+       .then((response) => {setLandlordDetails(response.data)
+        setLandlordid(0);}).catch(error => console.log(error.message));
   }
 
   // useEffect(() => {
@@ -61,14 +63,15 @@ function ViewLandlord() {
   //     setdeleteButton(userid)
   // }
 
-
+console.log(landlordDetails);
    return (
       <React.Fragment>
         
         <form className="view-form">
     <h1 className="form-text ">View LandLord By ID</h1>
     <br/>
-    <input name="username" type="number" placeholder="User ID*" className="username"/>
+    <input name="landlordname" type="number" placeholder="Landlord ID*" className="username"
+    value = {landlordid} onChange={e=>setLandlordid(e.target.value)}/>
     <br/>
     <button className="btn" onClick={handleBtnClick}>View Landlord</button>
    </form>
@@ -86,10 +89,10 @@ function ViewLandlord() {
       </thead>
       <tbody className="table-success ">
         <tr>
-          <td className="col-md-2">{landlordDetails.landlordId}</td>
-          <td className="col-md-3">{landlordDetails.landlordName}</td>
-          <td className="col-md-1">{landlordDetails.landlordAge}</td>
-          <td className="col-md-3">{landlordDetails.flatList}</td>
+          <td className="col-md-2">{landlordDetails&&landlordDetails.landlordId}</td>
+          <td className="col-md-3">{landlordDetails&&landlordDetails.landlordName}</td>
+          <td className="col-md-1">{landlordDetails&&landlordDetails.landlordAge}</td>
+          <td className="col-md-3">{landlordDetails&&landlordDetails.flatList.map(flat=><div>{flat.flatId},</div>)}</td>
           {/* <td className="col-md-3">
             <button className="btn btn-warning logout-btn" type="submit">Update</button>
             <button className="btn btn-danger logout-btn" type="submit">Delete</button>

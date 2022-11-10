@@ -7,15 +7,6 @@ function RemoveUser() {
    const [userid,setUserid] = useState(0);
    const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
-    const [btn,setButton] = useState(0);
-
-   useEffect(() => {
-      axios.delete(`http://localhost:8080/users/removeUser/${userid}`)
-      .then(() => {
-        window.alert("User Removed");
-        setUserid(0);
-      }).catch(error => console.log(error.message));
-  }, [btn]);
 
 
   const handleBtnClick = (e)=>{
@@ -23,7 +14,11 @@ function RemoveUser() {
       e.preventDefault();
       setFormErrors(validate(userid));
       setIsSubmit(true);
-      setButton(userid)
+      axios.delete(`http://localhost:8080/users/removeUser/${userid}`)
+      .then(() => {
+        window.alert("User Removed");
+        setUserid(0);
+      }).catch(error => console.log(error.message));
   }
 
   useEffect(() => {

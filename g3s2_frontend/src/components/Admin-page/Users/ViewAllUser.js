@@ -6,9 +6,6 @@ function ViewAllUser() {
 
     let initialCustomers=[];
     let [users,setUsers]=useState(initialCustomers);
-    const [userid,setUser] = useState(0);
-    const [deletebtn,setdeleteButton] = useState(0);
-
 
     useEffect(() => {
         const URL = 'http://localhost:8080/users/viewAllUsers';
@@ -17,30 +14,6 @@ function ViewAllUser() {
         })
         .catch((error) => console.log(error));
     },[]);
-
-    useEffect(() => {
-        // DELETE request using axios inside useEffect React hook
-        axios.delete(`http://localhost:8080/users/removeUser/${userid}`)
-        .then(response=>{
-            console.log(response);
-        });
-    // empty dependency array means this effect will only run once (like componentDidMount in classes)
-    }, [deletebtn]);
-
-
-
-
-
-    function goToAddCustomer(){
-        //props.history.push('/addCustomer');
-    }
-
-
-const deletebtnhandler = (e)=>{
-        e.preventDefault();
-        setdeleteButton(userid)
-        console.log(userid)   
-    }
 
   return (
       <React.Fragment>
@@ -59,7 +32,6 @@ const deletebtnhandler = (e)=>{
                     <th>User ID</th>
                     <th>User Name</th>
                     <th>User Type</th>
-                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody className="table-success ">
@@ -70,10 +42,6 @@ const deletebtnhandler = (e)=>{
                         <td className="col-md-2">{user.userId}</td>
                         <td className="col-md-3">{user.userName}</td>
                         <td className="col-md-3">{user.userType}</td>
-                        <td className="col-md-3">
-                        <button className="btn btn-warning logout-btn" type="submit" onClick={goToAddCustomer}>Update</button>
-                        <button className="btn btn-danger logout-btn" type="submit" onClick={deletebtnhandler}>Delete</button>
-                    </td>
                 </tr>
                 )}
             

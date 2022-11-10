@@ -6,38 +6,17 @@ function ViewUser() {
 
     const [userid,setUserid] = useState(0);
     const [userDetails,setUserDetail] = useState([]);
-    const [btn,setButton] = useState(0);
-    const [deletebtn,setdeleteButton] = useState(0);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
-
- 
-    useEffect(() => {
-       axios.get(`http://localhost:8080/users/viewUser/${userid}`)
-       .then((response) => {
-        setUserDetail(response.data)
-        setUserid(0);}).catch(error => console.log(error.message));
-   }, [btn]);
-
-        useEffect(()=>{
-            const URL=`http://localhost:8080/users/removeUser/${userid}`
-            axios.delete(URL).then(response=>
-                {
-                    setUserDetail([]);
-                    setUserid(0);
-                    btn(0);
-                }).catch(error=>console.log(error.response));
-        },[deletebtn]);
-
-
- 
  
    const handleBtnClick = (e)=>{
     e.preventDefault();
     setFormErrors(validate(userid));
     setIsSubmit(true);
-    setButton(userid)
-      
+    axios.get(`http://localhost:8080/users/viewUser/${userid}`)
+    .then((response) => {
+     setUserDetail(response.data)
+     setUserid(0);}).catch(error => console.log(error.message));
   }
 
   useEffect(() => {
@@ -54,11 +33,6 @@ function ViewUser() {
     }
     return errors;
   };
-
-  const handleDeleteBtnClick =(e)=>{
-      e.preventDefault();
-      setdeleteButton(userid)
-  }
 
 
    return (
@@ -92,7 +66,6 @@ function ViewUser() {
                 <th className="col-md-2">User ID</th>
                 <th className="col-md-4">User Name</th>
                 <th className="col-md-4">User Type</th>
-                <th className="col-md-2">Actions</th>
                 </tr>
             </thead>
             <tbody className="table-success ">
@@ -101,12 +74,6 @@ function ViewUser() {
                         <td className="col-md-2">{userDetails.userId}</td>
                         <td className="col-md-3">{userDetails.userName}</td>
                         <td className="col-md-3">{userDetails.userType}</td>
-                        <td className="col-md-3">
-                    <button className="btn btn-warning logout-btn" type="submit">Update</button>
-                    <button className="btn btn-danger logout-btn" type="submit" 
-                     onClick={handleDeleteBtnClick}
-                    >Delete</button>
-                </td>
                 </tr>
                  
             </tbody>

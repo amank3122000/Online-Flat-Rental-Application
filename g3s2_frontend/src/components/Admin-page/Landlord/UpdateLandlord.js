@@ -3,27 +3,31 @@ import axios from 'axios';
 
 function UpdateLandlord() {
 
-    const [landlord,setLandlord] = useState([]);
-    const [btn,setButton] = useState(0);
+  let initiallandlord={flatList:[], landlordAge: 0, landlordId: 0, landlordName: ''};
+    const [landlord,setLandlord] = useState(initiallandlord);
     const [isSubmit, setIsSubmit] = useState(false);
  
  
-    useEffect(() => {
-       const URL='http://localhost:8080/landlord/updatelandlord';
-       axios.put(URL,landlord).then((response) => 
-       setLandlord(response.data)
-       )
-       .catch(error => console.log(error.message))
-   },[btn]);
+  //   useEffect(() => {
+  //      const URL='http://localhost:8080/landlord/updatelandlord';
+  //      axios.put(URL,landlord).then((response) => 
+  //      setLandlord(response.data)
+  //      )
+  //      .catch(error => console.log(error.message))
+  //  },[btn]);
    
    function handleBtnClick(e)
    {
        e.preventDefault();
        //setFormErrors(validate(user));
        setIsSubmit(true);
-       setButton(landlord.landlordid)
-       window.alert("Landlord Updated");
- 
+       const URL=`http://localhost:8080/landlord/updatelandlord/${landlord.landlordId}`;
+       axios.put(URL,landlord).then((response) => 
+       {setLandlord(response.data)
+        window.alert("Landlord Updated");
+        setLandlord(initiallandlord)
+      })
+       .catch(error => console.log(error.message))
    }
  
   //  useEffect(() => {
@@ -59,13 +63,15 @@ function UpdateLandlord() {
         
        <form id = "" className="c2 booking-form updatelandlordform">
         <h1 className="form-text">Update Landlord</h1><br/>
-        <input name="landlordid" type="text" placeholder="Landlord ID" className="col-md-4 address-tags"/><br/>
-        <input name="landlordname" type="text" placeholder="Landlord Name" className="col-md-4 address-tags"/>
-        <input name="landlordage" type="number" placeholder="Landlord Age" min="18" className="col-md-3 address-tags"/>
-
-        <div className="col-md-12 text-center"> 
+        <input name="landlordid" type="text" placeholder="Landlord ID" className="col-md-4 address-tags"
+        value={landlord.landlordId} onChange={e=>setLandlord({...landlord,landlordId:e.target.value})}/><br/>
+        <input name="landlordname" type="text" placeholder="Landlord Name" className="col-md-4 address-tags"
+        value={landlord.landlordName} onChange={e=>setLandlord({...landlord,landlordName:e.target.value})}/>
+        <input name="landlordage" type="number" placeholder="Landlord Age" min="18" className="col-md-3 address-tags"
+        value={landlord.landlordAge} onChange={e=>setLandlord({...landlord,landlordAge:e.target.value})}/>
+        {/* <div className="col-md-12 text-center"> 
           <button id="singlebutton" name="singlebutton" className="btn btn-info">View Flat List</button> 
-        </div>
+        </div> */}
         
         <button className="btn" onClick={handleBtnClick}>Update Landlord</button>
         
