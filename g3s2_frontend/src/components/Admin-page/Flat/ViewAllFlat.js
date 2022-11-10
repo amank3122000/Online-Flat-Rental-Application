@@ -108,7 +108,7 @@ const mystyle = {
           </thead>
           
           <tbody>
-            {Flat.map((flat) => (
+            {Flat&&Flat.map((flat) => (
               <tr>
                 <td>{flat.flatId}</td>
                 <td>{flat.flatAddress.houseNo}</td>
