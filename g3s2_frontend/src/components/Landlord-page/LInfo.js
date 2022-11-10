@@ -33,7 +33,7 @@ function LInfo(props) {
     
       }
       useEffect(() => {
-        const URL = `http://localhost:8080/landlordCtrl/viewLandlordByID/${id}`;
+        const URL = `http://localhost:8080/landlord/viewlandlord/${id}`;
         axios
           .get(URL)
           .then((response) => {
