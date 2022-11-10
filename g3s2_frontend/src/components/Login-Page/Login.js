@@ -7,7 +7,7 @@ import styles from '../Login-Page/login.module.css';
 function Login() {
   const history=useNavigate();
   const initialValues={username:"",password:"",usertype:""};
-const [formValues, setFormValues] = useState(initialValues);
+  const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   var isLogged= false;
