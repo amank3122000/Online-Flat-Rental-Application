@@ -10,22 +10,27 @@ function ViewTenant() {
 
   useEffect(() => {
     // DELETE request using axios inside useEffect React hook
-    axios.get(`http://localhost:8080/tenant/tenant/${tenantid}`)
-    .then((response) => {
+    const URL=`http://localhost:8080/tenant/viewtenant/${tenantid}`
+    axios
+      .get(URL)
+      .then((response) => {
       
-      console.log(response);
-      setTenantDetail(response.data)});
-
+      console.log(response.data);
+      setTenantDetail(response.data)})
+      .catch((error)=>console.log(error.response));
 }, [btn]);
 
      useEffect(()=>{
          const URL=`http://localhost:8080/tenant/deletetenant/${tenantid}`
-         axios.delete(URL).then(response=>
+         axios
+          .delete(URL)
+          .then((response)=>
              {
                  setTenantDetail([]);
                  setTenant(0);
                  btn(0);
-             }).catch(error=>console.log(error.response));
+             })
+             .catch(error=>console.log(error.response));
      },[deletebtn]);
 
 
@@ -46,8 +51,8 @@ const handleDeleteBtnClick =(e)=>{
 
    return (
       <React.Fragment>
-            <form class="view-form">
-    <h1 class="form-text ">View Tenant By ID</h1>
+            <form className="view-form">
+    <h1 className="form-text ">View Tenant By ID</h1>
     <br/>
     <input name="username" type="number" placeholder="Tenant ID*" class="username"
      value = {tenantid}
@@ -58,27 +63,27 @@ const handleDeleteBtnClick =(e)=>{
    </form>
    
 
- <table class="table table-data table-striped table-bordered view-table">
+ <table className="table table-data table-striped table-bordered view-table">
     <thead>
-        <tr class="table-warning">
-          <th class="col-md-2">ID</th>
-          <th class="col-md-3">Tenant Name</th>
-          <th class="col-md-1">Age</th>
-          <th class="col-md-3">Flat List</th>
-          <th class="col-md-3">Actions</th>
+        <tr className="table-warning">
+          <th>ID</th>
+          <th>Tenant Name</th>
+          <th>Age</th>
+          <th>Flat List</th>
+          <th>Actions</th>
         </tr>
       </thead>
-      <tbody class="table-success ">
+      <tbody className="table-success ">
         <tr>
-          <td class="col-md-2">{tenant.tenantId}</td>
-          <td class="col-md-3">{tenant.tenantName}</td>
-          <td class="col-md-1">{tenant.age}</td>
-          <td class="col-md-3">
-            <button class="btn btn-info logout-btn" type="submit">View Flats</button>
+          <td>{tenant&&tenant.tenantId}</td>
+          <td>{tenant&&tenant.tenantName}</td>
+          <td>{tenant&&tenant.age}</td>
+          <td>
+            <button className="btn btn-info logout-btn" type="submit">View Flats</button>
           </td>
-          <td class="col-md-3">
-            <button class="btn btn-warning logout-btn" type="submit">Update</button>
-            <button class="btn btn-danger logout-btn" type="submit"
+          <td>
+            <button className="btn btn-warning logout-btn" type="submit">Update</button>
+            <button className="btn btn-danger logout-btn" type="submit"
             onClick={handleDeleteBtnClick}
             >Delete</button>
           </td>

@@ -37,7 +37,7 @@ function ViewAllTenant() {
                     tenant =>
         <tr>
           <td className="col-md-2">{tenant.tenantId}</td>
-          <td className="col-md-3">{tenant.tenantName}</td>
+           <td className="col-md-3">{tenant.tenantName}</td> 
           <td className="col-md-1">{tenant.age}</td>
           <td className="col-md-3">
             <button className="btn btn-info logout-btn" type="submit">Flat List</button>
