@@ -1,8 +1,11 @@
-import React ,{useState,useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-function LUpdateFlat() {
+import { Link } from 'react-router-dom';
 
-    {/*let initialFlat={
+function LUpdateFlat() {
+    
+    let initialFlat={
+        flatId: 0,
         flatAddress:{
             houseNo:0,
             street:'',
@@ -11,124 +14,143 @@ function LUpdateFlat() {
             pin:0,
             country:''
             },
-        flatAvailability:'',
-        flatCost:0,
-        landlord:{landlordId:0}
+        availability:'',
+        cost:0,
         };
-    let [Flat,setFlat]=useState(initialFlat);
-    let [flatId,setFlatId]=useState(0);
-    let [msg,setMsg]=useState('');
-    let [id,setId]=useState(0);
-    useEffect(()=>
-    {
-        const URL=`http://localhost:8080/flat/updateflat/${flatId}`
-        axios.put(URL,Flat).then(response=>
-            {
-                setMsg(response.data)
-                setFlat(initialFlat)
-                setId(0);
-            }).catch(error=>console.log(error.response))
-    },[id])
-    useEffect(() => {
-        const URL = `http://localhost:8080/flat/viewflat/${flatId}`;
-        axios
-          .get(URL)
-          .then((response) => {
-            setFlat(response.data);
-          })
-          .catch((error) => console.log(error.response));
-      }, [btnId]);
-   const handleBtnClick=(event)=>
-    {
-        event.preventDefault()
-        setId(1)
-        
-    }*/}
 
-    return /*(
-        {(flatId!==0)?<>
-        <div style={{backgroundImage: "linear-gradient(15deg, #fdf9f1 0%, #f6e4c0 100%)"}}>
-        <h2 className='text-primary container'>Update flat details</h2>
-            <hr/>
-            <form method="put" onSubmit={handleBtnClick}  o className="col-4 container">
-                <div className='form-group'>
-                    <label>Enter ID</label>
-                    <input placeholder="Landlord ID" type='number' className='form-control' value={Flat.landlord.landlordId} onChange={e=>setFlat({...Flat,landlord:{...Flat.landlord,landlordId:e.target.value}})}/>
-                </div>
-                <div className='form-group'>
-                    <label>Flat ID</label>
-                    <input placeholder="Flat Number" type='number' className='form-control' value={Flat.flatAddress.houseNo} onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,houseNo:e.target.value}})}/>
-                </div>
-                <div className='form-group'>
-                    <label>Street</label>
-                    <input placeholder="Street name" className='form-control' value={Flat.flatAddress.street} onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,street:e.target.value}})}/>
-                </div>
-                <div className='form-group'>
-                    <label>Pin code</label>
-                    <input placeholder="If other than India--> 999999" type='number' max='999999' min='100000' className='form-control' value={Flat.flatAddress.pin} onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,pin:e.target.value}})}/>
-                </div>
-                <div className='form-group'>
-                    <label>City</label>
-                    <input placeholder="City name" className='form-control' value={Flat.flatAddress.city} onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,city:e.target.value}})}/>
-                </div>
-                <div className='form-group'>
-                    <label>State</label>
-                    <input placeholder="State name" className='form-control' value={Flat.flatAddress.state} onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,state:e.target.value}})}/>
-                </div>
-                <div className='form-group'>
-                    <label>Country</label>
-                    <input placeholder="Country name"  className='form-control' value={Flat.flatAddress.country} onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,country:e.target.value}})}/>
-                </div>
-                <div className='form-group'>
-                    <label>Monthly rent</label>
-                    <input placeholder="in RS" className='form-control' value={Flat.flatCost} onChange={e=>setFlat({...Flat,flatCost:e.target.value})}/>
-                </div>
-                <div className='form-group'>
-                    <label>Flat Availability</label>
-                    <div>
-                        <div className="form-check form-check-inline">
-                        <input className="form-check-input" type="radio" name="flatA" id="flatYes" value="Yes" onChange={e=>setFlat({...Flat,flatAvailability:e.target.value})}/>
-                            <label className="form-check-label" for="flatYes">
-                                Yes
-                            </label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="radio" name="flatA" id="flatNo" value="No" onChange={e=>setFlat({...Flat,flatAvailability:e.target.value})}/>
-                            <label className="form-check-label" for="flatNo">
-                                No
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <button className='btn btn-success mt-2'>Update Flat</button>
-            </form>
-            <h6>{msg}</h6>
-        </div>
-           
-        </>:<>
-        <div>
-        <h2 className="text-primary container">Enter Flat ID</h2>
-      <hr />
-      <div className="form-group container">
-        <form className="col-3" onSubmit={handleBtnClick}>
-        <label className="text text-primary" style={{margin:"10px 0px"}}>Confirm your Identification</label>
-                <input
-                type="number"
-                min="1" max='10000'
-                className="form-control"
-                value={flatId}
-                onChange={(e) =>setFlatId(e.target.value)}
-                placeholder="Flat ID"
-                />
-                <button  style={{margin:"10px 0px"}} className='btn btn-success'>Search</button>
+    const [Flat,setFlat]=useState(initialFlat);
+    const [formErrors, setFormErrors] = useState({});
+    const [isSubmit, setIsSubmit] = useState(false);
+
+    function handleBtnClick(e)
+  {
+      e.preventDefault();
+      setFormErrors(validate(Flat));
+      setIsSubmit(true);
+      const URL=`http://localhost:8080/flat/updateflat/${Flat.flatId}`;
+      axios.put(URL,Flat).then((response) => 
+      { setFlat(response.data);
+        window.alert("Flat Updated...");
+        setFlat(initialFlat);}
+      )
+      .catch(error => console.log(error.message))
+
+  }
+
+  useEffect(() => {
+    console.log(formErrors);
+    if (/*Object.keys(formErrors).length === 0 && */isSubmit) {
+      console.log(Flat);
+    }
+  }, [formErrors]);
+
+  const validate = (values) => {
+    // const errors = {};
+    // if (!values.userId) {
+    //   errors.userId = "User id is required!";
+    // }
+    // if (!values.userName) {
+    //   errors.userName = "Username is required!";
+    // }
+    // if (!values.userType) {
+    //   errors.userType = "User type is required!";
+    // } 
+    // if (!values.password) {
+    //   errors.password = "Password is required";
+    // } else if (values.password.length < 4) {
+    //   errors.password = "Password must be more than 4 characters";
+    // } else if (values.password.length > 10) {
+    //   errors.password = "Password cannot exceed more than 10 characters";
+    // }
+    // return errors;
+  };
+
+    return (
+
+    <React.Fragment>
+        <nav className="navbar navbar-dark bg-dark justify-content-between fixed-top">
+        <Link className="navbar-brand navbar-brand-margin">Landlord Panel</Link>
+        <span className="header-right">Flat Rental Application</span>
+        <form className="form-inline">
+       
+          <button className="btn btn-outline-danger my-2 my-sm-0 logout-btn" type="submit"><a href="/login">Logout</a></button>
         </form>
-            </div>
-        </div>
+      </nav>
+      <form className="c2">
+      <h1 className="form-text ">Update Flat</h1>
+            <br/>  <br/>  
+            <label>Flat Id</label>
+       <input name="flatid" type="number" placeholder="Flat ID" className="username" 
+       value={Flat.flatId} onChange={e=>setFlat({...Flat,flatId:e.target.value})}
+       />
+       {/* <p>{formErrors.flatId}</p> */}
+       
+            <label>House No</label>
+       <input name="flatid" type="number" placeholder="House No" className="username" 
+       value={Flat.flatAddress.houseNo} onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,houseNo:e.target.value}})}
+       />
+       {/* <p>{formErrors.houseNo}</p> */}
+       
+            <label>Street</label>
+       <input name="flatid" type="text" placeholder="Street" className="username" 
+       value={Flat.flatAddress.street} onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,street:e.target.value}})}
+       />
+       {/* <p>{formErrors.street}</p> */}
+       
+            <label>City</label>
+       <input name="flatid" type="text" placeholder="City" className="username" 
+       value={Flat.flatAddress.city} onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,city:e.target.value}})}
+       />
+       {/* <p>{formErrors.city}</p> */}
+       
+            <label>State</label>
+       <input name="flatid" type="text" placeholder="State" className="username" 
+       value={Flat.flatAddress.state} onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,state:e.target.value}})}
+       />
+       {/* <p>{formErrors.state}</p> */}
+       
+            <label>Pin</label>
+       <input name="flatid" type="number" placeholder="Pin" className="username" 
+       value={Flat.flatAddress.pin} onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,pin:e.target.value}})}
+       />
+       {/* <p>{formErrors.pin}</p> */}
+       
+            <label>Country</label>
+       <input name="flatid" type="text" placeholder="Country" className="username" 
+       value={Flat.flatAddress.country} onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,country:e.target.value}})}
+       />
+       {/* <p>{formErrors.country}</p> */}
         
-        </>}
-        
-    )*/
+            <label>Cost</label>
+       <input name="flatid" type="number" placeholder="Cost" className="username" 
+       value={Flat.cost} onChange={e=>setFlat({...Flat,cost:e.target.value})}
+       />
+       {/* <p>{formErrors.cost}</p> */}
+
+            {/* <label>Availability</label>
+       <input name="flatid" type="number" placeholder="Availability" className="username" 
+       value={Flat.availability} onChange={e=>setFlat({...Flat,availability:e.target.value})}
+       />
+       <p>{formErrors.flatid}</p> */}
+
+       <label>Availability</label>
+        <select name="availability" className="username"
+        value={Flat.availability} onChange={e=>setFlat({...Flat,availability:e.target.value})}
+        >
+          <option value="">Availability*</option>
+          <option value="available">Available</option>
+          <option value="unavailable">Unavailable</option>
+          {/* <option value="tenant">Tenant</option> */}
+         </select>
+         {/* <p>{formErrors.availability}</p> */}
+         <br/>  <br/>
+         <button className="btn" data-testid="button" onClick={handleBtnClick}>Update Flat</button>
+
+      </form>
+      </React.Fragment>
+    );
 }
+
            
 
-export default LUpdateFlat
+export default LUpdateFlat;

@@ -12,76 +12,78 @@ function AddFlat() {
             pin:0,
             country:''
             },
-        flatAvailability:'',
-        flatCost:0,
+        availability:'',
+        cost:0,
+        flatId:0,
         landlord:{landlordId:0}
+
         }
     let [Flat,setFlat]=useState(initialFlat)
     let [msg,setMsg]=useState('')
     let [id,setId]=useState(0)
 
     function formValidate() {
-        const form = document.querySelector('form')
-        var lid=form.elements.landlordid.value
-        var fid=form.elements.flatid.value
-        var str=form.elements.street.value
-        var pn=form.elements.pincode.value
-        var ct=form.elements.city.value
-        var st=form.elements.state.value
-        var con=form.elements.country.value
-        var cst=form.elements.cost.value
-        var flt=form.elements.flatA.value
+        // const form = document.querySelector('form')
+        // var lid=form.elements.flatid.value
+        // var fid=form.elements.houseNo.value
+        // var str=form.elements.street.value
+        // var pn=form.elements.pincode.value
+        // var ct=form.elements.city.value
+        // var st=form.elements.state.value
+        // var con=form.elements.country.value
+        // var cst=form.elements.cost.value
+        // var flt=form.elements.flatA.value
 
-        var error=document.getElementById("error")
+        // var error=document.getElementById("error")
 
-        var savebtn=document.getElementById("savebutton")
+        // var savebtn=document.getElementById("savebutton")
 
-        if(lid<=0){
-            error.innerHTML="Landlord ID: Provide a positive integer"
-        }
-        else if(lid%1!==0){
-            error.innerHTML="Landlord ID: Provide an integer value"
-        }
-        else if(fid<=0){
-            error.innerHTML="Flat Number: Provide a positive integer"
-        }
-        else if(fid%1!==0){
-            error.innerHTML="Flat Number: Provide an integer value"
-        }
-        else if(str==''){
-            error.innerHTML="Street: Street cannot be empty"
-        }
-        else if(pn.toString().charAt(0)=="0"){
-            error.innerHTML="PIN: Pincode should not start with 0"
-        }
-        else if(pn.toString().length!==6){
-            error.innerHTML="PIN: Pincode should be in six digits"
-        }
-        else if(pn<=0){
-            error.innerHTML="PIN: Pincode should be in six digits"
-        }
-        else if(pn%1!==0){
-            error.innerHTML="PIN: Provide integer value"
-        }
-        else if(ct==''){
-            error.innerHTML="City: City cannot be empty"
-        }
-        else if(st==''){
-            error.innerHTML="State: State cannot be empty"
-        }
-        else if(con==''){
-            error.innerHTML="Country: Country cannot be empty"
-        }
-        else if(cst<=0){
-            error.innerHTML="Cost: Cannot be zero or less than zero"
-        }
-        else if(flt!=="Yes"&&flt!=="No"){
-            error.innerHTML="Flat Availability: Select options"
-        }
-        else{
-            error.innerHTML=""
-            savebtn.style.pointerEvents="auto"
-        }
+        // if(lid<=0){
+        //     error.innerHTML="Landlord ID: Provide a positive integer"
+        // }
+        // else if(lid%1!==0){
+        //     error.innerHTML="Landlord ID: Provide an integer value"
+        // }
+        // else if(fid<=0){
+        //     error.innerHTML="Flat Number: Provide a positive integer"
+        // }
+        // else if(fid%1!==0){
+        //     error.innerHTML="Flat Number: Provide an integer value"
+        // }
+        // else if(str==''){
+        //     error.innerHTML="Street: Street cannot be empty"
+        // }
+        // else if(pn.toString().charAt(0)=="0"){
+        //     error.innerHTML="PIN: Pincode should not start with 0"
+        // }
+        // else if(pn.toString().length!==6){
+        //     error.innerHTML="PIN: Pincode should be in six digits"
+        // }
+        // else if(pn<=0){
+        //     error.innerHTML="PIN: Pincode should be in six digits"
+        // }
+        // else if(pn%1!==0){
+        //     error.innerHTML="PIN: Provide integer value"
+        // }
+        // else if(ct==''){
+        //     error.innerHTML="City: City cannot be empty"
+        // }
+        // else if(st==''){
+        //     error.innerHTML="State: State cannot be empty"
+        // }
+        // else if(con==''){
+        //     error.innerHTML="Country: Country cannot be empty"
+        // }
+        // else if(cst<=0){
+        //     error.innerHTML="Cost: Cannot be zero or less than zero"
+        // }
+        // else if(flt!=="Yes"&&flt!=="No"){
+        //     error.innerHTML="Flat Availability: Select options"
+        // }
+        // else{
+        //     error.innerHTML=""
+        //     savebtn.style.pointerEvents="auto"
+        // }
     }
 
     useEffect(()=>
@@ -93,6 +95,7 @@ function AddFlat() {
                 setId(0);
             }).catch(error=>console.log(error.response))
     },[id])
+
 
    const handleBtnClick=(event)=>
     {
@@ -108,20 +111,31 @@ function AddFlat() {
             <form 
             onSubmit={handleBtnClick} 
             className="col-4 container">
+
                 <div className='form-group'>
-                    <label>Enter ID<span style={{color: "red"}}>*</span></label>
-                    <input name="landlordid" placeholder="Landlord ID" type='number' className='form-control'
+                    <label>Enter Landlord ID<span style={{color: "red"}}>*</span></label>
+                    <input name="landlordId" placeholder="Landlord ID" type='number' className='form-control'
                          value={Flat.landlord.landlordId}
                          onInput={formValidate}
                          onChange={e=>setFlat({...Flat,landlord:{...Flat.landlord,landlordId:e.target.value}})}/>
                 </div>
+
                 <div className='form-group'>
-                    <label>Flat Number<span style={{color: "red"}}>*</span></label>
-                    <input name="flatid" placeholder="Flat Number" type='number' className='form-control'
+                    <label>Enter Flat ID<span style={{color: "red"}}>*</span></label>
+                    <input name="flatid" placeholder="Flat ID" type='number' className='form-control'
+                         value={Flat.flatId}
+                         onInput={formValidate}
+                         onChange={e=>setFlat({...Flat,flatId:e.target.value})}/>
+                </div>
+
+                <div className='form-group'>
+                    <label>House Number<span style={{color: "red"}}>*</span></label>
+                    <input name="houseNo" placeholder="House Number" type='number' className='form-control'
                          value={Flat.flatAddress.houseNo}
                          onInput={formValidate}
                          onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,houseNo:e.target.value}})}/>
                 </div>
+
                 <div className='form-group'>
                     <label>Street<span style={{color: "red"}}>*</span></label>
                     <input name="street" placeholder="Street name" className='form-control' 
@@ -129,6 +143,7 @@ function AddFlat() {
                         onInput={formValidate}
                         onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,street:e.target.value}})}/>
                 </div>
+
                 <div className='form-group'>
                     <label>Pin code<span style={{color: "red"}}>*</span></label>
                     <input name="pincode" placeholder="If other than India--> 999999" type='number' 
@@ -137,6 +152,7 @@ function AddFlat() {
                     onInput={formValidate}
                     onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,pin:e.target.value}})}/>
                 </div>
+
                 <div className='form-group'>
                     <label>City<span style={{color: "red"}}>*</span></label>
                     <input name="city" placeholder="City name" className='form-control' 
@@ -144,6 +160,7 @@ function AddFlat() {
                     onInput={formValidate}
                     onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,city:e.target.value}})}/>
                 </div>
+
                 <div className='form-group'>
                     <label>State<span style={{color: "red"}}>*</span></label>
                     <input name="state" placeholder="State name" 
@@ -151,6 +168,7 @@ function AddFlat() {
                     onInput={formValidate}
                     onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,state:e.target.value}})}/>
                 </div>
+
                 <div className='form-group'>
                     <label>Country<span style={{color: "red"}}>*</span></label>
                     <input name="country" placeholder="Country name"  className='form-control' 
@@ -158,30 +176,26 @@ function AddFlat() {
                     value={Flat.flatAddress.country} 
                     onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,country:e.target.value}})}/>
                 </div>
+
                 <div className='form-group'>
                     <label>Monthly rent<span style={{color: "red"}}>*</span></label>
                     <input name="cost" placeholder="in RS" className='form-control' 
-                    value={Flat.flatCost} 
+                    value={Flat.cost} 
                     onInput={formValidate}
-                    onChange={e=>setFlat({...Flat,flatCost:e.target.value})}/>
+                    onChange={e=>setFlat({...Flat,cost:e.target.value})}/>
                 </div>
-                <div className='form-group'>
-                    <label>Flat Availability<span style={{color: "red"}}>*</span></label>
-                    <div>
-                        <div className="form-check form-check-inline">
-                        <input onInput={formValidate} className="form-check-input" type="radio" name="flatA" id="flatYes" value="Yes" onChange={e=>setFlat({...Flat,flatAvailability:e.target.value})}/>
-                            <label className="form-check-label" for="flatYes">
-                                Yes
-                            </label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input onInput={formValidate} className="form-check-input" type="radio" name="flatA" id="flatNo" value="No" onChange={e=>setFlat({...Flat,flatAvailability:e.target.value})}/>
-                            <label className="form-check-label" for="flatNo">
-                                No
-                            </label>
-                        </div>
-                    </div>
-                </div>
+                
+                <label>Availability</label>
+       <select name="availability" className="username" 
+        value={Flat.availability} 
+        onChange={e=>setFlat({...Flat,availability:e.target.value})}
+       >
+         <option value="">Select one option</option>
+         <option value="available">Available</option>
+         <option value="unavailable">Unavailable</option>
+         
+       </select>
+       {/* <p>{formErrors.userType}</p> */}
                 <button id="savebutton" className='btn btn-success mt-2' >Add Flat</button>
                 <h6 id="error" className="text text-danger"></h6>
             </form>
@@ -193,4 +207,4 @@ function AddFlat() {
     )
 }
 
-export default AddFlat 
+export default AddFlat;
