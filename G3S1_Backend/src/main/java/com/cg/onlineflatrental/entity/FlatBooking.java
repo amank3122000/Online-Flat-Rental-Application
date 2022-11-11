@@ -18,7 +18,7 @@ import java.time.LocalDate;
 @Entity
 public class FlatBooking {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer bookingNo;
 	
 	@OneToOne(cascade = CascadeType.MERGE)

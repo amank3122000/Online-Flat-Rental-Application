@@ -29,7 +29,7 @@ function UpdateTenant() {
    return (
       <React.Fragment>
       <form className="c2">
-            <h1 className="form-text">Add Tenant</h1>
+            <h1 className="form-text">Update Tenant</h1>
          <br/><br/><br/>
          <label>Tenant Id<span style={{color: "red"}}>*</span></label>
             <input name="tenantid" type="text" placeholder="Tenant ID" className="col-md-4 address-tags"
