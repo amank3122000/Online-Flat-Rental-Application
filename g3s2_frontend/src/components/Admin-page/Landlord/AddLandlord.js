@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function AddLandlord() {
 
-  let initiallandlord={flatList:[], landlordAge: 0, landlordId: 0, landlordName: ''};
+  let initiallandlord={flatList:[], landlordAge: '', landlordId: 0, landlordName: ''};
   let [landlord,setLandlord]=useState(initiallandlord);
   const [isSubmit, setIsSubmit] = useState(false);
 
