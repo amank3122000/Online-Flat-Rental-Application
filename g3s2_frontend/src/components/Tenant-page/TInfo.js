@@ -4,7 +4,7 @@ import axios from "axios";
 function TInfo(props) {
     let initialTenant = {
         tenantId: 0,
-        tAddress:{
+        taddress:{
             houseNo:0,
             street:'',
             city:'',
@@ -12,7 +12,7 @@ function TInfo(props) {
             pin:0,
             country:''
             },
-        tenantAge: 0
+        age: 0
       };
       
     let [Tenant, setTenant] = useState(initialTenant);
@@ -56,7 +56,7 @@ function TInfo(props) {
             setBtnId(id)
         }
 
-    return(((btnId!==0)&&Tenant.tenantAge!==0)?<>
+    return(((btnId!==0)&&Tenant.age!==0)?<>
     <div style={{height:"460px",backgroundImage: "linear-gradient(15deg, #fdf9f1 0%, #f6e4c0 100%)"}}>
     <h2 className="text-primary container">Profile</h2>
       <hr />
@@ -89,10 +89,12 @@ function TInfo(props) {
                 <tr>
                     <td><b>Tenant Address House No.:</b></td>
                     {/* <td>{Tenant.tAddress.houseNo}</td> */}
+                    <td>{Tenant.taddress&&Tenant.taddress.houseNo}</td>
                 </tr>
                 <tr>
                     <td><b>Age:</b></td>
-                    <td>{Tenant.tenantAge}</td>
+                    {/* <td>{Tenant.tenantAge}</td> */}
+                    <td>{Tenant&&Tenant.age}</td>
                 </tr>
                 
             </tbody>
