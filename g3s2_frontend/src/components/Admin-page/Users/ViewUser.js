@@ -56,7 +56,7 @@ function ViewUser() {
                 />
                 <p>{formErrors.userid}</p>
                 <br/>
-                <button className="btn" onClick={handleBtnClick}>View User</button>
+                <button className="btn" data-testid="button" onClick={handleBtnClick}>View User</button>
             </form>
             
         

@@ -56,7 +56,7 @@ function RemoveUser() {
             />
             <br/>
             <p>{formErrors.userid}</p>
-            <button className="btn" onClick={handleBtnClick}>Remove User</button>
+            <button className="btn" data-testid="button" onClick={handleBtnClick}>Remove User</button>
          </form>
     </React.Fragment>
     );

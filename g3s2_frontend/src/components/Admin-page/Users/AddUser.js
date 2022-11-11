@@ -90,7 +90,7 @@ function AddUser() {
        </select>
        <p>{formErrors.userType}</p>
     <br/>
-    <button className="btn" type="submit" onClick={handleBtnClick}>Add User</button>
+    <button className="btn" type="submit" data-testid="button" onClick={handleBtnClick}>Add User</button>
         </form>
      </React.Fragment>
     );

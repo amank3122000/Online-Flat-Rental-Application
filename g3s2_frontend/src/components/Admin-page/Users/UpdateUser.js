@@ -93,7 +93,7 @@ function UpdateUser() {
          </select>
          <p>{formErrors.userType}</p>
         <br/>  <br/>  <br/>
-    <button className="btn" onClick={handleBtnClick}>Update User</button>
+    <button className="btn" data-testid="button" onClick={handleBtnClick}>Update User</button>
  </form>
     </React.Fragment>
     );
