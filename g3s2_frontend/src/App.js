@@ -52,6 +52,7 @@ import LAddFlat from './components/Landlord-page/flat/LAddFlat';
 import LAllFlat from './components/Landlord-page/flat/LAllFlat';
 
 import THome from './components/Tenant-page/THome';
+import TInfo from './components/Tenant-page/TInfo';
 import TGetAllFlats from './components/Tenant-page/TGetAllFlats';
 import TViewFlatByBid from './components/Tenant-page/TViewFlatByBid';
 import TUpdateBooking from './components/Tenant-page/TUpdateBooking';
@@ -109,6 +110,7 @@ function App() {
         <Route path='/landlord/updateFlat' element={<LUpdateFlat/>}/>
 
         <Route path="/tenant/tenant" element={<THome />} />
+        <Route path='/tenant/info' element={<TInfo />}/>
         <Route path="/tenant/getallflats"  element={<TGetAllFlats />} />
         <Route path="/tenant/viewflatbybid" element={<TViewFlatByBid />} />
         <Route path="/tenant/updatebooking"  element={<TUpdateBooking />} />
