@@ -53,6 +53,7 @@ import TGetAllFlats from './components/Tenant-page/TGetAllFlats';
 import TViewFlatByBid from './components/Tenant-page/TViewFlatByBid';
 import TUpdateBooking from './components/Tenant-page/TUpdateBooking';
 import TAddFlatBooking from './components/Tenant-page/TAddFlatBooking';
+import SignUp from './components/Login-Page/SignUp';
 
 function App() {
   return (
@@ -65,6 +66,7 @@ function App() {
         <Route exact path="/admin" element={<AdminPage />}/>
         <Route exact path="/tenant" element={<Tenant />}/>
         <Route exact path="/landlord" element={<LandLord />}/>
+        <Route exact path="/signup" element = {<SignUp/>}/>
 
         <Route path="/admin/user/adduser" element={<AddUser/>}/>
         <Route path="/admin/user/viewalluser" element={<ViewAllUser />}/>

@@ -2,11 +2,12 @@ import axios from 'axios';
 import React from 'react';
 import { useState, useEffect } from "react";
 import {useSelector,useDispatch} from "react-redux";
-
+import { useNavigate } from "react-router-dom";
+import styles from '../Login-Page/login.module.css';
 
 
 function SignUp() {
-   const history=useNavigate();
+   const history= useNavigate();
   const initialValues={username:"",password:"",usertype:""};
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
@@ -20,7 +21,7 @@ function SignUp() {
     setFormValues({ ...formValues, [name]: value });
   };
   //const dis1=()=>{dispatch(register())};
-  const fetchProducts = async () =>{
+  const fetchUsers = async () =>{
     await axios.post('http://localhost:8080/users/addUsers', JSON.stringify(formValues),{headers:{"Content-Type" : "application/json"}}).then((data)=>console.log(data.data)).catch((error)=>console.log(error));
   }
  
@@ -54,6 +55,7 @@ function SignUp() {
     } else if (values.password.length > 10) {
       errors.password = "Password cannot exceed more than 10 Characters";
     }
+    // eslint-disable-next-line no-undef
     if(!isLogged){
        errors.login="Invalid Credentials";
      }
@@ -100,18 +102,20 @@ function SignUp() {
           </div>
           <p>{formErrors.password}</p>
           <div className="field">
-            <label>Role:</label>
-            <input
-              type="text"
-              name="role"
-              placeholder="Role"
-              value={formValues.role}
+          <label>UserType</label>
+       <select name="usertype" required={true} className={styles.username}  
+              value={formValues.usertype}
               onChange={handleChange}
-            />
+            >
+            <option value="">Select one option</option>
+         <option value="landlord">Landlord</option>
+         <option value="tenant">Tenant</option>
+         <option value="admin">Admin</option>
+         </select>
           </div>
           <p>{formErrors.role}</p>
 
-          <button className="fluid ui button blue" onClick={fetchProducts}>Submit</button>
+          <button className="fluid ui button blue" onClick={fetchUsers}>Submit</button>
           
         </div>
       </form>

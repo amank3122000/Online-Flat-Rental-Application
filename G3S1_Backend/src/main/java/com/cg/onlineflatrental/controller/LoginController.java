@@ -9,8 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,16 +39,5 @@ public class LoginController {
 		}
 		return rentity;
 	}
-    /*
-	@PostMapping(value = "/authenticateUser")
-	public ResponseEntity<String> login(@RequestBody User user) throws LoginException, UserNotFoundException, ValidationException {
-		ResponseEntity<String> rentity;
-		if (service.login(user.getUserName(),user.getPassword(),user.getUserType())) {
-			rentity = new ResponseEntity<String>("Login Successful.", HttpStatus.ACCEPTED);
-		} else {
-			rentity = new ResponseEntity<String>("Login Failed.", HttpStatus.UNAUTHORIZED);
-	}
-		return rentity;
-	}
-	*/
+ 
 }
