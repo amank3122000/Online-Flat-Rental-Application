@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from '../Login-Page/login.module.css';
+import { Link } from 'react-router-dom';
 
 function Login() {
   const history=useNavigate();
@@ -90,7 +91,8 @@ function Login() {
               <div className={styles.c11}>
 
                      <h1 className={styles.mainhead}>Welcome</h1>
-
+                     <br/><br/>
+                     <button id="formlogin" className={styles.btnlogin}><Link to='/register'>Register</Link></button>
               </div>
           </div>
           <div className={styles.c2}>

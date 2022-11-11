@@ -43,7 +43,7 @@ function ViewAllLandlord() {
           <td className="col-md-2">{landlord&&landlord.landlordId}</td>
           <td className="col-md-3">{landlord&&landlord.landlordName}</td>
           <td className="col-md-1">{landlord&&landlord.landlordAge}</td>
-          <td className="col-md-3">{landlord&&landlord.flatList.map(flat => <div>{flat.flatId},</div>)}</td>
+          <td className="col-md-3">{landlord&&landlord.flatList.map(flat => <div>{flat.flatId}</div>)}</td>
           {/* <td className="col-md-3">
             <button className="btn btn-warning logout-btn" type="submit">Update</button>
             <button className="btn btn-danger logout-btn" type="submit">Delete</button>

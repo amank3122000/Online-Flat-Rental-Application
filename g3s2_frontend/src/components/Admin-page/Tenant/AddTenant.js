@@ -43,10 +43,6 @@ tenantId:0};
         <form className="c2">
             <h1 className="form-text">Add Tenant</h1>
          <br/><br/><br/>
-            
-            {/* <input name="tenantid" type="text" placeholder="Tenant ID" className="col-md-4 address-tags"
-             value={tenant.tenantId} onChange={e=>setTenant({...tenant,tenantId:e.target.value})}
-            /> */}
             <br/><br/>
                 <div className='form-group'>
                     <label>House Number<span style={{color: "red"}}>*</span></label>

@@ -150,3 +150,24 @@
    font-size: 15px;
   
 }
+
+
+.btnreg{
+   font-weight: bold;
+   width: auto;
+   margin: 300px 0 0 280px;
+   height: auto;
+   padding: 6px 15px;
+   border-radius: 5px;
+   outline: none;
+   border: none;
+   background: #59b9f4;
+   font-size: 24px;
+}
+
+.reg{
+   height: 685px;
+   background-image: url(https://images6.alphacoders.com/686/thumb-1920-686872.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
