@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function UpdateLandlord() {
 
-  let initiallandlord={flatList:[], landlordAge: 0, landlordId: 0, landlordName: ''};
+  let initiallandlord={flatList:[], landlordAge: '', landlordId: '', landlordName: ''};
     const [landlord,setLandlord] = useState(initiallandlord);
     const [isSubmit, setIsSubmit] = useState(false);
  
