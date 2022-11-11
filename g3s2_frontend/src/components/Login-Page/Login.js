@@ -20,9 +20,11 @@ function Login() {
 
   const fetchUsers = async() =>{
     await axios.get('http://localhost:8080/users/viewAllUsers',{headers:{"Content-Type" : "application/json"}}).then((data)=>{
+      //Consider num=[0];
     for(let i=0;i<data.data.length;i++){
       if(data.data[i].password==formValues.password && data.data[i].userType==formValues.usertype && data.data[i].userName==formValues.username ){
         console.log("Logged In");
+         //dispatch(login());
         isLogged=true;
         if(data.data[i].userType==="admin"){
           history("/admin");
@@ -39,7 +41,8 @@ function Login() {
       }
     }}).catch((error)=>console.log(error));
   }
-  //console.log(fetchUsers);
+ 
+    //console.log(fetchUsers);
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
@@ -87,7 +90,7 @@ function Login() {
               <div className={styles.c11}>
 
                      <h1 className={styles.mainhead}>Welcome</h1>
-                     
+
               </div>
           </div>
           <div className={styles.c2}>
@@ -126,6 +129,7 @@ function Login() {
           
           <p>{formErrors.password}</p>
           <button id="formlogin" type="submit" className={styles.btnlogin} onClick={fetchUsers}>Submit</button>
+      {/* <button id="formsignup" className={styles.signup} onclick="SignUp()" >New User?</button>  */}
           <p>{formErrors.login}</p>  
         
       </form>

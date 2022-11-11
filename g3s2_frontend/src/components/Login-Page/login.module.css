@@ -115,7 +115,7 @@
     border-radius: 5px;
     outline: none;
     border: none;
-    background: #EE9BA3;
+    background: #59b9f4;
     font-size: 14px;
  }
  .signup1{
@@ -138,3 +138,15 @@
  .signin{
     display:initial;
  }
+ .signup{
+   width: 120px;
+   margin: 10px 50px 0px;
+   height: 30px;
+   padding: 0px 15px;
+   border-radius: 5px;
+   outline: none;
+   border: none;
+   background: #59b9f4;
+   font-size: 15px;
+  
+}

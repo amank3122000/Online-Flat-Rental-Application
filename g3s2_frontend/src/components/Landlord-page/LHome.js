@@ -14,7 +14,6 @@ function LHome() {
                   <li>France</li>
                   <li>Germany</li>
                   <li>U.S.A.</li>
-                  <li>Pakistan</li>
                 </ul>
               </div>
             </div>
@@ -33,7 +32,7 @@ function LHome() {
               <div className="card-body text-primary">
               <ul className="list-unstyled">
                   <li>Most promising rental site&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Year-&nbsp;2020</li>
-                  <li>Highest users on E-Commerce&nbsp;&nbsp;&nbsp;Year-&nbsp;2016</li>
+                  <li>Highest users on E-Commerce&nbsp;&nbsp;&nbsp;Year-&nbsp;2021</li>
                 </ul>
               </div>
               
