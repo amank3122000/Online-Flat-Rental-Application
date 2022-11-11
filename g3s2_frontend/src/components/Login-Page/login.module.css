@@ -112,11 +112,15 @@
     margin: 0 50px 0px;
     height: 45px;
     padding: 6px 15px;
-    border-radius: 5px;
+    border-radius: 10px;
     outline: none;
     border: none;
     background: #59b9f4;
     font-size: 14px;
+ }
+ .btnlogin:hover {
+   box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+   transform: scale(1.05);
  }
  .signup1{
     color:#748194;
@@ -138,19 +142,36 @@
  .signin{
     display:initial;
  }
- .signup{
-   width: 120px;
+ .btnsign{
+   font-weight: bold;
+   width: 200px;
    margin: 10px 50px 0px;
-   height: 30px;
-   padding: 0px 15px;
-   border-radius: 5px;
+   height: 45px;
+   padding: 6px 15px;
+   border-radius: 10px;
    outline: none;
    border: none;
-   background: #59b9f4;
-   font-size: 15px;
-  
+   background: #fdfdfd;
+   font-size: 14px;
 }
-
+.btnsign:before {
+   background-color: initial;
+   background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
+   border-radius: 125px;
+   content: "";
+   height: 50%;
+   left: 4%;
+   opacity: .5;
+   position: absolute;
+   top: 0;
+   transition: all .3s;
+   width: 92%;
+ }
+ 
+ .btnsign:hover {
+   box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+   transform: scale(1.05);
+ }
 
 .btnreg{
    font-weight: bold;
@@ -158,12 +179,44 @@
    margin: 300px 0 0 280px;
    height: auto;
    padding: 6px 15px;
-   border-radius: 5px;
+
    outline: none;
-   border: none;
-   background: #59b9f4;
+
    font-size: 24px;
+   background-color: #ffbbbb;
+   border: 0;
+   border-radius: 56px;
+   color: #fff;
+   cursor: pointer;
+   display: inline-block;
+   font-family: system-ui,-apple-system,system-ui,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
+   font-size: 18px;
+   position: relative;
+   text-align: center;
+   text-decoration: none;
+   transition: all .2s;
+   user-select: none;
+   -webkit-user-select: none;
+   touch-action: manipulation;
 }
+.btnreg:before {
+   background-color: initial;
+   background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
+   border-radius: 125px;
+   content: "";
+   height: 50%;
+   left: 4%;
+   opacity: .5;
+   position: absolute;
+   top: 0;
+   transition: all .3s;
+   width: 92%;
+ }
+ 
+ .btnreg:hover {
+   box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+   transform: scale(1.05);
+ }
 
 .reg{
    height: 685px;
