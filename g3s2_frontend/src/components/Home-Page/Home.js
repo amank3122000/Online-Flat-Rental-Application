@@ -8,8 +8,7 @@ function Home() {
       <React.Fragment>
             <div className={styles.cont}>
             <div className={styles.coch1}>
-                <h1>Hello World!</h1>
-                <p>Welcome to the flat rental web portal. To know more...</p>
+                <h2 data-text= "Online Flat Rental">Online Flat Rental</h2>
                 <button id="formlogin" className={styles.getStarted}><Link to="/login" >Get Started &gt;&gt;&gt;</Link></button>
                 
             </div>
