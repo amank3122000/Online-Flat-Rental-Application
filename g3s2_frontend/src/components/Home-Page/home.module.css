@@ -14,24 +14,62 @@
 }
 
 h1{
+    font-family: 'Teko', sans-serif;
+    text-transform: uppercase;
+    font-size: 5rem;
+    text-align: center;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
     margin: 0;
-    font-size: 36px;
-}
-
-p{
-    font-size: 17px;
-}
+    min-height: calc(100vh - 16px);
+    position: relative;
+  }
+  
+  h1:before{
+    content: attr(data-text);
+    position: absolute;
+    background: linear-gradient(#f70000, #f89200, #f8f501, #038f00,#0168f8, #a200f7);
+    background-clip: text;
+    color: transparent;
+    background-size: 100% 90%;
+    line-height: 0.9;
+    clip-path: ellipse(120px 120px at -2.54% -9.25%);
+    animation: swing 5s infinite;
+    animation-direction: alternate;
+  }
+  
+  @keyframes swing{
+    0%{
+       -webkit-clip-path: ellipse(120px 120px at -2.54% -9.25%);
+        clip-path: ellipse(120px 120px at -2.54% -9.25%)
+    }
+    50%{
+      -webkit-clip-path: ellipse(120px 120px at 49.66% 64.36%);
+      clip-path: ellipse(120px 120px at 49.66% 64.36%);
+  
+    }
+    100%{
+       -webkit-clip-path: ellipse(120px 120px at 102.62% -1.61%);
+       clip-path: ellipse(120px 120px at 102.62% -1.61%);
+    }
+  }
 
 .getStarted{
     text-decoration: none;
-    color: rgb(252, 252, 252);
-    background-color: #9ad8ff;
+    color: rgb(0, 0, 0);
+    background-color: #82cefd;
     font-size: 25px;
-    border-radius: 56px;
+    border-radius: 50px;
     display: inline-block;
     font-family: system-ui,-apple-system,system-ui,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
-    font-size: 18px;
-    position: relative;
+    font-size: 20px;
+    position: absolute;
+     left: 500px;
+     top: 350px;
     padding: 12px 26px;
     transition: all .2s;
     touch-action: manipulation;
@@ -45,7 +83,7 @@ p{
    content: "";
    height: 50%;
    left: 4%;
-   opacity: .5;
+   opacity: 1.5;
    position: absolute;
    top: 0;
    transition: all .3s;
@@ -53,11 +91,11 @@ p{
 }
 .getStarted:hover{
     box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
-    transform: scale(1.05);
+    transform: scale(1.15);
 }
 
 .getStarted , .coch1{
-    transition: background 1.5s;
+    transition: background 2s;
 }
 
 @media screen and (max-width:500px){
