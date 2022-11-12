@@ -69,20 +69,17 @@ function RegisterLandlord(){
              
              <label>Username</label>
             <input name="username" type="text" placeholder="Username*" className="username"
-             value={formValues.userName} onChange={e=>setUser({...formValues,userName:e.target.value})}
-            />
-            <br/>
-            
+             value={formValues.userName} onChange={e=>setUser({...formValues,userName:e.target.value})} />
             <p>{formErrors.userName}</p>
-            
+            <br/>
+
+
             <label>Password</label>
             <input name="password" type="password" placeholder="Password*" className="username"
             value={formValues.password} onChange={e=>setUser({...formValues,password:e.target.value})}
             />
-            {/*  */}
-            <br/>
-            
             <p>{formErrors.password}</p>
+            <br/>
             
             <label>Landlord Name</label>
             <input name="landlordname" type="text" placeholder="Landlord Name" className="username"
@@ -92,8 +89,9 @@ function RegisterLandlord(){
             <label>Landlord Age</label>
             <input name="landlordeage" type="number" placeholder="Landlord Age" className="username"
             value={formValues.landlordAge} onChange={e=>setLandlord({...landlord,landlordAge:e.target.value})}/>
+            <p>{formErrors.landlordAge}</p>
             <br/>
-            <p>{formErrors.landlordName}</p>
+            
             <button className="btn" type="submit" onClick={handleLandlord}>Register Landlord</button>
             </form>
             </div>
