@@ -92,7 +92,7 @@ console.log(landlordDetails);
           <td className="col-md-2">{landlordDetails&&landlordDetails.landlordId}</td>
           <td className="col-md-3">{landlordDetails&&landlordDetails.landlordName}</td>
           <td className="col-md-1">{landlordDetails&&landlordDetails.landlordAge}</td>
-          <td className="col-md-3">{landlordDetails&&landlordDetails.flatList.map(flat=><div>{flat.flatId},</div>)}</td>
+          <td className="col-md-3">{landlordDetails&&landlordDetails.flatList.map(flat=><div>{flat.flatId}</div>)}</td>
           {/* <td className="col-md-3">
             <button className="btn btn-warning logout-btn" type="submit">Update</button>
             <button className="btn btn-danger logout-btn" type="submit">Delete</button>
