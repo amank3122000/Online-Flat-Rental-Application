@@ -10,7 +10,8 @@ function Home() {
             <div className={styles.coch1}>
                 <h1>Hello World!</h1>
                 <p>Welcome to the flat rental web portal. To know more...</p>
-                <Link to="/login" className="btn btn-primary btn-lg">Get Started &gt;&gt;&gt;</Link>
+                <button id="formlogin" className={styles.getStarted}><Link to="/login" >Get Started &gt;&gt;&gt;</Link></button>
+                
             </div>
         </div>
       </React.Fragment>
