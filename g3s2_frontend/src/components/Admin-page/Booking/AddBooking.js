@@ -104,16 +104,20 @@ function AddBooking() {
         // }
     }
 
-    useEffect(()=>
-    {
-        const URL=`http://localhost:8080/flatbooking/addflatbooking`;
-        axios.post(URL,FlatBooking).catch(error=>console.log(error.response))
-    },[id])
+    // useEffect(()=>
+    // {
+    //     const URL=`http://localhost:8080/flatbooking/addflatbooking`;
+    //     axios.post(URL,FlatBooking).catch(error=>console.log(error.response))
+    // },[id])
 
 
    const handleBtnClick=(event)=>
     {
         event.preventDefault()
+        const URL=`http://localhost:8080/flatbooking/addflatbooking`;
+        axios.post(URL,FlatBooking).then(response=>{
+            window.alert("Booking added.")
+        }).catch(error=>console.log(error.response))
         setId(1)
         
     }
@@ -146,7 +150,7 @@ function AddBooking() {
                     <input name="flatid" placeholder="Flat Number" type='number' className='form-control'
                          value={FlatBooking.tenantId.taddress.houseNo}
                         //  onInput={formValidate}
-                         onChange={e=>setFlatBooking({...FlatBooking,tenantId:{...FlatBooking.tenantId.taddress,
+                         onChange={e=>setFlatBooking({...FlatBooking,tenantId:{...FlatBooking.tenantId,
                          taddress:{...FlatBooking.tenantId.taddress,houseNo:e.target.value}}})}/>
                 </div>
                 <div className='form-group'>
@@ -154,7 +158,7 @@ function AddBooking() {
                     <input name="street" placeholder="Street name" className='form-control' 
                         value={FlatBooking.tenantId.taddress.street} 
                         // onInput={formValidate}
-                        onChange={e=>setFlatBooking({...FlatBooking,tenantId:{...FlatBooking.tenantId.taddress,
+                        onChange={e=>setFlatBooking({...FlatBooking,tenantId:{...FlatBooking.tenantId,
                             taddress:{...FlatBooking.tenantId.taddress,street:e.target.value}}})}
                         />
                 </div>
@@ -164,7 +168,7 @@ function AddBooking() {
                     className='form-control' 
                     value={FlatBooking.tenantId.taddress.pin} 
                     // onInput={formValidate}
-                    onChange={e=>setFlatBooking({...FlatBooking,tenantId:{...FlatBooking.tenantId.taddress,
+                    onChange={e=>setFlatBooking({...FlatBooking,tenantId:{...FlatBooking.tenantId,
                         taddress:{...FlatBooking.tenantId.taddress,pin:e.target.value}}})}
                     />
                 </div>
@@ -173,7 +177,7 @@ function AddBooking() {
                     <input name="city" placeholder="City name" className='form-control' 
                     value={FlatBooking.tenantId.taddress.city} 
                     // onInput={formValidate}
-                    onChange={e=>setFlatBooking({...FlatBooking,tenantId:{...FlatBooking.tenantId.taddress,
+                    onChange={e=>setFlatBooking({...FlatBooking,tenantId:{...FlatBooking.tenantId,
                         taddress:{...FlatBooking.tenantId.taddress,city:e.target.value}}})}
                     />
                 </div>
@@ -182,7 +186,7 @@ function AddBooking() {
                     <input name="state" placeholder="State name" 
                     className='form-control' value={FlatBooking.tenantId.taddress.state} 
                     // onInput={formValidate}
-                    onChange={e=>setFlatBooking({...FlatBooking,tenantId:{...FlatBooking.tenantId.taddress,
+                    onChange={e=>setFlatBooking({...FlatBooking,tenantId:{...FlatBooking.tenantId,
                         taddress:{...FlatBooking.tenantId.taddress,state:e.target.value}}})}
                     />
                 </div>
@@ -191,13 +195,13 @@ function AddBooking() {
                     <input name="country" placeholder="Country name"  className='form-control' 
                     // onInput={formValidate}
                     value={FlatBooking.tenantId.taddress.country} 
-                    onChange={e=>setFlatBooking({...FlatBooking,tenantId:{...FlatBooking.tenantId.taddress,
+                    onChange={e=>setFlatBooking({...FlatBooking,tenantId:{...FlatBooking.tenantId,
                         taddress:{...FlatBooking.tenantId.taddress,country:e.target.value}}})}
                     />
                 </div>
             <br/><br/>
             <input name="tenantage" type="number" placeholder="Tenant Age" className="col-md-4 address-tags"
-             value={FlatBooking.tenantId.age}  onChange={e=>setFlatBooking({...FlatBooking,age:{...FlatBooking.age,age:e.target.value}})}
+             value={FlatBooking.tenantId.age}  onChange={e=>setFlatBooking({...FlatBooking,tenantId:{...FlatBooking.tenantId,age:e.target.value}})}
             />
 
                 <div className='form-group'>
@@ -205,8 +209,7 @@ function AddBooking() {
                     <input name="flatid" placeholder="Flat ID" type='number' className='form-control'
                          value={FlatBooking.flat.flatId}
                         //  onInput={formValidate}
-                        onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat.flatId,
-                            flatId:{...FlatBooking.flat.flatId,flatId:e.target.value}}})}
+                        onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat,flatId:e.target.value}})}
                          />
                 </div>
 
@@ -215,8 +218,8 @@ function AddBooking() {
                     <input name="houseNo" placeholder="House Number" type='number' className='form-control'
                          value={FlatBooking.flat.flatAddress.houseNo}
                         //  onInput={formValidate}
-                        onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat.taddress,
-                            taddress:{...FlatBooking.flat.taddress,houseNo:e.target.value}}})}
+                        onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat,
+                            flatAddress:{...FlatBooking.flat.flatAddress,houseNo:e.target.value}}})}
                          />
                 </div>
 
@@ -225,8 +228,8 @@ function AddBooking() {
                     <input name="street" placeholder="Street name" className='form-control' 
                         value={FlatBooking.flat.flatAddress.street} 
                         // onInput={formValidate}
-                        onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat.taddress,
-                            taddress:{...FlatBooking.flat.taddress,street:e.target.value}}})}
+                        onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat,
+                            flatAddress:{...FlatBooking.flat.flatAddress,street:e.target.value}}})}
                         />
                 </div>
 
@@ -236,8 +239,8 @@ function AddBooking() {
                     className='form-control' 
                     value={FlatBooking.flat.flatAddress.pin} 
                     // onInput={formValidate}
-                    onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat.taddress,
-                        taddress:{...FlatBooking.flat.taddress,pin:e.target.value}}})}
+                    onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat,
+                        flatAddress:{...FlatBooking.flat.flatAddress,pin:e.target.value}}})}
                     />
                 </div>
 
@@ -246,8 +249,8 @@ function AddBooking() {
                     <input name="city" placeholder="City name" className='form-control' 
                     value={FlatBooking.flat.flatAddress.city} 
                     // onInput={formValidate}
-                    onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat.taddress,
-                        taddress:{...FlatBooking.flat.taddress,city:e.target.value}}})}
+                    onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat,
+                        flatAddress:{...FlatBooking.flat.flatAddress,city:e.target.value}}})}
                     />
                 </div>
 
@@ -256,8 +259,8 @@ function AddBooking() {
                     <input name="state" placeholder="State name" 
                     className='form-control' value={FlatBooking.flat.flatAddress.state} 
                     // onInput={formValidate}
-                    onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat.taddress,
-                        taddress:{...FlatBooking.flat.taddress,state:e.target.value}}})}
+                    onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat,
+                        flatAddress:{...FlatBooking.flat.flatAddress,state:e.target.value}}})}
                     />
                 </div>
 
@@ -266,8 +269,8 @@ function AddBooking() {
                     <input name="country" placeholder="Country name"  className='form-control' 
                     // onInput={formValidate}
                     value={FlatBooking.flat.flatAddress.country} 
-                    onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat.taddress,
-                        taddress:{...FlatBooking.flat.taddress,country:e.target.value}}})}
+                    onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat,
+                        flatAddress:{...FlatBooking.flat.flatAddress,country:e.target.value}}})}
                     />
                 </div>
 
@@ -276,16 +279,14 @@ function AddBooking() {
                     <input name="cost" placeholder="in RS" className='form-control' 
                     value={FlatBooking.flat.cost} 
                     // onInput={formValidate}
-                    onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat.cost,
-                        cost:{...FlatBooking.flat.cost,cost:e.target.value}}})}
+                    onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat,cost:e.target.value}})}
                     />
                 </div>
                 
                 <label>Availability</label>
        <select name="availability" className="username" 
         value={FlatBooking.flat.availability} 
-        onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat.availability,
-            availability:{...FlatBooking.flat.availability,availability:e.target.value}}})}
+        onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat,availability:e.target.value}})}
        >
          <option value="">Select one option</option>
          <option value="available">Available</option>
