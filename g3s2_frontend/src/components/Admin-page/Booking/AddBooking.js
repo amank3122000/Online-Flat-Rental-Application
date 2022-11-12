@@ -5,20 +5,37 @@ import axios from 'axios'
 function AddBooking() {
 
     let initialFlatBooking={
-        bookingId :0,
-        bookingFromDate:'',
-        bookingToDate:'',
-        flatId:0,
-        bookingNo :0,
-        tenant:{tenantId:0},
-        flat : {
-            flatId : 0,
-           
-
-
+        bookingNo: 0,
+            flat: {
+              flatId: 0,
+              cost: 0,
+              flatAddress: {
+                houseNo: 0,
+                street: "",
+                city: "",
+                state: "",
+                pin: 0,
+                country: ""
+              },
+              availability: ""
+            },
+            tenantId: {
+              tenantId: 0,
+              age: 0,
+              taddress: {
+                houseNo: 0,
+                street: "",
+                city: "",
+                state: "",
+                pin:0 ,
+                country: ""
+              }
+            },
+            bookingFromDate: "",
+            bookingToDate: ""
         }
 
-        }
+        
     let [FlatBooking,setFlatBooking]=useState(initialFlatBooking)
     let [msg,setMsg]=useState('')
     let [id,setId]=useState(0)
@@ -90,40 +107,7 @@ function AddBooking() {
     useEffect(()=>
     {
         const URL=`http://localhost:8080/flatbooking/addflatbooking`;
-        axios.post(URL,{
-            bookingNo: 2,
-            flat: {
-              flatId: 1,
-              cost: 2000,
-              flatAddress: {
-                houseNo: 1,
-                street: "Street1",
-                city: "City1",
-                state: "State1",
-                pin: 123456,
-                country: "Country1"
-              },
-              availability: "Unavailable"
-            },
-            tenantId: {
-              tenantId: 1,
-              age: 21,
-              taddress: {
-                houseNo: 1,
-                street: "Street1",
-                city: "City1",
-                state: "State1",
-                pin: 123456,
-                country: "Country1"
-              }
-            },
-            bookingFromDate: "06-05-2023",
-            bookingToDate: "07-06-2023"
-          }).then(response=>
-            {
-                setMsg(response.data)
-                setId(0);
-            }).catch(error=>console.log(error.response))
+        axios.post(URL,FlatBooking).catch(error=>console.log(error.response))
     },[id])
 
 
@@ -135,7 +119,7 @@ function AddBooking() {
     }
     return (
         <>
-        <div style={{backgroundImage: "linear-gradient(15deg, #fdf9f1 0%, #f6e4c0 100%)", height:700}}>
+        <div style={{backgroundImage: "linear-gradient(15deg, #fdf9f1 0%, #f6e4c0 100%)"}}>
         <h2 className='text-primary container'>Add flatbooking details</h2>
             <hr/>
             <form 
@@ -153,19 +137,161 @@ function AddBooking() {
                 <div className='form-group'>
                     <label>Enter tenant ID<span style={{color: "red"}}>*</span></label>
                     <input name="tenantId" placeholder="tenant ID" type='number' className='form-control'
-                         value={FlatBooking.tenant.tenantId}
-                         onInput={formValidate}
-                         onChange={e=>setFlatBooking({...FlatBooking,tenant:{...FlatBooking.tenant,tenantId:e.target.value}})}/>
+                         value={FlatBooking.tenantId.tenantId}
+                        //  onInput={formValidate}
+                         onChange={e=>setFlatBooking({...FlatBooking,tenantId:{...FlatBooking.tenantId,tenantId:e.target.value}})}/>
                 </div>
+                <div className='form-group'>
+                    <label>House Number<span style={{color: "red"}}>*</span></label>
+                    <input name="flatid" placeholder="Flat Number" type='number' className='form-control'
+                         value={FlatBooking.tenantId.taddress.houseNo}
+                        //  onInput={formValidate}
+                         onChange={e=>setFlatBooking({...FlatBooking,tenantId:{...FlatBooking.tenantId.taddress,
+                         taddress:{...FlatBooking.tenantId.taddress,houseNo:e.target.value}}})}/>
+                </div>
+                <div className='form-group'>
+                    <label>Street<span style={{color: "red"}}>*</span></label>
+                    <input name="street" placeholder="Street name" className='form-control' 
+                        value={FlatBooking.tenantId.taddress.street} 
+                        // onInput={formValidate}
+                        onChange={e=>setFlatBooking({...FlatBooking,tenantId:{...FlatBooking.tenantId.taddress,
+                            taddress:{...FlatBooking.tenantId.taddress,street:e.target.value}}})}
+                        />
+                </div>
+                <div className='form-group'>
+                    <label>Pin code<span style={{color: "red"}}>*</span></label>
+                    <input name="pincode" placeholder="If other than India--> 999999" type='number' 
+                    className='form-control' 
+                    value={FlatBooking.tenantId.taddress.pin} 
+                    // onInput={formValidate}
+                    onChange={e=>setFlatBooking({...FlatBooking,tenantId:{...FlatBooking.tenantId.taddress,
+                        taddress:{...FlatBooking.tenantId.taddress,pin:e.target.value}}})}
+                    />
+                </div>
+                <div className='form-group'>
+                    <label>City<span style={{color: "red"}}>*</span></label>
+                    <input name="city" placeholder="City name" className='form-control' 
+                    value={FlatBooking.tenantId.taddress.city} 
+                    // onInput={formValidate}
+                    onChange={e=>setFlatBooking({...FlatBooking,tenantId:{...FlatBooking.tenantId.taddress,
+                        taddress:{...FlatBooking.tenantId.taddress,city:e.target.value}}})}
+                    />
+                </div>
+                <div className='form-group'>
+                    <label>State<span style={{color: "red"}}>*</span></label>
+                    <input name="state" placeholder="State name" 
+                    className='form-control' value={FlatBooking.tenantId.taddress.state} 
+                    // onInput={formValidate}
+                    onChange={e=>setFlatBooking({...FlatBooking,tenantId:{...FlatBooking.tenantId.taddress,
+                        taddress:{...FlatBooking.tenantId.taddress,state:e.target.value}}})}
+                    />
+                </div>
+                <div className='form-group'>
+                    <label>Country<span style={{color: "red"}}>*</span></label>
+                    <input name="country" placeholder="Country name"  className='form-control' 
+                    // onInput={formValidate}
+                    value={FlatBooking.tenantId.taddress.country} 
+                    onChange={e=>setFlatBooking({...FlatBooking,tenantId:{...FlatBooking.tenantId.taddress,
+                        taddress:{...FlatBooking.tenantId.taddress,country:e.target.value}}})}
+                    />
+                </div>
+            <br/><br/>
+            <input name="tenantage" type="number" placeholder="Tenant Age" className="col-md-4 address-tags"
+             value={FlatBooking.tenantId.age}  onChange={e=>setFlatBooking({...FlatBooking,age:{...FlatBooking.age,age:e.target.value}})}
+            />
 
                 <div className='form-group'>
                     <label>Enter Flat ID<span style={{color: "red"}}>*</span></label>
                     <input name="flatid" placeholder="Flat ID" type='number' className='form-control'
                          value={FlatBooking.flat.flatId}
-                         onInput={formValidate}
-                         onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat,flatId:e.target.value}})}/>
+                        //  onInput={formValidate}
+                        onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat.flatId,
+                            flatId:{...FlatBooking.flat.flatId,flatId:e.target.value}}})}
+                         />
                 </div>
 
+                <div className='form-group'>
+                    <label>House Number<span style={{color: "red"}}>*</span></label>
+                    <input name="houseNo" placeholder="House Number" type='number' className='form-control'
+                         value={FlatBooking.flat.flatAddress.houseNo}
+                        //  onInput={formValidate}
+                        onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat.taddress,
+                            taddress:{...FlatBooking.flat.taddress,houseNo:e.target.value}}})}
+                         />
+                </div>
+
+                <div className='form-group'>
+                    <label>Street<span style={{color: "red"}}>*</span></label>
+                    <input name="street" placeholder="Street name" className='form-control' 
+                        value={FlatBooking.flat.flatAddress.street} 
+                        // onInput={formValidate}
+                        onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat.taddress,
+                            taddress:{...FlatBooking.flat.taddress,street:e.target.value}}})}
+                        />
+                </div>
+
+                <div className='form-group'>
+                    <label>Pin code<span style={{color: "red"}}>*</span></label>
+                    <input name="pincode" placeholder="If other than India--> 999999" type='number' 
+                    className='form-control' 
+                    value={FlatBooking.flat.flatAddress.pin} 
+                    // onInput={formValidate}
+                    onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat.taddress,
+                        taddress:{...FlatBooking.flat.taddress,pin:e.target.value}}})}
+                    />
+                </div>
+
+                <div className='form-group'>
+                    <label>City<span style={{color: "red"}}>*</span></label>
+                    <input name="city" placeholder="City name" className='form-control' 
+                    value={FlatBooking.flat.flatAddress.city} 
+                    // onInput={formValidate}
+                    onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat.taddress,
+                        taddress:{...FlatBooking.flat.taddress,city:e.target.value}}})}
+                    />
+                </div>
+
+                <div className='form-group'>
+                    <label>State<span style={{color: "red"}}>*</span></label>
+                    <input name="state" placeholder="State name" 
+                    className='form-control' value={FlatBooking.flat.flatAddress.state} 
+                    // onInput={formValidate}
+                    onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat.taddress,
+                        taddress:{...FlatBooking.flat.taddress,state:e.target.value}}})}
+                    />
+                </div>
+
+                <div className='form-group'>
+                    <label>Country<span style={{color: "red"}}>*</span></label>
+                    <input name="country" placeholder="Country name"  className='form-control' 
+                    // onInput={formValidate}
+                    value={FlatBooking.flat.flatAddress.country} 
+                    onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat.taddress,
+                        taddress:{...FlatBooking.flat.taddress,country:e.target.value}}})}
+                    />
+                </div>
+
+                <div className='form-group'>
+                    <label>Monthly rent<span style={{color: "red"}}>*</span></label>
+                    <input name="cost" placeholder="in RS" className='form-control' 
+                    value={FlatBooking.flat.cost} 
+                    // onInput={formValidate}
+                    onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat.cost,
+                        cost:{...FlatBooking.flat.cost,cost:e.target.value}}})}
+                    />
+                </div>
+                
+                <label>Availability</label>
+       <select name="availability" className="username" 
+        value={FlatBooking.flat.availability} 
+        onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat.availability,
+            availability:{...FlatBooking.flat.availability,availability:e.target.value}}})}
+       >
+         <option value="">Select one option</option>
+         <option value="available">Available</option>
+         <option value="unavailable">Unavailable</option>
+         
+       </select>
                 <div className='form-group'>
                     <label>bookingFromDate<span style={{color: "red"}}>*</span></label>
                     <input name="fromDate" placeholder="Booking from" type='text' className='form-control'
@@ -193,6 +319,6 @@ function AddBooking() {
         </>
         
     )
-}
 
+    }
 export default AddBooking;
