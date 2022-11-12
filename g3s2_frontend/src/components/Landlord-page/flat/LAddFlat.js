@@ -112,7 +112,6 @@ function LAddFlat() {
             onSubmit={handleBtnClick} 
             className="col-4 container">
 
-
                 <div className='form-group'>
                     <label>Enter Landlord ID<span style={{color: "red"}}>*</span></label>
                     <input name="landlordId" placeholder="Landlord ID" type='number' className='form-control'
@@ -121,7 +120,6 @@ function LAddFlat() {
                          onChange={e=>setFlat({...Flat,landlord:{...Flat.landlord,landlordId:e.target.value}})}/>
                 </div>
 
-
                 <div className='form-group'>
                     <label>Enter Flat ID<span style={{color: "red"}}>*</span></label>
                     <input name="flatid" placeholder="Flat ID" type='number' className='form-control'
@@ -129,6 +127,7 @@ function LAddFlat() {
                          onInput={formValidate}
                          onChange={e=>setFlat({...Flat,flatId:e.target.value})}/>
                 </div>
+
                 <div className='form-group'>
                     <label>House Number<span style={{color: "red"}}>*</span></label>
                     <input name="houseNo" placeholder="House Number" type='number' className='form-control'
@@ -136,6 +135,7 @@ function LAddFlat() {
                          onInput={formValidate}
                          onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,houseNo:e.target.value}})}/>
                 </div>
+
                 <div className='form-group'>
                     <label>Street<span style={{color: "red"}}>*</span></label>
                     <input name="street" placeholder="Street name" className='form-control' 
@@ -143,6 +143,7 @@ function LAddFlat() {
                         onInput={formValidate}
                         onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,street:e.target.value}})}/>
                 </div>
+
                 <div className='form-group'>
                     <label>Pin code<span style={{color: "red"}}>*</span></label>
                     <input name="pincode" placeholder="If other than India--> 999999" type='number' 
@@ -151,6 +152,7 @@ function LAddFlat() {
                     onInput={formValidate}
                     onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,pin:e.target.value}})}/>
                 </div>
+
                 <div className='form-group'>
                     <label>City<span style={{color: "red"}}>*</span></label>
                     <input name="city" placeholder="City name" className='form-control' 
@@ -158,6 +160,7 @@ function LAddFlat() {
                     onInput={formValidate}
                     onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,city:e.target.value}})}/>
                 </div>
+
                 <div className='form-group'>
                     <label>State<span style={{color: "red"}}>*</span></label>
                     <input name="state" placeholder="State name" 
@@ -165,6 +168,7 @@ function LAddFlat() {
                     onInput={formValidate}
                     onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,state:e.target.value}})}/>
                 </div>
+
                 <div className='form-group'>
                     <label>Country<span style={{color: "red"}}>*</span></label>
                     <input name="country" placeholder="Country name"  className='form-control' 
@@ -172,6 +176,7 @@ function LAddFlat() {
                     value={Flat.flatAddress.country} 
                     onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,country:e.target.value}})}/>
                 </div>
+
                 <div className='form-group'>
                     <label>Monthly rent<span style={{color: "red"}}>*</span></label>
                     <input name="cost" placeholder="in RS" className='form-control' 
@@ -179,23 +184,7 @@ function LAddFlat() {
                     onInput={formValidate}
                     onChange={e=>setFlat({...Flat,cost:e.target.value})}/>
                 </div>
-                {/* <div className='form-group'>
-                    <label>Flat Availability<span style={{color: "red"}}>*</span></label>
-                    <div>
-                        <div className="form-check form-check-inline">
-                        <input onInput={formValidate} className="form-check-input" type="radio" name="flatA" id="flatYes" value="Yes" onChange={e=>setFlat({...Flat,flatAvailability:e.target.value})}/>
-                            <label className="form-check-label" for="flatYes">
-                                Available
-                            </label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input onInput={formValidate} className="form-check-input" type="radio" name="flatA" id="flatNo" value="No" onChange={e=>setFlat({...Flat,flatAvailability:e.target.value})}/>
-                            <label className="form-check-label" for="flatNo">
-                                Unavailable
-                            </label>
-                        </div>
-                    </div>
-                </div> */}
+                
                 <label>UserType</label>
        <select name="usertype" className="username" 
         value={Flat.availability} 

@@ -112,13 +112,13 @@ function AddFlat() {
             onSubmit={handleBtnClick} 
             className="col-4 container">
 
-                <div className='form-group'>
+                {/* <div className='form-group'>
                     <label>Enter Landlord ID<span style={{color: "red"}}>*</span></label>
                     <input name="landlordId" placeholder="Landlord ID" type='number' className='form-control'
                          value={Flat.landlord.landlordId}
                          onInput={formValidate}
                          onChange={e=>setFlat({...Flat,landlord:{...Flat.landlord,landlordId:e.target.value}})}/>
-                </div>
+                </div> */}
 
                 <div className='form-group'>
                     <label>Enter Flat ID<span style={{color: "red"}}>*</span></label>
