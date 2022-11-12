@@ -90,7 +90,36 @@ function AddBooking() {
     useEffect(()=>
     {
         const URL=`http://localhost:8080/flatbooking/addflatbooking`;
-        axios.post(URL,FlatBooking).then(response=>
+        axios.post(URL,{
+            bookingNo: 2,
+            flat: {
+              flatId: 1,
+              cost: 2000,
+              flatAddress: {
+                houseNo: 1,
+                street: "Street1",
+                city: "City1",
+                state: "State1",
+                pin: 123456,
+                country: "Country1"
+              },
+              availability: "Unavailable"
+            },
+            tenantId: {
+              tenantId: 1,
+              age: 21,
+              taddress: {
+                houseNo: 1,
+                street: "Street1",
+                city: "City1",
+                state: "State1",
+                pin: 123456,
+                country: "Country1"
+              }
+            },
+            bookingFromDate: "06-05-2023",
+            bookingToDate: "07-06-2023"
+          }).then(response=>
             {
                 setMsg(response.data)
                 setId(0);
