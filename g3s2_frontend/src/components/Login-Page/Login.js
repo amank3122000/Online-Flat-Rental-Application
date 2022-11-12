@@ -91,8 +91,8 @@ function Login() {
               <div className={styles.c11}>
 
                      <h1 className={styles.mainhead}>Welcome</h1>
-                     <br/><br/>
-                     <button id="formlogin" className={styles.btnsign}><Link to='/register'>Register</Link></button>
+                    
+                     
               </div>
           </div>
           <div className={styles.c2}>
@@ -131,6 +131,7 @@ function Login() {
           
           <p>{formErrors.password}</p>
           <button id="formlogin" type="submit" className={styles.btnlogin} onClick={fetchUsers}>Submit</button>
+          <button id="formlogin" className={styles.btnsign}><Link to='/register'>New User? Sign Up Now</Link></button>
           <p>{formErrors.login}</p>  
         
       </form>
