@@ -33,30 +33,12 @@ function AddFlat() {
         if (!values.flatAddress.houseNo) {
           errors.houseNo = "House No is required!";
         }
-        // if (!values.street) {
-        //     errors.street = "Street is required!";
-        //   }
-        // if (!values.city) {
-        //     errors.city = "City is required!";
-        //   }
-        // if (!values.state) {
-        //     errors.state = "State is required!";
-        //   }
-        // if (!values.pin) {
-        //     errors.pin = "PIN is required!";
-        //   }
-        // if (!values.country) {
-        //     errors.country = "Country is required!";
-        //   }
         if (!values.availability) {
           errors.availability = "Availability is required!";
         } 
         if (!values.cost || values.cost<1000) {
           errors.cost = "Cost is required and must be more than 1000!";
         } 
-        // if (values.cost < 1000) {
-        //   errors.cost = "Cost must be more than 1000!";
-        // } 
         return errors;
       };
 
@@ -81,23 +63,6 @@ function AddFlat() {
     }
   }, [formErrors]);
 
-    // useEffect(()=>
-    // {
-    //     const URL=`http://localhost:8080/flat/addflat`
-    //     axios.post(URL,Flat).then(response=>
-    //         {
-    //             setMsg(response.data)
-    //             setId(0);
-    //         }).catch(error=>console.log(error.response))
-    // },[id])
-
-
-//    const handleBtnClick=(event)=>
-//     {
-//         event.preventDefault()
-//         setId(1)
-        
-//     }
     return (
         <React.Fragment>
         <nav className="navbar navbar-dark bg-dark justify-content-between fixed-top">
@@ -130,11 +95,11 @@ function AddFlat() {
        />
        <p>{formErrors.houseNo}</p>
 
-       <label>Landlord Id</label>
+       {/* <label>Landlord Id</label>
        <input name="landlordid" type="number" placeholder="Landlord Id" className="username" 
        value={Flat.landlordId.landlordId} onChange={e=>setFlat({...Flat,landlordId:{...Flat.landlordId,landlordId:e.target.value}})}
        />
-       {/* <p>{formErrors.houseNo}</p> */}
+       <p>{formErrors.houseNo}</p> */}
 
             <label>Cost</label>
        <input name="flatid" type="number" placeholder="Cost" className="username" 
