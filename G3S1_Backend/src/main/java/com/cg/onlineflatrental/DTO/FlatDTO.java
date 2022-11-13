@@ -13,6 +13,8 @@ public class FlatDTO {
 	@NotNull(message = "Flat availability is mandatory")
     private String availability;
 
+    private LandlordDTO landlordId;
+
     public FlatDTO() {
     	super();
     }
