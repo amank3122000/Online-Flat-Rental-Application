@@ -112,7 +112,7 @@ function RegisterLandlord(){
             <p>{formErrors1.landlordAge}</p>
             <br/>
             
-            <button className="btn" type="submit" onClick={handleLandlord}>Register Landlord</button>
+            <button className="btn" type="submit" onClick={handleLandlord} data-testid="button">Register Landlord</button>
             </form>
             </div>
         </React.Fragment>

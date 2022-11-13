@@ -58,7 +58,7 @@ const handleBtnClick = (e)=>{
      onChange={e=>setTenantid(e.target.value)}
     />
     <br/>
-    <button className="btn" onClick={handleBtnClick}>View Tenant</button>
+    <button className="btn" data-testid="button" onClick={handleBtnClick}>View Tenant</button>
    </form>
    
 
