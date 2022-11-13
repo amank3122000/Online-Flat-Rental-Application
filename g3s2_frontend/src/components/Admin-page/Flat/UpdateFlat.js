@@ -73,9 +73,6 @@ function UpdateFlat() {
     if (!values.cost) {
       errors.cost = "Cost is required!";
     } 
-    // if (values.cost < 1000) {
-    //   errors.cost = "Cost must be more than 1000!";
-    // } 
     return errors;
   };
 

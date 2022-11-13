@@ -1,119 +1,79 @@
-import React, { useState, useEffect } from "react";
-import axios from 'axios'
-import {useNavigate} from "react-router-dom";
-import TAddFlatBooking from "./TAddFlatBooking";
-function TViewFlatByBid() {
-//   let initialBooking = [] ;
-  let initialBooking={bookingNo:null,bookingFromDate:null,bookingToDate:null,flat:{flatId: null},tenantId:{tenantId : null}}
-  let [booking, setBooking] = useState(initialBooking);
-  let [id, setId] = useState(0);
-  let [btnId,setBtnId]=useState(0);
-  const [btn,setButton] = useState(0);
-    // const [deletebtn,setdeleteButton] = useState(0);
-    const [formErrors, setFormErrors] = useState({});
-    const [isSubmit, setIsSubmit] = useState(false);
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-  const history = useNavigate();
-  const formStyle = {
-    backgroundColor: "#FFFAFA",
-    padding: "15px"
-};
-const mystyle = {
-    color: "white",
-    backgroundColor: "DodgerBlue",
-    padding: "10px",
-    fontFamily: "Arial",
+
+function TViewFlatByBid() {
+
+  const [id,setId] = useState(0);
+  let initialFlatBooking={}
+  let [booking,setBooking]=useState(initialFlatBooking);
+  const [formErrors, setFormErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
+
+
+  const handleBtnClick = (e)=>{
+    e.preventDefault();
+    setFormErrors(validate(id));
+    setIsSubmit(true);
+    const URL = `http://localhost:8080/flatbooking/viewflatbooking/${id}`;
+      axios.get(URL).then((response) => {
+          setBooking(response.data);
+      })
+      .catch((error) => console.log(error));
+  }
+
+  useEffect(() => {
+    console.log(formErrors);
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
+      console.log(id);
+    }
+  }, [formErrors]);
+
+  const validate = (values) => {
+    const errors = {};
+    if (!values) {
+        errors.id = "Booking id is required!";
+    }
+    return errors;
   };
 
-   useEffect(() => {
-     const URL = `http://localhost:8080/flatbooking/viewflatbooking/${id}`;
-     axios
-      .get(URL)
-      .then((response) => {
-          setBooking(response.data)
-          console.log(response.data)
-          console.log(response.statusText)
-      })
-      .catch((error) =>{
-        if(id != 0 && error.response){
-          alert("Booking with ID is not available")
-        }else if(id != 0 && error.request){
-          alert("Server Not connected")
-        }
-      });
-   },[btnId])
 
-  function handleDeleteBooking(id){
-      
-       const URL = `http://localhost:8080/flatbooking/deleteflatbooking/${id}`;
-       axios
-         .delete(URL)
-         .then((response) => {
-            
-             console.log(response.data)
-             alert(`Flat with ${id} is deleted successfully `)
-             
-             setId(0);
-          })
-    }
-    function handleUpdateBooking(id)
-    {
-        
-     history.push('/updatebooking')
-    }
-function handleBtnClick(e)
-{
-  e.preventDefault();
-    // setFormErrors(validate(userDetails));
-  setIsSubmit(true);
-  setButton(id)
-    
-}
-  return (
-       
+return (
+    <React.Fragment>
+      <form className="view-form"> 
+                <h1 className="form-text ">View Booking By ID</h1>
+                <br/>
+                <label>Booking Id</label>
+                <input name="userId" type="number" placeholder="Booking ID*" className="username"
+                  value = {id}
+                  onChange={e=>setId(e.target.value)}
+                />
+                <p>{formErrors.id}</p>
+                <button className="btn" data-testid="button" onClick={handleBtnClick}>View Booking</button>
+            </form>
+      <table className="table table-data table-striped table-bordered view-table">
+              <thead>
+                  <tr className="table-warning">
+                  <th>Booking No.</th>
+                  <th> Flat ID</th>
+                  <th>Tenant ID</th>
+                  <th>Booking From</th>
+                  <th>Booking From</th>
+                  </tr>
+              </thead>
+              <tbody className="table-success">
+                  <tr>
+                  <td>{booking&&booking.bookingNo}</td>
+                  <td>{booking&&booking.flat&&booking.flat.flatId}</td>
+                  <td>{booking&&booking.tenantId&&booking.tenantId.tenantId}</td>
+                  <td>{booking&&booking.bookingFromDate}</td>
+                  <td>{booking&&booking.bookingToDate}</td>
+                  </tr>
 
-    <div style={formStyle}>
-           <div className="col-3">
-        <label>Booking ID</label>
-        <input
-        type="number"
-        min="0"
-          className="form-control"
-          value={id}
-          onChange={(e) =>setId(e.target.value)}
-        />
-        <button onClick={handleBtnClick} className='btn btn-success mt-2'>Get Details</button>
-        <br></br>
-        </div>
+              </tbody>
 
-      <table className="table table-hover table-striped border-dark">
-        <thead>
-          <tr className="table-dark">
-            <th>BOOKING NUMBER</th>
-            <th>FROM DATE</th>
-            <th>TO DATE</th>
-            <th>FLAT ID</th>
-            <th>TENANT ID</th>
-            </tr>
-          </thead>
-          
-          <tbody>
-            
-              <tr>
-                <td>{booking.bookingNo}</td>
-                <td>{booking.bookingFromDate}</td>
-                <td>{booking.bookingToDate}</td>
-                <td>{booking.flat.flatId}</td>
-                <td>{booking.tenantId.tenantId}</td>
-                <td><button className="btn btn-outline" onClick={()=>handleUpdateBooking(booking.bookingNo)}>UPDATE</button></td>
-                <td><button className="btn btn-outline-danger" onClick={()=>handleDeleteBooking(booking.bookingNo)}>Delete</button></td> 
-              </tr>
-        
-            
-          </tbody>
-        
-      </table>
-    </div>
+          </table>
+  </React.Fragment>
   );
 }
 

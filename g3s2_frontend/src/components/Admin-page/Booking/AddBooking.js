@@ -17,7 +17,7 @@ function AddBooking() {
                 pin: 0,
                 country: ""
               },
-              availability: ""
+              availability: "Unavailable"
             },
             tenantId: {
               tenantId: 0,
@@ -283,7 +283,7 @@ function AddBooking() {
                     />
                 </div>
                 
-                <label>Availability</label>
+                {/* <label>Availability</label>
        <select name="availability" className="username" 
         value={FlatBooking.flat.availability} 
         onChange={e=>setFlatBooking({...FlatBooking,flat:{...FlatBooking.flat,availability:e.target.value}})}
@@ -292,7 +292,7 @@ function AddBooking() {
          <option value="available">Available</option>
          <option value="unavailable">Unavailable</option>
          
-       </select>
+       </select> */}
                 <div className='form-group'>
                     <label>bookingFromDate<span style={{color: "red"}}>*</span></label>
                     <input name="fromDate" placeholder="Booking from" type='date' className='form-control'
