@@ -40,7 +40,7 @@ function ViewBooking() {
 
 return (
     <React.Fragment>
-      <form className="view-form"> 
+      <form className="view-form" data-testid="View-form-2"> 
                 <h1 className="form-text ">View Booking By ID</h1>
                 <br/>
                 <label>Booking Id</label>
@@ -49,7 +49,7 @@ return (
                   onChange={e=>setId(e.target.value)}
                 />
                 <p>{formErrors.id}</p>
-                <button className="btn" data-testid="button" onClick={handleBtnClick}>View Booking</button>
+                <button className="btn" data-testid="buttonBookingViewId" onClick={handleBtnClick}>View Booking</button>
             </form>
       <table className="table table-data table-striped table-bordered view-table">
               <thead>

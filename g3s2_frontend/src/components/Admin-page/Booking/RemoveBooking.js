@@ -46,8 +46,8 @@ function RemoveBooking() {
           <button className="btn btn-outline-danger my-2 my-sm-0 logout-btn" type="submit"><a href="/login">Logout</a></button>
         </form>
       </nav>
-        <form className="c2 view-form">
-            <h1 className="form-text ">Delete FlatBooking By ID</h1>
+        <form className="c2 view-form" data-testid="Remove-form-2">
+            <h1 className="form-text " data-testid="Remove-header-2" >Delete FlatBooking By ID</h1>
            <br/>
            <label>FlatBooking Id</label>
             <input name="flatbookingid" type="number" placeholder="FlatBooking ID*" className="username" 
@@ -56,7 +56,7 @@ function RemoveBooking() {
             />
             <br/>
             <p>{formErrors.bookingid}</p>
-            <button className="btn" data-testid="button" onClick={handleBtnClick}>Delete Flat</button>
+            <button className="btn" data-testid="buttonBookingRemove" onClick={handleBtnClick}>Delete Flat</button>
          </form>
     </React.Fragment>
     );
