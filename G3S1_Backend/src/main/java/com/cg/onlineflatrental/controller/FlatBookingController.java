@@ -76,9 +76,9 @@ public class FlatBookingController {
      * @throws FlatBookingNotFoundException
      */
     @GetMapping("/viewflatbooking/{id}")
-    public ResponseEntity<FlatDTO> viewFlatBooking(@PathVariable int id) throws FlatBookingNotFoundException {
+    public ResponseEntity<FlatBookingDTO> viewFlatBooking(@PathVariable int id) throws FlatBookingNotFoundException {
         FlatBookingDTO fb=fbs.viewFlatBooking(id);
-        return new ResponseEntity<FlatDTO>(fb.getFlat(),HttpStatus.OK);
+        return new ResponseEntity<FlatBookingDTO>(fb,HttpStatus.OK);
     }
 
     

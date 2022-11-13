@@ -104,17 +104,20 @@ function AddBooking() {
         // }
     }
 
-    useEffect(()=>
-    {
-        const URL=`http://localhost:8080/flatbooking/addflatbooking`;
-        axios.post(URL,FlatBooking).catch(error=>console.log(error.response))
-    },[id])
+    // useEffect(()=>
+    // {
+    //     const URL=`http://localhost:8080/flatbooking/addflatbooking`;
+    //     axios.post(URL,FlatBooking).catch(error=>console.log(error.response))
+    // },[id])
 
 
    const handleBtnClick=(event)=>
     {
         event.preventDefault()
-        setId(1)
+        const URL=`http://localhost:8080/flatbooking/addflatbooking`;
+        axios.post(URL,FlatBooking).then((response) => {
+            window.alert(response.data);
+        }).catch(error=>console.log(error.response))
         
     }
     return (

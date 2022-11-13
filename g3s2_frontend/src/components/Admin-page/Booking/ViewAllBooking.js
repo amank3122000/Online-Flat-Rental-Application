@@ -43,10 +43,6 @@ function ViewAllBooking() {
                     <td>{booking.tenantId.tenantId}</td>
                     <td>{booking.bookingFromDate}</td>
                     <td>{booking.bookingToDate}</td>
-                    <td>
-                        <button className="btn btn-warning logout-btn" type="submit">Update</button>
-                        <button className="btn btn-danger logout-btn" type="submit">Delete</button>
-                    </td>
                     </tr>
                 
                 )}
