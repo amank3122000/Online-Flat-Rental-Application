@@ -21,16 +21,16 @@ function RegisterLandlord(){
     const validate = (values) =>{
         const errors ={}
         if(!values.userName){
-            errors.userName = "Username is Required"
+            errors.userName = "Username is Required!"
         }
         if(!values.landlordName){
-            errors.landlordName = "Landlord Name is Required"
+            errors.landlordName = "Landlord Name is Required!"
         }
         if(!values.landlordAge){
-            errors.landlordAge = "Landlord Age is Required"
+            errors.landlordAge = "Landlord Age is Required!"
         }
         if(!values.password){
-            errors.password = "Password is Required"
+            errors.password = "Password is Required!"
         }
         return errors;
     };

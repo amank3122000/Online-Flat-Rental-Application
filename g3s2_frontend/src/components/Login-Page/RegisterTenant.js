@@ -17,14 +17,14 @@ function RegisterTenant(){
             console.log(formValues);
         }
 
-    },[formErrors])
+    },[formErrors, formValues, isSubmit])
     const validate = (values) =>{
         const errors ={}
         if(!values.userName){
-            errors.userName = "Username is Required"
+            errors.userName = "Username is Required!"
         }
         if(!values.password){
-            errors.password = "Password is Required"
+            errors.password = "Password is Required!"
         }
         return errors;
     };
@@ -51,25 +51,25 @@ function RegisterTenant(){
         const errors ={}
         
         if(!values.taddress.houseNo){
-            errors.houseNo = "House no. is Required"
+            errors.houseNo = "House no. is Required!"
         }
         if(!values.taddress.street){
-            errors.street = "Street is Required"
+            errors.street = "Street is Required!"
         }
         if(!values.taddress.city){
-            errors.city = "City is Required"
+            errors.city = "City is Required!"
         }
         if(!values.taddress.state){
-            errors.state = "State is Required"
+            errors.state = "State is Required!"
         }
         if(!values.taddress.pin){
-            errors.pin = "Pincode is Required"
+            errors.pin = "Pincode is Required!"
         }
         if(!values.taddress.country){
-            errors.country = "Country is Required"
+            errors.country = "Country is Required!"
         }
         if(!values.age){
-            errors.age = "Age is Required"
+            errors.age = "Age is Required!"
         }
         return errors;
     };

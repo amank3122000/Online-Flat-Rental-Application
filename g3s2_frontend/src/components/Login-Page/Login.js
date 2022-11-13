@@ -55,7 +55,7 @@ function Login() {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log(formValues);
     }
-  }, [formErrors]);
+  }, [formErrors, formValues, isSubmit]);
   
   const validate = (values) => {
    const errors = {};
@@ -66,14 +66,14 @@ function Login() {
      errors.userType = "User Type is Required!";
    } 
    if (!values.password) {
-     errors.password = "Password is Required";
+     errors.password = "Password is Required!";
    } else if (values.password.length < 4) {
-     errors.password = "Password must be more than 4 Characters";
+     errors.password = "Password must be more than 4 Characters!";
    } else if (values.password.length > 10) {
-     errors.password = "Password cannot exceed more than 10 Characters";
+     errors.password = "Password cannot exceed more than 10 Characters!";
    }
    if(!isLogged){
-      errors.login="Invalid Credentials";
+      errors.login="Invalid Credentials!";
     }
     return errors;
   };
