@@ -15,7 +15,7 @@ function ViewBooking() {
     e.preventDefault();
     setFormErrors(validate(id));
     setIsSubmit(true);
-    const URL = `http://localhost:8080/flatbooking/viewflatBooking/${id}`;
+    const URL = `http://localhost:8080/flatbooking/viewflatbooking/${id}`;
       axios.get(URL).then((response) => {
           setBooking(response.data);
       })

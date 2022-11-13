@@ -90,7 +90,7 @@ function App() {
         <Route path="/admin/tenant/viewAlltenant" element={<ViewAllTenant />}/>         
 
         <Route path="/admin/booking/addbooking" element={<AddBooking />}/>        
-        <Route path="/admin/booking/removebooking" element={<RemoveBooking />}/>        
+        <Route path="/admin/booking/deletebooking" element={<RemoveBooking />}/>        
         <Route path="/admin/booking/updatebooking" element={<UpdateBooking />}/>       
         <Route path="/admin/booking/viewbooking" element={<ViewBooking />}/>      
         <Route path="/admin/booking/viewAllbooking" element={<ViewAllBooking />}/>         

@@ -29,7 +29,7 @@ function ViewAllBooking() {
                     <th>Tenant ID</th>
                     <th>Booking From</th>
                     <th>Booking From</th>
-                    <th>Actions</th>
+                    {/* <th>Actions</th> */}
                     </tr>
                 </thead>
                 <tbody className="table-success">
