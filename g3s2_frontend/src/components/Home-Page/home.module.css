@@ -21,7 +21,7 @@ h1{
 c{
     font-family: 'Teko', sans-serif;
     text-transform: uppercase;
-    font-size: 50px;
+    font-size: 70px;
     text-align: center;
     display: -webkit-flex;
     display: flex;
@@ -30,7 +30,6 @@ c{
     -webkit-justify-content: center;
     justify-content: center;
     margin: 0;
-    font-size: 70px;
     min-height: calc(100vh - 16px);
     position: relative;
   }
@@ -41,10 +40,10 @@ c:before{
     background: linear-gradient(#f70000, #f89200, #f8f501, #038f00,#0168f8, #a200f7);
     background-clip: text;
     color: transparent;
-    background-size: 100% 90%;
+    background-size: 100% 100%;
     line-height: 0.9;
     clip-path: ellipse(120px 120px at -2.54% -9.25%);
-    animation: swing 5s infinite;
+    animation: swing 3s infinite;
     animation-direction: alternate;
   }
   
@@ -78,8 +77,8 @@ p{
     font-family: system-ui,-apple-system,system-ui,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
     font-size: 18px;
     position: absolute;
-     left: 600px;
-     top: 450px;
+     left: 550px;
+     top: 350px;
     padding: 12px 26px;
     transition: all .2s;
     touch-action: manipulation;
