@@ -6,7 +6,7 @@ function LAddFlat() {
 
     let initialFlat={
         flatAddress:{
-            houseNo:0,
+            houseNo:'',
             street:'',
             city:'',
             state:'',
@@ -14,7 +14,7 @@ function LAddFlat() {
             country:''
             },
         availability:'',
-        cost:0,
+        cost:'',
         flatId:0,
         landlordId:{landlordId:0}
 
@@ -37,7 +37,7 @@ function LAddFlat() {
           errors.availability = "Availability is required!";
         } 
         if (!values.cost || values.cost<1000) {
-          errors.cost = "Cost is required and must be more than 1000!";
+          errors.cost = "Cost is required ";
         } 
         return errors;
       };
@@ -76,18 +76,13 @@ function LAddFlat() {
       {Object.keys(formErrors).length === 0 && isSubmit ? (
         <div className="ui message success">Flat Added.</div>
       ) : (<></>
-        // <pre>{JSON.stringify(user, undefined, 2)}</pre>
+        
       )}
       
       <form className="c2" method="POST">
     <h1 className="form-text ">Add Flat</h1>
     <br/>
 
-    {/* <label>Flat Id</label>
-       <input name="flatid" type="number" placeholder="Flat ID" className="username" 
-       value={Flat.flatId} onChange={e=>setFlat({...Flat,flatId:e.target.value})}
-       />
-       <p>{formErrors.flatId}</p> */}
        
             <label>House No</label>
        <input name="flatid" type="number" placeholder="House No" className="username" 
@@ -95,11 +90,6 @@ function LAddFlat() {
        />
        <p>{formErrors.houseNo}</p>
 
-       {/* <label>Landlord Id</label>
-       <input name="landlordid" type="number" placeholder="Landlord Id" className="username" 
-       value={Flat.landlordId.landlordId} onChange={e=>setFlat({...Flat,landlordId:{...Flat.landlordId,landlordId:e.target.value}})}
-       /> */}
-       {/* <p>{formErrors.houseNo}</p> */}
 
             <label>Cost</label>
        <input name="flatid" type="number" placeholder="Cost" className="username" 
@@ -111,7 +101,7 @@ function LAddFlat() {
         <select name="availability" className="username"
         value={Flat.availability} onChange={e=>setFlat({...Flat,availability:e.target.value})}
         >
-          <option value="">Availability*</option>
+          <option value="">Availability</option>
           <option value="available">Available</option>
           <option value="unavailable">Unavailable</option>
          </select>

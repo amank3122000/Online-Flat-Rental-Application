@@ -167,7 +167,7 @@ function RegisterTenant(){
          value={tenant.age} onChange={e=>setTenant({...tenant,age:e.target.value})}/>
         <p>{formErrors1.age}</p>
             <br/>
-            <button className="btn" type="submit" onClick={handleTenant}>Register Tenant</button>
+            <button className="btn" type="submit" onClick={handleTenant} data-testid="button">Register Tenant</button>
             </form>
         </React.Fragment>
     )

@@ -92,7 +92,7 @@ tenantId:0};
              value={tenant.age} onChange={e=>setTenant({...tenant,age:e.target.value})}
             />
         <br/><br/>
-            <button className="btn" onClick={handleBtnClick}>Add Tenant</button>
+            <button className="btn" data-testid="button" onClick={handleBtnClick}>Add Tenant</button>
         </form>
     
      </React.Fragment>
