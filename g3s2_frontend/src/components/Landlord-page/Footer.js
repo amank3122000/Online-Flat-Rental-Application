@@ -11,14 +11,16 @@ function Footer()
     <div className="col ">
 
     
-      <h5 className="font-weight-bold text-uppercase text-light mt-3 mb-4 text-center">Contact Us</h5>
+      
 
       <ul className="list-unstyled">
         <li>
-         EMail-annajose11@gmail.com
+        <strong>CONTACT US</strong></li>
+        <li>
+         Email: elsintjose@gmail.com
         </li>
         <li>
-            Mobile-8547989876
+            Mobile: 8547989876
         </li>
       </ul>
 
@@ -26,10 +28,9 @@ function Footer()
     
     <div className="col ">
 
-   
-      <h5 className="font-weight-bold text-uppercase mt-3 text-light mb-4 text-center">Follow Us</h5>
-
       <ul className="list-unstyled text-center">
+      <li>
+        <strong>FOLLOW US</strong></li>
         <li>
           <a className="text text-dark" href="#!"style={{textDecoration:"none"}}>Instagram</a>
         </li>
@@ -47,10 +48,9 @@ function Footer()
     
     <div className="col ">
 
-   
-      <h5 className="font-weight-bold text-uppercase text-light mt-3 mb-4 text-center">Our Branches</h5>
-
       <ul className="list-unstyled text-center">
+      <li>
+        <strong>OUR BRANCHES</strong></li>
         <li>
           Mumbai
         </li>
