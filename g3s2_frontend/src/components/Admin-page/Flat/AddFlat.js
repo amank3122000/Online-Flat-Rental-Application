@@ -1,5 +1,6 @@
 import React ,{useState,useEffect} from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 
 function AddFlat() {
 
@@ -19,191 +20,140 @@ function AddFlat() {
 
         }
     let [Flat,setFlat]=useState(initialFlat)
+    const [formErrors, setFormErrors] = useState({});
+    const [isSubmit, setIsSubmit] = useState(false);
     let [msg,setMsg]=useState('')
     let [id,setId]=useState(0)
 
-    function formValidate() {
-        // const form = document.querySelector('form')
-        // var lid=form.elements.flatid.value
-        // var fid=form.elements.houseNo.value
-        // var str=form.elements.street.value
-        // var pn=form.elements.pincode.value
-        // var ct=form.elements.city.value
-        // var st=form.elements.state.value
-        // var con=form.elements.country.value
-        // var cst=form.elements.cost.value
-        // var flt=form.elements.flatA.value
+    const validate = (values) => {
+        const errors = {};
+        if (!values.flatId) {
+            errors.flatId = "Flat Id is required!";
+          }
+        if (!values.houseNo) {
+          errors.houseNo = "House No is required!";
+        }
+        // if (!values.street) {
+        //     errors.street = "Street is required!";
+        //   }
+        // if (!values.city) {
+        //     errors.city = "City is required!";
+        //   }
+        // if (!values.state) {
+        //     errors.state = "State is required!";
+        //   }
+        // if (!values.pin) {
+        //     errors.pin = "PIN is required!";
+        //   }
+        // if (!values.country) {
+        //     errors.country = "Country is required!";
+        //   }
+        if (!values.availability) {
+          errors.availability = "Availability is required!";
+        } 
+        if (!values.cost) {
+          errors.cost = "Cost is required!";
+        } 
+        else if (values.cost < 1000) {
+          errors.cost = "Cost must be more than 1000!";
+        } 
+        return errors;
+      };
 
-        // var error=document.getElementById("error")
+    function handleBtnClick(e)
+  {
+      e.preventDefault();
+      setFormErrors(validate(Flat));
+      setIsSubmit(true);
+      const URL='http://localhost:8080/flat/addflat';
+      axios.post(URL,Flat).then((response) => 
+      {
+          window.alert("Flat Added...");
+          setFlat(initialFlat);
+      }).catch(error => console.log(error.message))
+      
+  }
 
-        // var savebtn=document.getElementById("savebutton")
-
-        // if(lid<=0){
-        //     error.innerHTML="Landlord ID: Provide a positive integer"
-        // }
-        // else if(lid%1!==0){
-        //     error.innerHTML="Landlord ID: Provide an integer value"
-        // }
-        // else if(fid<=0){
-        //     error.innerHTML="Flat Number: Provide a positive integer"
-        // }
-        // else if(fid%1!==0){
-        //     error.innerHTML="Flat Number: Provide an integer value"
-        // }
-        // else if(str==''){
-        //     error.innerHTML="Street: Street cannot be empty"
-        // }
-        // else if(pn.toString().charAt(0)=="0"){
-        //     error.innerHTML="PIN: Pincode should not start with 0"
-        // }
-        // else if(pn.toString().length!==6){
-        //     error.innerHTML="PIN: Pincode should be in six digits"
-        // }
-        // else if(pn<=0){
-        //     error.innerHTML="PIN: Pincode should be in six digits"
-        // }
-        // else if(pn%1!==0){
-        //     error.innerHTML="PIN: Provide integer value"
-        // }
-        // else if(ct==''){
-        //     error.innerHTML="City: City cannot be empty"
-        // }
-        // else if(st==''){
-        //     error.innerHTML="State: State cannot be empty"
-        // }
-        // else if(con==''){
-        //     error.innerHTML="Country: Country cannot be empty"
-        // }
-        // else if(cst<=0){
-        //     error.innerHTML="Cost: Cannot be zero or less than zero"
-        // }
-        // else if(flt!=="Yes"&&flt!=="No"){
-        //     error.innerHTML="Flat Availability: Select options"
-        // }
-        // else{
-        //     error.innerHTML=""
-        //     savebtn.style.pointerEvents="auto"
-        // }
+  useEffect(() => {
+    console.log(formErrors);
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
+      console.log(Flat);
     }
+  }, [formErrors]);
 
-    useEffect(()=>
-    {
-        const URL=`http://localhost:8080/flat/addflat`
-        axios.post(URL,Flat).then(response=>
-            {
-                setMsg(response.data)
-                setId(0);
-            }).catch(error=>console.log(error.response))
-    },[id])
+    // useEffect(()=>
+    // {
+    //     const URL=`http://localhost:8080/flat/addflat`
+    //     axios.post(URL,Flat).then(response=>
+    //         {
+    //             setMsg(response.data)
+    //             setId(0);
+    //         }).catch(error=>console.log(error.response))
+    // },[id])
 
 
-   const handleBtnClick=(event)=>
-    {
-        event.preventDefault()
-        setId(1)
+//    const handleBtnClick=(event)=>
+//     {
+//         event.preventDefault()
+//         setId(1)
         
-    }
+//     }
     return (
-        <>
-        <div style={{backgroundImage: "linear-gradient(15deg, #fdf9f1 0%, #f6e4c0 100%)", height:700}}>
-        <h2 className='text-primary container'>Add flat details</h2>
-            <hr/>
-            <form 
-            onSubmit={handleBtnClick} 
-            className="col-4 container">
+        <React.Fragment>
+        <nav className="navbar navbar-dark bg-dark justify-content-between fixed-top">
+        <Link className="navbar-brand navbar-brand-margin">Admin Panel</Link>
+        <span className="header-right">Flat Rental Application</span>
+        <form className="form-inline">
+       
+          <button className="btn btn-outline-danger my-2 my-sm-0 logout-btn" type="submit"><a href="/login">Logout</a></button>
+        </form>
+      </nav>
+      
+      
+      <form className="c2" method="POST">
+    <h1 className="form-text ">Add Flat</h1>
+    <br/>
 
-                {/* <div className='form-group'>
-                    <label>Enter Landlord ID<span style={{color: "red"}}>*</span></label>
-                    <input name="landlordId" placeholder="Landlord ID" type='number' className='form-control'
-                         value={Flat.landlord.landlordId}
-                         onInput={formValidate}
-                         onChange={e=>setFlat({...Flat,landlord:{...Flat.landlord,landlordId:e.target.value}})}/>
-                </div> */}
+    {/* <label>Flat Id</label>
+       <input name="flatid" type="number" placeholder="Flat ID" className="username" 
+       value={Flat.flatId} onChange={e=>setFlat({...Flat,flatId:e.target.value})}
+       />
+       <p>{formErrors.flatId}</p> */}
+       
+            <label>House No</label>
+       <input name="flatid" type="number" placeholder="House No" className="username" 
+       value={Flat.flatAddress.houseNo} onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,houseNo:e.target.value}})}
+       />
+       <p>{formErrors.houseNo}</p>
 
-                <div className='form-group'>
-                    <label>Enter Flat ID<span style={{color: "red"}}>*</span></label>
-                    <input name="flatid" placeholder="Flat ID" type='number' className='form-control'
-                         value={Flat.flatId}
-                         onInput={formValidate}
-                         onChange={e=>setFlat({...Flat,flatId:e.target.value})}/>
-                </div>
+       {/* <label>Landlord Id</label>
+       <input name="landlordid" type="number" placeholder="Landlord Id" className="username" 
+       value={Flat.landlord.landlordId} onChange={e=>setFlat({...Flat,landlord:{...Flat.landlord,landlordId:e.target.value}})}
+       />
+       <p>{formErrors.houseNo}</p> */}
 
-                <div className='form-group'>
-                    <label>House Number<span style={{color: "red"}}>*</span></label>
-                    <input name="houseNo" placeholder="House Number" type='number' className='form-control'
-                         value={Flat.flatAddress.houseNo}
-                         onInput={formValidate}
-                         onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,houseNo:e.target.value}})}/>
-                </div>
+            <label>Cost</label>
+       <input name="flatid" type="number" placeholder="Cost" className="username" 
+       value={Flat.cost} onChange={e=>setFlat({...Flat,cost:e.target.value})}
+       />
+       <p>{formErrors.cost}</p>
 
-                <div className='form-group'>
-                    <label>Street<span style={{color: "red"}}>*</span></label>
-                    <input name="street" placeholder="Street name" className='form-control' 
-                        value={Flat.flatAddress.street} 
-                        onInput={formValidate}
-                        onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,street:e.target.value}})}/>
-                </div>
+       <label>Availability</label>
+        <select name="availability" className="username"
+        value={Flat.availability} onChange={e=>setFlat({...Flat,availability:e.target.value})}
+        >
+          <option value="">Availability*</option>
+          <option value="available">Available</option>
+          <option value="unavailable">Unavailable</option>
+         </select>
+         <p>{formErrors.availability}</p>
+         <br/>
 
-                <div className='form-group'>
-                    <label>Pin code<span style={{color: "red"}}>*</span></label>
-                    <input name="pincode" placeholder="If other than India--> 999999" type='number' 
-                    className='form-control' 
-                    value={Flat.flatAddress.pin} 
-                    onInput={formValidate}
-                    onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,pin:e.target.value}})}/>
-                </div>
+         <button className="btn" data-testid="button" onClick={handleBtnClick}>Add Flat</button>
+      
+      </form>
 
-                <div className='form-group'>
-                    <label>City<span style={{color: "red"}}>*</span></label>
-                    <input name="city" placeholder="City name" className='form-control' 
-                    value={Flat.flatAddress.city} 
-                    onInput={formValidate}
-                    onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,city:e.target.value}})}/>
-                </div>
-
-                <div className='form-group'>
-                    <label>State<span style={{color: "red"}}>*</span></label>
-                    <input name="state" placeholder="State name" 
-                    className='form-control' value={Flat.flatAddress.state} 
-                    onInput={formValidate}
-                    onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,state:e.target.value}})}/>
-                </div>
-
-                <div className='form-group'>
-                    <label>Country<span style={{color: "red"}}>*</span></label>
-                    <input name="country" placeholder="Country name"  className='form-control' 
-                    onInput={formValidate}
-                    value={Flat.flatAddress.country} 
-                    onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,country:e.target.value}})}/>
-                </div>
-
-                <div className='form-group'>
-                    <label>Monthly rent<span style={{color: "red"}}>*</span></label>
-                    <input name="cost" placeholder="in RS" className='form-control' 
-                    value={Flat.cost} 
-                    onInput={formValidate}
-                    onChange={e=>setFlat({...Flat,cost:e.target.value})}/>
-                </div>
-                
-                <label>Availability</label>
-       <select name="availability" className="username" 
-        value={Flat.availability} 
-        onChange={e=>setFlat({...Flat,availability:e.target.value})}
-       >
-         <option value="">Select one option</option>
-         <option value="available">Available</option>
-         <option value="unavailable">Unavailable</option>
-         
-       </select>
-       {/* <p>{formErrors.userType}</p> */}
-                <button id="savebutton" className='btn btn-success mt-2' >Add Flat</button>
-                <h6 id="error" className="text text-danger"></h6>
-            </form>
-            <h6>{msg}</h6>
-        </div>
-           
-        </>
-        
+        </React.Fragment>
     )
 }
 

@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import { Link } from 'react-router-dom';
 
 function ViewFlat() {
   let initialFlat = [] ;
   let [flat, setFlat] = useState(initialFlat);
 
   const [flatId,setUserid] = useState(0);
-    //const [userDetails,setUserDetail] = useState([]);
     const [btn,setButton] = useState(0);
     //const [deletebtn,setdeleteButton] = useState(0);
     //const [formErrors, setFormErrors] = useState({});
@@ -36,6 +35,16 @@ const handleBtnClick = (e)=>{
 
    return (
       <React.Fragment>
+        <nav className="navbar navbar-dark bg-dark justify-content-between fixed-top">
+        <Link className="navbar-brand navbar-brand-margin">Admin Panel</Link>
+        <span className="header-right">Flat Rental Application</span>
+        <form className="form-inline">
+       
+          <button className="btn btn-outline-danger my-2 my-sm-0 logout-btn" type="submit"><a href="/login">Logout</a></button>
+        </form>
+      </nav>
+      {/* <h1 style={mystyle}>All Flats</h1> */}
+      <br/><br/><br/><br/>
         
         <form className="view-form">
     <h1 className="form-text ">View Flat By ID</h1>
@@ -49,7 +58,6 @@ const handleBtnClick = (e)=>{
     <button className="btn" onClick={handleBtnClick}>View Flat</button>
    </form>
    
-
  <table className="table table-data table-striped table-bordered view-table">
     <thead>
         <tr className="table-warning">
@@ -81,8 +89,6 @@ const handleBtnClick = (e)=>{
             <button className="btn btn-danger logout-btn" type="submit">Delete</button>
           </td>
         </tr>
-      
-       
       </tbody>
       </table>
 

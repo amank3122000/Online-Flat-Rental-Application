@@ -1,59 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function ViewAllFlat() {
-
-    /*let initialCustomers=[];
-    let [flats,setFlats]=useState(initialCustomers);
-
-    useEffect(() => {
-        const URL = 'http://localhost:8080/flat/viewallflat';
-        axios.get(URL).then((response) => {
-            setFlats(response.data);
-        })
-        .catch((error) => console.log(error));
-    },[]);
-
-    function goToAddCustomer(){
-        //props.history.push('/addCustomer');
-    }
-
-
-  return (
-      <React.Fragment>
-            <table class="table table-data table-striped table-bordered">
-    <thead>
-        <tr class="table-warning">
-          <th class="col-md-1">Flat ID</th>
-          <th class="col-md-2">Flat Cost</th>
-          <th class="col-md-5">Flat Address</th>
-          <th class="col-md-1">Flat Availability</th>
-          <th class="col-md-3">Actions</th>
-        </tr>
-      </thead>
-      <tbody class="table-success ">
-      {
-      flats.map (
-
-                    flat =>
-
-        <tr>
-          <td class="col-md-1">{flat.flatId}</td>
-          <td class="col-md-2">{flat.flatCost}</td>
-          <td class="col-md-5">Some address</td>    
-          <td class="col-md-1">{flat.flatAvailability}</td>
-          <td class="col-md-3">
-            <button class="btn btn-warning logout-btn" type="submit">Update</button>
-            <button class="btn btn-danger logout-btn" type="submit">Delete</button>
-          </td>
-        </tr>
-      
-      )}
-      </tbody>
-      </table>
-    </React.Fragment>
-    );*/
-
 
     let initialFlat = [] ;
   let [Flat, setFlat] = useState(initialFlat);
@@ -70,7 +19,7 @@ const mystyle = {
   };
 
   useEffect(() => {
-    const URL = "http://localhost:8080/flat/viewallflat";
+    const URL = `http://localhost:8080/flat/viewallflat`;
     axios
       .get(URL)
       .then((response) => {
@@ -89,9 +38,20 @@ const mystyle = {
 //              console.log(response.data)
 //           })
 //     }
+
   return (
+    
     <div style={formStyle}>
+      <nav className="navbar navbar-dark bg-dark justify-content-between fixed-top">
+        <Link className="navbar-brand navbar-brand-margin">Admin Panel</Link>
+        <span className="header-right">Flat Rental Application</span>
+        <form className="form-inline">
+       
+          <button className="btn btn-outline-danger my-2 my-sm-0 logout-btn" type="submit"><a href="/login">Logout</a></button>
+        </form>
+      </nav>
       {/* <h1 style={mystyle}>All Flats</h1> */}
+      <br/><br/><br/><br/>
       <table className="table table-hover table-striped border-dark">
         <thead>
           <tr className="table-dark">
@@ -119,21 +79,13 @@ const mystyle = {
                 <td>{flat.flatAddress.country}</td>
                 <td>{flat.cost}</td>
                 <td>{flat.availability}</td>
-                {/* <td><button className="btn btn-outline-danger" onClick={()=>handleDeleteOrder(flat.bookingId)}>Delete</button></td> */}
               </tr>
             ))}
             
           </tbody>
-        
-      </table>
-      {/* <div className="col-15 container">
-                                    <button type="submit" onClick ={handleSubmit} className="btn btn-primary mt-3">BOOK NOW</button>
-                                </div> */}
-                                
+      </table>                          
     </div>
   );
-
-
 }
 
 export default ViewAllFlat;

@@ -1,19 +1,3 @@
-// import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-
-// function RemoveFlat() {
-
-//   return (
-//       <React.Fragment>
-//         <h1>Remove flat</h1>
-
-    
-//      </React.Fragment>
-//     );
-// }
-
-// export default RemoveFlat;
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -22,7 +6,7 @@ function RemoveFlat() {
 
    const [flatid,setFlatid] = useState(0);
    const [formErrors, setFormErrors] = useState({});
-    const [isSubmit, setIsSubmit] = useState(false);
+   const [isSubmit, setIsSubmit] = useState(false);
 
 
   const handleBtnClick = (e)=>{
