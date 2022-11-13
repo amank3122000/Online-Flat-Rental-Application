@@ -5,17 +5,17 @@ import { Link } from 'react-router-dom';
 function UpdateFlat() {
     
     let initialFlat={
-        flatId: 0,
+        flatId: '',
         flatAddress:{
-            houseNo:0,
+            houseNo:'',
             street:'',
             city:'',
             state:'',
-            pin:0,
+            pin:'',
             country:''
             },
         availability:'',
-        cost:0,
+        cost:'',
         };
 
     const [Flat,setFlat]=useState(initialFlat);
@@ -39,7 +39,7 @@ function UpdateFlat() {
 
   useEffect(() => {
     console.log(formErrors);
-    if (/*Object.keys(formErrors).length === 0 && */isSubmit) {
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log(Flat);
     }
   }, [formErrors]);
@@ -52,19 +52,19 @@ function UpdateFlat() {
     if (!values.flatAddress.houseNo) {
       errors.houseNo = "House No is required!";
     }
-    if (!values.street) {
+    if (!values.flatAddress.street) {
         errors.street = "Street is required!";
       }
-    if (!values.city) {
+    if (!values.flatAddress.city) {
         errors.city = "City is required!";
       }
-    if (!values.state) {
+    if (!values.flatAddress.state) {
         errors.state = "State is required!";
       }
-    if (!values.pin) {
+    if (!values.flatAddress.pin) {
         errors.pin = "PIN is required!";
       }
-    if (!values.country) {
+    if (!values.flatAddress.country) {
         errors.country = "Country is required!";
       }
     if (!values.availability) {
@@ -79,7 +79,7 @@ function UpdateFlat() {
     return (
     <React.Fragment>
         <nav className="navbar navbar-dark bg-dark justify-content-between fixed-top">
-        <Link className="navbar-brand navbar-brand-margin">Admin Panel</Link>
+        <button className="btn btn-outline-danger my-2 my-sm-0 logout-btn"><a href="/admin">Admin Panel</a></button>
         <span className="header-right">Flat Rental Application</span>
         <form className="form-inline">
        

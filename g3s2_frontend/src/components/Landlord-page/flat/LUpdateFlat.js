@@ -39,7 +39,7 @@ function LUpdateFlat() {
 
   useEffect(() => {
     console.log(formErrors);
-    if (/*Object.keys(formErrors).length === 0 && */isSubmit) {
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log(Flat);
     }
   }, [formErrors]);
@@ -52,19 +52,19 @@ function LUpdateFlat() {
     if (!values.flatAddress.houseNo) {
       errors.houseNo = "House No is required!";
     }
-    if (!values.street) {
+    if (!values.flatAddress.street) {
         errors.street = "Street is required!";
       }
-    if (!values.city) {
+    if (!values.flatAddress.city) {
         errors.city = "City is required!";
       }
-    if (!values.state) {
+    if (!values.flatAddress.state) {
         errors.state = "State is required!";
       }
-    if (!values.pin) {
+    if (!values.flatAddress.pin) {
         errors.pin = "PIN is required!";
       }
-    if (!values.country) {
+    if (!values.flatAddress.country) {
         errors.country = "Country is required!";
       }
     if (!values.availability) {

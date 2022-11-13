@@ -6,11 +6,8 @@ function ViewFlat() {
   let initialFlat = [] ;
   let [flat, setFlat] = useState(initialFlat);
 
-  const [flatId,setUserid] = useState(0);
+  const [flatId,setFlatId] = useState();
     const [btn,setButton] = useState(0);
-    //const [deletebtn,setdeleteButton] = useState(0);
-    //const [formErrors, setFormErrors] = useState({});
-    //const [isSubmit, setIsSubmit] = useState(false);
   
 useEffect(() => {
   const URL = `http://localhost:8080/flat/viewflat/${flatId}`;
@@ -27,23 +24,19 @@ console.log(flat.flatAddress);
 
 const handleBtnClick = (e)=>{
   e.preventDefault();
-  //setFormErrors(validate(userDetails));
-  //setIsSubmit(true);
   setButton(flatId)
-    
 }
 
    return (
       <React.Fragment>
         <nav className="navbar navbar-dark bg-dark justify-content-between fixed-top">
-        <Link className="navbar-brand navbar-brand-margin">Admin Panel</Link>
+        <button className="btn btn-outline-danger my-2 my-sm-0 logout-btn"><a href="/admin">Admin Panel</a></button>
         <span className="header-right">Flat Rental Application</span>
         <form className="form-inline">
        
           <button className="btn btn-outline-danger my-2 my-sm-0 logout-btn" type="submit"><a href="/login">Logout</a></button>
         </form>
       </nav>
-      {/* <h1 style={mystyle}>All Flats</h1> */}
       <br/><br/><br/><br/>
         
         <form className="view-form">
@@ -51,7 +44,7 @@ const handleBtnClick = (e)=>{
     <br/>
     <input name="username" type="number" placeholder="Flat ID*" className="username"
     value = {flatId}
-    onChange={e=>setUserid(e.target.value)}
+    onChange={e=>setFlatId(e.target.value)}
     />
     
     <br/>
@@ -61,16 +54,15 @@ const handleBtnClick = (e)=>{
  <table className="table table-data table-striped table-bordered view-table">
     <thead>
         <tr className="table-warning">
-        <th>Flat ID</th>
-            <th>HOUSE NO</th>
-            <th>STREET</th>
-            <th>CITY</th>
-            <th>PIN</th>
-            <th>STATE</th>
-            <th>COUNTRY</th>
-            <th>FLAT COST</th>
-            <th>AVAILABILITY</th>
-          <th>Actions</th>
+        <th>Flat Id</th>
+            <th>House No</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>Pin</th>
+            <th>State</th>
+            <th>Country</th>
+            <th>Cost</th>
+            <th>Availability</th>
         </tr>
       </thead>
       <tbody className="table-success ">
@@ -83,11 +75,7 @@ const handleBtnClick = (e)=>{
           <td>{flat&&flat.flatAddress&&flat.flatAddress.state}</td>
           <td>{flat&&flat.flatAddress&&flat.flatAddress.country}</td>
          <td>{flat&&flat.cost}</td>
-         <td>{flat&&flat.availability}</td>
-          <td>
-            <button className="btn btn-warning logout-btn" type="submit">Update</button>
-            <button className="btn btn-danger logout-btn" type="submit">Delete</button>
-          </td>
+         <td>{flat&&flat.availability}</td>        
         </tr>
       </tbody>
       </table>

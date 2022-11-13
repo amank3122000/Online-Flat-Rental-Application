@@ -29,21 +29,11 @@ const mystyle = {
       .catch((error) => console.log(error.message));
   },[])
 
-//   function handleBookFlat(flat_id){
-      
-//        const URL = `http://localhost:9000/api/booking/${bookingId}`;
-//        axios
-//          .delete(URL)
-//          .then((response) => {
-//              console.log(response.data)
-//           })
-//     }
-
   return (
     
     <div style={formStyle}>
       <nav className="navbar navbar-dark bg-dark justify-content-between fixed-top">
-        <Link className="navbar-brand navbar-brand-margin">Admin Panel</Link>
+      <button className="btn btn-outline-danger my-2 my-sm-0 logout-btn"><a href="/admin">Admin Panel</a></button>
         <span className="header-right">Flat Rental Application</span>
         <form className="form-inline">
        
@@ -56,14 +46,14 @@ const mystyle = {
         <thead>
           <tr className="table-dark">
             <th>Flat ID</th>
-            <th>HOUSE NO</th>
-            <th>STREET</th>
-            <th>CITY</th>
-            <th>PIN</th>
-            <th>STATE</th>
-            <th>COUNTRY</th>
-            <th>FLAT COST</th>
-            <th>AVAILABILITY</th>
+            <th>House No</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>Pin</th>
+            <th>State</th>
+            <th>Country</th>
+            <th>Cost</th>
+            <th>Availability</th>
           </tr>
           </thead>
           

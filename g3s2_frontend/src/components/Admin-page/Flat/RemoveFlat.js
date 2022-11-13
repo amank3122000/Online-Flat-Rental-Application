@@ -31,7 +31,7 @@ function RemoveFlat() {
   const validate = (values) => {
     const errors = {};
     if (!values) {
-        errors.userid = "User id is required!";
+        errors.flatid = "Flat Id is required!";
     }
     return errors;
   };
@@ -39,7 +39,7 @@ function RemoveFlat() {
    return (
       <React.Fragment>
         <nav className="navbar navbar-dark bg-dark justify-content-between fixed-top">
-        <Link className="navbar-brand navbar-brand-margin">Admin Panel</Link>
+        <button className="btn btn-outline-danger my-2 my-sm-0 logout-btn"><a href="/admin">Admin Panel</a></button>
         <span className="header-right">Flat Rental Application</span>
         <form className="form-inline">
        
@@ -55,7 +55,7 @@ function RemoveFlat() {
              onChange={e=>setFlatid(e.target.value)}
             />
             <br/>
-            <p>{formErrors.userid}</p>
+            <p>{formErrors.flatid}</p>
             <button className="btn" data-testid="button" onClick={handleBtnClick}>Delete Flat</button>
          </form>
     </React.Fragment>

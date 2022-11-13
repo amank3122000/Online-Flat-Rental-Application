@@ -6,16 +6,16 @@ function AddFlat() {
 
     let initialFlat={
         flatAddress:{
-            houseNo:0,
+            houseNo:'',
             street:'',
             city:'',
             state:'',
-            pin:0,
+            pin:'',
             country:''
             },
-        availability:'',
-        cost:0,
-        flatId:0,
+        availability:'available',
+        cost:'',
+        flatId:'',
         landlordId:{landlordId:0}
 
         }
@@ -27,17 +27,14 @@ function AddFlat() {
 
     const validate = (values) => {
         const errors = {};
-        if (!values.flatId) {
-            errors.flatId = "Flat Id is required!";
-          }
         if (!values.flatAddress.houseNo) {
           errors.houseNo = "House No is required!";
         }
-        if (!values.availability) {
-          errors.availability = "Availability is required!";
-        } 
-        if (!values.cost || values.cost<1000) {
-          errors.cost = "Cost is required and must be more than 1000!";
+        // if (!values.availability) {
+        //   errors.availability = "Availability is required!";
+        // } 
+        if (!values.cost) {
+          errors.cost = "Cost is required!";
         } 
         return errors;
       };
@@ -66,7 +63,7 @@ function AddFlat() {
     return (
         <React.Fragment>
         <nav className="navbar navbar-dark bg-dark justify-content-between fixed-top">
-        <Link className="navbar-brand navbar-brand-margin">Admin Panel</Link>
+        <button className="btn btn-outline-danger my-2 my-sm-0 logout-btn"><a href="/admin">Admin Panel</a></button>
         <span className="header-right">Flat Rental Application</span>
         <form className="form-inline">
        
@@ -82,13 +79,7 @@ function AddFlat() {
       <form className="c2" method="POST">
     <h1 className="form-text ">Add Flat</h1>
     <br/>
-
-    {/* <label>Flat Id</label>
-       <input name="flatid" type="number" placeholder="Flat ID" className="username" 
-       value={Flat.flatId} onChange={e=>setFlat({...Flat,flatId:e.target.value})}
-       />
-       <p>{formErrors.flatId}</p> */}
-       
+   
             <label>House No</label>
        <input name="flatid" type="number" placeholder="House No" className="username" 
        value={Flat.flatAddress.houseNo} onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,houseNo:e.target.value}})}
@@ -97,7 +88,7 @@ function AddFlat() {
 
        {/* <label>Landlord Id</label>
        <input name="landlordid" type="number" placeholder="Landlord Id" className="username" 
-       value={Flat.landlordId.landlordId} onChange={e=>setFlat({...Flat,landlordId:{...Flat.landlordId,landlordId:e.target.value}})}
+       value={Flat.landlord.landlordId} onChange={e=>setFlat({...Flat,landlord:{...Flat.landlord,landlordId:e.target.value}})}
        />
        <p>{formErrors.houseNo}</p> */}
 
@@ -107,7 +98,7 @@ function AddFlat() {
        />
        <p>{formErrors.cost}</p>
 
-       <label>Availability</label>
+       {/* <label>Availability</label>
         <select name="availability" className="username"
         value={Flat.availability} onChange={e=>setFlat({...Flat,availability:e.target.value})}
         >
@@ -115,7 +106,7 @@ function AddFlat() {
           <option value="available">Available</option>
           <option value="unavailable">Unavailable</option>
          </select>
-         <p>{formErrors.availability}</p>
+         <p>{formErrors.availability}</p> */}
          <br/>
 
          <button className="btn" data-testid="button" onClick={handleBtnClick}>Add Flat</button>
