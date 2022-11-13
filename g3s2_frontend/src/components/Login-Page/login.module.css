@@ -125,7 +125,7 @@
  .signup1{
     color:#748194;
     font-size:30px;
-    margin-left: 90px;
+    margin-left: 80px;
     margin-top: 20px;
  }
  a{
@@ -189,8 +189,8 @@
    display: inline-block;
    font-family: system-ui,system-ui,"Segoe UI","Helvetica Neue",sans-serif;
    position: absolute;
-     left: 190px;
-     top: 130px;
+   left: 255px;
+   top: 145px;
    text-align: center;
    text-decoration: none;
    transition: all .2s;
@@ -217,9 +217,71 @@
    transform: scale(1.05);
  }
 
+ .btnregt{
+   font-weight: bold;
+   width: auto;
+   margin: 300px 0 0 280px;
+   height: auto;
+   padding: 6px 15px;
+   outline: none;
+   font-size: 18px;
+   background-color: #a2dcfb;
+   border: 0;
+   border-radius: 56px;
+   color: rgb(255, 52, 52);
+   cursor: pointer;
+   display: inline-block;
+   font-family: system-ui,system-ui,"Segoe UI","Helvetica Neue",sans-serif;
+   position: absolute;
+   left: 120px;
+   top: 145px;
+   text-align: center;
+   text-decoration: none;
+   transition: all .2s;
+   user-select: none;
+   -webkit-user-select: none;
+   touch-action: manipulation;
+}
+.btnregt:before {
+   background-color: initial;
+   background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
+   border-radius: 125px;
+   content: "";
+   height: 50%;
+   left: 4%;
+   opacity: .5;
+   position: absolute;
+   top: 0;
+   transition: all .3s;
+   width: 92%;
+ }
+ 
+ .btnregt:hover {
+   box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+   transform: scale(1.05);
+ }
+
 .reg{
    height: 685px;
    background-image: url(https://images6.alphacoders.com/686/thumb-1920-686872.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+}
+h4{
+   color:#748194;
+   margin: 0;
+   font-size: 18px;
+   position: absolute;
+   bottom: -38px;
+   left: 470px;
+   width: 200px;
+}
+h5{
+   color:#748194;
+   margin: 0;
+   font-size: 18px;
+   position: absolute;
+   bottom: -73px;
+   left: 500px;
+   width: 200px;
 }

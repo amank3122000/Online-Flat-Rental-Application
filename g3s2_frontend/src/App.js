@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Routes, Route} from "react-router-dom"
 
 import Home from './components/Home-Page/Home';
 import Login from './components/Login-Page/Login';
-import Register from './components/Login-Page/Register';
 import RegisterLandlord from './components/Login-Page/RegisterLandlord.js';
 import RegisterTenant from './components/Login-Page/RegisterTenant';
 import NotFoundPage from './components/NotFoundPage';
@@ -69,7 +68,6 @@ function App() {
         <Route exact path="/admin" element={<AdminPage />}/>
         <Route exact path="/tenant" element={<Tenant />}/>
         <Route exact path="/landlord" element={<LandLord />}/>
-        <Route path="/register" element={<Register />}/>
         <Route path="/registerTenant" element={<RegisterTenant />}/>
         <Route path="/registerLandlord" element={<RegisterLandlord />}/>
 

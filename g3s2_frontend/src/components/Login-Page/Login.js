@@ -92,7 +92,10 @@ function Login() {
 
                      <h1 className={styles.mainhead}>Welcome</h1>
                      <br/><br/>
-                     <button id="formlogin" className={styles.btnreg}><Link to='/register'>Register</Link></button>
+                     <h4>Register as</h4>
+                     <h5>or</h5>
+                     <button id="formlogin" className={styles.btnreg}><Link to='/registerLandlord'>Landlord</Link></button>
+                     <button id="formlogin" className={styles.btnregt}><Link to='/registerTenant'>Tenant</Link></button>
               </div>
           </div>
           <div className={styles.c2}>
