@@ -6,19 +6,14 @@ function ViewAllLandlord() {
 
   let initiallandlord=[];
     let [landlords,setLandlords]=useState(initiallandlord);
-    // const [landlordid,setLandlord] = useState(0);
 
     useEffect(() => {
         const URL = 'http://localhost:8080/landlord/viewalllandlord';
         axios.get(URL).then((response) => {
-            //console.log(response);
             setLandlords(response.data);
         })
         .catch((error) => console.log(error));
     },[]);
-
-
-
 
 
    return (
@@ -31,7 +26,6 @@ function ViewAllLandlord() {
           <th className="col-md-3">Name</th>
           <th className="col-md-1">Age</th>
           <th className="col-md-3">Flat List</th>
-          {/* <th className="col-md-3">Actions</th> */}
         </tr>
       </thead>
       <tbody className="table-success ">
@@ -44,10 +38,6 @@ function ViewAllLandlord() {
           <td className="col-md-3">{landlord&&landlord.landlordName}</td>
           <td className="col-md-1">{landlord&&landlord.landlordAge}</td>
           <td className="col-md-3">{landlord&&landlord.flatList.map(flat => <div>{flat.flatId}</div>)}</td>
-          {/* <td className="col-md-3">
-            <button className="btn btn-warning logout-btn" type="submit">Update</button>
-            <button className="btn btn-danger logout-btn" type="submit">Delete</button>
-          </td> */}
         </tr>
       )}
        

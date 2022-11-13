@@ -11,7 +11,6 @@ function AddLandlord() {
     function handleBtnClick(e)
   {
       e.preventDefault();
-      //setFormErrors(validate(user));
       setIsSubmit(true);
       const URL='http://localhost:8080/landlord/addlandlord';
     axios.post(URL,landlord).then((response) => 
@@ -22,13 +21,6 @@ function AddLandlord() {
       
       
   }
-
-  // useEffect(() => {
-  //   console.log(formErrors);
-  //   if (Object.keys(formErrors).length === 0 && isSubmit) {
-  //     console.log(user);
-  //   }
-  // }, [formErrors]);
   
   return (
       <React.Fragment>
@@ -45,7 +37,7 @@ function AddLandlord() {
     value={landlord.landlordAge} onChange={e=>setLandlord({...landlord,landlordAge:e.target.value})}/>
     <br/><br/><br/><br/>
   
-    <button  className="btn" type="submit" onClick={handleBtnClick}>Add Landlord</button>
+    <button  className="btn" type="submit" data-testid="button" onClick={handleBtnClick}>Add Landlord</button>
  </form>
     
      </React.Fragment>

@@ -19,7 +19,6 @@ function UpdateLandlord() {
    function handleBtnClick(e)
    {
        e.preventDefault();
-       //setFormErrors(validate(user));
        setIsSubmit(true);
        const URL=`http://localhost:8080/landlord/updatelandlord/${landlord.landlordId}`;
        axios.put(URL,landlord).then((response) => 
@@ -73,7 +72,7 @@ function UpdateLandlord() {
           <button id="singlebutton" name="singlebutton" className="btn btn-info">View Flat List</button> 
         </div> */}
         
-        <button className="btn" onClick={handleBtnClick}>Update Landlord</button>
+        <button className="btn" data-testid="button" onClick={handleBtnClick}>Update Landlord</button>
         
      </form>
 <br/><br/>
