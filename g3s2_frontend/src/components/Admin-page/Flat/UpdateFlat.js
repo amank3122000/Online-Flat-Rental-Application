@@ -45,24 +45,38 @@ function UpdateFlat() {
   }, [formErrors]);
 
   const validate = (values) => {
-    // const errors = {};
-    // if (!values.userId) {
-    //   errors.userId = "User id is required!";
-    // }
-    // if (!values.userName) {
-    //   errors.userName = "Username is required!";
-    // }
-    // if (!values.userType) {
-    //   errors.userType = "User type is required!";
+    const errors = {};
+    if (!values.flatId) {
+        errors.flatId = "Flat Id is required!";
+      }
+    if (!values.flatAddress.houseNo) {
+      errors.houseNo = "House No is required!";
+    }
+    if (!values.street) {
+        errors.street = "Street is required!";
+      }
+    if (!values.city) {
+        errors.city = "City is required!";
+      }
+    if (!values.state) {
+        errors.state = "State is required!";
+      }
+    if (!values.pin) {
+        errors.pin = "PIN is required!";
+      }
+    if (!values.country) {
+        errors.country = "Country is required!";
+      }
+    if (!values.availability) {
+      errors.availability = "Availability is required!";
+    } 
+    if (!values.cost) {
+      errors.cost = "Cost is required!";
+    } 
+    // if (values.cost < 1000) {
+    //   errors.cost = "Cost must be more than 1000!";
     // } 
-    // if (!values.password) {
-    //   errors.password = "Password is required";
-    // } else if (values.password.length < 4) {
-    //   errors.password = "Password must be more than 4 characters";
-    // } else if (values.password.length > 10) {
-    //   errors.password = "Password cannot exceed more than 10 characters";
-    // }
-    // return errors;
+    return errors;
   };
 
     return (
@@ -82,49 +96,49 @@ function UpdateFlat() {
        <input name="flatid" type="number" placeholder="Flat ID" className="username" 
        value={Flat.flatId} onChange={e=>setFlat({...Flat,flatId:e.target.value})}
        />
-       {/* <p>{formErrors.flatId}</p> */}
+       <p>{formErrors.flatId}</p>
        
             <label>House No</label>
        <input name="flatid" type="number" placeholder="House No" className="username" 
        value={Flat.flatAddress.houseNo} onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,houseNo:e.target.value}})}
        />
-       {/* <p>{formErrors.houseNo}</p> */}
+       <p>{formErrors.houseNo}</p>
        
             <label>Street</label>
        <input name="flatid" type="text" placeholder="Street" className="username" 
        value={Flat.flatAddress.street} onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,street:e.target.value}})}
        />
-       {/* <p>{formErrors.street}</p> */}
+       <p>{formErrors.street}</p>
        
             <label>City</label>
        <input name="flatid" type="text" placeholder="City" className="username" 
        value={Flat.flatAddress.city} onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,city:e.target.value}})}
        />
-       {/* <p>{formErrors.city}</p> */}
+       <p>{formErrors.city}</p>
        
             <label>State</label>
        <input name="flatid" type="text" placeholder="State" className="username" 
        value={Flat.flatAddress.state} onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,state:e.target.value}})}
        />
-       {/* <p>{formErrors.state}</p> */}
+       <p>{formErrors.state}</p>
        
             <label>Pin</label>
        <input name="flatid" type="number" placeholder="Pin" className="username" 
        value={Flat.flatAddress.pin} onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,pin:e.target.value}})}
        />
-       {/* <p>{formErrors.pin}</p> */}
+       <p>{formErrors.pin}</p>
        
             <label>Country</label>
        <input name="flatid" type="text" placeholder="Country" className="username" 
        value={Flat.flatAddress.country} onChange={e=>setFlat({...Flat,flatAddress:{...Flat.flatAddress,country:e.target.value}})}
        />
-       {/* <p>{formErrors.country}</p> */}
+       <p>{formErrors.country}</p>
         
             <label>Cost</label>
        <input name="flatid" type="number" placeholder="Cost" className="username" 
        value={Flat.cost} onChange={e=>setFlat({...Flat,cost:e.target.value})}
        />
-       {/* <p>{formErrors.cost}</p> */}
+       <p>{formErrors.cost}</p>
 
 
        <label>Availability</label>
@@ -134,9 +148,8 @@ function UpdateFlat() {
           <option value="">Availability*</option>
           <option value="available">Available</option>
           <option value="unavailable">Unavailable</option>
-          {/* <option value="tenant">Tenant</option> */}
          </select>
-         {/* <p>{formErrors.availability}</p> */}
+         <p>{formErrors.availability}</p>
          <br/>  <br/>
          <button className="btn" data-testid="button" onClick={handleBtnClick}>Update Flat</button>
       
@@ -144,7 +157,5 @@ function UpdateFlat() {
       </React.Fragment>
     );
 }
-
-           
 
 export default UpdateFlat;

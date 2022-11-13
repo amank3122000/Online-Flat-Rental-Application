@@ -20,12 +20,12 @@ public class FlatBookingDTO {
 	
 	@NotNull(message = "Booking From Date is required")
 	@FutureOrPresent
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private LocalDate bookingFromDate;
 	
 	@NotNull(message = "Booking To Date is required")
 	@Future
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private LocalDate bookingToDate;
 	
 	public FlatBookingDTO() {
