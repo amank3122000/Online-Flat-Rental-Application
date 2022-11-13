@@ -21,7 +21,7 @@ function ViewAllBooking() {
 
   return (
       <React.Fragment>
-        <table className="table table-data table-striped table-bordered">
+        <table className="table table-data table-striped table-bordered" data-testid="ViewAll-form-2">
                 <thead>
                     <tr className="table-warning">
                     <th>Booking No.</th>

@@ -200,7 +200,7 @@ function LAllFlat(props) {
                 <button id="getbtn" style={{margin:"10px 0px"}} className='btn btn-success'>Get Flats</button>
                 <h6 id="error" className="text text-danger"></h6>
         </form>
-        <h6 className="text text-danger">{Landlord.landlordName} you don't have any flats.</h6>
+        <h6 className="text text-danger">{Landlord.landlordName} You don't have any flats.</h6>
       </div>
     </div>
     

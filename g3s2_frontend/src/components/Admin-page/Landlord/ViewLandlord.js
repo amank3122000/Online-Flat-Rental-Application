@@ -5,38 +5,34 @@ import axios from 'axios';
 
 function ViewLandlord() {
 
-  let initiallandlord={flatList:[], landlordAge: 0, landlordId: 0, landlordName: ''};
-    const [landlordid,setLandlordid] = useState(0);
+  let initiallandlord={flatList:[], landlordAge: '', landlordId: '', landlordName: ''};
+    const [landlordid,setLandlordid] = useState('');
     const [landlordDetails,setLandlordDetails] = useState(initiallandlord);
+    const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
 
    const handleBtnClick = (e)=>{
     e.preventDefault();
+    setFormErrors(validate(landlordid));
     setIsSubmit(true);
     axios.get(`http://localhost:8080/landlord/viewlandlord/${landlordid}`)
        .then((response) => {setLandlordDetails(response.data)
         setLandlordid(0);}).catch(error => console.log(error.message));
   }
+  useEffect(() => {
+    console.log(formErrors);
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
+      console.log(landlordid);
+    }
+  }, [formErrors]);
 
-  // useEffect(() => {
-  //   console.log(formErrors);
-  //   if (Object.keys(formErrors).length === 0 && isSubmit) {
-  //     console.log(userid);
-  //   }
-  // }, [formErrors]);
-
-  // const validate = (values) => {
-  //   const errors = {};
-  //   if (!values.username) {
-  //       errors.userid = "User id is required!";
-  //   }
-  //   return errors;
-  // };
-
-  // const handleDeleteBtnClick =(e)=>{
-  //     e.preventDefault();
-  //     setdeleteButton(userid)
-  // }
+  const validate = (values) => {
+    const errors = {};
+    if (!values) {
+        errors.landlordid = "Landlord id is required!";
+    }
+    return errors;
+  };
 
 console.log(landlordDetails);
    return (
@@ -45,8 +41,9 @@ console.log(landlordDetails);
         <form className="view-form">
     <h1 className="form-text ">View LandLord By ID</h1>
     <br/>
-    <input name="landlordname" type="number" placeholder="Landlord ID*" className="username"
+    <input name="landlordname" type="number" placeholder="Landlord ID" className="username"
     value = {landlordid} onChange={e=>setLandlordid(e.target.value)}/>
+    <p>{formErrors.landlordid}</p>
     <br/>
     <button className="btn" data-testid="button" onClick={handleBtnClick}>View Landlord</button>
    </form>
@@ -68,8 +65,6 @@ console.log(landlordDetails);
           <td className="col-md-1">{landlordDetails&&landlordDetails.landlordAge}</td>
           <td className="col-md-3">{landlordDetails&&landlordDetails.flatList.map(flat=><div>{flat.flatId}</div>)}</td>
         </tr>
-      
-       
       </tbody>
 
   </table>     

@@ -84,7 +84,7 @@ function UpdateTenant() {
              value={tenant.age} onChange={e=>setTenant({...tenant,age:e.target.value})}
             />
         <br/><br/>
-            <button className="btn" onClick={handleBtnClick}>Update Tenant</button>
+            <button className="btn" data-testid="button" onClick={handleBtnClick}>Update Tenant</button>
         </form>
 
     </React.Fragment>

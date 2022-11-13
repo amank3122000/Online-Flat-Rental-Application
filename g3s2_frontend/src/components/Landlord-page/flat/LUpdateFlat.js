@@ -5,17 +5,17 @@ import { Link } from 'react-router-dom';
 function LUpdateFlat() {
     
     let initialFlat={
-        flatId: 0,
+        flatId: '',
         flatAddress:{
-            houseNo:0,
+            houseNo:'',
             street:'',
             city:'',
             state:'',
-            pin:0,
+            pin:'',
             country:''
             },
         availability:'',
-        cost:0,
+        cost:'',
         };
 
     const [Flat,setFlat]=useState(initialFlat);
@@ -142,7 +142,7 @@ function LUpdateFlat() {
         <select name="availability" className="username"
         value={Flat.availability} onChange={e=>setFlat({...Flat,availability:e.target.value})}
         >
-          <option value="">Availability*</option>
+          <option value="">Availability</option>
           <option value="available">Available</option>
           <option value="unavailable">Unavailable</option>
          </select>

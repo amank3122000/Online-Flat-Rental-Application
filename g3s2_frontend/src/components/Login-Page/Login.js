@@ -94,8 +94,8 @@ function Login() {
                      <br/><br/>
                      <h4>Register as</h4>
                      <h5>or</h5>
-                     <button id="formlogin" className={styles.btnreg}><Link to='/registerLandlord'>Landlord</Link></button>
-                     <button id="formlogin" className={styles.btnregt}><Link to='/registerTenant'>Tenant</Link></button>
+                     <button id="formlogin" className={styles.btnreg} ><Link to='/registerLandlord'>Landlord</Link></button>
+                     <button id="formlogin" className={styles.btnregt} ><Link to='/registerTenant'>Tenant</Link></button>
               </div>
           </div>
           <div className={styles.c2}>
@@ -133,7 +133,7 @@ function Login() {
        </select>
           
           <p>{formErrors.password}</p>
-          <button id="formlogin" type="submit" className={styles.btnlogin} onClick={fetchUsers}>Submit</button>
+          <button id="formlogin" type="submit" className={styles.btnlogin} onClick={fetchUsers} data-testid="button">Submit</button>
           <p>{formErrors.login}</p>  
         
       </form>

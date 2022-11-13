@@ -30,7 +30,7 @@ function RemoveTenant() {
             onChange={e=>setTenantid(e.target.value)}
             />
             <br/><br/>
-            <button className="btn" onClick={handleBtnClick}>Remove Tenant</button>
+            <button className="btn" data-testid="button" onClick={handleBtnClick}>Remove Tenant</button>
          </form>
     </React.Fragment>
     );

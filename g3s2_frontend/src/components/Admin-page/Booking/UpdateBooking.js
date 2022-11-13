@@ -123,11 +123,11 @@ function UpdateBooking() {
     return (
         <>
         <div style={{backgroundImage: "linear-gradient(15deg, #fdf9f1 0%, #f6e4c0 100%)"}}>
-        <h2 className='text-primary container'>Update flatbooking details</h2>
+        <h2 className='text-primary container' data-testid="update-header-2" >Update flatbooking details</h2>
             <hr/>
             <form 
             onSubmit={handleBtnClick} 
-            className="col-4 container">
+            className="col-4 container" data-testid="Update-form-2">
 
 <div className='form-group'>
                     <label>Enter Booking ID<span style={{color: "red"}}>*</span></label>
@@ -310,7 +310,7 @@ function UpdateBooking() {
 
       
        {/* <p>{formErrors.userType}</p> */}
-                <button id="savebutton" className='btn btn-success mt-2' >Update Booking</button>
+                <button id="savebutton" data-testid="buttonBookingUpdate" className='btn btn-success mt-2' >Update Booking</button>
                 <h6 id="error" className="text text-danger"></h6>
             </form>
             <h6>{msg}</h6>
