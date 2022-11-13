@@ -8,35 +8,10 @@ function ViewLandlord() {
   let initiallandlord={flatList:[], landlordAge: 0, landlordId: 0, landlordName: ''};
     const [landlordid,setLandlordid] = useState(0);
     const [landlordDetails,setLandlordDetails] = useState(initiallandlord);
-    // const [btn,setButton] = useState(0);
-    //const [deletebtn,setdeleteButton] = useState(0);
-    //const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
 
- 
-  //   useEffect(() => {
-  //      // DELETE request using axios inside useEffect React hook
-  //      axios.get(`http://localhost:8080/users/viewlandlord/${landlordid}`)
-  //      .then((response) => setLandlordDetail(response.data));
-
-  //  }, [btn]);
-
-        // useEffect(()=>{
-        //     const URL=`http://localhost:8080/users/removeUser/${userid}`
-        //     axios.delete(URL).then(response=>
-        //         {
-        //             setUserDetail([]);
-        //             setUserid(0);
-        //             btn(0);
-        //         }).catch(error=>console.log(error.response));
-        // },[deletebtn]);
-
-
- 
- 
    const handleBtnClick = (e)=>{
     e.preventDefault();
-    //setFormErrors(validate(userDetails));
     setIsSubmit(true);
     axios.get(`http://localhost:8080/landlord/viewlandlord/${landlordid}`)
        .then((response) => {setLandlordDetails(response.data)
@@ -73,7 +48,7 @@ console.log(landlordDetails);
     <input name="landlordname" type="number" placeholder="Landlord ID*" className="username"
     value = {landlordid} onChange={e=>setLandlordid(e.target.value)}/>
     <br/>
-    <button className="btn" onClick={handleBtnClick}>View Landlord</button>
+    <button className="btn" data-testid="button" onClick={handleBtnClick}>View Landlord</button>
    </form>
    
 
@@ -84,7 +59,6 @@ console.log(landlordDetails);
           <th className="col-md-3">Landlord Name</th>
           <th className="col-md-1">Age</th>
           <th className="col-md-3">Flat List</th>
-          {/* <th className="col-md-3">Actions</th> */}
         </tr>
       </thead>
       <tbody className="table-success ">
@@ -93,10 +67,6 @@ console.log(landlordDetails);
           <td className="col-md-3">{landlordDetails&&landlordDetails.landlordName}</td>
           <td className="col-md-1">{landlordDetails&&landlordDetails.landlordAge}</td>
           <td className="col-md-3">{landlordDetails&&landlordDetails.flatList.map(flat=><div>{flat.flatId}</div>)}</td>
-          {/* <td className="col-md-3">
-            <button className="btn btn-warning logout-btn" type="submit">Update</button>
-            <button className="btn btn-danger logout-btn" type="submit">Delete</button>
-          </td> */}
         </tr>
       
        

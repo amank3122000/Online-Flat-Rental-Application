@@ -9,9 +9,7 @@ function RemoveLandlord() {
    
 
   const handleBtnClick = (e)=>{
-      // console.log(e.target.response)
       e.preventDefault();
-      //setFormErrors(validate(landlordid));
       setIsSubmit(true);
       axios.delete(`http://localhost:8080/landlord/deletelandlord/${landlordId}`)
       .then(() =>
@@ -33,7 +31,7 @@ function RemoveLandlord() {
             value = {landlordId} onChange={e=>setLandlordId(e.target.value)}/>
             <br/><br/>
             <br/><br/>
-            <button className="btn" onClick={handleBtnClick}>Remove Landlord</button>
+            <button className="btn" data-testid="button" onClick={handleBtnClick}>Remove Landlord</button>
          </form>
     </React.Fragment>
     );
