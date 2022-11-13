@@ -16,7 +16,7 @@ function AddFlat() {
         availability:'',
         cost:0,
         flatId:0,
-        landlord:{landlordId:0}
+        landlordId:{landlordId:0}
 
         }
     let [Flat,setFlat]=useState(initialFlat)
@@ -30,7 +30,7 @@ function AddFlat() {
         if (!values.flatId) {
             errors.flatId = "Flat Id is required!";
           }
-        if (!values.houseNo) {
+        if (!values.flatAddress.houseNo) {
           errors.houseNo = "House No is required!";
         }
         // if (!values.street) {
@@ -51,12 +51,12 @@ function AddFlat() {
         if (!values.availability) {
           errors.availability = "Availability is required!";
         } 
-        if (!values.cost) {
-          errors.cost = "Cost is required!";
+        if (!values.cost || values.cost<1000) {
+          errors.cost = "Cost is required and must be more than 1000!";
         } 
-        else if (values.cost < 1000) {
-          errors.cost = "Cost must be more than 1000!";
-        } 
+        // if (values.cost < 1000) {
+        //   errors.cost = "Cost must be more than 1000!";
+        // } 
         return errors;
       };
 
@@ -108,7 +108,11 @@ function AddFlat() {
           <button className="btn btn-outline-danger my-2 my-sm-0 logout-btn" type="submit"><a href="/login">Logout</a></button>
         </form>
       </nav>
-      
+      {Object.keys(formErrors).length === 0 && isSubmit ? (
+        <div className="ui message success">Flat Added.</div>
+      ) : (<></>
+        // <pre>{JSON.stringify(user, undefined, 2)}</pre>
+      )}
       
       <form className="c2" method="POST">
     <h1 className="form-text ">Add Flat</h1>
@@ -126,11 +130,11 @@ function AddFlat() {
        />
        <p>{formErrors.houseNo}</p>
 
-       {/* <label>Landlord Id</label>
+       <label>Landlord Id</label>
        <input name="landlordid" type="number" placeholder="Landlord Id" className="username" 
-       value={Flat.landlord.landlordId} onChange={e=>setFlat({...Flat,landlord:{...Flat.landlord,landlordId:e.target.value}})}
+       value={Flat.landlordId.landlordId} onChange={e=>setFlat({...Flat,landlordId:{...Flat.landlordId,landlordId:e.target.value}})}
        />
-       <p>{formErrors.houseNo}</p> */}
+       {/* <p>{formErrors.houseNo}</p> */}
 
             <label>Cost</label>
        <input name="flatid" type="number" placeholder="Cost" className="username" 
