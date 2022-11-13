@@ -292,20 +292,20 @@ function UpdateBooking() {
          <option value="unavailable">Unavailable</option>
          
        </select>
-                <div className='form-group'>
+       <div className='form-group'>
                     <label>bookingFromDate<span style={{color: "red"}}>*</span></label>
-                    <input name="fromDate" placeholder="Booking from" type='text' className='form-control'
+                    <input name="fromDate" placeholder="Booking from" type='date' className='form-control'
                          value={FlatBooking.bookingFromDate}
                          onInput={formValidate}
-                         onChange={e=>setFlatBooking({...FlatBooking,bookingFromDate:e.target.value})}/>
+                         onChange={e=>setFlatBooking({...FlatBooking,bookingFromDate:e.target.value.toString()})}/>
                 </div>
 
                 <div className='form-group'>
                     <label>bookingToDate<span style={{color: "red"}}>*</span></label>
-                    <input name="toDate" placeholder="Booking to" type='text' className='form-control'
+                    <input name="toDate" placeholder="Booking to" type='date' className='form-control'
                          value={FlatBooking.bookingToDate}
                          onInput={formValidate}
-                         onChange={e=>setFlatBooking({...FlatBooking,bookingToDate:e.target.value})}/>
+                         onChange={e=>setFlatBooking({...FlatBooking,bookingToDate:e.target.value.toString()})}/>
                 </div>
 
       
