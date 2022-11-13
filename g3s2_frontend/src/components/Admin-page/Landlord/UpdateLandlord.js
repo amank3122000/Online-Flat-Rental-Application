@@ -5,20 +5,14 @@ function UpdateLandlord() {
 
   let initiallandlord={flatList:[], landlordAge: '', landlordId: '', landlordName: ''};
     const [landlord,setLandlord] = useState(initiallandlord);
+    const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
  
- 
-  //   useEffect(() => {
-  //      const URL='http://localhost:8080/landlord/updatelandlord';
-  //      axios.put(URL,landlord).then((response) => 
-  //      setLandlord(response.data)
-  //      )
-  //      .catch(error => console.log(error.message))
-  //  },[btn]);
    
    function handleBtnClick(e)
    {
        e.preventDefault();
+       setFormErrors(validate(landlord));
        setIsSubmit(true);
        const URL=`http://localhost:8080/landlord/updatelandlord/${landlord.landlordId}`;
        axios.put(URL,landlord).then((response) => 
@@ -29,79 +23,47 @@ function UpdateLandlord() {
        .catch(error => console.log(error.message))
    }
  
-  //  useEffect(() => {
-  //    console.log(formErrors);
-  //    if (Object.keys(formErrors).length === 0 && isSubmit) {
-  //      console.log(user);
-  //    }
-  //  }, [formErrors]);
- 
-  //  const validate = (values) => {
-  //    const errors = {};
-  //    if (!values.userid) {
-  //      errors.userid = "Username is required!";
-  //    }
-  //    if (!values.username) {
-  //      errors.username = "User id is required!";
-  //    }
-  //    if (!values.userType) {
-  //      errors.email = "User type is required!";
-  //    } 
-  //    if (!values.password) {
-  //      errors.password = "Password is required";
-  //    } else if (values.password.length < 4) {
-  //      errors.password = "Password must be more than 4 characters";
-  //    } else if (values.password.length > 10) {
-  //      errors.password = "Password cannot exceed more than 10 characters";
-  //    }
-  //    return errors;
-  //  };
+   useEffect(() => {
+    console.log(formErrors);
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
+      console.log(landlord);
+    }
+  }, [formErrors]);
+
+  const validate = (values) => {
+    const errors = {};
+    if (!values.landlordId) {
+      errors.landlordId = "Landlord id is required!";
+    }
+    if (!values.landlordName) {
+      errors.landlordName = "Landlord name is required!";
+    }
+    if (!values.landlordAge) {
+      errors.landlordAge = "Landlord age is required!";
+    } 
+
+    return errors;
+  };
 
    return (
       <React.Fragment>
         
        <form id = "" className="c2 booking-form updatelandlordform">
-        <h1 className="form-text">Update Landlord</h1><br/>
+        <h1 className="form-text">Update Landlord</h1>
         <input name="landlordid" type="text" placeholder="Landlord ID" className="col-md-4 address-tags"
         value={landlord.landlordId} onChange={e=>setLandlord({...landlord,landlordId:e.target.value})}/><br/>
+        <p>{formErrors.landlordId}</p>
         <input name="landlordname" type="text" placeholder="Landlord Name" className="col-md-4 address-tags"
-        value={landlord.landlordName} onChange={e=>setLandlord({...landlord,landlordName:e.target.value})}/>
+        value={landlord.landlordName} onChange={e=>setLandlord({...landlord,landlordName:e.target.value})}/><br/>
+        <p>{formErrors.landlordName}</p>
         <input name="landlordage" type="number" placeholder="Landlord Age" min="18" className="col-md-3 address-tags"
-        value={landlord.landlordAge} onChange={e=>setLandlord({...landlord,landlordAge:e.target.value})}/>
-        {/* <div className="col-md-12 text-center"> 
-          <button id="singlebutton" name="singlebutton" className="btn btn-info">View Flat List</button> 
-        </div> */}
+        value={landlord.landlordAge} onChange={e=>setLandlord({...landlord,landlordAge:e.target.value})}/><br/>
+        <p>{formErrors.landlordAge}</p>
         
         <button className="btn" data-testid="button" onClick={handleBtnClick}>Update Landlord</button>
         
      </form>
 <br/><br/>
-
-     {/* <table className="table table-data table-striped table-bordered view-table updatelandlordtable">
-      <thead>
-        <tr className="table-warning">
-          <th className="col-md-1">Flat ID</th>
-          <th className="col-md-2">Flat Cost</th>
-          <th className="col-md-5">Flat Address</th>
-          <th className="col-md-1">Flat Availability</th>
-          <th className="col-md-3">Actions</th>
-        </tr>
-      </thead>
-      <tbody className="table-success ">
-        <tr>
-          <td className="col-md-1">Rohit</td>
-          <td className="col-md-2">2000</td>
-          <td className="col-md-5">Newadsdasd</td>
-          <td className="col-md-1">Yes</td>
-          <td className="col-md-3">
-            <button className="btn btn-warning logout-btn" type="submit">Update</button>
-            <button className="btn btn-danger logout-btn" type="submit">Delete</button>
-          </td>
-        </tr>
-      
-       
-      </tbody>
-    </table> */}
 
     </React.Fragment>
     );
