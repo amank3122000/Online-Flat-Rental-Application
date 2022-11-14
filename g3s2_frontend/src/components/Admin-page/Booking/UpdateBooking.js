@@ -199,6 +199,7 @@ function UpdateBooking() {
                     />
                 </div>
             <br/><br/>
+            <label>Enter Tenant Age<span style={{color: "red"}}>*</span></label>
             <input name="tenantage" type="number" placeholder="Tenant Age" className="col-md-4 address-tags"
              value={FlatBooking.tenantId.age}  onChange={e=>setFlatBooking({...FlatBooking,tenantId:{...FlatBooking.tenantId,age:e.target.value}})}
             />

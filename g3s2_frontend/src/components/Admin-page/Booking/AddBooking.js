@@ -130,13 +130,13 @@ function AddBooking() {
             onSubmit={handleBtnClick} 
             className="col-4 container">
 
-<div className='form-group' data-testid="Add-form-2">
+{/* <div className='form-group' data-testid="Add-form-2">
                     <label>Enter Booking ID<span style={{color: "red"}}>*</span></label>
                     <input name="bookingId" placeholder="Booking ID" type='number' className='form-control'
                          value={FlatBooking.bookingId}
                          onInput={formValidate}
                          onChange={e=>setFlatBooking({...FlatBooking,bookingId:e.target.value})}/>
-                </div>
+                </div> */}
 
                 <div className='form-group'>
                     <label>Enter tenant ID<span style={{color: "red"}}>*</span></label>
@@ -200,6 +200,7 @@ function AddBooking() {
                     />
                 </div>
             <br/><br/>
+            <label>Enter Tenant Age<span style={{color: "red"}}>*</span></label>
             <input name="tenantage" type="number" placeholder="Tenant Age" className="col-md-4 address-tags"
              value={FlatBooking.tenantId.age}  onChange={e=>setFlatBooking({...FlatBooking,tenantId:{...FlatBooking.tenantId,age:e.target.value}})}
             />

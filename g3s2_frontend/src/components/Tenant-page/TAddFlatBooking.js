@@ -124,19 +124,19 @@ function TAddFlatBooking() {
     return (
         <>
         <div style={{backgroundImage: "linear-gradient(15deg, #fdf9f1 0%, #f6e4c0 100%)"}}>
-        <h2 className='text-primary container'>Add flatbooking details</h2>
+        <h2 className='text-primary container' data-testid="Add-header-2">Add flatbooking details</h2>
             <hr/>
             <form 
             onSubmit={handleBtnClick} 
             className="col-4 container">
-
-<div className='form-group'>
+{/* 
+<div className='form-group' data-testid="Add-form-2">
                     <label>Enter Booking ID<span style={{color: "red"}}>*</span></label>
                     <input name="bookingId" placeholder="Booking ID" type='number' className='form-control'
                          value={FlatBooking.bookingId}
                          onInput={formValidate}
                          onChange={e=>setFlatBooking({...FlatBooking,bookingId:e.target.value})}/>
-                </div>
+                </div> */}
 
                 <div className='form-group'>
                     <label>Enter tenant ID<span style={{color: "red"}}>*</span></label>
@@ -200,6 +200,7 @@ function TAddFlatBooking() {
                     />
                 </div>
             <br/><br/>
+            <label>Enter Tenant Age<span style={{color: "red"}}>*</span></label>
             <input name="tenantage" type="number" placeholder="Tenant Age" className="col-md-4 address-tags"
              value={FlatBooking.tenantId.age}  onChange={e=>setFlatBooking({...FlatBooking,tenantId:{...FlatBooking.tenantId,age:e.target.value}})}
             />
@@ -311,7 +312,7 @@ function TAddFlatBooking() {
 
       
        {/* <p>{formErrors.userType}</p> */}
-                <button id="savebutton" className='btn btn-success mt-2' >Add Booking</button>
+                <button id="savebutton" data-testid="buttonBooking" className='btn btn-success mt-2' >Add Booking</button>
                 <h6 id="error" className="text text-danger"></h6>
             </form>
             <h6>{msg}</h6>
