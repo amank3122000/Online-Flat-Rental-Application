@@ -37,6 +37,14 @@ function ViewLandlord() {
 console.log(landlordDetails);
    return (
       <React.Fragment>
+        <nav className="navbar navbar-dark bg-dark justify-content-between fixed-top">
+        <button className="btn btn-outline-danger my-2 my-sm-0 logout-btn"><a href="/admin">Admin Panel</a></button>
+        <span className="header-right">Flat Rental Application</span>
+        <form className="form-inline">
+       
+          <button className="btn btn-outline-danger my-2 my-sm-0 logout-btn" type="submit"><a href="/login">Logout</a></button>
+        </form>
+      </nav>
         
         <form className="view-form">
     <h1 className="form-text ">View LandLord By ID</h1>

@@ -80,6 +80,8 @@ const handleBtnClick = (e)=>{
       </tbody>
       </table>
 
+      <button className="btn" data-testid="button" onClick={handleBtnClick}>View Flat</button>
+
     </React.Fragment>
     );
 }

@@ -47,6 +47,14 @@ function UpdateLandlord() {
 
    return (
       <React.Fragment>
+        <nav className="navbar navbar-dark bg-dark justify-content-between fixed-top">
+        <button className="btn btn-outline-danger my-2 my-sm-0 logout-btn"><a href="/admin">Admin Panel</a></button>
+        <span className="header-right">Flat Rental Application</span>
+        <form className="form-inline">
+       
+          <button className="btn btn-outline-danger my-2 my-sm-0 logout-btn" type="submit"><a href="/login">Logout</a></button>
+        </form>
+      </nav>
         
        <form id = "" className="c2 booking-form updatelandlordform">
         <h1 className="form-text">Update Landlord</h1>
