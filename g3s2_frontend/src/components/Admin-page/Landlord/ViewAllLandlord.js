@@ -14,10 +14,23 @@ function ViewAllLandlord() {
         })
         .catch((error) => console.log(error));
     },[]);
-
+    const formStyle = {
+      backgroundColor: "#FFFAFA",
+      //padding: "15px"
+  };
 
    return (
-      <React.Fragment>
+      <React.Fragment><div style={formStyle}>
+      <nav className="navbar navbar-dark bg-dark justify-content-between fixed-top">
+      <button className="btn btn-outline-danger my-2 my-sm-0 logout-btn"><a href="/admin">Admin Panel</a></button>
+        <span className="header-right">Flat Rental Application</span>
+        <form className="form-inline">
+       
+          <button className="btn btn-outline-danger my-2 my-sm-0 logout-btn" type="submit"><a href="/login">Logout</a></button>
+        </form>
+      </nav>
+      {/* <h1 style={mystyle}>All Flats</h1> */}
+      <br/><br/><br/><br/>
         
         <table className="table table-data table-striped table-bordered">
     <thead>
@@ -44,7 +57,7 @@ function ViewAllLandlord() {
       </tbody>
 
   </table>     
-
+</div>
 
 
     </React.Fragment>
